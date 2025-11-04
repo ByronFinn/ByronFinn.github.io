@@ -1,9 +1,9 @@
-# Economist 202511
+# TE 202511
 
 
-# Economist 202511
+# TE 202511
 
-{{< image src="/pictures/economist/economic-202511.jpg" caption="《经济学人》2025年11月刊封面 - 深度分析全球经济趋势" alt="Economist Magazine November 2025 Cover" title="《经济学人》2025年11月刊" width="800" class="center" >}}
+{{< image src="/pictures/te/te-202511.jpg" caption="《经济学人》2025年11月刊封面 - 深度分析全球经济趋势" alt="Economist Magazine November 2025 Cover" title="《经济学人》2025年11月刊" width="800" class="center" >}}
 
 <!-- 引导语：可以写一句话说明本文要点 -->
 `世界都在变聪明，我只想活明白`
@@ -79,6 +79,6 @@
 ## 下载链接
 <!--添加markdown格式的本地下载链接-->
 {{< admonition type=info title="epub格式" open=false >}}
-[TE-2025-11.epub](/files/economist/TE-2025-11.change)
+[TE-2025-11.epub](/files/te/TE-2025-11.change)
 {{< /admonition >}}
 
