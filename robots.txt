@@ -1,0 +1,39 @@
+User-agent: *
+Allow: /
+Disallow: /tags/
+Disallow: /categories/
+Disallow: /search/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /hugo.toml
+Disallow: /README.md
+Disallow: /go.mod
+Disallow: /go.sum
+Disallow: /.gitignore
+
+# 特别允许重要的内容目录
+Allow: /profile/
+Allow: /posts/
+Allow: /static/
+Allow: /pictures/
+Allow: /images/
+
+# Sitemap位置
+Sitemap: https://byronfinn.github.io/sitemap.xml
+
+# 搜索引擎特定配置
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# 优化爬虫抓取频率
+Crawl-delay: 1
