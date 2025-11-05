@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" viewBox="0 0 1200 1700" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">AI大模型概念关联图（五层结构）</title>
+  <desc id="desc">从基础概念、数学表示、模型架构、工程与优化到智能体与未来的层级关系与主要术语。</desc>
+
+  <!-- ====== Defs: colors, shadows, arrows ====== -->
+  <defs>
+    <linearGradient id="g-base" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#E9F8EE"/>
+      <stop offset="1" stop-color="#D7F0E1"/>
+    </linearGradient>
+    <linearGradient id="g-math" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#EAF3FF"/>
+      <stop offset="1" stop-color="#D8E9FF"/>
+    </linearGradient>
+    <linearGradient id="g-arch" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#E8FBFF"/>
+      <stop offset="1" stop-color="#D6F2FA"/>
+    </linearGradient>
+    <linearGradient id="g-eng" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#EEE9FF"/>
+      <stop offset="1" stop-color="#E0D7FF"/>
+    </linearGradient>
+    <linearGradient id="g-agent" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#EAF0FF"/>
+      <stop offset="1" stop-color="#DDE6FF"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+
+    <!-- arrow marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7A7A7A"/>
+    </marker>
+
+    <!-- shared box style via class -->
+    <style>
+      .layerTitle{font:700 22px/1.2 system-ui, -apple-system, "Segoe UI", "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; fill:#1F2A44;}
+      .tag{font:600 18px/1.2 system-ui, -apple-system, "Segoe UI","PingFang SC",sans-serif; fill:#334155;}
+      .sub{font:400 14px/1.2 system-ui, -apple-system,"PingFang SC",sans-serif; fill:#475569;}
+      .box{rx:14; ry:14; filter:url(#shadow);}
+      .edge{stroke:#7A7A7A; stroke-width:2.2; fill:none; marker-end:url(#arrow);}
+      .groupEdge{stroke:#94A3B8; stroke-width:2; fill:none; marker-end:url(#arrow); stroke-dasharray:6 6;}
+    </style>
+  </defs>
+
+  <!-- ====== Background ====== -->
+  <rect x="0" y="0" width="1200" height="1700" fill="#FFFFFF"/>
+
+  <!-- ====== Helper function: box with label (use groups) ====== -->
+  <!-- 基础函数无法在纯SVG中创建，这里直接逐个绘制 -->
+
+  <!-- ====== LAYER 1: 基础概念层 ====== -->
+  <g id="layer-base" transform="translate(80,100)">
+    <text class="layerTitle" x="0" y="-20">🌱 基础概念层</text>
+
+    <!-- Boxes -->
+    <g transform="translate(180,0)">
+      <rect class="box" width="170" height="60" fill="url(#g-base)"/>
+      <text class="tag" x="85" y="35" text-anchor="middle">Token</text>
+      <text class="sub" x="85" y="58" text-anchor="middle">语言最小单位</text>
+    </g>
+
+    <g transform="translate(380,0)">
+      <rect class="box" width="190" height="60" fill="url(#g-base)"/>
+      <text class="tag" x="95" y="35" text-anchor="middle">Embedding</text>
+      <text class="sub" x="95" y="58" text-anchor="middle">数字化表示</text>
+    </g>
+
+    <g transform="translate(600,0)">
+      <rect class="box" width="160" height="60" fill="url(#g-base)"/>
+      <text class="tag" x="80" y="35" text-anchor="middle">LLM</text>
+      <text class="sub" x="80" y="58" text-anchor="middle">语言智能</text>
+    </g>
+
+    <g transform="translate(790,0)">
+      <rect class="box" width="160" height="60" fill="url(#g-base)"/>
+      <text class="tag" x="80" y="35" text-anchor="middle">AGI</text>
+      <text class="sub" x="80" y="58" text-anchor="middle">通用智能</text>
+    </g>
+
+    <!-- Edges -->
+    <path class="edge" d="M 350 30 L 380 30"/>
+    <path class="edge" d="M 570 30 L 600 30"/>
+    <path class="edge" d="M 760 30 L 790 30"/>
+  </g>
+
+  <!-- ====== LAYER 2: 数学表示层 ====== -->
+  <g id="layer-math" transform="translate(80,290)">
+    <text class="layerTitle" x="0" y="-20">🔢 数学表示层</text>
+
+    <g transform="translate(220,0)">
+      <rect class="box" width="160" height="60" fill="url(#g-math)"/>
+      <text class="tag" x="80" y="35" text-anchor="middle">Vector</text>
+      <text class="sub" x="80" y="58" text-anchor="middle">向量</text>
+    </g>
+
+    <g transform="translate(410,0)">
+      <rect class="box" width="170" height="60" fill="url(#g-math)"/>
+      <text class="tag" x="85" y="35" text-anchor="middle">Q / K / V</text>
+      <text class="sub" x="85" y="58" text-anchor="middle">查询 / 键 / 值</text>
+    </g>
+
+    <g transform="translate(610,0)">
+      <rect class="box" width="170" height="60" fill="url(#g-math)"/>
+      <text class="tag" x="85" y="35" text-anchor="middle">Attention</text>
+      <text class="sub" x="85" y="58" text-anchor="middle">注意力机制</text>
+    </g>
+
+    <g transform="translate(810,0)">
+      <rect class="box" width="160" height="60" fill="url(#g-math)"/>
+      <text class="tag" x="80" y="35" text-anchor="middle">Matrix</text>
+      <text class="sub" x="80" y="58" text-anchor="middle">矩阵/权重表示</text>
+    </g>
+
+    <!-- Edges -->
+    <path class="edge" d="M 380 30 L 410 30"/>
+    <path class="edge" d="M 580 30 L 610 30"/>
+    <path class="edge" d="M 780 30 L 810 30"/>
+
+    <!-- Cross-layer guide (Token/Embedding -> Vector/QKV) -->
+    <path class="groupEdge" d="M 430 -120 C 470 -90, 470 -30, 470 0"/>
+    <path class="groupEdge" d="M 620 -120 C 660 -90, 660 -30, 660 0"/>
+  </g>
+
+  <!-- ====== LAYER 3: 模型架构层 ====== -->
+  <g id="layer-arch" transform="translate(80,500)">
+    <text class="layerTitle" x="0" y="-20">🧩 模型架构层</text>
+
+    <g transform="translate(280,0)">
+      <rect class="box" width="220" height="60" fill="url(#g-arch)"/>
+      <text class="tag" x="110" y="35" text-anchor="middle">Transformer</text>
+    </g>
+
+    <g transform="translate(540,0)">
+      <rect class="box" width="240" height="60" fill="url(#g-arch)"/>
+      <text class="tag" x="120" y="35" text-anchor="middle">Encoder / Decoder</text>
+    </g>
+
+    <g transform="translate(280,90)">
+      <rect class="box" width="240" height="60" fill="url(#g-arch)"/>
+      <text class="tag" x="120" y="35" text-anchor="middle">Multi-Head Attention</text>
+    </g>
+
+    <g transform="translate(560,90)">
+      <rect class="box" width="220" height="60" fill="url(#g-arch)"/>
+      <text class="tag" x="110" y="35" text-anchor="middle">Positional Encoding</text>
+    </g>
+
+    <g transform="translate(820,45)">
+      <rect class="box" width="170" height="60" fill="url(#g-arch)"/>
+      <text class="tag" x="85" y="35" text-anchor="middle">Feed Forward</text>
+    </g>
+
+    <!-- Edges -->
+    <path class="edge" d="M 500 30 L 540 30"/>
+    <path class="edge" d="M 400 60 L 400 90"/>
+    <path class="edge" d="M 670 60 L 670 90"/>
+    <path class="edge" d="M 780 30 L 820 75"/>
+
+    <!-- Cross-layer guide (Attention -> Transformer) -->
+    <path class="groupEdge" d="M 700 -150 C 700 -90, 620 -40, 610 0"/>
+  </g>
+
+  <!-- ====== LAYER 4: 工程与优化层 ====== -->
+  <g id="layer-eng" transform="translate(80,770)">
+    <text class="layerTitle" x="0" y="-20">⚙️ 工程与优化层</text>
+
+    <g transform="translate(180,0)">
+      <rect class="box" width="180" height="60" fill="url(#g-eng)"/>
+      <text class="tag" x="90" y="35" text-anchor="middle">Tokenizer</text>
+    </g>
+
+    <g transform="translate(390,0)">
+      <rect class="box" width="160" height="60" fill="url(#g-eng)"/>
+      <text class="tag" x="80" y="35" text-anchor="middle">RAG</text>
+    </g>
+
+    <g transform="translate(580,0)">
+      <rect class="box" width="190" height="60" fill="url(#g-eng)"/>
+      <text class="tag" x="95" y="35" text-anchor="middle">Prompt</text>
+    </g>
+
+    <g transform="translate(800,0)">
+      <rect class="box" width="200" height="60" fill="url(#g-eng)"/>
+      <text class="tag" x="100" y="35" text-anchor="middle">Fine-tuning</text>
+    </g>
+
+    <g transform="translate(270,90)">
+      <rect class="box" width="200" height="60" fill="url(#g-eng)"/>
+      <text class="tag" x="100" y="35" text-anchor="middle">Quantization</text>
+    </g>
+
+    <g transform="translate(500,90)">
+      <rect class="box" width="180" height="60" fill="url(#g-eng)"/>
+      <text class="tag" x="90" y="35" text-anchor="middle">Pruning</text>
+    </g>
+
+    <g transform="translate(710,90)">
+      <rect class="box" width="190" height="60" fill="url(#g-eng)"/>
+      <text class="tag" x="95" y="35" text-anchor="middle">LoRA</text>
+    </g>
+
+    <g transform="translate(930,90)">
+      <rect class="box" width="190" height="60" fill="url(#g-eng)"/>
+      <text class="tag" x="95" y="35" text-anchor="middle">Distillation</text>
+    </g>
+
+    <!-- Edges -->
+    <path class="edge" d="M 360 30 L 390 30"/>
+    <path class="edge" d="M 550 30 L 580 30"/>
+    <path class="edge" d="M 770 30 L 800 30"/>
+    <path class="edge" d="M 470 60 L 470 90"/>
+    <path class="edge" d="M 670 60 L 670 90"/>
+    <path class="edge" d="M 880 60 L 880 90"/>
+
+    <!-- Cross-layer guide (架构 -> 工程) -->
+    <path class="groupEdge" d="M 580 -170 C 580 -120, 520 -70, 520 0"/>
+  </g>
+
+  <!-- ====== LAYER 5: 智能体与未来层 ====== -->
+  <g id="layer-agent" transform="translate(80,1080)">
+    <text class="layerTitle" x="0" y="-20">🤖 智能体与未来层</text>
+
+    <g transform="translate(220,0)">
+      <rect class="box" width="160" height="60" fill="url(#g-agent)"/>
+      <text class="tag" x="80" y="35" text-anchor="middle">Agent</text>
+      <text class="sub" x="80" y="58" text-anchor="middle">自主体</text>
+    </g>
+
+    <g transform="translate(420,0)">
+      <rect class="box" width="210" height="60" fill="url(#g-agent)"/>
+      <text class="tag" x="105" y="35" text-anchor="middle">Memory Model</text>
+      <text class="sub" x="105" y="58" text-anchor="middle">长期记忆</text>
+    </g>
+
+    <g transform="translate(660,0)">
+      <rect class="box" width="160" height="60" fill="url(#g-agent)"/>
+      <text class="tag" x="80" y="35" text-anchor="middle">MoE</text>
+      <text class="sub" x="80" y="58" text-anchor="middle">专家混合</text>
+    </g>
+
+    <g transform="translate(840,0)">
+      <rect class="box" width="160" height="60" fill="url(#g-agent)"/>
+      <text class="tag" x="80" y="35" text-anchor="middle">Alignment</text>
+      <text class="sub" x="80" y="58" text-anchor="middle">价值对齐</text>
+    </g>
+
+    <g transform="translate(1020,0)">
+      <rect class="box" width="100" height="60" fill="url(#g-agent)"/>
+      <text class="tag" x="50" y="35" text-anchor="middle">AGI</text>
+    </g>
+
+    <!-- Edges -->
+    <path class="edge" d="M 380 30 L 420 30"/>
+    <path class="edge" d="M 630 30 L 660 30"/>
+    <path class="edge" d="M 820 30 L 840 30"/>
+    <path class="edge" d="M 1000 30 L 1020 30"/>
+
+    <!-- Cross-layer guide (工程 -> 智能体) -->
+    <path class="groupEdge" d="M 760 -220 C 830 -170, 880 -90, 920 0"/>
+  </g>
+
+  <!-- ====== Legend ====== -->
+  <g id="legend" transform="translate(80,1450)">
+    <rect x="0" y="0" width="1040" height="180" rx="16" ry="16" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text class="layerTitle" x="20" y="36">图例与阅读顺序</text>
+    <text class="sub" x="20" y="70">• 同一层内：从左到右为主要知识递进；跨层：自上而下为学习路径，虚线表示“跨层依赖/影响”。</text>
+    <text class="sub" x="20" y="98">• 关键路径：Token → Embedding → Q/K/V → Attention → Transformer →（Prompt/RAG/微调与优化）→ Agent/Alignment → AGI。</text>
+    <text class="sub" x="20" y="126">• 颜色含义：绿色=基础，蓝=数学，青=架构，紫=工程与优化，靛蓝=智能体与未来。</text>
+    <text class="sub" x="20" y="154">• 版权：ByronFinn（保留出处）。</text>
+  </g>
+</svg>
