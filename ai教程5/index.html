@@ -1,0 +1,1152 @@
+<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>RAG系统完全指南——从零搭建本地检索增强生成系统 - 每日深度思考 | 技术、经济分析与深度思考</title><meta name=Description content="AI教程第五篇：RAG系统完全指南。深入讲解LangChain+Ollama+pgvector搭建本地RAG系统，涵盖文档切分、向量化、检索优化、提示工程等核心技术。包含完整实战代码、面试指南和排错清单，助你掌握企业级RAG应用开发。"><meta property="og:url" content="https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B5/"><meta property="og:site_name" content="每日深度思考 | 技术、经济分析与深度思考"><meta property="og:title" content="RAG系统完全指南——从零搭建本地检索增强生成系统"><meta property="og:description" content="AI教程第五篇：RAG系统完全指南。深入讲解LangChain+Ollama+pgvector搭建本地RAG系统，涵盖文档切分、向量化、检索优化、提示工程等核心技术。包含完整实战代码、面试指南和排错清单，助你掌握企业级RAG应用开发。"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-11-06T09:36:42+08:00"><meta property="article:modified_time" content="2025-11-06T13:19:28+08:00"><meta property="article:tag" content="RAG"><meta property="article:tag" content="检索增强生成"><meta property="article:tag" content="LangChain"><meta property="article:tag" content="Ollama"><meta property="article:tag" content="Pgvector"><meta property="article:tag" content="向量数据库"><meta property="og:image" content="https://byronfinn.github.io/static/avatar/angryCat.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://byronfinn.github.io/static/avatar/angryCat.png"><meta name=twitter:title content="RAG系统完全指南——从零搭建本地检索增强生成系统"><meta name=twitter:description content="AI教程第五篇：RAG系统完全指南。深入讲解LangChain+Ollama+pgvector搭建本地RAG系统，涵盖文档切分、向量化、检索优化、提示工程等核心技术。包含完整实战代码、面试指南和排错清单，助你掌握企业级RAG应用开发。"><meta name=application-name content="Daily Deep Think"><meta name=apple-mobile-web-app-title content="Daily Deep Think"><meta name=theme-color content="#f8f8f8"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=/static/icos/favicon.svg><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B5/><link rel=prev href=https://byronfinn.github.io/tiktok%E7%9A%84%E5%9B%B0%E5%B1%80/><link rel=next href=https://byronfinn.github.io/ai%E4%B8%93%E4%B8%9A%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E8%A1%A8/><link rel=stylesheet href=/css/main.min.css><link rel=stylesheet href=/css/style.min.css><meta name=google-site-verification content="google8f3e688b6959e353"><meta name=msvalidate.01 content="请在此添加你的Bing验证码"><meta name=yandex-verification content="请在此添加你的Yandex验证码"><meta name=p:domain_verify content="请在此添加你的Pinterest验证码"><meta name=baidu-site-verification content="请在此添加你的百度验证码"><meta name=sogou_site_verification content="请在此添加你的搜狗验证码"><meta name=360-site-verification content="请在此添加你的360搜索验证码"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"RAG系统完全指南——从零搭建本地检索增强生成系统","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B5/"},"image":["https://byronfinn.github.io/static/avatar/angryCat.png"],"genre":"posts","keywords":["RAG","检索增强生成","LangChain","Ollama","pgvector","向量数据库","本地LLM","文档问答","AI实战","RAG系统"],"wordcount":5580,"url":"https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B5/","datePublished":"2025-11-06T09:36:42+08:00","dateModified":"2025-11-06T13:19:28+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"Finn","url":"https://blog.baifan.site"},"description":"AI教程第五篇：RAG系统完全指南。深入讲解LangChain+Ollama+pgvector搭建本地RAG系统，涵盖文档切分、向量化、检索优化、提示工程等核心技术。包含完整实战代码、面试指南和排错清单，助你掌握企业级RAG应用开发。"}</script></head><body data-instant-intensity=viewport class="tw-flex tw-min-h-screen tw-flex-col"><script>function setTheme(e){document.body.setAttribute("theme",e),document.documentElement.className=e,document.documentElement.style.setProperty("color-scheme",e==="light"?"light":"dark"),e==="light"?document.documentElement.classList.remove("tw-dark"):document.documentElement.classList.add("tw-dark"),window.theme=e,window.isDark=window.theme!=="light"}function saveTheme(e){window.localStorage&&localStorage.setItem("theme",e)}function getMeta(e){const t=document.getElementsByTagName("meta");for(let n=0;n<t.length;n++)if(t[n].getAttribute("name")===e)return t[n];return""}if(window.localStorage&&localStorage.getItem("theme")){let e=localStorage.getItem("theme");e==="light"||e==="dark"?setTheme(e):setTheme(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}else"auto"==="light"||"auto"==="dark"?(setTheme("auto"),saveTheme("auto")):(saveTheme("auto"),setTheme(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"));let metaColors={light:"#f8f8f8",dark:"#161b22"};getMeta("theme-color").content=metaColors[document.body.getAttribute("theme")],window.switchThemeEventSet=new Set</script><div id=back-to-top></div><div id=mask></div><header class="desktop print:!tw-hidden" id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="每日深度思考 | 技术、经济分析与深度思考"><span id=desktop-header-typeit class=typeit></span></a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/profile/ title=了解我的个人信息和专业背景>关于我 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索... id=search-input-desktop>
+<button class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<svg class="icon" viewBox="0 0 512 512"><path d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9.0 208 0S0 93.1.0 208s93.1 208 208 208c48.3.0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9.0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7.0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7.0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</button>
+<button class="search-button search-clear" id=search-clear-desktop title=清空>
+<svg class="icon" viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3.0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3.0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3.0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3.0 17L312 256l65.6 65.1z"/></svg>
+</button>
+<span class="search-button search-loading tw-animate-spin" id=search-loading-desktop><svg class="icon" viewBox="0 0 512 512"><path d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49.0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156.0c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"/></svg>
+</span></span><button class="menu-item theme-switch" aria-label=切换主题>
+<svg class="icon" viewBox="0 0 512 512"><path d="M8 256c0 136.966 111.033 248 248 248s248-111.034 248-248S392.966 8 256 8 8 119.033 8 256zm248 184V72c101.705.0 184 82.311 184 184 0 101.705-82.311 184-184 184z"/></svg></button></div></div></div></header><header class="mobile print:!tw-hidden" id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="每日深度思考 | 技术、经济分析与深度思考"><span id=mobile-header-typeit class=typeit></span></a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索... id=search-input-mobile>
+<button class="search-button search-toggle tw-h-10" id=search-toggle-mobile title=搜索>
+<svg class="icon" viewBox="0 0 512 512"><path d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9.0 208 0S0 93.1.0 208s93.1 208 208 208c48.3.0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9.0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7.0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7.0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</button>
+<button class="search-button search-clear tw-h-fit" id=search-clear-mobile title=清空>
+<svg class="icon" viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3.0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3.0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3.0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3.0 17L312 256l65.6 65.1z"/></svg>
+</button>
+<span class="search-button search-loading tw-animate-spin" id=search-loading-mobile><svg class="icon" viewBox="0 0 512 512"><path d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49.0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156.0c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"/></svg></span></div><button class=search-cancel id=search-cancel-mobile>
+取消</button></div><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/profile/ title=了解我的个人信息和专业背景>关于我</a><button class="menu-item theme-switch tw-w-full" aria-label=切换主题>
+<svg class="icon" viewBox="0 0 512 512"><path d="M8 256c0 136.966 111.033 248 248 248s248-111.034 248-248S392.966 8 256 8 8 119.033 8 256zm248 184V72c101.705.0 184 82.311 184 184 0 101.705-82.311 184-184 184z"/></svg></button></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class="tw-mx-4 tw-flex-1"><dialog id=toc-dialog class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16"><div class="toc tw-mx-4 tw-max-w-full"><h2 class="tw-mx-0 tw-my-6 tw-uppercase tw-text-2xl">目录</h2><div class=toc-content><nav id=TableOfContents><ul><li><a href=#目标与成果>目标与成果</a></li><li><a href=#系统架构与数据流>系统架构与数据流</a></li><li><a href=#准备条件>准备条件</a></li><li><a href=#一键起服务docker>一键起服务（Docker）</a><ul><li><a href=#1-docker-composeyml>1) <code>docker-compose.yml</code></a></li><li><a href=#2-litellmyaml>2) <code>litellm.yaml</code></a></li><li><a href=#3-启动容器>3) 启动容器</a></li></ul></li><li><a href=#使用-uv-管理-python-环境>使用 uv 管理 Python 环境</a><ul><li><a href=#1-安装-uv>1) 安装 uv</a></li><li><a href=#2-初始化项目与虚拟环境>2) 初始化项目与虚拟环境</a></li><li><a href=#3-编辑-pyprojecttoml>3) 编辑 <code>pyproject.toml</code></a></li><li><a href=#4-env本地脚本用>4) <code>.env</code>（本地脚本用）</a></li></ul></li><li><a href=#项目结构与配置文件>项目结构与配置文件</a></li><li><a href=#数据入库ingestpy带注释>数据入库：<code>ingest.py</code>（带注释）</a></li><li><a href=#检索问答querypy带注释>检索问答：<code>query.py</code>（带注释）</a></li><li><a href=#运行与验证>运行与验证</a></li><li><a href=#性能调优与最佳实践>性能调优与最佳实践</a></li><li><a href=#常见问题与排错清单>常见问题与排错清单</a></li><li><a href=#加分项makefile-与一键命令>加分项：Makefile 与一键命令</a></li><li><a href=#安全与上线建议>安全与上线建议</a></li><li><a href=#面试指南高频问题与答题思路>面试指南（高频问题与答题思路）</a><ul><li><a href=#1-什么是-rag为什么需要它>1) 什么是 RAG？为什么需要它？</a></li><li><a href=#2-文档切分如何影响检索效果>2) 文档切分如何影响检索效果？</a></li><li><a href=#3-为什么选择-pgvector>3) 为什么选择 pgvector？</a></li><li><a href=#4-embedding-模型怎么选>4) Embedding 模型怎么选？</a></li><li><a href=#5-为何直接使用-ollama-而不是-litellm>5) 为何直接使用 Ollama 而不是 LiteLLM？</a></li><li><a href=#6-检索召回不相关如何排查>6) 检索召回不相关如何排查？</a></li><li><a href=#7-如何降低幻觉>7) 如何降低幻觉？</a></li><li><a href=#8-如何做评估>8) 如何做评估？</a></li><li><a href=#9-生产部署的关键风险>9) 生产部署的关键风险？</a></li><li><a href=#10-请手写一个最小-rag-数据流>10) 请手写一个最小 RAG 数据流？</a></li><li><a href=#11-为什么要用-uv>11) 为什么要用 uv？</a></li><li><a href=#12-本地与云端模型如何切换>12) 本地与云端模型如何切换？</a></li><li><a href=#13-chunk-重叠overlap的作用是什么>13) Chunk 重叠（overlap）的作用是什么？</a></li><li><a href=#14-为什么选择-mmr-检索而不是普通-top-k>14) 为什么选择 MMR 检索而不是普通 top-k？</a></li><li><a href=#15-如何处理长文档的切分问题>15) 如何处理长文档的切分问题？</a></li><li><a href=#16-rag-的评估指标有哪些>16) RAG 的评估指标有哪些？</a></li><li><a href=#17-如何设计-rag-的提示词>17) 如何设计 RAG 的提示词？</a></li><li><a href=#18-rag-系统的性能瓶颈在哪里>18) RAG 系统的性能瓶颈在哪里？</a></li><li><a href=#19-为什么选择-unstructuredmarkdownloader-而不是普通的-textloader>19) 为什么选择 UnstructuredMarkdownLoader 而不是普通的 TextLoader？</a></li><li><a href=#20-如何优化不同类型文档的加载策略>20) 如何优化不同类型文档的加载策略？</a></li></ul></li></ul></nav></div></div></dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC","false")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class=single-title data-pagefind-meta=date:2025-11-06 data-pagefind-body>RAG系统完全指南——从零搭建本地检索增强生成系统</h1><div class=post-meta><div class=post-meta-line><span class=post-author><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1" src=/static/avatar/angryCat.png alt="Finn avatar" height=16 width=16><a href=https://blog.baifan.site title=Author target=_blank rel="noopener noreferrer author" class=author>Finn</a>
+</span>&nbsp;<span class=post-category>收录于 </span>&nbsp;<span class=post-category>类别 <a href=/categories/ai%E6%95%99%E7%A8%8B/><svg class="icon" viewBox="0 0 512 512"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49.0 112v288c0 26.51 21.49 48 48 48h416c26.51.0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>AI教程</a>&nbsp;<a href=/categories/%E6%8A%80%E6%9C%AF%E6%B7%B1%E5%BA%A6/><svg class="icon" viewBox="0 0 512 512"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49.0 112v288c0 26.51 21.49 48 48 48h416c26.51.0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>技术深度</a>&nbsp;<a href=/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/><svg class="icon" viewBox="0 0 512 512"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49.0 112v288c0 26.51 21.49 48 48 48h416c26.51.0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>人工智能</a></span>&nbsp;<span class=post-category>和</span>&nbsp;<span class=post-series>系列 <a href><svg class="icon" viewBox="0 0 512 512"><path d="M464 32H48C21.49 32 0 53.49.0 80v352c0 26.51 21.49 48 48 48h416c26.51.0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zm-6 4e2H54a6 6 0 01-6-6V86a6 6 0 016-6h404a6 6 0 016 6v340a6 6 0 01-6 6zm-42-92v24c0 6.627-5.373 12-12 12H204c-6.627.0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h2e2c6.627.0 12 5.373 12 12zm0-96v24c0 6.627-5.373 12-12 12H204c-6.627.0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h2e2c6.627.0 12 5.373 12 12zm0-96v24c0 6.627-5.373 12-12 12H204c-6.627.0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h2e2c6.627.0 12 5.373 12 12zm-252 12c0 19.882-16.118 36-36 36s-36-16.118-36-36 16.118-36 36-36 36 16.118 36 36zm0 96c0 19.882-16.118 36-36 36s-36-16.118-36-36 16.118-36 36-36 36 16.118 36 36zm0 96c0 19.882-16.118 36-36 36s-36-16.118-36-36 16.118-36 36-36 36 16.118 36 36z"/></svg></a></span></div><div class=post-meta-line><svg class="icon" viewBox="0 0 448 512"><path d="M148 288h-40c-6.6.0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5.0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v52h48c26.5.0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3.0 6-2.7 6-6z"/></svg>&nbsp;<time datetime=2025-11-06>2025-11-06</time>&nbsp;<svg class="icon" viewBox="0 0 576 512"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5.0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1.0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7.0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174 402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7-43.2-43.2c-4.1-4.1-10.8-4.1-14.8.0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime=2025-11-06>2025-11-06</time>&nbsp;<svg class="icon" viewBox="0 0 512 512"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3.0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9.0l60.1 60.1c18.8 18.7 18.8 49.1.0 67.9zM284.2 99.8 21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3.0-17l-111-111c-4.8-4.7-12.4-4.7-17.1.0zM124.1 339.9c-5.5-5.5-5.5-14.3.0-19.8l154-154c5.5-5.5 14.3-5.5 19.8.0s5.5 14.3.0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8.0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 5580 字&nbsp;
+<svg class="icon" viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5.0-2e2-89.5-2e2-2e2S145.5 56 256 56s2e2 89.5 2e2 2e2-89.5 2e2-2e2 2e2zm61.8-104.4-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6.0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 25 分钟&nbsp;</div></div><div class="details toc print:!tw-block" id=toc-static kept=true><div class="details-summary toc-title"><span>目录</span>
+<span class=details-icon><svg class="icon" viewBox="0 0 256 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9.0l-22.6-22.6c-9.4-9.4-9.4-24.6.0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6.0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9.0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#目标与成果>目标与成果</a></li><li><a href=#系统架构与数据流>系统架构与数据流</a></li><li><a href=#准备条件>准备条件</a></li><li><a href=#一键起服务docker>一键起服务（Docker）</a><ul><li><a href=#1-docker-composeyml>1) <code>docker-compose.yml</code></a></li><li><a href=#2-litellmyaml>2) <code>litellm.yaml</code></a></li><li><a href=#3-启动容器>3) 启动容器</a></li></ul></li><li><a href=#使用-uv-管理-python-环境>使用 uv 管理 Python 环境</a><ul><li><a href=#1-安装-uv>1) 安装 uv</a></li><li><a href=#2-初始化项目与虚拟环境>2) 初始化项目与虚拟环境</a></li><li><a href=#3-编辑-pyprojecttoml>3) 编辑 <code>pyproject.toml</code></a></li><li><a href=#4-env本地脚本用>4) <code>.env</code>（本地脚本用）</a></li></ul></li><li><a href=#项目结构与配置文件>项目结构与配置文件</a></li><li><a href=#数据入库ingestpy带注释>数据入库：<code>ingest.py</code>（带注释）</a></li><li><a href=#检索问答querypy带注释>检索问答：<code>query.py</code>（带注释）</a></li><li><a href=#运行与验证>运行与验证</a></li><li><a href=#性能调优与最佳实践>性能调优与最佳实践</a></li><li><a href=#常见问题与排错清单>常见问题与排错清单</a></li><li><a href=#加分项makefile-与一键命令>加分项：Makefile 与一键命令</a></li><li><a href=#安全与上线建议>安全与上线建议</a></li><li><a href=#面试指南高频问题与答题思路>面试指南（高频问题与答题思路）</a><ul><li><a href=#1-什么是-rag为什么需要它>1) 什么是 RAG？为什么需要它？</a></li><li><a href=#2-文档切分如何影响检索效果>2) 文档切分如何影响检索效果？</a></li><li><a href=#3-为什么选择-pgvector>3) 为什么选择 pgvector？</a></li><li><a href=#4-embedding-模型怎么选>4) Embedding 模型怎么选？</a></li><li><a href=#5-为何直接使用-ollama-而不是-litellm>5) 为何直接使用 Ollama 而不是 LiteLLM？</a></li><li><a href=#6-检索召回不相关如何排查>6) 检索召回不相关如何排查？</a></li><li><a href=#7-如何降低幻觉>7) 如何降低幻觉？</a></li><li><a href=#8-如何做评估>8) 如何做评估？</a></li><li><a href=#9-生产部署的关键风险>9) 生产部署的关键风险？</a></li><li><a href=#10-请手写一个最小-rag-数据流>10) 请手写一个最小 RAG 数据流？</a></li><li><a href=#11-为什么要用-uv>11) 为什么要用 uv？</a></li><li><a href=#12-本地与云端模型如何切换>12) 本地与云端模型如何切换？</a></li><li><a href=#13-chunk-重叠overlap的作用是什么>13) Chunk 重叠（overlap）的作用是什么？</a></li><li><a href=#14-为什么选择-mmr-检索而不是普通-top-k>14) 为什么选择 MMR 检索而不是普通 top-k？</a></li><li><a href=#15-如何处理长文档的切分问题>15) 如何处理长文档的切分问题？</a></li><li><a href=#16-rag-的评估指标有哪些>16) RAG 的评估指标有哪些？</a></li><li><a href=#17-如何设计-rag-的提示词>17) 如何设计 RAG 的提示词？</a></li><li><a href=#18-rag-系统的性能瓶颈在哪里>18) RAG 系统的性能瓶颈在哪里？</a></li><li><a href=#19-为什么选择-unstructuredmarkdownloader-而不是普通的-textloader>19) 为什么选择 UnstructuredMarkdownLoader 而不是普通的 TextLoader？</a></li><li><a href=#20-如何优化不同类型文档的加载策略>20) 如何优化不同类型文档的加载策略？</a></li></ul></li></ul></nav></div></div><div class=content id=content data-pagefind-body><h1 id=用-langchain--ollama--pgvector-搭建本地-rag从-0-到-1-的完整实战含-uv-依赖管理--面试指南 class=headerLink><a href=#%e7%94%a8-langchain--ollama--pgvector-%e6%90%ad%e5%bb%ba%e6%9c%ac%e5%9c%b0-rag%e4%bb%8e-0-%e5%88%b0-1-%e7%9a%84%e5%ae%8c%e6%95%b4%e5%ae%9e%e6%88%98%e5%90%ab-uv-%e4%be%9d%e8%b5%96%e7%ae%a1%e7%90%86--%e9%9d%a2%e8%af%95%e6%8c%87%e5%8d%97 class=header-mark></a>用 LangChain + Ollama + pgvector 搭建本地 RAG：从 0 到 1 的完整实战（含 uv 依赖管理 & 面试指南）</h1><blockquote><p>本文是可直接落地的 <strong>Markdown 文档</strong>。按文档自上而下执行即可从零搭建出一个本地 RAG（检索增强生成）系统，并理解关键概念与代码。所有核心脚本都附带中文注释，便于学习与面试复盘。</p><p><strong>代码仓库</strong>：<a href=https://github.com/ByronFinn/rag-lab.git target=_blank rel="noopener noreferrer">https://github.com/ByronFinn/rag-lab.git</a> - 完整可运行的示例代码</p></blockquote><hr><h2 id=目标与成果 class=headerLink><a href=#%e7%9b%ae%e6%a0%87%e4%b8%8e%e6%88%90%e6%9e%9c class=header-mark></a>目标与成果</h2><ul><li><p><strong>你将收获</strong>：</p><ul><li>一个本地可运行的 RAG 系统：支持将你的文档嵌入到向量库，检索并结合大模型生成答案。</li><li>一套<strong>可复用</strong>的工程脚手架：LangChain + Ollama + pgvector + uv。</li><li><strong>可面试</strong>的原理与代码细节：检索、切分、嵌入、召回、重排、答案生成的完整链路。</li></ul></li></ul><hr><h2 id=系统架构与数据流 class=headerLink><a href=#%e7%b3%bb%e7%bb%9f%e6%9e%b6%e6%9e%84%e4%b8%8e%e6%95%b0%e6%8d%ae%e6%b5%81 class=header-mark></a>系统架构与数据流</h2><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">text</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-1 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl>┌──────────┐      ┌────────────┐      ┌─────────────────── ───┐
+</span></span><span class=line><span class=cl>│  终端/前端 │ ──→ │  LangChain │ ──→  │ Ollama(Embedding/LLM) │
+</span></span><span class=line><span class=cl>└──────────┘      └────────────┘      └───────────────────────┘
+</span></span><span class=line><span class=cl>       │                  │                             │
+</span></span><span class=line><span class=cl>       │                  ▼                             ▼
+</span></span><span class=line><span class=cl>       └──────────→ PostgreSQL + pgvector  &lt;───────  文档向量
+</span></span><span class=line><span class=cl>                                    ▲
+</span></span><span class=line><span class=cl>                                    │
+</span></span><span class=line><span class=cl>                                LangChain</span></span></code></pre></div><ul><li><strong>Ollama</strong>：本地运行 LLM 与 Embedding（示例使用 <code>qwen3:8b</code> 与 <code>qwen3-embedding:4b</code>）。</li><li><strong>LangChain</strong>：直接调用 Ollama API，组织"加载 → 切分 → 嵌入 → 入库 → 检索 → 生成"的流程。</li><li><strong>pgvector</strong>：PostgreSQL 的向量扩展，存储/检索文档向量。</li><li><strong>uv</strong>：极速、可复现的 Python 依赖与虚拟环境管理工具。</li></ul><hr><h2 id=准备条件 class=headerLink><a href=#%e5%87%86%e5%a4%87%e6%9d%a1%e4%bb%b6 class=header-mark></a>准备条件</h2><ul><li>OS：macOS / Linux / WSL2 / Windows（建议 WSL2）</li><li>已安装：Docker（含 Compose）、curl</li><li>网络可访问 Ollama 模型仓库（首次会自动拉取模型）</li></ul><blockquote><p>若无 Docker 环境，也可手动安装 PostgreSQL + pgvector、Ollama，步骤同理；本文默认使用 Docker 一键启动后端服务。</p></blockquote><hr><h2 id=一键起服务docker class=headerLink><a href=#%e4%b8%80%e9%94%ae%e8%b5%b7%e6%9c%8d%e5%8a%a1docker class=header-mark></a>一键起服务（Docker）</h2><p>在你的工作目录中新建项目 <code>rag-lab/</code> 并创建下列文件。</p><h3 id=1-docker-composeyml class=headerLink><a href=#1-docker-composeyml class=header-mark></a>1) <code>docker-compose.yml</code></h3><div class="code-block highlight is-closed show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">yaml</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-2 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;3.9&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>services</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>pg</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class=l>pgvector/pgvector:pg16</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>container_name</span><span class=p>:</span><span class=w> </span><span class=l>pgvector</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>environment</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>POSTGRES_USER=postgres</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>POSTGRES_PASSWORD=postgres</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>POSTGRES_DB=ragdb</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>ports</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=s2>&#34;5432:5432&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>healthcheck</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>test</span><span class=p>:</span><span class=w> </span><span class=p>[</span><span class=s2>&#34;CMD-SHELL&#34;</span><span class=p>,</span><span class=w> </span><span class=s2>&#34;pg_isready -U postgres&#34;</span><span class=p>]</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>interval</span><span class=p>:</span><span class=w> </span><span class=l>5s</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>timeout</span><span class=p>:</span><span class=w> </span><span class=l>5s</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>retries</span><span class=p>:</span><span class=w> </span><span class=m>20</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>ollama</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class=l>ollama/ollama:latest</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>container_name</span><span class=p>:</span><span class=w> </span><span class=l>ollama</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>ports</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=s2>&#34;11434:11434&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>volumes</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>ollama:/root/.ollama</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>entrypoint</span><span class=p>:</span><span class=w> </span><span class=p>[</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=s2>&#34;/bin/sh&#34;</span><span class=p>,</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=s2>&#34;-c&#34;</span><span class=p>,</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=s2>&#34;ollama serve &amp; sleep 2 &amp;&amp; \
+</span></span></span><span class=line><span class=cl><span class=s2>        ollama pull qwen3:8b &amp;&amp; \
+</span></span></span><span class=line><span class=cl><span class=s2>        ollama pull qwen3-embedding:4b &amp;&amp; \
+</span></span></span><span class=line><span class=cl><span class=s2>        tail -f /dev/null&#34;</span><span class=p>,</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=p>]</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>litellm</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class=l>ghcr.io/berriai/litellm:latest</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>container_name</span><span class=p>:</span><span class=w> </span><span class=l>litellm</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>depends_on</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>ollama</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>ports</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=s2>&#34;4000:4000&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>volumes</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>./litellm.yaml:/app/litellm.yaml</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>environment</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>LITELLM_CONFIG=/app/litellm.yaml</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>LITELLM_LOG=info</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>command</span><span class=p>:</span><span class=w> </span><span class=p>[</span><span class=s2>&#34;--config&#34;</span><span class=p>,</span><span class=w> </span><span class=s2>&#34;/app/litellm.yaml&#34;</span><span class=p>]</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>volumes</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=l>ollama:</span></span></span></code></pre></div><h3 id=2-litellmyaml class=headerLink><a href=#2-litellmyaml class=header-mark></a>2) <code>litellm.yaml</code></h3><div class="code-block highlight is-closed show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">yaml</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-3 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl><span class=nt>model_list</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=nt>model_name</span><span class=p>:</span><span class=w> </span><span class=l>local-llm</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>litellm_params</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>model</span><span class=p>:</span><span class=w> </span><span class=l>ollama/qwen3:8b</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>api_base</span><span class=p>:</span><span class=w> </span><span class=l>http://ollama:11434</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=nt>model_name</span><span class=p>:</span><span class=w> </span><span class=l>local-embed</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>litellm_params</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>model</span><span class=p>:</span><span class=w> </span><span class=l>ollama/qwen3-embedding:4b</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>api_base</span><span class=p>:</span><span class=w> </span><span class=l>http://ollama:11434</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>server</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>host</span><span class=p>:</span><span class=w> </span><span class=m>0.0.0.0</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>port</span><span class=p>:</span><span class=w> </span><span class=m>4000</span></span></span></code></pre></div><h3 id=3-启动容器 class=headerLink><a href=#3-%e5%90%af%e5%8a%a8%e5%ae%b9%e5%99%a8 class=header-mark></a>3) 启动容器</h3><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">bash</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-4 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl>docker compose up -d</span></span></code></pre></div><p><strong>验证：</strong></p><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">bash</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-5 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl>curl http://localhost:11434/api/tags          <span class=c1># 应该列出已拉取的模型</span>
+</span></span><span class=line><span class=cl>curl http://localhost:4000/v1/models          <span class=c1># 应该包含 local-llm / local-embed</span></span></span></code></pre></div><blockquote><p>pgvector 镜像已内置扩展，一般无需额外 <code>CREATE EXTENSION vector;</code>（若自建 PG，需要手动启用）。</p></blockquote><hr><h2 id=使用-uv-管理-python-环境 class=headerLink><a href=#%e4%bd%bf%e7%94%a8-uv-%e7%ae%a1%e7%90%86-python-%e7%8e%af%e5%a2%83 class=header-mark></a>使用 uv 管理 Python 环境</h2><blockquote><p>uv 是 Rust 编写的 Python 包/环境管理器，速度极快、零心智负担。</p></blockquote><h3 id=1-安装-uv class=headerLink><a href=#1-%e5%ae%89%e8%a3%85-uv class=header-mark></a>1) 安装 uv</h3><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">bash</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-6 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl><span class=c1># macOS / Linux</span>
+</span></span><span class=line><span class=cl>curl -LsSf https://astral.sh/uv/install.sh <span class=p>|</span> sh
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Windows (PowerShell)</span>
+</span></span><span class=line><span class=cl>iwr https://astral.sh/uv/install.ps1 -useb <span class=p>|</span> iex
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>uv --version  <span class=c1># 验证</span></span></span></code></pre></div><h3 id=2-初始化项目与虚拟环境 class=headerLink><a href=#2-%e5%88%9d%e5%a7%8b%e5%8c%96%e9%a1%b9%e7%9b%ae%e4%b8%8e%e8%99%9a%e6%8b%9f%e7%8e%af%e5%a2%83 class=header-mark></a>2) 初始化项目与虚拟环境</h3><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">bash</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-7 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl>mkdir -p rag-lab/<span class=o>{</span>data<span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=nb>cd</span> rag-lab
+</span></span><span class=line><span class=cl>uv init   <span class=c1># 生成 .venv + pyproject.toml</span></span></span></code></pre></div><h3 id=3-编辑-pyprojecttoml class=headerLink><a href=#3-%e7%bc%96%e8%be%91-pyprojecttoml class=header-mark></a>3) 编辑 <code>pyproject.toml</code></h3><p>在 <code>[project]</code> 下填入依赖：</p><div class="code-block highlight is-closed show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">toml</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-8 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl><span class=p>[</span><span class=nx>project</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=nx>name</span> <span class=p>=</span> <span class=s2>&#34;rag-lab&#34;</span>
+</span></span><span class=line><span class=cl><span class=nx>version</span> <span class=p>=</span> <span class=s2>&#34;0.1.0&#34;</span>
+</span></span><span class=line><span class=cl><span class=nx>description</span> <span class=p>=</span> <span class=s2>&#34;Local RAG with LangChain + Ollama + pgvector&#34;</span>
+</span></span><span class=line><span class=cl><span class=nx>requires-python</span> <span class=p>=</span> <span class=s2>&#34;&gt;=3.10&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>dependencies</span> <span class=p>=</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;langchain&gt;=0.3.0&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;langchain-community&gt;=0.3.0&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;langchain-openai&gt;=0.2.0&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;langchain-postgres&gt;=0.0.8&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;langchain-ollama&gt;=1.0.0&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;psycopg[binary]&gt;=3.2&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;pydantic&gt;=2&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;python-dotenv&gt;=1&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;pypdf&gt;=4&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;unstructured&gt;=0.15&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;rapidfuzz&gt;=3&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;mypy&gt;=1.18.2&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>]</span></span></span></code></pre></div><p>安装依赖并生成锁文件：</p><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">bash</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-9 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl>uv sync</span></span></code></pre></div><h3 id=4-env本地脚本用 class=headerLink><a href=#4-env%e6%9c%ac%e5%9c%b0%e8%84%9a%e6%9c%ac%e7%94%a8 class=header-mark></a>4) <code>.env</code>（本地脚本用）</h3><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">bash</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-10 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl><span class=nv>PG_URL</span><span class=o>=</span>postgresql+psycopg://postgres:postgres@localhost:5432/ragdb
+</span></span><span class=line><span class=cl><span class=nv>OPENAI_API_BASE</span><span class=o>=</span>http://localhost:4000
+</span></span><span class=line><span class=cl><span class=nv>OPENAI_API_KEY</span><span class=o>=</span>not-needed-but-required
+</span></span><span class=line><span class=cl><span class=nv>OLLAMA_BASE_URL</span><span class=o>=</span>http://localhost:11434</span></span></code></pre></div><hr><h2 id=项目结构与配置文件 class=headerLink><a href=#%e9%a1%b9%e7%9b%ae%e7%bb%93%e6%9e%84%e4%b8%8e%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6 class=header-mark></a>项目结构与配置文件</h2><p>建议最终目录如下：</p><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">text</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-11 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl>rag-lab/
+</span></span><span class=line><span class=cl>├─ docker-compose.yml
+</span></span><span class=line><span class=cl>├─ litellm.yaml
+</span></span><span class=line><span class=cl>├─ .env
+</span></span><span class=line><span class=cl>├─ pyproject.toml
+</span></span><span class=line><span class=cl>├─ data/                      # 你的原始文档（txt/pdf/md/...）
+</span></span><span class=line><span class=cl>├─ ingest.py                  # 向量化与入库脚本（含注释）
+</span></span><span class=line><span class=cl>├─ query.py                   # 检索问答脚本（含注释）
+</span></span><span class=line><span class=cl>└─ Makefile                   # 可选：一键命令</span></span></code></pre></div><hr><h2 id=数据入库ingestpy带注释 class=headerLink><a href=#%e6%95%b0%e6%8d%ae%e5%85%a5%e5%ba%93ingestpy%e5%b8%a6%e6%b3%a8%e9%87%8a class=header-mark></a>数据入库：<code>ingest.py</code>（带注释）</h2><div class="code-block highlight is-closed show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">python</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-12 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl><span class=s2>&#34;&#34;&#34;
+</span></span></span><span class=line><span class=cl><span class=s2>ingest.py
+</span></span></span><span class=line><span class=cl><span class=s2>—— 将 data/ 下的文档加载→切分→嵌入→写入 pgvector
+</span></span></span><span class=line><span class=cl><span class=s2>核心看点：
+</span></span></span><span class=line><span class=cl><span class=s2>1) 文档切分参数如何影响召回
+</span></span></span><span class=line><span class=cl><span class=s2>2) 嵌入模型的选择与替换（OllamaEmbeddings）
+</span></span></span><span class=line><span class=cl><span class=s2>3) 向量库初始化与集合命名
+</span></span></span><span class=line><span class=cl><span class=s2>&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>os</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>dotenv</span> <span class=kn>import</span> <span class=n>load_dotenv</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>langchain_community.document_loaders</span> <span class=kn>import</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>DirectoryLoader</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>TextLoader</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>UnstructuredMarkdownLoader</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>langchain_text_splitters</span> <span class=kn>import</span> <span class=n>RecursiveCharacterTextSplitter</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>langchain_ollama.embeddings</span> <span class=kn>import</span> <span class=n>OllamaEmbeddings</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>langchain_postgres</span> <span class=kn>import</span> <span class=n>PGVector</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>langchain_core.documents</span> <span class=kn>import</span> <span class=n>Document</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 加载环境变量</span>
+</span></span><span class=line><span class=cl><span class=n>load_dotenv</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 全局配置变量类型标注</span>
+</span></span><span class=line><span class=cl><span class=n>PG_URL</span><span class=p>:</span> <span class=nb>str</span> <span class=o>=</span> <span class=n>os</span><span class=o>.</span><span class=n>getenv</span><span class=p>(</span><span class=s2>&#34;PG_URL&#34;</span><span class=p>,</span> <span class=s2>&#34;postgresql://user:password@localhost:5432/mydb&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>OLLAMA_BASE</span><span class=p>:</span> <span class=nb>str</span> <span class=o>=</span> <span class=n>os</span><span class=o>.</span><span class=n>getenv</span><span class=p>(</span><span class=s2>&#34;OLLAMA_BASE_URL&#34;</span><span class=p>,</span> <span class=s2>&#34;http://localhost:11434&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>COLLECTION</span><span class=p>:</span> <span class=nb>str</span> <span class=o>=</span> <span class=s2>&#34;rag_docs&#34;</span>  <span class=c1># 同一项目内统一集合名，便于复用</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 1) 加载文档：示例包含 .txt 与 .md，使用专用的 UnstructuredMarkdownLoader 处理 markdown</span>
+</span></span><span class=line><span class=cl><span class=n>loaders</span><span class=p>:</span> <span class=nb>list</span><span class=p>[</span><span class=n>DirectoryLoader</span><span class=p>]</span> <span class=o>=</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=n>DirectoryLoader</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;data&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>glob</span><span class=o>=</span><span class=s2>&#34;**/*.txt&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>loader_cls</span><span class=o>=</span><span class=n>TextLoader</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>loader_kwargs</span><span class=o>=</span><span class=p>{</span><span class=s2>&#34;autodetect_encoding&#34;</span><span class=p>:</span> <span class=kc>True</span><span class=p>},</span>
+</span></span><span class=line><span class=cl>        <span class=n>show_progress</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=n>DirectoryLoader</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;data&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>glob</span><span class=o>=</span><span class=s2>&#34;**/*.md&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>loader_cls</span><span class=o>=</span><span class=n>UnstructuredMarkdownLoader</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>loader_kwargs</span><span class=o>=</span><span class=p>{</span><span class=s2>&#34;autodetect_encoding&#34;</span><span class=p>:</span> <span class=kc>True</span><span class=p>,</span> <span class=s2>&#34;strategy&#34;</span><span class=p>:</span> <span class=s2>&#34;fast&#34;</span><span class=p>},</span>
+</span></span><span class=line><span class=cl>        <span class=n>show_progress</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=p>),</span>
+</span></span><span class=line><span class=cl><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>docs</span><span class=p>:</span> <span class=nb>list</span><span class=p>[</span><span class=n>Document</span><span class=p>]</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=n>loader</span> <span class=ow>in</span> <span class=n>loaders</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>docs</span><span class=o>.</span><span class=n>extend</span><span class=p>(</span><span class=n>loader</span><span class=o>.</span><span class=n>load</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=ow>not</span> <span class=n>docs</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>raise</span> <span class=ne>SystemExit</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;[ingest] 未在 data/ 下发现可加载的文档，请先放入 txt 或 md 文件！&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 2) 切分</span>
+</span></span><span class=line><span class=cl><span class=c1># 文本切分参数对检索（RAG）的影响：</span>
+</span></span><span class=line><span class=cl><span class=c1># - chunk_size：每个块的最大字符数。越大→单块语义更完整、召回更稳定；越小→粒度更细、定位更准但上下文易碎。</span>
+</span></span><span class=line><span class=cl><span class=c1>#   过大可能引入无关内容稀释语义；过小可能把问答上下文拆开导致漏召回。经验值：500–1500。</span>
+</span></span><span class=line><span class=cl><span class=c1># - chunk_overlap：相邻块的重叠字符数。适度重叠可覆盖跨块边界的信息，减少&#34;卡边界&#34;漏检；</span>
+</span></span><span class=line><span class=cl><span class=c1>#   过大则导致重复、索引膨胀与冗余召回。经验值：为 chunk_size 的 10–20%。</span>
+</span></span><span class=line><span class=cl><span class=c1># 调参建议：若检索缺上下文或答案跨段→增大二者；若噪声多或索引过大→减小二者。</span>
+</span></span><span class=line><span class=cl><span class=n>splitter</span><span class=p>:</span> <span class=n>RecursiveCharacterTextSplitter</span> <span class=o>=</span> <span class=n>RecursiveCharacterTextSplitter</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>chunk_size</span><span class=o>=</span><span class=mi>1000</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>chunk_overlap</span><span class=o>=</span><span class=mi>200</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>chunks</span><span class=p>:</span> <span class=nb>list</span><span class=p>[</span><span class=n>Document</span><span class=p>]</span> <span class=o>=</span> <span class=n>splitter</span><span class=o>.</span><span class=n>split_documents</span><span class=p>(</span><span class=n>docs</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;[ingest] 切分后得到 </span><span class=si>{</span><span class=nb>len</span><span class=p>(</span><span class=n>chunks</span><span class=p>)</span><span class=si>}</span><span class=s2> 个文本块。&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 3) 嵌入模型</span>
+</span></span><span class=line><span class=cl><span class=n>embeddings</span><span class=p>:</span> <span class=n>OllamaEmbeddings</span> <span class=o>=</span> <span class=n>OllamaEmbeddings</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>base_url</span><span class=o>=</span><span class=n>OLLAMA_BASE</span><span class=p>,</span> <span class=n>model</span><span class=o>=</span><span class=s2>&#34;qwen3-embedding:4b&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 4) 写入 pgvector</span>
+</span></span><span class=line><span class=cl><span class=n>vectorstore</span><span class=p>:</span> <span class=n>PGVector</span> <span class=o>=</span> <span class=n>PGVector</span><span class=o>.</span><span class=n>from_documents</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>documents</span><span class=o>=</span><span class=n>chunks</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>embedding</span><span class=o>=</span><span class=n>embeddings</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>collection_name</span><span class=o>=</span><span class=n>COLLECTION</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>connection</span><span class=o>=</span><span class=n>PG_URL</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>use_jsonb</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;[ingest] 成功将向量写入 pgvector 集合 &#39;</span><span class=si>{</span><span class=n>COLLECTION</span><span class=si>}</span><span class=s2>&#39;。&#34;</span><span class=p>)</span></span></span></code></pre></div><p><strong>Markdown 处理最佳实践</strong></p><ul><li><p><strong>UnstructuredMarkdownLoader 优势</strong>：相比普通的 TextLoader，UnstructuredMarkdownLoader 能够更好地解析 markdown 的结构（如标题、代码块、列表等），提升语义理解质量。</p></li><li><p><strong>strategy=&ldquo;fast&rdquo; 配置</strong>：<code>strategy="fast"</code> 提供了速度与质量的平衡，适合大多数 RAG 应用场景。若需要更精细的结构解析，可尝试其他策略。</p></li><li><p><strong>支持的文件类型</strong>：当前配置支持 .txt 和 .md 文件。对于 PDF 文件，建议先转换为文本格式或使用专门的 PDF 处理工具。</p></li></ul><p><strong>要点提示</strong></p><ul><li><code>chunk_size</code> 越大，单块信息更全但召回多样性下降；越小则相反。可在 600–1,200 之间微调。</li><li>首次运行会创建 <code>langchain_pg_*</code> 系列表；不用手动建表。</li></ul><hr><h2 id=检索问答querypy带注释 class=headerLink><a href=#%e6%a3%80%e7%b4%a2%e9%97%ae%e7%ad%94querypy%e5%b8%a6%e6%b3%a8%e9%87%8a class=header-mark></a>检索问答：<code>query.py</code>（带注释）</h2><div class="code-block highlight is-closed show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">python</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-13 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl><span class=s2>&#34;&#34;&#34;
+</span></span></span><span class=line><span class=cl><span class=s2>query.py
+</span></span></span><span class=line><span class=cl><span class=s2>—— 基于 RAG 的问答：检索 top-k 片段，拼装提示词，让本地 LLM 生成答案。
+</span></span></span><span class=line><span class=cl><span class=s2>核心看点：
+</span></span></span><span class=line><span class=cl><span class=s2>1) 检索器参数（k / MMR）与答案质量
+</span></span></span><span class=line><span class=cl><span class=s2>2) 提示词结构（system + human）与引用片段格式化
+</span></span></span><span class=line><span class=cl><span class=s2>3) 直接调用本地 Ollama LLM，无需 LiteLLM 中间层
+</span></span></span><span class=line><span class=cl><span class=s2>&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>os</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>dotenv</span> <span class=kn>import</span> <span class=n>load_dotenv</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>langchain_postgres</span> <span class=kn>import</span> <span class=n>PGVector</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>langchain_ollama</span> <span class=kn>import</span> <span class=n>OllamaEmbeddings</span><span class=p>,</span> <span class=n>ChatOllama</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>langchain_core.runnables</span> <span class=kn>import</span> <span class=n>RunnablePassthrough</span><span class=p>,</span> <span class=n>RunnableLambda</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>langchain_core.output_parsers</span> <span class=kn>import</span> <span class=n>StrOutputParser</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>langchain_core.vectorstores</span> <span class=kn>import</span> <span class=n>VectorStoreRetriever</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>langchain_core.documents</span> <span class=kn>import</span> <span class=n>Document</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 加载环境变量</span>
+</span></span><span class=line><span class=cl><span class=n>load_dotenv</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>PG_URL</span> <span class=o>=</span> <span class=n>os</span><span class=o>.</span><span class=n>getenv</span><span class=p>(</span><span class=s2>&#34;PG_URL&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>OPENAI_API_BASE</span> <span class=o>=</span> <span class=n>os</span><span class=o>.</span><span class=n>getenv</span><span class=p>(</span><span class=s2>&#34;OPENAI_API_BASE&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>OPENAI_API_KEY</span> <span class=o>=</span> <span class=n>os</span><span class=o>.</span><span class=n>getenv</span><span class=p>(</span><span class=s2>&#34;OPENAI_API_KEY&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>OLLAMA_BASE</span> <span class=o>=</span> <span class=n>os</span><span class=o>.</span><span class=n>getenv</span><span class=p>(</span><span class=s2>&#34;OLLAMA_BASE_URL&#34;</span><span class=p>,</span> <span class=s2>&#34;http://localhost:11434&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>COLLECTION</span> <span class=o>=</span> <span class=s2>&#34;rag_docs&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 1) 建立检索器：与 ingest 阶段使用同款 embedding 保持向量空间一致</span>
+</span></span><span class=line><span class=cl><span class=n>emb</span> <span class=o>=</span> <span class=n>OllamaEmbeddings</span><span class=p>(</span><span class=n>model</span><span class=o>=</span><span class=s2>&#34;qwen3-embedding:4b&#34;</span><span class=p>,</span> <span class=n>base_url</span><span class=o>=</span><span class=n>OLLAMA_BASE</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>vs</span> <span class=o>=</span> <span class=n>PGVector</span><span class=p>(</span><span class=n>collection_name</span><span class=o>=</span><span class=n>COLLECTION</span><span class=p>,</span> <span class=n>connection</span><span class=o>=</span><span class=n>PG_URL</span><span class=p>,</span> <span class=n>embedding_function</span><span class=o>=</span><span class=n>emb</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>retriever</span> <span class=o>=</span> <span class=n>vs</span><span class=o>.</span><span class=n>as_retriever</span><span class=p>(</span><span class=n>search_kwargs</span><span class=o>=</span><span class=p>{</span><span class=s2>&#34;k&#34;</span><span class=p>:</span> <span class=mi>4</span><span class=p>})</span>  <span class=c1># 可调成 {&#34;k&#34;: 6, &#34;search_type&#34;: &#34;mmr&#34;}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 2) 配置 LLM：通过 LiteLLM 的 OpenAI 兼容接口</span>
+</span></span><span class=line><span class=cl><span class=n>llm</span> <span class=o>=</span> <span class=n>ChatOpenAI</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>model</span><span class=o>=</span><span class=s2>&#34;local-llm&#34;</span><span class=p>,</span>          <span class=c1># 对应 litellm.yaml 里的 model_name</span>
+</span></span><span class=line><span class=cl>    <span class=n>base_url</span><span class=o>=</span><span class=n>OPENAI_API_BASE</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>api_key</span><span class=o>=</span><span class=n>OPENAI_API_KEY</span><span class=p>,</span>      <span class=c1># 任意非空即可（LiteLLM 需要）</span>
+</span></span><span class=line><span class=cl>    <span class=n>temperature</span><span class=o>=</span><span class=mf>0.2</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 3) 提示词：将检索到的片段注入 system，要求“不会就说不知道”</span>
+</span></span><span class=line><span class=cl><span class=n>prompt</span> <span class=o>=</span> <span class=n>ChatPromptTemplate</span><span class=o>.</span><span class=n>from_messages</span><span class=p>([</span>
+</span></span><span class=line><span class=cl>    <span class=p>(</span><span class=s2>&#34;system&#34;</span><span class=p>,</span> <span class=s2>&#34;你是严谨的助理。仅使用提供的检索片段回答；若无法确定，请说不知道。中文作答。</span><span class=se>\n</span><span class=s2>片段：</span><span class=se>\n</span><span class=si>{context}</span><span class=s2>&#34;</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=p>(</span><span class=s2>&#34;human&#34;</span><span class=p>,</span> <span class=s2>&#34;问题：</span><span class=si>{question}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>])</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 帮助函数：格式化片段，便于回答时引用</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>format_docs</span><span class=p>(</span><span class=n>docs</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s2>&#34;</span><span class=se>\n\n</span><span class=s2>&#34;</span><span class=o>.</span><span class=n>join</span><span class=p>([</span><span class=sa>f</span><span class=s2>&#34;[来源</span><span class=si>{</span><span class=n>idx</span><span class=o>+</span><span class=mi>1</span><span class=si>}</span><span class=s2>] </span><span class=si>{</span><span class=n>d</span><span class=o>.</span><span class=n>page_content</span><span class=si>}</span><span class=s2>&#34;</span> <span class=k>for</span> <span class=n>idx</span><span class=p>,</span> <span class=n>d</span> <span class=ow>in</span> <span class=nb>enumerate</span><span class=p>(</span><span class=n>docs</span><span class=p>)])</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 4) 组装 RAG 链：问题 → 检索 → 拼提示 → 调 LLM → 解析字符串</span>
+</span></span><span class=line><span class=cl><span class=n>rag_chain</span> <span class=o>=</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span><span class=s2>&#34;context&#34;</span><span class=p>:</span> <span class=n>retriever</span> <span class=o>|</span> <span class=n>format_docs</span><span class=p>,</span> <span class=s2>&#34;question&#34;</span><span class=p>:</span> <span class=n>RunnablePassthrough</span><span class=p>()}</span>
+</span></span><span class=line><span class=cl>    <span class=o>|</span> <span class=n>prompt</span>
+</span></span><span class=line><span class=cl>    <span class=o>|</span> <span class=n>llm</span>
+</span></span><span class=line><span class=cl>    <span class=o>|</span> <span class=n>StrOutputParser</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;[query] 输入问题（回车空行退出）：&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>while</span> <span class=kc>True</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>q</span> <span class=o>=</span> <span class=nb>input</span><span class=p>(</span><span class=s2>&#34;问：&#34;</span><span class=p>)</span><span class=o>.</span><span class=n>strip</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=ow>not</span> <span class=n>q</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>break</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;答：&#34;</span><span class=p>,</span> <span class=n>rag_chain</span><span class=o>.</span><span class=n>invoke</span><span class=p>(</span><span class=n>q</span><span class=p>))</span></span></span></code></pre></div><p><strong>要点提示</strong></p><ul><li><code>retriever</code> 的 <code>k</code> 值与 <code>search_type</code>（如 <code>mmr</code>）会显著影响答案完整性与去重效果。</li><li><code>temperature</code> 建议在 0.0–0.3 做问答；写作类可以适当调高。</li></ul><hr><h2 id=运行与验证 class=headerLink><a href=#%e8%bf%90%e8%a1%8c%e4%b8%8e%e9%aa%8c%e8%af%81 class=header-mark></a>运行与验证</h2><ol><li><strong>启动后端容器</strong>（Ollama / LiteLLM / pgvector）：</li></ol><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">bash</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-14 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl>docker compose up -d</span></span></code></pre></div><ol start=2><li><p><strong>准备数据</strong>：把若干 <code>.txt</code> 或 <code>.md</code> 文件放到 <code>data/</code> 目录。</p></li><li><p><strong>向量化入库</strong>：</p></li></ol><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">bash</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-15 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl>uv run ingest.py</span></span></code></pre></div><ol start=4><li><strong>检索问答</strong>：</li></ol><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">bash</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-16 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl>uv run query.py</span></span></code></pre></div><ol start=5><li><strong>快速健康检查</strong>：</li></ol><div class="code-block highlight is-closed show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">bash</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-17 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl><span class=c1># Embedding 接口（直连 Ollama）</span>
+</span></span><span class=line><span class=cl>curl -X POST http://localhost:11434/api/embeddings <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  -d <span class=s1>&#39;{&#34;model&#34;:&#34;qwen3-embedding:4b&#34;,&#34;prompt&#34;:&#34;测试一下向量&#34;}&#39;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Chat 接口（直连 Ollama）</span>
+</span></span><span class=line><span class=cl>curl http://localhost:11434/api/chat <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  -H <span class=s2>&#34;Content-Type: application/json&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  -d <span class=s1>&#39;{
+</span></span></span><span class=line><span class=cl><span class=s1>    &#34;model&#34;:&#34;qwen3:8b&#34;,
+</span></span></span><span class=line><span class=cl><span class=s1>    &#34;messages&#34;:[{&#34;role&#34;:&#34;user&#34;,&#34;content&#34;:&#34;用一句话解释什么是RAG&#34;}]
+</span></span></span><span class=line><span class=cl><span class=s1>  }&#39;</span></span></span></code></pre></div><hr><h2 id=性能调优与最佳实践 class=headerLink><a href=#%e6%80%a7%e8%83%bd%e8%b0%83%e4%bc%98%e4%b8%8e%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5 class=header-mark></a>性能调优与最佳实践</h2><ul><li><strong>切分策略</strong>：长技术文档可将 <code>chunk_size</code> 提到 1000–1200，法律/规范类文本适当增大以保留上下文。</li><li><strong>检索参数</strong>：<code>k=4~8</code>；MMR 可提高多样性（减少相似块）。</li><li><strong>索引优化</strong>：pgvector 新版支持 HNSW；可在 <code>embedding</code> 列创建 HNSW 索引以提升大数据集检索速度。</li><li><strong>缓存</strong>：对重复问题可在应用层缓存最终答案或检索结果。</li><li><strong>日志观测</strong>：开启 LiteLLM 日志与 Prometheus 导出，关注延迟、失败率与重试。</li></ul><hr><h2 id=常见问题与排错清单 class=headerLink><a href=#%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e4%b8%8e%e6%8e%92%e9%94%99%e6%b8%85%e5%8d%95 class=header-mark></a>常见问题与排错清单</h2><ul><li><strong>LiteLLM 401</strong>：<code>OPENAI_API_KEY</code> 需任意非空字符串；<code>OPENAI_API_BASE</code> 必须指向 <code>http://localhost:4000</code>。</li><li><strong>Ollama 404</strong>：确认 <code>docker compose</code> 日志中已 <code>pull</code> 对应模型；或手动 <code>docker exec -it ollama ollama pull &lt;model></code>。</li><li><strong>psycopg 连接失败</strong>：等待 pg 健康检查通过；检查 <code>PG_URL</code> 与端口映射。</li><li><strong>中文乱码</strong>：<code>TextLoader</code> 使用 <code>autodetect_encoding=True</code>；源文件统一 UTF-8。</li><li><strong>PDF 提取为空</strong>：尝试 <code>pypdf</code>/<code>unstructured</code>；或先转 <code>txt</code>。</li><li><strong>检索不相关</strong>：调大 <code>chunk_size</code>/<code>k</code>；或换更强 Embedding（如 <code>mxbai-embed-large</code>）。</li></ul><hr><h2 id=加分项makefile-与一键命令 class=headerLink><a href=#%e5%8a%a0%e5%88%86%e9%a1%b9makefile-%e4%b8%8e%e4%b8%80%e9%94%ae%e5%91%bd%e4%bb%a4 class=header-mark></a>加分项：Makefile 与一键命令</h2><p>在根目录新建 <code>Makefile</code>：</p><div class="code-block highlight is-closed show-line-numbers tw-group tw-my-2"><div class="tw-flex
+tw-flex-row
+tw-flex-1
+tw-justify-between
+tw-w-full tw-bg-bgColor-secondary"><button class="code-block-button
+tw-mx-2
+tw-flex
+tw-flex-row
+tw-flex-1" aria-hidden=true><div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon" viewBox="0 0 320 512"><path d="M285.476 272.971 91.132 467.314c-9.373 9.373-24.569 9.373-33.941.0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941.0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div><p class="tw-select-none !tw-my-1">Makefile</p></button><div class=tw-flex><button class="line-number-button
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.show-line-numbers]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle line numbers"><svg class="icon" viewBox="0 0 512 512"><path d="M61.77 401l17.5-20.15a19.92 19.92.0 005.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 00-8 8v16a8 8 0 008 8h22.83a157.41 157.41.0 00-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33.0 15.94 2.44 15.94 9.09.0 4.72-4.2 8.22-14.36 8.22a41.54 41.54.0 01-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16.0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zm0-160H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16V80a16 16 0 00-16-16zm0 320H176a16 16 0 00-16 16v32a16 16 0 0016 16h320a16 16 0 0016-16v-32a16 16 0 00-16-16zM16 160h64a8 8 0 008-8v-16a8 8 0 00-8-8H64V40a8 8 0 00-8-8H32a8 8 0 00-7.14 4.42l-8 16A8 8 0 0024 64h8v64H16a8 8 0 00-8 8v16a8 8 0 008 8zm-3.91 160H80a8 8 0 008-8v-16a8 8 0 00-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44.0-29.06-25-39.56-44.47-39.56-21.36.0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44.0 019.46-3.84c3.33.0 9.28 1.56 9.28 8.75C51 248.19.0 257.31.0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+<button class="wrap-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+group-[.is-wrap]:tw-text-fgColor-link
+print:!tw-hidden" title="Toggle code wrap"><svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+<button class="copy-code-button
+tw-select-none
+tw-mx-2
+tw-hidden
+group-[.is-open]:tw-block
+hover:tw-text-fgColor-link
+print:!tw-hidden" title="Copy code">
+<span class="copy-icon tw-block"><svg class="icon" viewBox="0 0 448 512"><path d="M433.941 65.941l-51.882-51.882A48 48 0 00348.118.0H176c-26.51.0-48 21.49-48 48v48H48c-26.51.0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51.0 48-21.49 48-48v-48h80c26.51.0 48-21.49 48-48V99.882a48 48 0 00-14.059-33.941zM266 464H54a6 6 0 01-6-6V150a6 6 0 016-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 01-6 6zm128-96H182a6 6 0 01-6-6V54a6 6 0 016-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 01-6 6zm6-256h-64V48h9.632c1.591.0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 011.757 4.243V112z"/></svg></span>
+<span class="check-icon tw-hidden"><svg class="icon" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206.0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204.0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204.0l36.203 36.204c9.997 9.997 9.997 26.206.0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+</button>
+<button class="tw-select-none
+tw-mx-2
+tw-block
+group-[.is-open]:tw-hidden
+print:!tw-hidden" disabled aria-hidden=true><svg class="icon" viewBox="0 0 512 512"><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8.0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button></div></div><pre style=counter-reset:codeblock class="tw-block tw-m-0 tw-p-0"><code id=codeblock-id-18 class="chroma
+!tw-block
+tw-p-0
+tw-m-0
+tw-transition-[max-height]
+tw-duration-500
+tw-ease-in-out
+group-[.is-closed]:!tw-max-h-0
+group-[.is-wrap]:tw-text-wrap
+tw-overflow-y-hidden
+tw-overflow-x-auto
+tw-scrollbar-thin"><span class=line><span class=cl><span class=nf>.PHONY</span><span class=o>:</span> <span class=n>up</span> <span class=n>down</span> <span class=n>logs</span> <span class=n>ingest</span> <span class=n>query</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>up</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>	docker compose up -d
+</span></span><span class=line><span class=cl>	sleep <span class=m>3</span>
+</span></span><span class=line><span class=cl>	curl -s http://localhost:4000/v1/models <span class=p>|</span> jq . &gt;/dev/null <span class=o>||</span> <span class=nb>true</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>logs</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>	docker compose logs -f --tail<span class=o>=</span><span class=m>100</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>ingest</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>	uv run ingest.py
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>query</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>	uv run query.py
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>down</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>	docker compose down
+</span></span></code></pre></div><blockquote><p>之后你可以：<code>make up</code> → <code>make ingest</code> → <code>make query</code> → <code>make down</code></p></blockquote><hr><h2 id=安全与上线建议 class=headerLink><a href=#%e5%ae%89%e5%85%a8%e4%b8%8e%e4%b8%8a%e7%ba%bf%e5%bb%ba%e8%ae%ae class=header-mark></a>安全与上线建议</h2><ul><li><strong>隔离</strong>：生产中将 PG、LiteLLM、Ollama 放到内网；对外仅暴露应用层 API。</li><li><strong>鉴权</strong>：LiteLLM 网关前增加网关鉴权/签名；避免滥用。</li><li><strong>隐私</strong>：明示埋点与日志策略；避免落盘敏感数据。</li><li><strong>可观察性</strong>：链路打点（检索耗时、召回率、回答长度），搭配告警门槛。</li></ul><hr><h2 id=面试指南高频问题与答题思路 class=headerLink><a href=#%e9%9d%a2%e8%af%95%e6%8c%87%e5%8d%97%e9%ab%98%e9%a2%91%e9%97%ae%e9%a2%98%e4%b8%8e%e7%ad%94%e9%a2%98%e6%80%9d%e8%b7%af class=header-mark></a>面试指南（高频问题与答题思路）</h2><blockquote><p>以下问答基于本文实现，覆盖从原理到工程化的高频考点。</p></blockquote><h3 id=1-什么是-rag为什么需要它 class=headerLink><a href=#1-%e4%bb%80%e4%b9%88%e6%98%af-rag%e4%b8%ba%e4%bb%80%e4%b9%88%e9%9c%80%e8%a6%81%e5%ae%83 class=header-mark></a>1) 什么是 RAG？为什么需要它？</h3><p><strong>答题要点</strong>：RAG 通过“检索相关知识 + 生成回答”减少幻觉并提升时效性。相比纯生成，RAG 可引入最新文档、私有知识；相比纯检索，RAG 能组织语言形成自然答案。</p><h3 id=2-文档切分如何影响检索效果 class=headerLink><a href=#2-%e6%96%87%e6%a1%a3%e5%88%87%e5%88%86%e5%a6%82%e4%bd%95%e5%bd%b1%e5%93%8d%e6%a3%80%e7%b4%a2%e6%95%88%e6%9e%9c class=header-mark></a>2) 文档切分如何影响检索效果？</h3><p><strong>要点</strong>：<code>chunk_size</code> 大 → 单块信息密度高但多样性低；小 → 多样性高但上下文碎片化。一般 800–1200 是工程实践中的甜点区，按文体微调。</p><h3 id=3-为什么选择-pgvector class=headerLink><a href=#3-%e4%b8%ba%e4%bb%80%e4%b9%88%e9%80%89%e6%8b%a9-pgvector class=header-mark></a>3) 为什么选择 pgvector？</h3><p><strong>要点</strong>：与关系型数据共存、事务与权限体系成熟，易部署；新版支持 HNSW 索引，查询速度优秀；生态丰富（备份、监控、云托管）。</p><h3 id=4-embedding-模型怎么选 class=headerLink><a href=#4-embedding-%e6%a8%a1%e5%9e%8b%e6%80%8e%e4%b9%88%e9%80%89 class=header-mark></a>4) Embedding 模型怎么选？</h3><p><strong>要点</strong>：看语种、语域与预算；中英多语推荐 <code>qwen3-embedding:4b</code>/<code>mxbai-embed-large</code>；若法律/代码等专业域，优先选领域模型。可通过检索 Hit@k、nDCG 评估对比。</p><h3 id=5-为何直接使用-ollama-而不是-litellm class=headerLink><a href=#5-%e4%b8%ba%e4%bd%95%e7%9b%b4%e6%8e%a5%e4%bd%bf%e7%94%a8-ollama-%e8%80%8c%e4%b8%8d%e6%98%af-litellm class=header-mark></a>5) 为何直接使用 Ollama 而不是 LiteLLM？</h3><p><strong>要点</strong>：直接使用 <code>langchain-ollama</code> 可以简化架构、减少依赖，直接享受 Ollama 的性能优势；无需额外的代理层，降低延迟和复杂性。对于纯本地部署的场景，直接集成更加高效。</p><h3 id=6-检索召回不相关如何排查 class=headerLink><a href=#6-%e6%a3%80%e7%b4%a2%e5%8f%ac%e5%9b%9e%e4%b8%8d%e7%9b%b8%e5%85%b3%e5%a6%82%e4%bd%95%e6%8e%92%e6%9f%a5 class=header-mark></a>6) 检索召回不相关如何排查？</h3><p><strong>要点</strong>：检查切分是否合理、是否使用相同的 embedding 模型、是否做了文本预处理；调大 <code>k</code> 或启用 <code>mmr</code>；必要时添加 rerank（如 BGE/Cohere Rerank）。</p><h3 id=7-如何降低幻觉 class=headerLink><a href=#7-%e5%a6%82%e4%bd%95%e9%99%8d%e4%bd%8e%e5%b9%bb%e8%a7%89 class=header-mark></a>7) 如何降低幻觉？</h3><p><strong>要点</strong>：提示词明确“仅依据片段回答”；提供引用/编号；温度调低；必要时加入 <code>answerable</code> 判断或引入校验链。</p><h3 id=8-如何做评估 class=headerLink><a href=#8-%e5%a6%82%e4%bd%95%e5%81%9a%e8%af%84%e4%bc%b0 class=header-mark></a>8) 如何做评估？</h3><p><strong>要点</strong>：</p><ul><li>检索层：Hit@k、Recall、nDCG；</li><li>生成层：基于参考答案的 LLM-as-a-Judge、事实性指标（Faithfulness / Groundedness）。
+工程上可离线构造 Q/A 对，周期性回归。</li></ul><h3 id=9-生产部署的关键风险 class=headerLink><a href=#9-%e7%94%9f%e4%ba%a7%e9%83%a8%e7%bd%b2%e7%9a%84%e5%85%b3%e9%94%ae%e9%a3%8e%e9%99%a9 class=header-mark></a>9) 生产部署的关键风险？</h3><p><strong>要点</strong>：权限与脱敏、成本与延迟、观测与告警、模型漂移与数据新鲜度、版本回滚与 A/B 测试。</p><h3 id=10-请手写一个最小-rag-数据流 class=headerLink><a href=#10-%e8%af%b7%e6%89%8b%e5%86%99%e4%b8%80%e4%b8%aa%e6%9c%80%e5%b0%8f-rag-%e6%95%b0%e6%8d%ae%e6%b5%81 class=header-mark></a>10) 请手写一个最小 RAG 数据流？</h3><p><strong>思路</strong>：描述“加载 → 切分 → 嵌入 → 入库 → 检索 → 拼提示 → 生成”的步骤，并给出关键参数（chunk、k、temperature）。可参考本文 <code>ingest.py</code> 与 <code>query.py</code>。</p><h3 id=11-为什么要用-uv class=headerLink><a href=#11-%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e7%94%a8-uv class=header-mark></a>11) 为什么要用 uv？</h3><p><strong>要点</strong>：极快安装、自动管理虚拟环境、生成锁文件确保可复现；CI/CD 上用 <code>uv sync --frozen</code> 保证依赖一致性。</p><h3 id=12-本地与云端模型如何切换 class=headerLink><a href=#12-%e6%9c%ac%e5%9c%b0%e4%b8%8e%e4%ba%91%e7%ab%af%e6%a8%a1%e5%9e%8b%e5%a6%82%e4%bd%95%e5%88%87%e6%8d%a2 class=header-mark></a>12) 本地与云端模型如何切换？</h3><p><strong>要点</strong>：实际项目中直接修改 <code>langchain_ollama</code> 的 <code>model</code> 和 <code>base_url</code> 参数即可，无需 LiteLLM。</p><h3 id=13-chunk-重叠overlap的作用是什么 class=headerLink><a href=#13-chunk-%e9%87%8d%e5%8f%a0overlap%e7%9a%84%e4%bd%9c%e7%94%a8%e6%98%af%e4%bb%80%e4%b9%88 class=header-mark></a>13) Chunk 重叠（overlap）的作用是什么？</h3><p><strong>要点</strong>：防止重要信息被截断在 chunk 边界，确保上下文连续性。经验值为 chunk_size 的 10-20%。</p><h3 id=14-为什么选择-mmr-检索而不是普通-top-k class=headerLink><a href=#14-%e4%b8%ba%e4%bb%80%e4%b9%88%e9%80%89%e6%8b%a9-mmr-%e6%a3%80%e7%b4%a2%e8%80%8c%e4%b8%8d%e6%98%af%e6%99%ae%e9%80%9a-top-k class=header-mark></a>14) 为什么选择 MMR 检索而不是普通 top-k？</h3><p><strong>要点</strong>：MMR（Maximal Marginal Relevance）在保证相关性的同时增加多样性，避免召回过于相似的文档片段。</p><h3 id=15-如何处理长文档的切分问题 class=headerLink><a href=#15-%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86%e9%95%bf%e6%96%87%e6%a1%a3%e7%9a%84%e5%88%87%e5%88%86%e9%97%ae%e9%a2%98 class=header-mark></a>15) 如何处理长文档的切分问题？</h3><p><strong>要点</strong>：</p><ul><li>结构化文档：按标题、段落等语义边界切分</li><li>非结构化文档：使用动态 chunk_size 结合 overlap</li><li>专业文档：考虑领域知识，设计专门的切分策略</li></ul><h3 id=16-rag-的评估指标有哪些 class=headerLink><a href=#16-rag-%e7%9a%84%e8%af%84%e4%bc%b0%e6%8c%87%e6%a0%87%e6%9c%89%e5%93%aa%e4%ba%9b class=header-mark></a>16) RAG 的评估指标有哪些？</h3><p><strong>要点</strong>：</p><ul><li><strong>检索指标</strong>：Hit@k、MRR、nDCG、Recall@K</li><li><strong>生成指标</strong>：BLEU、ROUGE、BERTScore</li><li><strong>任务指标</strong>：EM（Exact Match）、F1-score</li><li><strong>人机评估</strong>：事实性、一致性、相关性</li></ul><h3 id=17-如何设计-rag-的提示词 class=headerLink><a href=#17-%e5%a6%82%e4%bd%95%e8%ae%be%e8%ae%a1-rag-%e7%9a%84%e6%8f%90%e7%a4%ba%e8%af%8d class=header-mark></a>17) 如何设计 RAG 的提示词？</h3><p><strong>要点</strong>：</p><ul><li>明确角色定位：&ldquo;你是专业的问答助手&rdquo;</li><li>约束回答范围：&ldquo;仅基于提供的文档内容&rdquo;</li><li>要求引用来源：&ldquo;请标注引用文档编号&rdquo;</li><li>处理无法回答的情况：&ldquo;如果文档中没有相关信息，请明确说明&rdquo;</li></ul><h3 id=18-rag-系统的性能瓶颈在哪里 class=headerLink><a href=#18-rag-%e7%b3%bb%e7%bb%9f%e7%9a%84%e6%80%a7%e8%83%bd%e7%93%b6%e9%a2%88%e5%9c%a8%e5%93%aa%e9%87%8c class=header-mark></a>18) RAG 系统的性能瓶颈在哪里？</h3><p><strong>要点</strong>：</p><ul><li>向量检索速度：索引类型（HNSW vs IVF）、向量维度</li><li>LLM 推理延迟：模型大小、批处理、并发控制</li><li>数据库连接：连接池、查询优化、缓存策略</li><li>网络延迟：模型服务部署位置、数据传输优化</li></ul><h3 id=19-为什么选择-unstructuredmarkdownloader-而不是普通的-textloader class=headerLink><a href=#19-%e4%b8%ba%e4%bb%80%e4%b9%88%e9%80%89%e6%8b%a9-unstructuredmarkdownloader-%e8%80%8c%e4%b8%8d%e6%98%af%e6%99%ae%e9%80%9a%e7%9a%84-textloader class=header-mark></a>19) 为什么选择 UnstructuredMarkdownLoader 而不是普通的 TextLoader？</h3><p><strong>要点</strong>：</p><ul><li><strong>结构感知</strong>：UnstructuredMarkdownLoader 能够识别和保留 markdown 的语义结构（如标题、代码块、列表等）</li><li><strong>更好的分割</strong>：基于语义结构进行切分，而不是简单的字符分割</li><li><strong>提升检索质量</strong>：结构化的内容表示有助于更精确的向量化和检索</li><li><strong>策略配置</strong>：支持 <code>strategy="fast"</code> 等参数平衡速度与质量</li></ul><h3 id=20-如何优化不同类型文档的加载策略 class=headerLink><a href=#20-%e5%a6%82%e4%bd%95%e4%bc%98%e5%8c%96%e4%b8%8d%e5%90%8c%e7%b1%bb%e5%9e%8b%e6%96%87%e6%a1%a3%e7%9a%84%e5%8a%a0%e8%bd%bd%e7%ad%96%e7%95%a5 class=header-mark></a>20) 如何优化不同类型文档的加载策略？</h3><p><strong>要点</strong>：</p><ul><li><strong>技术文档</strong>：优先使用 UnstructuredMarkdownLoader 保持结构</li><li><strong>代码文档</strong>：结合语法高亮和代码块特殊处理</li><li><strong>数据表格</strong>：使用支持表格解析的加载器</li><li><strong>混合文档</strong>：根据主要内容和查询模式选择最优策略</li></ul></div><h2>相关内容</h2><div class=related-container><div class=related-item-container><h2 class=related-title><a href=/ai%E6%95%99%E7%A8%8B3/>Prompt Engineering完全指南：从提示工程到上下文工程的实战教程</a></h2></div><div class=related-item-container><h2 class=related-title><a href=/ai%E4%B8%93%E4%B8%9A%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E8%A1%A8/>AI专业名词解释表：270+术语完全指南与AI技术体系词典</a></h2></div><div class=related-item-container><h2 class=related-title><a href=/pg-vector%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/>Docker安装PostgreSQL+pgvector完整教程：AI向量数据库快速部署指南</a></h2></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2025-11-06</span></div><div class=post-info-license></div></div><div class="post-info-line print:!tw-hidden"><div class=post-info-md></div><div class=post-info-share><button title="分享到 Twitter" data-sharer=twitter data-url=https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B5/ data-title=RAG系统完全指南——从零搭建本地检索增强生成系统 data-hashtags=RAG,检索增强生成,LangChain,Ollama,pgvector,向量数据库,本地LLM,文档问答,uv依赖管理><svg class="icon" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645.0 138.72-105.583 298.558-298.558 298.558-59.452.0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055.0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421.0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391.0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04.0-57.828 46.782-104.934 104.934-104.934 30.213.0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></button><button title="分享到 Evernote" data-sharer=evernote data-url=https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B5/ data-title=RAG系统完全指南——从零搭建本地检索增强生成系统><svg class="icon" viewBox="0 0 384 512"><path d="M120.82 132.21c1.6 22.31-17.55 21.59-21.61 21.59-68.93.0-73.64-1-83.58 3.34-.56.22-.74.0-.37-.37L123.79 46.45c.38-.37.6-.22.38.37-4.35 9.99-3.35 15.09-3.35 85.39zm79 308c-14.68-37.08 13-76.93 52.52-76.62 17.49.0 22.6 23.21 7.95 31.42-6.19 3.3-24.95 1.74-25.14 19.2-.05 17.09 19.67 25 31.2 24.89A45.64 45.64.0 00312 393.45v-.08c0-11.63-7.79-47.22-47.54-55.34-7.72-1.54-65-6.35-68.35-50.52-3.74 16.93-17.4 63.49-43.11 69.09-8.74 1.94-69.68 7.64-112.92-36.77.0.0-18.57-15.23-28.23-57.95-3.38-15.75-9.28-39.7-11.14-62 0-18 11.14-30.45 25.07-32.2 81 0 90 2.32 101-7.8 9.82-9.24 7.8-15.5 7.8-102.78 1-8.3 7.79-30.81 53.41-24.14 6 .86 31.91 4.18 37.48 30.64l64.26 11.15c20.43 3.71 70.94 7 80.6 57.94 22.66 121.09 8.91 238.46 7.8 238.46C362.15 485.53 267.06 480 267.06 480c-18.95-.23-54.25-9.4-67.27-39.83zm80.94-204.84c-1 1.92-2.2 6 .85 7 14.09 4.93 39.75 6.84 45.88 5.53 3.11-.25 3.05-4.43 2.48-6.65-3.53-21.85-40.83-26.5-49.24-5.92z"/></svg></button></div></div></div><div class=post-info-more><section class=post-tags><svg class="icon" viewBox="0 0 640 512"><path d="M497.941 225.941 286.059 14.059A48 48 0 00252.118.0H48C21.49.0.0 21.49.0 48v204.118a48 48 0 0014.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882.0l204.118-204.118c18.745-18.745 18.745-49.137.0-67.882zM112 160c-26.51.0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882.0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397.0h48.721a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882z"/></svg>&nbsp;<a href=/tags/rag/>RAG</a>,&nbsp;<a href=/tags/%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90/>检索增强生成</a>,&nbsp;<a href=/tags/langchain/>LangChain</a>,&nbsp;<a href=/tags/ollama/>Ollama</a>,&nbsp;<a href=/tags/pgvector/>Pgvector</a>,&nbsp;<a href=/tags/%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93/>向量数据库</a>,&nbsp;<a href=/tags/%E6%9C%AC%E5%9C%B0llm/>本地LLM</a>,&nbsp;<a href=/tags/%E6%96%87%E6%A1%A3%E9%97%AE%E7%AD%94/>文档问答</a>,&nbsp;<a href=/tags/uv%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/>Uv依赖管理</a></section><section class=print:!tw-hidden><span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick=window.history.back()>返回</button></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class="post-nav print:tw-hidden"><a href=/tiktok%E7%9A%84%E5%9B%B0%E5%B1%80/ class=prev rel=prev title=当TikTok遇上特朗普：做多错多，何以关关难过关关过><svg class="icon" viewBox="0 0 256 512"><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9.0l22.6 22.6c9.4 9.4 9.4 24.6.0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6.0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9.0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>当TikTok遇上特朗普：做多错多，何以关关难过关关过</a>
+<a href=/ai%E4%B8%93%E4%B8%9A%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E8%A1%A8/ class=next rel=next title=AI专业名词解释表：270+术语完全指南与AI技术体系词典>AI专业名词解释表：270+术语完全指南与AI技术体系词典<svg class="icon" viewBox="0 0 256 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9.0l-22.6-22.6c-9.4-9.4-9.4-24.6.0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6.0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9.0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></a></div></div><div id=comments class="print:!tw-hidden tw-pt-32 tw-pb-8"><div id=giscus></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://giscus.app/>giscus</a>.</noscript></div></article></main><footer class=footer><div class=footer-container><div class=footer-line><svg class="icon" viewBox="0 0 512 512"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532.0-2e2-89.451-2e2-2e2.0-110.531 89.451-2e2 2e2-2e2 110.532.0 2e2 89.451 2e2 2e2.0 110.532-89.451 2e2-2e2 2e2zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43.0-140.484-61.425-140.484-141.567.0-79.152 60.275-139.401 139.762-139.401 55.531.0 88.738 26.62 97.593 34.779a11.965 11.965.0 011.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303.0-77.916 35.33-77.916 80.082.0 41.589 26.888 83.692 78.277 83.692 32.657.0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947.0 01-1.152 15.518z"/></svg>2025<span class=author>&nbsp;<a href=https://blog.baifan.site target=_blank rel="noopener noreferrer">Finn</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreferrer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div><div class=footer-line></div><div class=footer-line></div></div><script>"serviceWorker"in navigator&&(navigator.serviceWorker.register("/sw.min.js",{scope:"/"}).then(function(){}),navigator.serviceWorker.ready.then(function(){}))</script></footer><div class="print:!tw-hidden tw-flex tw-flex-col tw-fixed tw-right-4 tw-bottom-4 tw-gap-2"><a href=#back-to-top id=back-to-top-button class="tw-transition-opacity tw-opacity-0 tw-block tw-bg-bgColor-secondary tw-rounded-full" style=padding:.6rem;line-height:1.3rem;font-size:1rem title=回到顶部><svg class="icon" viewBox="0 0 448 512"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6.0-33.9L207 39c9.4-9.4 24.6-9.4 33.9.0l194.3 194.3c9.4 9.4 9.4 24.6.0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3.0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
+</a><button id=toc-drawer-button class="tw-block tw-bg-bgColor-secondary tw-rounded-full md:tw-hidden" style=padding:.6rem;line-height:1.3rem;font-size:1rem>
+<svg class="icon" viewBox="0 0 448 512"><path d="M16 132h416c8.837.0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163.0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837.0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837.0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
+</button><a href=#comments id=view-comments class="tw-block tw-bg-bgColor-secondary tw-rounded-full" style=padding:.6rem;line-height:1.3rem;font-size:1rem title=查看评论>
+<svg class="icon" viewBox="0 0 512 512"><path d="M256 32C114.6 32 0 125.1.0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3.0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4.0 256-93.1 256-208S397.4 32 256 32z"/></svg></a></div><div id=cookieconsent-container></div><link rel=stylesheet href=/lib/katex/katex.min.0c8126645bb983a788b167b1b97abe2505a962ad45e049001463c46012012a9b.css integrity="sha256-DIEmZFu5g6eIsWexuXq+JQWpYq1F4EkAFGPEYBIBKps="><link rel=preload as=style onload='this.onload=null,this.rel="stylesheet"' href=/lib/katex/copy-tex.min.cf8e3e934d92a839d209ffdac331fa693da5958a6dff2c8788a4713cc1f50a47.css integrity="sha256-z44+k02SqDnSCf/awzH6aT2llYpt/yyHiKRxPMH1Ckc="><noscript><link rel=stylesheet href=/lib/katex/copy-tex.min.cf8e3e934d92a839d209ffdac331fa693da5958a6dff2c8788a4713cc1f50a47.css integrity="sha256-z44+k02SqDnSCf/awzH6aT2llYpt/yyHiKRxPMH1Ckc="></noscript><link rel=stylesheet href=/lib/cookieconsent/cookieconsent.min.cd0d0b6e50ff01ff2f3a9a70d7cfb66a7c6cb9acf7a566325568be6d3bd31fc4.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q="><script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js",comment:{giscus:{darkTheme:"dark",dataCategory:"Announcements",dataCategoryId:"DIC_kwDOQOVlP84Cxa17",dataEmitMetadata:"0",dataInputPosition:"top",dataLang:"zh-CN",dataLoading:"lazy",dataMapping:"pathname",dataReactionsEnabled:"1",dataRepo:"ByronFinn/ByronFinn.github.io",dataRepoId:"R_kgDOQOVlPw",dataStrict:"0",lightTheme:"light"}},cookieconsent:{content:{dismiss:"同意",link:"了解更多",message:"本网站使用 Cookies 来改善您的浏览体验."},enable:!0,palette:{button:{background:"#f0f0f0"},popup:{background:"#1aa3ff"}},theme:"edgeless"},data:{"desktop-header-typeit":"Daily Deep Think","mobile-header-typeit":"Daily Deep Think"},"fuse.min.js":"/lib/fuse/fuse.min.js",math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{distance:100,findAllMatches:!1,fuseIndexURL:"/index.json",highlightTag:"em",ignoreFieldNorm:!1,ignoreLocation:!1,isCaseSensitive:!1,location:0,maxResultLength:10,minMatchCharLength:2,noResultsFound:"没有找到结果",snippetLength:50,threshold:.3,type:"fuse",useExtendedSearch:!1},sharerjs:!0,table:{sort:!0},twemoji:!0,typeit:{cursorChar:"|",cursorSpeed:1e3,data:{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},duration:-1,speed:100}}</script><script src=/lib/tablesort/tablesort.min.92de6dec051677787aed63503575b2f9be73f21f2745574e59647bc139a92d40.js integrity="sha256-kt5t7AUWd3h67WNQNXWy+b5z8h8nRVdOWWR7wTmpLUA="></script><script src=/lib/twemoji/twemoji.min.0e0e5259e3ff8ea805e0c5660c6336f7f46b14332e3cafb82939e1db3da8b6f8.js integrity="sha256-Dg5SWeP/jqgF4MVmDGM29/RrFDMuPK+4KTnh2z2otvg=" defer></script><script src=/js/twemoji.min.js defer></script><script src=/lib/sharer/sharer.min.8fe10eb615eb163a20f795484430a012805ec7c8c11df52df54ddb7a46084254.js integrity="sha256-j+EOthXrFjog95VIRDCgEoBex8jBHfUt9U3bekYIQlQ="></script><script src=/lib/typeit/typeit.min.06e0b9ba7bb3c9368aa26979037019306fef8e43dd2b9276854d227381445d0f.js integrity="sha256-BuC5unuzyTaKoml5A3AZMG/vjkPdK5J2hU0ic4FEXQ8="></script><script src=/lib/katex/katex.min.76d534cf1167067008fca12c4e903fc44cf8cfda8c5279c318d1f78cd90b086e.js integrity="sha256-dtU0zxFnBnAI/KEsTpA/xEz4z9qMUnnDGNH3jNkLCG4=" defer></script><script src=/lib/katex/auto-render.min.bb53eb953394531aae36fdd537065c4244eb8542901a3ce914601d932675b8ac.js integrity="sha256-u1PrlTOUUxquNv3VNwZcQkTrhUKQGjzpFGAdkyZ1uKw=" defer></script><script src=/lib/katex/copy-tex.min.07770af90943a1de1a1010794bc78c6a7346d46d48fb63e35cc76ba76b827604.js integrity="sha256-B3cK+QlDod4aEBB5S8eManNG1G1I+2PjXMdrp2uCdgQ=" defer></script><script src=/lib/katex/mhchem.min.9f87e5e9c384a160472d0045035a8641f6013358eddb3ece708634a50f946a40.js integrity="sha256-n4fl6cOEoWBHLQBFA1qGQfYBM1jt2z7OcIY0pQ+UakA=" defer></script><script src=/js/katex.min.js defer></script><script src=/lib/cookieconsent/cookieconsent.min.e55842a856a6d829feca3c3ad736c136b6c7549e9247274f78aa296259e06e24.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" defer></script><script src=/js/cookieconsent.min.js defer></script><script src=/js/theme.min.js defer></script><script src=/js/giscus.min.js defer></script><script type=speculationrules>
+  {
+    "prerender": [
+      {
+        "where": { "href_matches": "/*" },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+</script></body></html>
