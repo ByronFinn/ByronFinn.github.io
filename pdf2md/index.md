@@ -44,7 +44,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 uv python install 3.13
 
 # 3. 克隆项目
-git clone https://github.com/yourusername/pdf2markdown.git
+git clone https://github.com/ByronFinn/pdf2markdown.git
 cd pdf2markdown
 
 # 4. 同步基础依赖

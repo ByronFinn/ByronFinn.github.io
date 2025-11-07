@@ -120,7 +120,7 @@
   <div class="profile-timeline">
     <div class="profile-timeline-item">
       <div class="profile-timeline-date">2023 - 至今</div>
-      <div class="profile-timeline-title">有录教育集团</div>
+      <div class="profile-timeline-title">XX教育集团</div>
       <div class="profile-timeline-subtitle">后端开发工程师</div>
       <div class="profile-timeline-description">
         <ul>
@@ -135,7 +135,7 @@
 
     <div class="profile-timeline-item">
       <div class="profile-timeline-date">2021 - 2023</div>
-      <div class="profile-timeline-title">沃趣科技</div>
+      <div class="profile-timeline-title">XX科技</div>
       <div class="profile-timeline-subtitle">开发工程师</div>
       <div class="profile-timeline-description">
         <ul>
@@ -149,7 +149,7 @@
 
     <div class="profile-timeline-item">
       <div class="profile-timeline-date">2015 - 2021</div>
-      <div class="profile-timeline-title">陕西地矿集团</div>
+      <div class="profile-timeline-title">XX集团</div>
       <div class="profile-timeline-subtitle">开发工程师</div>
       <div class="profile-timeline-description">
         <ul>

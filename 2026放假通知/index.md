@@ -5,7 +5,7 @@
 
 # 2026放假通知
 
-![2026年节假日安排](/pictures/note/2026-holidays-schedule.svg "2026年放假安排示意图 - 国务院办公厅官方发布")
+{{< image src="/pictures/note/2026-holidays-schedule.svg" alt="2026年节假日安排" caption="2026年放假安排示意图 - 国务院办公厅官方发布" >}}
 
 <!-- 引导语：可以写一句话说明本文要点 -->
 
