@@ -3,7 +3,7 @@
 
 # 🐘 在 Docker 中安装部署 PostgreSQL + pgvector
 
-本文介绍如何在 **Docker Compose** 环境中快速部署带有 **pgvector** 扩展的 PostgreSQL 数据库，  
+本文介绍如何在 **Docker Compose** 环境中快速部署带有 **pgvector** 扩展的 PostgreSQL 数据库，
 以便在本地或开发环境中支持向量检索与 AI 应用（如 LangChain、RAG、语义搜索等）。
 
 ---

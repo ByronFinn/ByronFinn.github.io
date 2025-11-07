@@ -1,0 +1,279 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Profile - 标签 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/tags/profile/</link><description>Profile - 标签 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>baifan@z.org (Finn)</managingEditor><webMaster>baifan@z.org (Finn)</webMaster><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/tags/profile/" rel="self" type="application/rss+xml"/><item><title>关于我</title><link>https://byronfinn.github.io/profile/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/profile/</guid><description><![CDATA[<link rel="stylesheet" href="/css/profile.css">
+<script src="/js/skill-animation.js" defer></script>
+<div class="profile-container">
+  <!-- 核心信息展示区 -->
+  <div class="profile-header">
+    <div class="profile-avatar-wrapper">
+      <img src="/pictures/avatar/angryCat.png" alt="Finn" class="profile-avatar">
+    </div>
+    <h1 class="profile-name">Finn</h1>
+    <p class="profile-title">后端开发工程师</p>
+    <p class="profile-bio">从地质学转向软件开发的跨界工程师，专注于高并发后端系统和AI技术应用</p>
+  </div>
+  <!-- 联系方式 -->
+<div class="profile-section profile-section-contact">
+  <div class="profile-section-header">
+    <span class="profile-section-icon">
+      📧
+    </span>
+    <h3 class="profile-section-title">联系方式</h3>
+  </div>
+  <div class="profile-section-content">
+
+  <div class="profile-contact">
+    <a href="mailto:baifan@z.org" class="profile-contact-item">
+      <span class="profile-contact-icon">📧</span>
+      <span>Email</span>
+    </a>
+    <a href="https://github.com/ByronFinn" target="_blank" class="profile-contact-item">
+      <span class="profile-contact-icon">💻</span>
+      <span>GitHub</span>
+    </a>
+    <a href="https://blog.baifan.site" target="_blank" class="profile-contact-item">
+      <span class="profile-contact-icon">📝</span>
+      <span>博客</span>
+    </a>
+  </div>
+  
+  </div>
+</div>
+  <!-- 核心技能概览 -->
+<div class="profile-section profile-section-default">
+  <div class="profile-section-header">
+    <span class="profile-section-icon">
+      🚀
+    </span>
+    <h3 class="profile-section-title">核心技能</h3>
+  </div>
+  <div class="profile-section-content">
+
+  <div class="skills-grid">
+    <!-- 编程语言 -->
+    <div class="skill-category">
+      <div class="skill-category-header">
+        <span class="skill-category-icon">💻</span>
+        <h3 class="skill-category-title">编程语言</h3>
+      </div>
+      <div class="skill-list">
+        <div class="skill-bar-container skill-type-bar" data-skill-name="Python">
+          <div class="skill-info">
+            <span class="skill-name">Python</span>
+            <span class="skill-percentage">85%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill animated"
+                 style="width: 0%;"
+                 data-percentage="85">
+              <span class="skill-bar-label" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-bar-container skill-type-bar" data-skill-name="Go">
+          <div class="skill-info">
+            <span class="skill-name">Go</span>
+            <span class="skill-percentage">85%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill animated"
+                 style="width: 0%;"
+                 data-percentage="85">
+              <span class="skill-bar-label" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-bar-container skill-type-bar" data-skill-name="Rust">
+          <div class="skill-info">
+            <span class="skill-name">Rust</span>
+            <span class="skill-percentage">15%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill animated"
+                 style="width: 0%;"
+                 data-percentage="15">
+              <span class="skill-bar-label" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 后端技术 -->
+    <div class="skill-category">
+      <div class="skill-category-header">
+        <span class="skill-category-icon">⚙️</span>
+        <h3 class="skill-category-title">Web框架</h3>
+      </div>
+      <div class="skill-list">
+        <div class="skill-bar-container skill-type-bar" data-skill-name="FastAPI/Flask/Django">
+          <div class="skill-info">
+            <span class="skill-name">FastAPI/Flask/Django</span>
+            <span class="skill-percentage">85%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill animated"
+                 style="width: 0%;"
+                 data-percentage="85">
+              <span class="skill-bar-label" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-bar-container skill-type-bar" data-skill-name="Gin/CloudWeGo">
+          <div class="skill-info">
+            <span class="skill-name">Gin/CloudWeGo</span>
+            <span class="skill-percentage">80%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill animated"
+                 style="width: 0%;"
+                 data-percentage="80">
+              <span class="skill-bar-label" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-bar-container skill-type-bar" data-skill-name="RESTful API">
+          <div class="skill-info">
+            <span class="skill-name">RESTful API</span>
+            <span class="skill-percentage">90%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill animated"
+                 style="width: 0%;"
+                 data-percentage="90">
+              <span class="skill-bar-label" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 数据库 -->
+    <div class="skill-category">
+      <div class="skill-category-header">
+        <span class="skill-category-icon">🗄️</span>
+        <h3 class="skill-category-title">数据库</h3>
+      </div>
+      <div class="skill-list">
+        <div class="skill-bar-container skill-type-bar" data-skill-name="MySQL/PG/OB">
+          <div class="skill-info">
+            <span class="skill-name">MySQL/PG/OB</span>
+            <span class="skill-percentage">80%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill animated"
+                 style="width: 0%;"
+                 data-percentage="80">
+              <span class="skill-bar-label" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-bar-container skill-type-bar" data-skill-name="Redis/MongoDB">
+          <div class="skill-info">
+            <span class="skill-name">Redis/MongoDB</span>
+            <span class="skill-percentage">75%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill animated"
+                 style="width: 0%;"
+                 data-percentage="75">
+              <span class="skill-bar-label" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-bar-container skill-type-bar" data-skill-name="ES">
+          <div class="skill-info">
+            <span class="skill-name">ES</span>
+            <span class="skill-percentage">50%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill animated"
+                 style="width: 0%;"
+                 data-percentage="50">
+              <span class="skill-bar-label" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DevOps -->
+    <div class="skill-category">
+      <div class="skill-category-header">
+        <span class="skill-category-icon">🚀</span>
+        <h3 class="skill-category-title">DevOps</h3>
+      </div>
+      <div class="skill-list">
+        <div class="skill-bar-container skill-type-bar" data-skill-name="Docker/K8S">
+          <div class="skill-info">
+            <span class="skill-name">Docker/K8S</span>
+            <span class="skill-percentage">80%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill animated"
+                 style="width: 0%;"
+                 data-percentage="80">
+              <span class="skill-bar-label" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-bar-container skill-type-bar" data-skill-name="Prometheus/Grafana/Loki">
+          <div class="skill-info">
+            <span class="skill-name">Prometheus/Grafana/Loki</span>
+            <span class="skill-percentage">70%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill animated"
+                 style="width: 0%;"
+                 data-percentage="70">
+              <span class="skill-bar-label" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-bar-container skill-type-bar" data-skill-name="Git/CI/CD">
+          <div class="skill-info">
+            <span class="skill-name">Git/CI/CD</span>
+            <span class="skill-percentage">70%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill animated"
+                 style="width: 0%;"
+                 data-percentage="70">
+              <span class="skill-bar-label" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  
+  </div>
+</div>
+  <!-- 教育背景 -->
+<div class="profile-section profile-section-default">
+  <div class="profile-section-header">
+    <span class="profile-section-icon">
+      🏛️
+    </span>
+    <h3 class="profile-section-title">🎓 教育背景</h3>
+  </div>
+  <div class="profile-section-content">
+
+  <div class="profile-timeline">
+    <div class="profile-timeline-item">
+      <div class="profile-timeline-date">2011 - 2015</div>
+      <div class="profile-timeline-title">中国地质大学(武汉)</div>
+      <div class="profile-timeline-subtitle">资源勘察工程(矿产调查与开发方向) | 本科</div>
+      <div class="profile-timeline-description">
+        <p><strong>核心课程：</strong>地质学基础、矿产勘查技术、地球物理学、工程地质学</p>]]></description></item></channel></rss>

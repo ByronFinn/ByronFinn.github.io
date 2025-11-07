@@ -1,0 +1,739 @@
+/* Profile页面专用样式 - 与DoIT 0.42主题风格统一 */
+
+/* ========== 全局变量 ========== */
+:root {
+  --profile-avatar-size: 8rem;
+  --profile-border-radius: 50%;
+  --profile-spacing: 2rem;
+  --profile-transition: all 0.3s ease;
+  --profile-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --profile-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 深色模式适配 */
+[data-theme="dark"] {
+  --profile-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --profile-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ========== Profile主容器 ========== */
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--profile-spacing);
+  background-color: var(--global-background-color);
+  color: var(--global-font-color);
+  font-family: var(--global-font-family);
+  line-height: 1.6;
+}
+
+/* ========== Profile头部 ========== */
+.profile-header {
+  text-align: center;
+  margin-bottom: calc(var(--profile-spacing) * 2);
+}
+
+.profile-avatar-wrapper {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.profile-avatar {
+  width: var(--profile-avatar-size);
+  height: var(--profile-avatar-size);
+  border-radius: var(--profile-border-radius);
+  object-fit: cover;
+  box-shadow: var(--profile-shadow);
+  transition: var(--profile-transition);
+  border: 4px solid var(--global-border-color);
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: var(--profile-shadow-hover);
+}
+
+.profile-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--global-font-color);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-title {
+  font-size: 1.25rem;
+  color: var(--global-link-hover-color);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.profile-bio {
+  font-size: 1.1rem;
+  color: var(--global-font-color);
+  opacity: 0.8;
+  max-width: 640px; /* 提升可读性的理想行宽 */
+  line-height: 1.75; /* 更舒适的段落行距 */
+  margin: 0 auto;
+  padding-inline: 1rem; /* 两侧留白，避免贴边 */
+  text-align: center; /* 确保简介文字居中显示 */
+}
+
+/* 兜底：若主题样式在更后方覆盖，使用更高优先级保证居中 */
+.profile-header .profile-bio {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* ========== Profile Section组件 ========== */
+.profile-section {
+  margin-bottom: var(--profile-spacing);
+  background-color: var(--global-background-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--global-border-color);
+  transition: var(--profile-transition);
+}
+
+.profile-section:hover {
+  box-shadow: var(--profile-shadow);
+  transform: translateY(-2px);
+}
+
+.profile-section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--global-border-color);
+}
+
+.profile-section-icon {
+  margin-right: 0.75rem;
+  color: var(--global-link-hover-color);
+  font-size: 1.25rem;
+}
+
+.profile-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--global-font-color);
+  margin: 0;
+}
+
+.profile-section-content {
+  color: var(--global-font-color);
+}
+
+/* ========== 折叠组件样式 ========== */
+.collapsible {
+  margin-bottom: 1rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--global-background-color);
+}
+
+.collapsible-trigger {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background-color: var(--global-background-color);
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--global-font-color);
+  transition: var(--profile-transition);
+  border-bottom: 1px solid transparent;
+}
+
+.collapsible-trigger:hover {
+  background-color: var(--global-hover-background-color);
+  border-bottom-color: var(--global-border-color);
+}
+
+.collapsible-title {
+  flex: 1;
+}
+
+.collapsible-icon {
+  transition: transform 0.3s ease;
+  color: var(--global-link-hover-color);
+}
+
+.collapsible.expanded .collapsible-icon {
+  transform: rotate(180deg);
+}
+
+.collapsible-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  max-height: 0;
+}
+
+.collapsible.expanded .collapsible-content {
+  max-height: none;
+}
+
+.collapsible-inner {
+  padding: 0 1.25rem 1.25rem;
+  color: var(--global-font-color);
+}
+
+/* ========== 技能网格布局 ========== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.skill-category {
+  background: linear-gradient(135deg, var(--global-background-color) 0%, var(--global-background-color) 100%);
+  border: 1px solid var(--global-border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.skill-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--global-link-hover-color), var(--global-link-color));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-category::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(45, 128, 154, 0.05) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.skill-category:hover::before {
+  transform: scaleX(1);
+}
+
+.skill-category:hover::after {
+  opacity: 1;
+}
+
+.skill-category:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: var(--global-link-hover-color);
+}
+
+[data-theme="dark"] .skill-category:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.skill-category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--global-border-color);
+  position: relative;
+}
+
+.skill-category-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--global-link-hover-color);
+  transition: width 0.3s ease;
+}
+
+.skill-category:hover .skill-category-header::after {
+  width: 100%;
+}
+
+.skill-category-icon {
+  font-size: 1.75rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.skill-category:hover .skill-category-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.skill-category-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--global-font-color);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ========== 技能条样式 ========== */
+.skill-bar-container {
+  margin-bottom: 0;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.skill-name {
+  font-weight: 500;
+  color: var(--global-font-color);
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.skill-bar-container:hover .skill-name {
+  color: var(--global-link-hover-color);
+}
+
+.skill-percentage {
+  color: var(--global-link-hover-color);
+  font-weight: 700;
+  font-size: 0.9rem;
+  min-width: 45px;
+  text-align: right;
+}
+
+.skill-bar-bg {
+  width: 100%;
+  height: 12px;
+  background-color: var(--global-border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--global-link-hover-color), var(--global-link-color));
+  border-radius: 6px;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* 根据技能等级显示不同的饱和度 */
+.skill-bar-fill[data-percentage="90"],
+.skill-bar-fill[data-percentage="95"],
+.skill-bar-fill[data-percentage="100"] {
+  filter: saturate(1.2) brightness(1.05);
+}
+
+.skill-bar-fill[data-percentage="80"],
+.skill-bar-fill[data-percentage="85"] {
+  filter: saturate(1.1) brightness(1.02);
+}
+
+.skill-bar-fill[data-percentage="70"],
+.skill-bar-fill[data-percentage="75"] {
+  filter: saturate(1.0) brightness(1.0);
+}
+
+.skill-bar-fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 6px 6px 0 0;
+}
+
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  animation: shimmer 2.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.skill-bar-label {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ========== 星级评分样式 ========== */
+.skill-stars {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.skill-star {
+  color: var(--global-link-hover-color);
+  font-size: 1.1rem;
+}
+
+.skill-star-full {
+  color: var(--global-link-hover-color);
+}
+
+.skill-star-half {
+  color: var(--global-link-hover-color);
+  opacity: 0.8;
+}
+
+.skill-star-empty {
+  color: var(--global-border-color);
+}
+
+.skill-star-rating {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--global-font-color);
+  font-weight: 500;
+}
+
+/* ========== 圆形进度条样式 ========== */
+.skill-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0.5rem;
+}
+
+.skill-circle-svg {
+  width: 120px;
+  height: 120px;
+  transform: rotate(-90deg);
+}
+
+.skill-circle-bg {
+  fill: none;
+  stroke: var(--global-border-color);
+  stroke-width: 8;
+}
+
+.skill-circle-progress {
+  fill: none;
+  stroke: var(--global-link-hover-color);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.5s ease-out;
+}
+
+.skill-circle-text {
+  position: absolute;
+  text-align: center;
+  transform: rotate(90deg);
+}
+
+.skill-circle-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--global-font-color);
+  display: block;
+}
+
+.skill-circle-unit {
+  font-size: 0.9rem;
+  color: var(--global-font-color);
+  opacity: 0.7;
+}
+
+/* ========== 联系方式样式 ========== */
+.profile-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.profile-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--global-background-color);
+  border: 1px solid var(--global-border-color);
+  border-radius: 25px;
+  text-decoration: none;
+  color: var(--global-font-color);
+  transition: var(--profile-transition);
+  font-weight: 500;
+}
+
+.profile-contact-item:hover {
+  background-color: var(--global-link-hover-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--profile-shadow);
+}
+
+.profile-contact-icon {
+  font-size: 1rem;
+}
+
+/* ========== 时间轴样式 ========== */
+.profile-timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.profile-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--global-border-color);
+}
+
+.profile-timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+}
+
+.profile-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2rem;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--global-link-hover-color);
+  border: 2px solid var(--global-background-color);
+  box-shadow: 0 0 0 2px var(--global-border-color);
+}
+
+.profile-timeline-date {
+  font-weight: 600;
+  color: var(--global-link-hover-color);
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.profile-timeline-title {
+  font-weight: 600;
+  color: var(--global-font-color);
+  margin-bottom: 0.25rem;
+}
+
+.profile-timeline-subtitle {
+  color: var(--global-font-color);
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.profile-timeline-description {
+  color: var(--global-font-color);
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* ========== 响应式设计 ========== */
+/* 平板电脑 - 显示2列 */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .skill-category {
+    padding: 1.25rem;
+  }
+}
+
+/* 手机和小屏幕 */
+@media (max-width: 767px) {
+  :root {
+    --profile-avatar-size: 6rem;
+    --profile-spacing: 1rem;
+  }
+
+  .profile-name {
+    font-size: 2rem;
+  }
+
+  .profile-title {
+    font-size: 1.1rem;
+  }
+
+  .profile-section {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .profile-contact {
+    gap: 0.5rem;
+  }
+
+  .profile-contact-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .skill-circle-svg {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skill-circle-value {
+    font-size: 1.25rem;
+  }
+
+  .profile-timeline {
+    padding-left: 1.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .skill-category {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --profile-avatar-size: 5rem;
+  }
+
+  .profile-name {
+    font-size: 1.75rem;
+  }
+
+  .profile-title {
+    font-size: 1rem;
+  }
+
+  .profile-bio {
+    font-size: 1rem;
+  }
+
+  .profile-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .profile-contact {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-contact-item {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .skill-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
+
+/* ========== 动画效果 ========== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.profile-section:nth-child(1) { animation-delay: 0.1s; }
+.profile-section:nth-child(2) { animation-delay: 0.2s; }
+.profile-section:nth-child(3) { animation-delay: 0.3s; }
+.profile-section:nth-child(4) { animation-delay: 0.4s; }
+.profile-section:nth-child(5) { animation-delay: 0.5s; }
+
+/* ========== 无障碍访问 ========== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .profile-section {
+    border-width: 2px;
+  }
+
+  .collapsible-trigger {
+    border-width: 2px;
+  }
+
+  .skill-bar-fill {
+    border: 1px solid var(--global-font-color);
+  }
+}

@@ -272,3 +272,4 @@ LLM     → Q/K/V    → Attention  → Context → Prompt → Quant → Knowled
 | **Weight** | 权重参数 | 模型中可学习的核心数值参数 |
 
 ---
+

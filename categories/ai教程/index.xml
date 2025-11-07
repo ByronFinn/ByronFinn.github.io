@@ -1,21 +1,4 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>AI教程 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/categories/ai%E6%95%99%E7%A8%8B/</link><description>AI教程 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>baifan@z.org (Finn)</managingEditor><webMaster>baifan@z.org (Finn)</webMaster><lastBuildDate>Thu, 06 Nov 2025 09:36:42 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/categories/ai%E6%95%99%E7%A8%8B/" rel="self" type="application/rss+xml"/><item><title>AI大模型完全指南：从零基础到Token与向量的深度解析</title><link>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B1/</link><pubDate>Wed, 05 Nov 2025 08:58:24 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B1/</guid><description><![CDATA[<h1 id="ai-教程从基础到深入的-ai-大模型指南" class="headerLink">
-    <a href="#ai-%e6%95%99%e7%a8%8b%e4%bb%8e%e5%9f%ba%e7%a1%80%e5%88%b0%e6%b7%b1%e5%85%a5%e7%9a%84-ai-%e5%a4%a7%e6%a8%a1%e5%9e%8b%e6%8c%87%e5%8d%97" class="header-mark"></a>AI 教程：从基础到深入的 AI 大模型指南</h1><p>本文将带你深入理解 AI 大模型的核心概念，从基本原理到向量表示，循序渐进地构建完整的知识体系。</p>
-<hr>
-<h2 id="一ai-应用开发基础" class="headerLink">
-    <a href="#%e4%b8%80ai-%e5%ba%94%e7%94%a8%e5%bc%80%e5%8f%91%e5%9f%ba%e7%a1%80" class="header-mark"></a>一、AI 应用开发基础</h2><h3 id="11-基本原理与概念" class="headerLink">
-    <a href="#11-%e5%9f%ba%e6%9c%ac%e5%8e%9f%e7%90%86%e4%b8%8e%e6%a6%82%e5%bf%b5" class="header-mark"></a>1.1 基本原理与概念</h3><h4 id="通俗理解" class="headerLink">
-    <a href="#%e9%80%9a%e4%bf%97%e7%90%86%e8%a7%a3" class="header-mark"></a>通俗理解</h4><ul>
-<li><strong>核心机制</strong>：根据上一个词预测下一个词，类似成语接龙</li>
-<li><strong>工作方式</strong>：通过 token 逐字生成输出</li>
-</ul>
-<h4 id="进阶理解" class="headerLink">
-    <a href="#%e8%bf%9b%e9%98%b6%e7%90%86%e8%a7%a3" class="header-mark"></a>进阶理解</h4><p>AI 大模型包含两个关键阶段：</p>]]></description></item><item><title>Transformer架构深度解析：注意力机制与AI大模型的核心技术</title><link>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B2/</link><pubDate>Wed, 05 Nov 2025 09:58:24 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B2/</guid><description><![CDATA[<h1 id="ai-教程---transformer" class="headerLink">
-    <a href="#ai-%e6%95%99%e7%a8%8b---transformer" class="header-mark"></a>AI 教程 - Transformer</h1><h2 id="-一transformer-是什么" class="headerLink">
-    <a href="#-%e4%b8%80transformer-%e6%98%af%e4%bb%80%e4%b9%88" class="header-mark"></a>🧩 一、Transformer 是什么？</h2><blockquote>
-  <p><strong>Transformer 是一种深度学习架构，用来处理序列（例如文字、语音、代码等）信息。</strong></p>
-
-</blockquote><p>它最早由 Google 在 2017 年的论文《Attention Is All You Need（注意力机制就是全部）》中提出。</p>]]></description></item><item><title>Prompt Engineering完全指南：从提示工程到上下文工程的实战教程</title><link>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B3/</link><pubDate>Wed, 05 Nov 2025 09:58:24 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B3/</guid><description><![CDATA[<h1 id="ai-教程prompt-engineering" class="headerLink">
-    <a href="#ai-%e6%95%99%e7%a8%8bprompt-engineering" class="header-mark"></a>AI 教程：Prompt Engineering</h1><p>提示工程主要关注提示词的设计、优化与策略制定，致力于帮助用户更高效地调动大语言模型的能力，进而推动其在各类实际场景和研究领域中的应用。</p>]]></description></item><item><title>CPU/GPU 与大模型训练</title><link>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B4/</link><pubDate>Thu, 06 Nov 2025 09:36:42 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B4/</guid><description><![CDATA[<h1 id="ai-教程-cpugpu-与大模型训练" class="headerLink">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>AI教程 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/categories/ai%E6%95%99%E7%A8%8B/</link><description>AI教程 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>baifan@z.org (Finn)</managingEditor><webMaster>baifan@z.org (Finn)</webMaster><lastBuildDate>Thu, 06 Nov 2025 09:36:42 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/categories/ai%E6%95%99%E7%A8%8B/" rel="self" type="application/rss+xml"/><item><title>CPU/GPU 与大模型训练</title><link>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B4/</link><pubDate>Thu, 06 Nov 2025 09:36:42 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B4/</guid><description><![CDATA[<h1 id="ai-教程-cpugpu-与大模型训练" class="headerLink">
     <a href="#ai-%e6%95%99%e7%a8%8b-cpugpu-%e4%b8%8e%e5%a4%a7%e6%a8%a1%e5%9e%8b%e8%ae%ad%e7%bb%83" class="header-mark"></a>AI 教程: CPU/GPU 与大模型训练</h1><blockquote>
   <p>这是一份高浓缩资料：结构清晰、要点到位，涵盖 CPU/GPU 基础、张量与数值精度、CUDA 与 PyTorch 实操、硬件选型、常见问答与排错清单。</p>
 
@@ -88,7 +71,9 @@
 <li><strong>2D</strong>：矩阵（如 3×3 表）</li>
 <li><strong>3D+</strong>：仍称张量（如 <code>batch×channel×height×width</code>）</li>
 </ul>
-<p><strong>图像例子</strong>：一批 32 张 224×224 RGB 图 → <code>32×3×224×224</code>（或 <code>N×H×W×C</code>，视框架而定）。</p>]]></description></item><item><title>AI专业名词解释表：270+术语完全指南与AI技术体系词典</title><link>https://byronfinn.github.io/ai%E4%B8%93%E4%B8%9A%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E8%A1%A8/</link><pubDate>Wed, 05 Nov 2025 09:58:24 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E4%B8%93%E4%B8%9A%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E8%A1%A8/</guid><description><![CDATA[<h1 id="ai专业名词解释表" class="headerLink">
+<p><strong>图像例子</strong>：一批 32 张 224×224 RGB 图 → <code>32×3×224×224</code>（或 <code>N×H×W×C</code>，视框架而定）。</p>]]></description></item><item><title>RAG系统完全指南——从零搭建本地检索增强生成系统</title><link>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B5/</link><pubDate>Thu, 06 Nov 2025 09:36:42 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B5/</guid><description><![CDATA[<h1 id="用-langchain--ollama--pgvector-搭建本地-rag从-0-到-1-的完整实战含-uv-依赖管理--面试指南" class="headerLink">
+    <a href="#%e7%94%a8-langchain--ollama--pgvector-%e6%90%ad%e5%bb%ba%e6%9c%ac%e5%9c%b0-rag%e4%bb%8e-0-%e5%88%b0-1-%e7%9a%84%e5%ae%8c%e6%95%b4%e5%ae%9e%e6%88%98%e5%90%ab-uv-%e4%be%9d%e8%b5%96%e7%ae%a1%e7%90%86--%e9%9d%a2%e8%af%95%e6%8c%87%e5%8d%97" class="header-mark"></a>用 LangChain + Ollama + pgvector 搭建本地 RAG：从 0 到 1 的完整实战（含 uv 依赖管理 &amp; 面试指南）</h1><blockquote>
+  <p>本文是可直接落地的 <strong>Markdown 文档</strong>。按文档自上而下执行即可从零搭建出一个本地 RAG（检索增强生成）系统，并理解关键概念与代码。所有核心脚本都附带中文注释，便于学习与面试复盘。</p>]]></description></item><item><title>AI专业名词解释表：270+术语完全指南与AI技术体系词典</title><link>https://byronfinn.github.io/ai%E4%B8%93%E4%B8%9A%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E8%A1%A8/</link><pubDate>Wed, 05 Nov 2025 09:58:24 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E4%B8%93%E4%B8%9A%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E8%A1%A8/</guid><description><![CDATA[<h1 id="ai专业名词解释表" class="headerLink">
     <a href="#ai%e4%b8%93%e4%b8%9a%e5%90%8d%e8%af%8d%e8%a7%a3%e9%87%8a%e8%a1%a8" class="header-mark"></a>AI专业名词解释表</h1><p>本文档整理了AI大模型领域的核心专业术语，从基础概念到高级技术架构，帮助您系统性地理解人工智能技术体系。</p>
 <hr>
 <h2 id="-基础概念篇" class="headerLink">
@@ -713,6 +698,21 @@
       aria-hidden="true">
           <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
-          <p class="tw-select-none !tw-my-1">text</p>]]></description></item><item><title>RAG系统完全指南——从零搭建本地检索增强生成系统</title><link>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B5/</link><pubDate>Thu, 06 Nov 2025 09:36:42 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B5/</guid><description><![CDATA[<h1 id="用-langchain--ollama--pgvector-搭建本地-rag从-0-到-1-的完整实战含-uv-依赖管理--面试指南" class="headerLink">
-    <a href="#%e7%94%a8-langchain--ollama--pgvector-%e6%90%ad%e5%bb%ba%e6%9c%ac%e5%9c%b0-rag%e4%bb%8e-0-%e5%88%b0-1-%e7%9a%84%e5%ae%8c%e6%95%b4%e5%ae%9e%e6%88%98%e5%90%ab-uv-%e4%be%9d%e8%b5%96%e7%ae%a1%e7%90%86--%e9%9d%a2%e8%af%95%e6%8c%87%e5%8d%97" class="header-mark"></a>用 LangChain + Ollama + pgvector 搭建本地 RAG：从 0 到 1 的完整实战（含 uv 依赖管理 &amp; 面试指南）</h1><blockquote>
-  <p>本文是可直接落地的 <strong>Markdown 文档</strong>。按文档自上而下执行即可从零搭建出一个本地 RAG（检索增强生成）系统，并理解关键概念与代码。所有核心脚本都附带中文注释，便于学习与面试复盘。</p>]]></description></item></channel></rss>
+          <p class="tw-select-none !tw-my-1">text</p>]]></description></item><item><title>Prompt Engineering完全指南：从提示工程到上下文工程的实战教程</title><link>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B3/</link><pubDate>Wed, 05 Nov 2025 09:58:24 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B3/</guid><description><![CDATA[<h1 id="ai-教程prompt-engineering" class="headerLink">
+    <a href="#ai-%e6%95%99%e7%a8%8bprompt-engineering" class="header-mark"></a>AI 教程：Prompt Engineering</h1><p>提示工程主要关注提示词的设计、优化与策略制定，致力于帮助用户更高效地调动大语言模型的能力，进而推动其在各类实际场景和研究领域中的应用。</p>]]></description></item><item><title>Transformer架构深度解析：注意力机制与AI大模型的核心技术</title><link>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B2/</link><pubDate>Wed, 05 Nov 2025 09:58:24 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B2/</guid><description><![CDATA[<h1 id="ai-教程---transformer" class="headerLink">
+    <a href="#ai-%e6%95%99%e7%a8%8b---transformer" class="header-mark"></a>AI 教程 - Transformer</h1><h2 id="-一transformer-是什么" class="headerLink">
+    <a href="#-%e4%b8%80transformer-%e6%98%af%e4%bb%80%e4%b9%88" class="header-mark"></a>🧩 一、Transformer 是什么？</h2><blockquote>
+  <p><strong>Transformer 是一种深度学习架构，用来处理序列（例如文字、语音、代码等）信息。</strong></p>
+
+</blockquote><p>它最早由 Google 在 2017 年的论文《Attention Is All You Need（注意力机制就是全部）》中提出。</p>]]></description></item><item><title>AI大模型完全指南：从零基础到Token与向量的深度解析</title><link>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B1/</link><pubDate>Wed, 05 Nov 2025 08:58:24 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B1/</guid><description><![CDATA[<h1 id="ai-教程从基础到深入的-ai-大模型指南" class="headerLink">
+    <a href="#ai-%e6%95%99%e7%a8%8b%e4%bb%8e%e5%9f%ba%e7%a1%80%e5%88%b0%e6%b7%b1%e5%85%a5%e7%9a%84-ai-%e5%a4%a7%e6%a8%a1%e5%9e%8b%e6%8c%87%e5%8d%97" class="header-mark"></a>AI 教程：从基础到深入的 AI 大模型指南</h1><p>本文将带你深入理解 AI 大模型的核心概念，从基本原理到向量表示，循序渐进地构建完整的知识体系。</p>
+<hr>
+<h2 id="一ai-应用开发基础" class="headerLink">
+    <a href="#%e4%b8%80ai-%e5%ba%94%e7%94%a8%e5%bc%80%e5%8f%91%e5%9f%ba%e7%a1%80" class="header-mark"></a>一、AI 应用开发基础</h2><h3 id="11-基本原理与概念" class="headerLink">
+    <a href="#11-%e5%9f%ba%e6%9c%ac%e5%8e%9f%e7%90%86%e4%b8%8e%e6%a6%82%e5%bf%b5" class="header-mark"></a>1.1 基本原理与概念</h3><h4 id="通俗理解" class="headerLink">
+    <a href="#%e9%80%9a%e4%bf%97%e7%90%86%e8%a7%a3" class="header-mark"></a>通俗理解</h4><ul>
+<li><strong>核心机制</strong>：根据上一个词预测下一个词，类似成语接龙</li>
+<li><strong>工作方式</strong>：通过 token 逐字生成输出</li>
+</ul>
+<h4 id="进阶理解" class="headerLink">
+    <a href="#%e8%bf%9b%e9%98%b6%e7%90%86%e8%a7%a3" class="header-mark"></a>进阶理解</h4><p>AI 大模型包含两个关键阶段：</p>]]></description></item></channel></rss>
