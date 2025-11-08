@@ -1,0 +1,632 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>学习笔记 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link><description>学习笔记 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>baifan@z.org (Finn)</managingEditor><webMaster>baifan@z.org (Finn)</webMaster><lastBuildDate>Wed, 05 Nov 2025 09:58:24 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml"/><item><title>AI专业名词解释表：270+术语完全指南与AI技术体系词典</title><link>https://byronfinn.github.io/ai%E4%B8%93%E4%B8%9A%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E8%A1%A8/</link><pubDate>Wed, 05 Nov 2025 09:58:24 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E4%B8%93%E4%B8%9A%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E8%A1%A8/</guid><description><![CDATA[<h1 id="ai专业名词解释表" class="headerLink">
+    <a href="#ai%e4%b8%93%e4%b8%9a%e5%90%8d%e8%af%8d%e8%a7%a3%e9%87%8a%e8%a1%a8" class="header-mark"></a>AI专业名词解释表</h1><p>本文档整理了AI大模型领域的核心专业术语，从基础概念到高级技术架构，帮助您系统性地理解人工智能技术体系。</p>
+<hr>
+<h2 id="-基础概念篇" class="headerLink">
+    <a href="#-%e5%9f%ba%e7%a1%80%e6%a6%82%e5%bf%b5%e7%af%87" class="header-mark"></a>📚 基础概念篇</h2><table>
+  <thead>
+      <tr>
+          <th>名词</th>
+          <th>专业解释</th>
+          <th>通俗解释</th>
+          <th>举例说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>AGI（通用人工智能）</strong></td>
+          <td>Artificial General Intelligence，具备人类水平智能的AI系统</td>
+          <td>能像人一样思考、学习、创造的全能AI</td>
+          <td>一个能同时写诗、编程、做饭、聊天的机器人</td>
+      </tr>
+      <tr>
+          <td><strong>LLM（大语言模型）</strong></td>
+          <td>Large Language Model，基于海量数据训练的大型神经网络模型</td>
+          <td>能理解和生成人类语言的&quot;超级大脑&quot;</td>
+          <td>GPT-4、Claude、文心一言等都是LLM</td>
+      </tr>
+      <tr>
+          <td><strong>训练</strong></td>
+          <td>通过大量数据训练神经网络参数的过程</td>
+          <td>AI的&quot;学习阶段&quot;，像人读书积累知识</td>
+          <td>用互联网所有文本训练一个模型学会语言</td>
+      </tr>
+      <tr>
+          <td><strong>推理</strong></td>
+          <td>训练完成的模型根据输入生成输出的过程</td>
+          <td>AI的&quot;应用阶段&quot;，像人运用所学知识回答问题</td>
+          <td>输入问题后模型生成回答的过程</td>
+      </tr>
+      <tr>
+          <td><strong>Token（词元）</strong></td>
+          <td>模型处理文本的最小单元，通过分词算法切分的文本片段</td>
+          <td>AI语言的&quot;字粒子&quot;，模型一个一个处理</td>
+          <td>&ldquo;我喜欢苹果&rdquo; → [&ldquo;我&rdquo;, &ldquo;喜欢&rdquo;, &ldquo;苹果&rdquo;]</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-架构技术篇" class="headerLink">
+    <a href="#-%e6%9e%b6%e6%9e%84%e6%8a%80%e6%9c%af%e7%af%87" class="header-mark"></a>🏗️ 架构技术篇</h2><table>
+  <thead>
+      <tr>
+          <th>名词</th>
+          <th>专业解释</th>
+          <th>通俗解释</th>
+          <th>举例说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Transformer</strong></td>
+          <td>基于自注意力机制的深度学习架构，2017年Google提出</td>
+          <td>现代AI的&quot;神经骨架&quot;，让模型高效理解语言</td>
+          <td>GPT、BERT等所有大模型都基于Transformer</td>
+      </tr>
+      <tr>
+          <td><strong>Encoder（编码器）</strong></td>
+          <td>将输入序列编码为语义表示的神经网络组件</td>
+          <td>AI的&quot;理解器&quot;，把文字变成机器懂的向量</td>
+          <td>BERT使用Encoder做文本理解任务</td>
+      </tr>
+      <tr>
+          <td><strong>Decoder（解码器）</strong></td>
+          <td>根据上下文逐token生成输出的神经网络组件</td>
+          <td>AI的&quot;写作器&quot;，根据理解生成回答</td>
+          <td>GPT系列都是Decoder-only模型</td>
+      </tr>
+      <tr>
+          <td><strong>Self-Attention（自注意力）</strong></td>
+          <td>计算序列中每个元素与其他元素相关性的机制</td>
+          <td>AI自动&quot;关注重点&quot;，像人阅读时抓重点</td>
+          <td>&ldquo;银行&quot;在&quot;存钱&quot;中关注&quot;钱&rdquo;，在&quot;钓鱼&quot;中关注&quot;河&quot;</td>
+      </tr>
+      <tr>
+          <td><strong>Multi-Head Attention（多头注意力）</strong></td>
+          <td>并行多个自注意力机制，捕获不同类型的依赖关系</td>
+          <td>AI从多个角度同时理解文本</td>
+          <td>一个头关注语法，另一个头关注语义</td>
+      </tr>
+      <tr>
+          <td><strong>Positional Encoding（位置编码）</strong></td>
+          <td>为每个token添加位置信息的向量表示</td>
+          <td>让模型知道&quot;谁在前谁在后&quot;</td>
+          <td>&ldquo;我爱你&quot;与&quot;你爱我&quot;意义不同</td>
+      </tr>
+      <tr>
+          <td><strong>Query（查询向量）</strong></td>
+          <td>主动查询相关信息的向量，表示当前词需要什么信息</td>
+          <td>&ldquo;我要找什么&quot;的数字表达</td>
+          <td>&ldquo;苹果&quot;查询相关的味道、颜色等属性</td>
+      </tr>
+      <tr>
+          <td><strong>Key（键向量）</strong></td>
+          <td>被查询信息的标识向量，表示每个词能提供什么信息</td>
+          <td>&ldquo;我能提供什么&quot;的标签</td>
+          <td>&ldquo;甜&quot;作为味道特征的Key，等待被查询</td>
+      </tr>
+      <tr>
+          <td><strong>Value（值向量）</strong></td>
+          <td>实际内容的表示向量，包含词的真实语义信息</td>
+          <td>&ldquo;我的具体内容&quot;的数值化</td>
+          <td>&ldquo;甜&quot;的实际语义表示[0.8, 0.2, -0.1]</td>
+      </tr>
+      <tr>
+          <td><strong>Attention Weight（注意力权重）</strong></td>
+          <td>表示关注程度的重要性分数，通常通过softmax归一化</td>
+          <td>&ldquo;关注程度&quot;的数值化</td>
+          <td>0.8表示强烈关注，0.1表示弱关注，所有权重和为1</td>
+      </tr>
+      <tr>
+          <td><strong>Cross-Attention（交叉注意力）</strong></td>
+          <td>不同序列间的注意力机制，Query来自一个序列，Key/Value来自另一个序列</td>
+          <td>跨模态信息交互</td>
+          <td>图文匹配中文字Query关注图像Key/Value</td>
+      </tr>
+      <tr>
+          <td><strong>Causal Attention（因果注意力）</strong></td>
+          <td>只能关注当前位置及之前内容的注意力机制，防止未来信息泄露</td>
+          <td>&ldquo;只能向前看&quot;的注意力</td>
+          <td>GPT生成时第5个词只能看前4个词</td>
+      </tr>
+      <tr>
+          <td><strong>Softmax Function</strong></td>
+          <td>将任意实数向量转换为概率分布的激活函数</td>
+          <td>转换为&quot;重要性百分比&rdquo;</td>
+          <td><code>[2,1,0] → [0.67,0.24,0.09]</code>，保持相对大小关系</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-数学表示篇" class="headerLink">
+    <a href="#-%e6%95%b0%e5%ad%a6%e8%a1%a8%e7%a4%ba%e7%af%87" class="header-mark"></a>🔢 数学表示篇</h2><table>
+  <thead>
+      <tr>
+          <th>名词</th>
+          <th>专业解释</th>
+          <th>通俗解释</th>
+          <th>举例说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Vector（向量）</strong></td>
+          <td>具有大小和方向的数学对象，一组有序数字</td>
+          <td>事物的&quot;数字身份证&rdquo;，用数字描述特征</td>
+          <td><code>[25, 180, 70]</code>可表示一个人的年龄、身高、体重</td>
+      </tr>
+      <tr>
+          <td><strong>Embedding（嵌入）</strong></td>
+          <td>将离散符号映射到连续向量空间的技术</td>
+          <td>把文字变成&quot;数字坐标&rdquo;</td>
+          <td><code>&quot;国王&quot;→[0.25, -0.12, 0.78, ...]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Query / Key / Value</strong></td>
+          <td>自注意力机制中的三个核心向量矩阵，分别代表查询需求、标识信息、实际内容</td>
+          <td>Query=我要什么，Key=我能提供什么，Value=我的具体内容</td>
+          <td><code>Query=[0.1,0.2]</code>查询味道，<code>Key=[0.8,0.1]</code>标识甜味，<code>Value=[0.9,0.05]</code>甜味的实际表示</td>
+      </tr>
+      <tr>
+          <td><strong>Feed-Forward Network（前馈网络）</strong></td>
+          <td>对每个位置独立进行非线性变换</td>
+          <td>深化每个词的理解</td>
+          <td>&ldquo;春天&quot;进一步联想到&quot;温暖、生长&rdquo;</td>
+      </tr>
+      <tr>
+          <td><strong>Layer Normalization（层归一化）</strong></td>
+          <td>标准化层输入</td>
+          <td>训练&quot;稳定器&rdquo;</td>
+          <td>防止梯度爆炸或发散</td>
+      </tr>
+      <tr>
+          <td><strong>Residual Connection（残差连接）</strong></td>
+          <td>跨层连接，保留原始信息</td>
+          <td>信息&quot;直通车&rdquo;，防止丢失</td>
+          <td>类似捷径路径避免深层网络退化</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-处理流程篇" class="headerLink">
+    <a href="#-%e5%a4%84%e7%90%86%e6%b5%81%e7%a8%8b%e7%af%87" class="header-mark"></a>🔄 处理流程篇</h2><table>
+  <thead>
+      <tr>
+          <th>名词</th>
+          <th>专业解释</th>
+          <th>通俗解释</th>
+          <th>举例说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Tokenizer（分词器）</strong></td>
+          <td>将文本转换为token序列</td>
+          <td>&ldquo;文字切菜刀&rdquo;</td>
+          <td><code>&quot;Hello world&quot; → [&quot;Hello&quot;, &quot; world&quot;]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Context Window（上下文窗口）</strong></td>
+          <td>模型能处理的最大token数量限制</td>
+          <td>AI的&quot;记忆力上限&rdquo;</td>
+          <td>GPT-4有128K上下文</td>
+      </tr>
+      <tr>
+          <td><strong>Decoding（解码）</strong></td>
+          <td>根据概率分布逐token生成文本</td>
+          <td>AI&quot;写字过程&rdquo;</td>
+          <td>从最可能的词开始生成</td>
+      </tr>
+      <tr>
+          <td><strong>Temperature（温度参数）</strong></td>
+          <td>控制生成随机性的参数</td>
+          <td>&ldquo;创意调节器&rdquo;</td>
+          <td>高温更有创意，低温更稳健</td>
+      </tr>
+      <tr>
+          <td><strong>Top-p采样</strong></td>
+          <td>基于累积概率的采样策略</td>
+          <td>&ldquo;精华筛选器&rdquo;</td>
+          <td>只考虑累计概率达到90%的候选词</td>
+      </tr>
+      <tr>
+          <td><strong>Max Tokens（最大令牌数）</strong></td>
+          <td>限制生成输出长度</td>
+          <td>&ldquo;字数限制器&rdquo;</td>
+          <td>防止AI回答过长</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-工程实践篇" class="headerLink">
+    <a href="#-%e5%b7%a5%e7%a8%8b%e5%ae%9e%e8%b7%b5%e7%af%87" class="header-mark"></a>🛠️ 工程实践篇</h2><table>
+  <thead>
+      <tr>
+          <th>名词</th>
+          <th>专业解释</th>
+          <th>通俗解释</th>
+          <th>举例说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>RAG（检索增强生成）</strong></td>
+          <td>结合检索和生成的AI方法</td>
+          <td>&ldquo;开卷考试&quot;式AI</td>
+          <td>先查资料再回答问题</td>
+      </tr>
+      <tr>
+          <td><strong>Prompt Engineering（提示工程）</strong></td>
+          <td>设计优化提示词的技术</td>
+          <td>&ldquo;说话艺术&rdquo;</td>
+          <td>让AI更好理解需求</td>
+      </tr>
+      <tr>
+          <td><strong>Fine-tuning（微调）</strong></td>
+          <td>在预训练模型上进行特定任务训练</td>
+          <td>&ldquo;定向培训&rdquo;</td>
+          <td>让通用模型变成医疗助手</td>
+      </tr>
+      <tr>
+          <td><strong>BPE（字节对编码）</strong></td>
+          <td>一种常见分词算法</td>
+          <td>&ldquo;文字压缩术&rdquo;</td>
+          <td><code>&quot;unhappiness&quot; → [&quot;un&quot;,&quot;happi&quot;,&quot;ness&quot;]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Detokenization（反分词）</strong></td>
+          <td>将token序列还原为可读文本</td>
+          <td>&ldquo;拼字还原&rdquo;</td>
+          <td><code>[&quot;我&quot;,&quot;喜欢&quot;,&quot;苹果&quot;]→&quot;我喜欢苹果&quot;</code></td>
+      </tr>
+      <tr>
+          <td><strong>Streaming（流式输出）</strong></td>
+          <td>逐token实时生成输出</td>
+          <td>&ldquo;打字机效果&rdquo;</td>
+          <td>聊天机器人边输出边思考</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-传统模型对比篇" class="headerLink">
+    <a href="#-%e4%bc%a0%e7%bb%9f%e6%a8%a1%e5%9e%8b%e5%af%b9%e6%af%94%e7%af%87" class="header-mark"></a>🧠 传统模型对比篇</h2><table>
+  <thead>
+      <tr>
+          <th>名词</th>
+          <th>专业解释</th>
+          <th>通俗解释</th>
+          <th>举例说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>RNN（循环神经网络）</strong></td>
+          <td>逐步处理序列数据的神经网络</td>
+          <td>&ldquo;逐字阅读AI&rdquo;</td>
+          <td>翻译<code>&quot;我爱你&quot;</code>逐词处理</td>
+      </tr>
+      <tr>
+          <td><strong>LSTM（长短期记忆网络）</strong></td>
+          <td>改进型RNN，解决长期依赖问题</td>
+          <td>&ldquo;记忆力更强&rdquo;</td>
+          <td>能记住开头内容</td>
+      </tr>
+      <tr>
+          <td><strong>CNN（卷积神经网络）</strong></td>
+          <td>擅长处理图像模式的神经网络</td>
+          <td>&ldquo;图像专家&rdquo;</td>
+          <td>识别猫狗人脸</td>
+      </tr>
+      <tr>
+          <td><strong>Encoder-Decoder架构</strong></td>
+          <td>同时包含理解与生成模块的模型</td>
+          <td>&ldquo;全能型AI&rdquo;</td>
+          <td>机器翻译模型</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-应用场景篇" class="headerLink">
+    <a href="#-%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af%e7%af%87" class="header-mark"></a>📊 应用场景篇</h2><table>
+  <thead>
+      <tr>
+          <th>名词</th>
+          <th>专业解释</th>
+          <th>通俗解释</th>
+          <th>举例说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>对话产品</strong></td>
+          <td>面向用户的AI应用接口</td>
+          <td>&ldquo;AI聊天壳&rdquo;</td>
+          <td>ChatGPT、Claude</td>
+      </tr>
+      <tr>
+          <td><strong>API调用</strong></td>
+          <td>程序间通信接口</td>
+          <td>&ldquo;AI电话线&rdquo;</td>
+          <td>程序调用OpenAI API</td>
+      </tr>
+      <tr>
+          <td><strong>上下文管理</strong></td>
+          <td>维护对话历史的技术</td>
+          <td>&ldquo;AI记忆力&rdquo;</td>
+          <td>聊天机器人记住你说过的话</td>
+      </tr>
+      <tr>
+          <td><strong>多轮对话</strong></td>
+          <td>连续人机交互模式</td>
+          <td>&ldquo;连续聊天&rdquo;</td>
+          <td>先问天气，再问穿衣</td>
+      </tr>
+      <tr>
+          <td><strong>工具调用（Function Calling）</strong></td>
+          <td>模型可调用外部API执行任务</td>
+          <td>&ldquo;AI动手能力&rdquo;</td>
+          <td>AI自动查天气或搜索资料</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-模型优化与训练技巧篇" class="headerLink">
+    <a href="#-%e6%a8%a1%e5%9e%8b%e4%bc%98%e5%8c%96%e4%b8%8e%e8%ae%ad%e7%bb%83%e6%8a%80%e5%b7%a7%e7%af%87" class="header-mark"></a>🧩 模型优化与训练技巧篇</h2><table>
+  <thead>
+      <tr>
+          <th>名词</th>
+          <th>专业解释</th>
+          <th>通俗解释</th>
+          <th>举例说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>LoRA（低秩适配）</strong></td>
+          <td>通过低秩矩阵微调模型参数</td>
+          <td>&ldquo;轻量级微调&rdquo;</td>
+          <td>让LLM快速适应新领域</td>
+      </tr>
+      <tr>
+          <td><strong>Quantization（量化）</strong></td>
+          <td>用低精度表示模型参数</td>
+          <td>&ldquo;模型瘦身&rdquo;</td>
+          <td>FP32→INT8加速推理</td>
+      </tr>
+      <tr>
+          <td><strong>Pruning（剪枝）</strong></td>
+          <td>删除冗余神经元或连接</td>
+          <td>&ldquo;修枝整形&rdquo;</td>
+          <td>去除无效参数</td>
+      </tr>
+      <tr>
+          <td><strong>Distillation（知识蒸馏）</strong></td>
+          <td>用大模型指导小模型学习</td>
+          <td>&ldquo;老师带学生&rdquo;</td>
+          <td>GPT-4教小模型</td>
+      </tr>
+      <tr>
+          <td><strong>Checkpoint（检查点）</strong></td>
+          <td>模型训练中保存的中间状态</td>
+          <td>&ldquo;训练存档点&rdquo;</td>
+          <td>防止断电丢失进度</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-向量检索与知识集成篇" class="headerLink">
+    <a href="#-%e5%90%91%e9%87%8f%e6%a3%80%e7%b4%a2%e4%b8%8e%e7%9f%a5%e8%af%86%e9%9b%86%e6%88%90%e7%af%87" class="header-mark"></a>🔍 向量检索与知识集成篇</h2><table>
+  <thead>
+      <tr>
+          <th>名词</th>
+          <th>专业解释</th>
+          <th>通俗解释</th>
+          <th>举例说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Embedding Model（向量模型）</strong></td>
+          <td>将文本转为语义向量的模型</td>
+          <td>&ldquo;语义坐标机&rdquo;</td>
+          <td>text-embedding-3-large</td>
+      </tr>
+      <tr>
+          <td><strong>Vector Database（向量数据库）</strong></td>
+          <td>支持向量检索的数据库</td>
+          <td>&ldquo;语义仓库&rdquo;</td>
+          <td>Milvus、Pinecone、FAISS</td>
+      </tr>
+      <tr>
+          <td><strong>Cosine Similarity（余弦相似度）</strong></td>
+          <td>衡量两个向量方向相似度</td>
+          <td>&ldquo;语义相似度计&rdquo;</td>
+          <td><code>&quot;猫在睡觉&quot;≈&quot;猫咪休息中&quot;</code></td>
+      </tr>
+      <tr>
+          <td><strong>Knowledge Graph（知识图谱）</strong></td>
+          <td>用节点和关系存储知识结构</td>
+          <td>&ldquo;知识地图&rdquo;</td>
+          <td><code>&quot;苹果→是→水果&quot;</code></td>
+      </tr>
+      <tr>
+          <td><strong>Hybrid Search（混合检索）</strong></td>
+          <td>结合语义检索与关键词匹配</td>
+          <td>&ldquo;双保险搜索&rdquo;</td>
+          <td>同时检索<code>&quot;猫&quot;</code>和<code>&quot;宠物动物&quot;</code></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-多模态与智能体篇" class="headerLink">
+    <a href="#-%e5%a4%9a%e6%a8%a1%e6%80%81%e4%b8%8e%e6%99%ba%e8%83%bd%e4%bd%93%e7%af%87" class="header-mark"></a>🧩 多模态与智能体篇</h2><table>
+  <thead>
+      <tr>
+          <th>名词</th>
+          <th>专业解释</th>
+          <th>通俗解释</th>
+          <th>举例说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Multimodal Model（多模态模型）</strong></td>
+          <td>同时处理文本、图像、音频等模态</td>
+          <td>&ldquo;全感官AI&rdquo;</td>
+          <td>GPT-4V、Gemini</td>
+      </tr>
+      <tr>
+          <td><strong>VLM（视觉语言模型）</strong></td>
+          <td>Vision-Language Model</td>
+          <td>&ldquo;会看图的AI&rdquo;</td>
+          <td>看图问答AI</td>
+      </tr>
+      <tr>
+          <td><strong>Speech Recognition（语音识别）</strong></td>
+          <td>将语音转文字</td>
+          <td>&ldquo;听写AI&rdquo;</td>
+          <td>语音输入法</td>
+      </tr>
+      <tr>
+          <td><strong>TTS（文本转语音）</strong></td>
+          <td>将文字转语音</td>
+          <td>&ldquo;AI播音员&rdquo;</td>
+          <td>AI读出回答</td>
+      </tr>
+      <tr>
+          <td><strong>AI Agent（智能体）</strong></td>
+          <td>具备自主行动与决策能力的AI</td>
+          <td>&ldquo;能动的AI助手&rdquo;</td>
+          <td>Devin、AutoGPT</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-模型评估与安全篇" class="headerLink">
+    <a href="#-%e6%a8%a1%e5%9e%8b%e8%af%84%e4%bc%b0%e4%b8%8e%e5%ae%89%e5%85%a8%e7%af%87" class="header-mark"></a>⚙️ 模型评估与安全篇</h2><table>
+  <thead>
+      <tr>
+          <th>名词</th>
+          <th>专业解释</th>
+          <th>通俗解释</th>
+          <th>举例说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Hallucination（幻觉）</strong></td>
+          <td>模型生成虚假信息</td>
+          <td>&ldquo;一本正经胡说八道&rdquo;</td>
+          <td>编造论文或事实</td>
+      </tr>
+      <tr>
+          <td><strong>Alignment（对齐）</strong></td>
+          <td>模型与人类价值观对齐</td>
+          <td>&ldquo;价值观调教&rdquo;</td>
+          <td>RLHF调教模型</td>
+      </tr>
+      <tr>
+          <td><strong>RLHF（人类反馈强化学习）</strong></td>
+          <td>用人类偏好优化模型</td>
+          <td>&ldquo;人教AI说话&rdquo;</td>
+          <td>ChatGPT的训练方式</td>
+      </tr>
+      <tr>
+          <td><strong>Red Teaming（红队测试）</strong></td>
+          <td>对抗性测试模型安全</td>
+          <td>&ldquo;安全渗透测试&rdquo;</td>
+          <td>测试模型是否泄密</td>
+      </tr>
+      <tr>
+          <td><strong>Bias（偏差）</strong></td>
+          <td>模型输出的系统性偏见</td>
+          <td>&ldquo;AI偏心&rdquo;</td>
+          <td>对性别或语言偏好</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-新兴趋势与未来方向篇" class="headerLink">
+    <a href="#-%e6%96%b0%e5%85%b4%e8%b6%8b%e5%8a%bf%e4%b8%8e%e6%9c%aa%e6%9d%a5%e6%96%b9%e5%90%91%e7%af%87" class="header-mark"></a>🧰 新兴趋势与未来方向篇</h2><table>
+  <thead>
+      <tr>
+          <th>名词</th>
+          <th>专业解释</th>
+          <th>通俗解释</th>
+          <th>举例说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Mixture of Experts（专家混合）</strong></td>
+          <td>包含多个子模型动态激活结构</td>
+          <td>&ldquo;专家组AI&rdquo;</td>
+          <td><code>Gemini 1.5 Pro</code>架构</td>
+      </tr>
+      <tr>
+          <td><strong>Context Compression（上下文压缩）</strong></td>
+          <td>压缩历史对话节省token</td>
+          <td>&ldquo;记忆压缩&rdquo;</td>
+          <td>长对话摘要</td>
+      </tr>
+      <tr>
+          <td><strong>Memory-Augmented Model（记忆增强模型）</strong></td>
+          <td>结合长期记忆机制的AI</td>
+          <td>&ldquo;有记忆的AI&rdquo;</td>
+          <td><code>ChatGPT</code>长期记忆功能</td>
+      </tr>
+      <tr>
+          <td><strong>Autonomous Agent（自主智能体）</strong></td>
+          <td>能自我规划执行任务的AI</td>
+          <td>&ldquo;自理AI&rdquo;</td>
+          <td><code>AutoGPT</code>、<code>Devin</code></td>
+      </tr>
+      <tr>
+          <td><strong>Synthetic Data（合成数据）</strong></td>
+          <td>由AI生成的虚拟训练数据</td>
+          <td>&ldquo;AI自制教材&rdquo;</td>
+          <td>用AI扩充训练集</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-学习建议" class="headerLink">
+    <a href="#-%e5%ad%a6%e4%b9%a0%e5%bb%ba%e8%ae%ae" class="header-mark"></a>💡 学习建议</h2><h3 id="-核心概念掌握优先级" class="headerLink">
+    <a href="#-%e6%a0%b8%e5%bf%83%e6%a6%82%e5%bf%b5%e6%8e%8c%e6%8f%a1%e4%bc%98%e5%85%88%e7%ba%a7" class="header-mark"></a>🎯 核心概念掌握优先级</h3><ol>
+<li><strong>入门级（必掌握）</strong>：Token、Embedding、Transformer、LLM</li>
+<li><strong>进阶级（重要）</strong>：Self-Attention、RAG、Context Window</li>
+<li><strong>高级（可选）</strong>：LoRA、Mixture of Experts、Red Teaming</li>
+</ol>
+<h3 id="-学习路径建议" class="headerLink">
+    <a href="#-%e5%ad%a6%e4%b9%a0%e8%b7%af%e5%be%84%e5%bb%ba%e8%ae%ae" class="header-mark"></a>📖 学习路径建议</h3><ol>
+<li><strong>理解基本原理</strong>：Token是什么，为什么需要向量表示</li>
+<li><strong>掌握核心架构</strong>：Transformer的Encoder-Decoder结构</li>
+<li><strong>实践应用技巧</strong>：Prompt工程与RAG结合</li>
+<li><strong>深入技术细节</strong>：注意力机制与对齐训练</li>
+</ol>
+<h3 id="-概念关联图" class="headerLink">
+    <a href="#-%e6%a6%82%e5%bf%b5%e5%85%b3%e8%81%94%e5%9b%be" class="header-mark"></a>🔗 概念关联图</h3><div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+  <div class="
+    
+    tw-flex 
+    tw-flex-row
+    tw-flex-1 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        code-block-button
+        tw-mx-2 
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">text</p>]]></description></item><item><title>2026放假通知</title><link>https://byronfinn.github.io/2026%E6%94%BE%E5%81%87%E9%80%9A%E7%9F%A5/</link><pubDate>Tue, 04 Nov 2025 20:46:44 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/2026%E6%94%BE%E5%81%87%E9%80%9A%E7%9F%A5/</guid><description><![CDATA[<h1 id="2026放假通知" class="headerLink">
+    <a href="#2026%e6%94%be%e5%81%87%e9%80%9a%e7%9f%a5" class="header-mark"></a>2026放假通知</h1><figure><a class="lightgallery" href="/pictures/note/2026-holidays-schedule.svg" title="2026年节假日安排" data-thumbnail="/pictures/note/2026-holidays-schedule.svg" data-sub-html="<h2>2026年放假安排示意图 - 国务院办公厅官方发布</h2>"><img  loading="lazy" src='/pictures/note/2026-holidays-schedule.svg'   alt="2026年节假日安排"  ></a><figcaption class="image-caption">2026年放假安排示意图 - 国务院办公厅官方发布</figcaption>
+    </figure>
+<!-- 引导语：可以写一句话说明本文要点 -->
+<hr>
+<h1 id="国务院办公厅关于2026年部分节假日安排的通知" class="headerLink">
+    <a href="#%e5%9b%bd%e5%8a%a1%e9%99%a2%e5%8a%9e%e5%85%ac%e5%8e%85%e5%85%b3%e4%ba%8e2026%e5%b9%b4%e9%83%a8%e5%88%86%e8%8a%82%e5%81%87%e6%97%a5%e5%ae%89%e6%8e%92%e7%9a%84%e9%80%9a%e7%9f%a5" class="header-mark"></a>国务院办公厅关于2026年部分节假日安排的通知</h1><p>国务院明电〔2025〕7号</p>]]></description></item></channel></rss>
