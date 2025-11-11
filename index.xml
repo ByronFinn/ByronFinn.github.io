@@ -1,4 +1,13 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/</link><description>专注于技术、经济、时事解读的深度思考博客，提供专业的技术洞察和商业分析</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>baifan@z.org (Finn)</managingEditor><webMaster>baifan@z.org (Finn)</webMaster><lastBuildDate>Mon, 10 Nov 2025 19:35:00 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>永生，只是永久的孤独</title><link>https://byronfinn.github.io/live-alone/</link><pubDate>Mon, 10 Nov 2025 19:35:00 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/live-alone/</guid><description><![CDATA[<h1 id="永生只是永久的孤独" class="headerLink">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/</link><description>专注于技术、经济、时事解读的深度思考博客，提供专业的技术洞察和商业分析</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>baifan@z.org (Finn)</managingEditor><webMaster>baifan@z.org (Finn)</webMaster><lastBuildDate>Tue, 11 Nov 2025 12:30:00 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>巴菲特2025年致股东信：告别与传承</title><link>https://byronfinn.github.io/berkshire-shareholder-letter/</link><pubDate>Tue, 11 Nov 2025 12:30:00 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/berkshire-shareholder-letter/</guid><description><![CDATA[<figure><img src="/pictures/note/berkshire-shareholder-letter-featured.jpg"
+    alt="伯克希尔股东信封面"><figcaption>
+      <p>伯克希尔股东信精选封面</p>
+    </figcaption>
+</figure>
+
+<p>To My Fellow Shareholders:</p>
+<p>I will no longer be writing Berkshire’s annual report or talking endlessly at the annual meeting. As the British would say, I’m “going quiet.”</p>
+<p>Sort of.</p>
+<p>Greg Abel will become the boss at yearend. He is a great manager, a tireless worker and an honest communicator. Wish him an extended tenure.</p>]]></description></item><item><title>永生，只是永久的孤独</title><link>https://byronfinn.github.io/live-alone/</link><pubDate>Mon, 10 Nov 2025 19:35:00 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/live-alone/</guid><description><![CDATA[<h1 id="永生只是永久的孤独" class="headerLink">
     <a href="#%e6%b0%b8%e7%94%9f%e5%8f%aa%e6%98%af%e6%b0%b8%e4%b9%85%e7%9a%84%e5%ad%a4%e7%8b%ac" class="header-mark"></a>永生，只是永久的孤独</h1><blockquote>
   <p>今天在 NT 看到一个新闻，说中国长寿事业飞速发展，人活到 150 岁，指日可待；我一搜国内新闻，全是只能活到 120 岁，后来发现是为尊者讳，囧</p>
 
@@ -106,8 +115,4 @@
 </ul>
 <p><strong>图像例子</strong>：一批 32 张 224×224 RGB 图 → <code>32×3×224×224</code>（或 <code>N×H×W×C</code>，视框架而定）。</p>]]></description></item><item><title>RAG系统完全指南——从零搭建本地检索增强生成系统</title><link>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B5/</link><pubDate>Thu, 06 Nov 2025 09:36:42 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/ai%E6%95%99%E7%A8%8B5/</guid><description><![CDATA[<h1 id="用-langchain--ollama--pgvector-搭建本地-rag从-0-到-1-的完整实战含-uv-依赖管理--面试指南" class="headerLink">
     <a href="#%e7%94%a8-langchain--ollama--pgvector-%e6%90%ad%e5%bb%ba%e6%9c%ac%e5%9c%b0-rag%e4%bb%8e-0-%e5%88%b0-1-%e7%9a%84%e5%ae%8c%e6%95%b4%e5%ae%9e%e6%88%98%e5%90%ab-uv-%e4%be%9d%e8%b5%96%e7%ae%a1%e7%90%86--%e9%9d%a2%e8%af%95%e6%8c%87%e5%8d%97" class="header-mark"></a>用 LangChain + Ollama + pgvector 搭建本地 RAG：从 0 到 1 的完整实战（含 uv 依赖管理 &amp; 面试指南）</h1><blockquote>
-  <p>本文是可直接落地的 <strong>Markdown 文档</strong>。按文档自上而下执行即可从零搭建出一个本地 RAG（检索增强生成）系统，并理解关键概念与代码。所有核心脚本都附带中文注释，便于学习与面试复盘。</p>]]></description></item><item><title>当TikTok遇上特朗普：做多错多，何以关关难过关关过</title><link>https://byronfinn.github.io/tiktok%E7%9A%84%E5%9B%B0%E5%B1%80/</link><pubDate>Wed, 05 Nov 2025 19:45:00 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/tiktok%E7%9A%84%E5%9B%B0%E5%B1%80/</guid><description><![CDATA[<h1 id="当-tiktok-遇上特朗普做多错多何以关关难过关关过" class="headerLink">
-    <a href="#%e5%bd%93-tiktok-%e9%81%87%e4%b8%8a%e7%89%b9%e6%9c%97%e6%99%ae%e5%81%9a%e5%a4%9a%e9%94%99%e5%a4%9a%e4%bd%95%e4%bb%a5%e5%85%b3%e5%85%b3%e9%9a%be%e8%bf%87%e5%85%b3%e5%85%b3%e8%bf%87" class="header-mark"></a>当 TikTok 遇上特朗普：做多错多，何以关关难过关关过</h1><blockquote>
-  <p>曾被逼入绝境的 TikTok 找到了生存之道：将舞台、将掌声、将光荣最大幅度献给特朗普</p>
-
-</blockquote><p>TikTok，这颗地缘政治棋盘上最受瞩目的棋子。</p>]]></description></item></channel></rss>
+  <p>本文是可直接落地的 <strong>Markdown 文档</strong>。按文档自上而下执行即可从零搭建出一个本地 RAG（检索增强生成）系统，并理解关键概念与代码。所有核心脚本都附带中文注释，便于学习与面试复盘。</p>]]></description></item></channel></rss>
