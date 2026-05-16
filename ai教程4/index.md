@@ -276,11 +276,11 @@ for step, (x, y) in enumerate(loader):
 
 ### 🔗 AI 大模型系统教程系列
 
-1. **[AI 大模型完全指南]({{< ref "/posts/note/AI教程1.md" >}})** - 从零基础到 Token 与向量的深度解析
-2. **[Transformer 架构深度解析]({{< ref "/posts/note/AI教程2.md" >}})** - 注意力机制与 AI 大模型的核心技术
-3. **[Prompt Engineering 完全指南]({{< ref "/posts/note/AI教程3.md" >}})** - 从提示工程到上下文工程的实战教程
+1. **[AI 大模型完全指南]({{< ref "/posts/AI教程1.md" >}})** - 从零基础到 Token 与向量的深度解析
+2. **[Transformer 架构深度解析]({{< ref "/posts/AI教程2.md" >}})** - 注意力机制与 AI 大模型的核心技术
+3. **[Prompt Engineering 完全指南]({{< ref "/posts/AI教程3.md" >}})** - 从提示工程到上下文工程的实战教程
 4. **[本文] GPU 加速训练实战指南** - 从 CPU 架构到 CUDA 编程的完整教程
-5. **[AI 专业名词解释表]({{< ref "/posts/note/AI专业名词解释表.md" >}})** - 270+术语完全指南与 AI 技术体系词典
+5. **[AI 专业名词解释表]({{< ref "/posts/AI专业名词解释表.md" >}})** - 270+术语完全指南与 AI 技术体系词典
 
 ### 🎯 实战建议
 

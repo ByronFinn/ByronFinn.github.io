@@ -333,9 +333,9 @@ B(26, 178, 72)
 ### 🔗 AI 大模型系统教程系列
 
 1. **[本文] AI 大模型完全指南** - 从零基础到 Token 与向量的深度解析
-2. **[Transformer 架构深度解析]({{< ref "/posts/note/AI教程2.md" >}})** - 注意力机制与 AI 大模型的核心技术
-3. **[Prompt Engineering 完全指南]({{< ref "/posts/note/AI教程3.md" >}})** - 从提示工程到上下文工程的实战教程
-4. **[AI 专业名词解释表]({{< ref "/posts/note/AI专业名词解释表.md" >}})** - 270+术语完全指南与 AI 技术体系词典
+2. **[Transformer 架构深度解析]({{< ref "/posts/AI教程2.md" >}})** - 注意力机制与 AI 大模型的核心技术
+3. **[Prompt Engineering 完全指南]({{< ref "/posts/AI教程3.md" >}})** - 从提示工程到上下文工程的实战教程
+4. **[AI 专业名词解释表]({{< ref "/posts/AI专业名词解释表.md" >}})** - 270+术语完全指南与 AI 技术体系词典
 
 ### 🎯 建议学习路径
 

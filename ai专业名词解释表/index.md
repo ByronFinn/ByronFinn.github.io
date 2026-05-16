@@ -195,9 +195,9 @@ LLM     → Q/K/V    → Attention  → Context → Prompt → Quant → Knowled
 
 ### 🔗 AI大模型系统教程系列
 
-1. **[AI大模型完全指南]({{< ref "/posts/note/AI教程1.md" >}})** - 从零基础到Token与向量的深度解析
-2. **[Transformer架构深度解析]({{< ref "/posts/note/AI教程2.md" >}})** - 注意力机制与AI大模型的核心技术
-3. **[Prompt Engineering完全指南]({{< ref "/posts/note/AI教程3.md" >}})** - 从提示工程到上下文工程的实战教程
+1. **[AI大模型完全指南]({{< ref "/posts/AI教程1.md" >}})** - 从零基础到Token与向量的深度解析
+2. **[Transformer架构深度解析]({{< ref "/posts/AI教程2.md" >}})** - 注意力机制与AI大模型的核心技术
+3. **[Prompt Engineering完全指南]({{< ref "/posts/AI教程3.md" >}})** - 从提示工程到上下文工程的实战教程
 4. **[本文] AI专业名词解释表** - 270+术语完全指南与AI技术体系词典
 
 ### 🎯 使用建议
