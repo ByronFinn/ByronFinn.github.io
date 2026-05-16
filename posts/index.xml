@@ -1,4 +1,10 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/posts/</link><description>所有文章 | 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>baifan@z.org (Finn)</managingEditor><webMaster>baifan@z.org (Finn)</webMaster><lastBuildDate>Sat, 16 May 2026 17:40:00 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>自建 AI API 全链路：从域名邮箱到 Sub2API</title><link>https://byronfinn.github.io/self-hosted-ai-api-pipeline/</link><pubDate>Sat, 16 May 2026 17:40:00 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/self-hosted-ai-api-pipeline/</guid><description><![CDATA[<p>这篇文章本来是写给朋友看的，顺手整理一下发出来。</p>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/posts/</link><description>所有文章 | 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>baifan@z.org (Finn)</managingEditor><webMaster>baifan@z.org (Finn)</webMaster><lastBuildDate>Sat, 16 May 2026 21:08:25 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>Prompt Optimizer：一个让你写出更好 Prompt 的开源利器</title><link>https://byronfinn.github.io/prompt-optimizer/</link><pubDate>Sat, 16 May 2026 21:08:25 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/prompt-optimizer/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/prompt-optimizer-demo.png" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>用过 AI 的人大概都有这种体验：同样一个需求，Prompt 写得好和写得差，结果天差地别。问题在于，大多数人并不擅长写 Prompt——这不是天赋问题，而是缺少一个系统化的优化流程。</p>]]></description></item><item><title>Pi Coding Agent 完全指南：极简主义 Coding Agent 的终极玩法</title><link>https://byronfinn.github.io/pi-coding-agent-guide/</link><pubDate>Sat, 16 May 2026 20:51:36 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/pi-coding-agent-guide/</guid><description><![CDATA[<!-- more -->
+<h2 id="前言" class="headerLink">
+    <a href="#%e5%89%8d%e8%a8%80" class="header-mark"></a>前言</h2><p>按照作者的话来说，Pi Coding Agent 是一个<strong>有主见且极简</strong>的 Coding Agent。上手了一段时间后，我认为它是目前最好用的 AI Agent CLI 之一。</p>
+<p>很多项目爆火后都会迎来各种低质量的 issues 和 AI 生成的 PR，而 <strong>pi</strong> 这个名字非常有意思——它会与数学常数产生关联，这正是作者有意为之，目的是降低知名度，保持社区质量。</p>]]></description></item><item><title>自建 AI API 全链路：从域名邮箱到 Sub2API</title><link>https://byronfinn.github.io/self-hosted-ai-api-pipeline/</link><pubDate>Sat, 16 May 2026 17:40:00 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/self-hosted-ai-api-pipeline/</guid><description><![CDATA[<p>这篇文章本来是写给朋友看的，顺手整理一下发出来。</p>
 <p>假设你之前没折腾过域名邮箱、Cloudflare Workers、接码平台、注册机、AI API 中转这些东西，我尽量按&quot;为什么要做这一步&quot;和&quot;怎么确认这步做对了&quot;来讲。中间卡住了可以直接把报错丢给 AI 问，实测 Codex 对这类部署文档和配置排错的理解还行。不过 API Key、密码、Cookie、Token 这些东西，发给 AI 之前先脱敏，别问我怎么知道的。</p>]]></description></item><item><title>《经济学人》2025年11月15日刊</title><link>https://byronfinn.github.io/te-20251115/</link><pubDate>Sat, 15 Nov 2025 12:00:00 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/te-20251115/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/te/economist-2025-11-15-cover.png" referrerpolicy="no-referrer">
             </div><figure class="center"><a class="lightgallery" href="/pictures/te/economist-2025-11-15-cover.png" title="TAIWAN BOOM" data-thumbnail="/pictures/te/economist-2025-11-15-cover.png" data-sub-html="<h2>《经济学人》2025年11月15日刊封面</h2><p>TAIWAN BOOM</p>"><img  loading="lazy" src='/pictures/te/economist-2025-11-15-cover.png'   alt="经济学人2025年11月15日刊封面"  width="500"></a><figcaption class="image-caption">《经济学人》2025年11月15日刊封面</figcaption>
@@ -58,23 +64,4 @@
 </blockquote><p>新闻里说机器人要大范围使用了。
 文章里讲得很体面：这是“高质量发展”，是“智能升级”。
 但我老觉得，那些词里有点冷。
-像在庆祝某种没人被邀请的葬礼。</p>]]></description></item><item><title>巴菲特2025年致股东信：告别与传承</title><link>https://byronfinn.github.io/berkshire-shareholder-letter/</link><pubDate>Tue, 11 Nov 2025 12:30:00 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/berkshire-shareholder-letter/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/berkshire-shareholder-letter-featured.jpg" referrerpolicy="no-referrer">
-            </div><figure><img src="/pictures/note/berkshire-shareholder-letter-featured.jpg"
-    alt="伯克希尔股东信封面"><figcaption>
-      <p>伯克希尔股东信精选封面</p>
-    </figcaption>
-</figure>
-
-<p>To My Fellow Shareholders:</p>
-<p>I will no longer be writing Berkshire’s annual report or talking endlessly at the annual meeting. As the British would say, I’m “going quiet.”</p>
-<p>Sort of.</p>
-<p>Greg Abel will become the boss at yearend. He is a great manager, a tireless worker and an honest communicator. Wish him an extended tenure.</p>]]></description></item><item><title>永生，只是永久的孤独</title><link>https://byronfinn.github.io/live-alone/</link><pubDate>Mon, 10 Nov 2025 19:35:00 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/live-alone/</guid><description><![CDATA[<h1 id="永生只是永久的孤独" class="headerLink">
-    <a href="#%e6%b0%b8%e7%94%9f%e5%8f%aa%e6%98%af%e6%b0%b8%e4%b9%85%e7%9a%84%e5%ad%a4%e7%8b%ac" class="header-mark"></a>永生，只是永久的孤独</h1><blockquote>
-  <p>今天在 NT 看到一个新闻，说中国长寿事业飞速发展，人活到 150 岁，指日可待；我一搜国内新闻，全是只能活到 120 岁，后来发现是为尊者讳，囧</p>
-
-</blockquote><ul>
-<li><a href="https://cn.nytimes.com/china/20251110/china-aging-longevity-science/" target="_blank" rel="noopener noreferrer">https://cn.nytimes.com/china/20251110/china-aging-longevity-science/</a></li>
-<li><a href="https://news.qq.com/rain/a/20251109A024FN%2900" target="_blank" rel="noopener noreferrer">https://news.qq.com/rain/a/20251109A024FN)00</a></li>
-</ul>
-<p>有时候我觉得，人类的伟大之处，不在于能飞上太空，而在于从未放弃对“活得更久”的执念。</p>]]></description></item></channel></rss>
+像在庆祝某种没人被邀请的葬礼。</p>]]></description></item></channel></rss>
