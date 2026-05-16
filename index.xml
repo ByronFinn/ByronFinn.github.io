@@ -1,4 +1,11 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/</link><description>专注于技术、经济、时事解读的深度思考博客，提供专业的技术洞察和商业分析</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>baifan@z.org (Finn)</managingEditor><webMaster>baifan@z.org (Finn)</webMaster><lastBuildDate>Sat, 16 May 2026 21:08:25 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Prompt Optimizer：一个让你写出更好 Prompt 的开源利器</title><link>https://byronfinn.github.io/prompt-optimizer/</link><pubDate>Sat, 16 May 2026 21:08:25 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/prompt-optimizer/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/</link><description>专注于技术、经济、时事解读的深度思考博客，提供专业的技术洞察和商业分析</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>baifan@z.org (Finn)</managingEditor><webMaster>baifan@z.org (Finn)</webMaster><lastBuildDate>Sat, 16 May 2026 21:59:01 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>VPS圈知识扫盲：机圈黑话大全</title><link>https://byronfinn.github.io/vps%E5%9C%88%E7%9F%A5%E8%AF%86%E6%89%AB%E7%9B%B2/</link><pubDate>Sat, 16 May 2026 21:59:01 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/vps%E5%9C%88%E7%9F%A5%E8%AF%86%E6%89%AB%E7%9B%B2/</guid><description><![CDATA[<!-- more -->
+<p>VPS圈子有着一套独特的&quot;黑话&quot;体系，对新手来说宛如天书。本文整理了机圈常见的术语和缩写，帮你快速入门。</p>
+<h2 id="人物与身份" class="headerLink">
+    <a href="#%e4%ba%ba%e7%89%a9%e4%b8%8e%e8%ba%ab%e4%bb%bd" class="header-mark"></a>人物与身份</h2><h3 id="mjj" class="headerLink">
+    <a href="#mjj" class="header-mark"></a>MJJ</h3><p>原指混迹于Hostloc论坛的用户，现在泛指所有热衷于倒腾VPS的玩家。源于Hostloc论坛的一个梗，全称是&quot;买鸡鸡/没鸡鸡（反正随你怎么理解）&quot;，最初带有贬义，但后来逐渐演变成一种自嘲和圈内身份的代称，现在多数语境下已经没有恶意了（不过也有人把钱少事多的玩家称为MJJ）。</p>
+<h2 id="服务器类型" class="headerLink">
+    <a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%b1%bb%e5%9e%8b" class="header-mark"></a>服务器类型</h2><h3 id="鸡小鸡" class="headerLink">
+    <a href="#%e9%b8%a1%e5%b0%8f%e9%b8%a1" class="header-mark"></a>鸡/小鸡</h3><p>指代VPS或云服务器。因为&quot;虚拟服务器&quot; → &ldquo;虚机&rdquo; → &ldquo;机&rdquo; 与 &ldquo;鸡&rdquo; 谐音，叫起来顺口又可爱，所以流行开来。VPS是通过虚拟化技术划分的服务器，是最常见的终端用户购买机子，资源性能网络共享。</p>]]></description></item><item><title>Prompt Optimizer：一个让你写出更好 Prompt 的开源利器</title><link>https://byronfinn.github.io/prompt-optimizer/</link><pubDate>Sat, 16 May 2026 21:08:25 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/prompt-optimizer/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/note/prompt-optimizer-demo.png" referrerpolicy="no-referrer">
             </div><!-- more -->
 <p>用过 AI 的人大概都有这种体验：同样一个需求，Prompt 写得好和写得差，结果天差地别。问题在于，大多数人并不擅长写 Prompt——这不是天赋问题，而是缺少一个系统化的优化流程。</p>]]></description></item><item><title>Pi Coding Agent 完全指南：极简主义 Coding Agent 的终极玩法</title><link>https://byronfinn.github.io/pi-coding-agent-guide/</link><pubDate>Sat, 16 May 2026 20:51:36 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/pi-coding-agent-guide/</guid><description><![CDATA[<!-- more -->
@@ -57,11 +64,4 @@
 <p>如果有一个超大分布式系统，有成百上千个微服务运行在几百台分布在不同数据中心的服务器上，如果一台服务器突然挂了，系统能多快检测到这一故障并作出反应？我们如何区分服务器宕机还是网络卡了？这就是心跳机制成为分布式系统核心一部分的重要原因。</p>]]></description></item><item><title>县城的暮光：一个被遮蔽的中国</title><link>https://byronfinn.github.io/chinaoverlookedeconomic/</link><pubDate>Wed, 12 Nov 2025 18:00:00 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/chinaoverlookedeconomic/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/note/china-county-economy-twilight-featured.webp" referrerpolicy="no-referrer">
             </div><p>今天回了一趟老家，一片萧条，秋风秋雨秋煞人，街头的店门没有几个开的了，当年的红灯绿酒也不知去了哪里，我当年的小学也被撤销关闭了</p>
-<p>真正的中国不在新闻联播里，也不在影视剧里。它在那些你听都没有听过的的县城里，乡镇上。那里没有奇观，只有日子。</p>]]></description></item><item><title>连命，都没人要了：机器时代人的价值困境</title><link>https://byronfinn.github.io/whenevendeathisoutofwork/</link><pubDate>Tue, 11 Nov 2025 21:30:00 +0800</pubDate><author><name>Finn</name></author><guid>https://byronfinn.github.io/whenevendeathisoutofwork/</guid><description><![CDATA[<h1 id="连命都没人要了" class="headerLink">
-    <a href="#%e8%bf%9e%e5%91%bd%e9%83%bd%e6%b2%a1%e4%ba%ba%e8%a6%81%e4%ba%86" class="header-mark"></a>连命，都没人要了</h1><blockquote>
-  <p><a href="https://www.zaobao.com.sg/realtime/china/story20251111-7801146" target="_blank" rel="noopener noreferrer">https://www.zaobao.com.sg/realtime/china/story20251111-7801146</a></p>
-
-</blockquote><p>新闻里说机器人要大范围使用了。
-文章里讲得很体面：这是“高质量发展”，是“智能升级”。
-但我老觉得，那些词里有点冷。
-像在庆祝某种没人被邀请的葬礼。</p>]]></description></item></channel></rss>
+<p>真正的中国不在新闻联播里，也不在影视剧里。它在那些你听都没有听过的的县城里，乡镇上。那里没有奇观，只有日子。</p>]]></description></item></channel></rss>
