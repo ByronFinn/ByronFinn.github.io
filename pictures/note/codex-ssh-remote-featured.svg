@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Accent bar top -->
+  <rect width="1200" height="4" fill="url(#accent)"/>
+  <!-- Left: laptop icon -->
+  <g transform="translate(120, 180)">
+    <!-- Laptop body -->
+    <rect x="0" y="0" width="220" height="150" rx="8" fill="#334155" stroke="#475569" stroke-width="2"/>
+    <rect x="10" y="10" width="200" height="120" rx="4" fill="#0ea5e9" opacity="0.15"/>
+    <!-- Screen content lines -->
+    <rect x="25" y="30" width="80" height="6" rx="2" fill="#3b82f6" opacity="0.8"/>
+    <rect x="25" y="45" width="120" height="6" rx="2" fill="#94a3b8" opacity="0.5"/>
+    <rect x="25" y="60" width="100" height="6" rx="2" fill="#94a3b8" opacity="0.5"/>
+    <rect x="25" y="75" width="140" height="6" rx="2" fill="#94a3b8" opacity="0.5"/>
+    <rect x="25" y="100" width="40" height="14" rx="3" fill="#22c55e" opacity="0.6"/>
+    <!-- Laptop base -->
+    <rect x="-15" y="155" width="250" height="12" rx="4" fill="#475569"/>
+    <!-- Label -->
+    <text x="110" y="200" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="16">Local Machine</text>
+  </g>
+  <!-- Connection line -->
+  <g transform="translate(380, 260)">
+    <line x1="0" y1="0" x2="180" y2="0" stroke="#3b82f6" stroke-width="2" stroke-dasharray="8,4" opacity="0.7"/>
+    <!-- SSH label -->
+    <rect x="55" y="-18" width="70" height="28" rx="14" fill="#1e40af"/>
+    <text x="90" y="2" text-anchor="middle" fill="#93c5fd" font-family="monospace" font-size="14" font-weight="bold">SSH</text>
+    <!-- Arrows -->
+    <polygon points="175,-6 185,0 175,6" fill="#3b82f6" opacity="0.8"/>
+    <polygon points="5,-6 -5,0 5,6" fill="#3b82f6" opacity="0.8"/>
+  </g>
+  <!-- Right: server icon -->
+  <g transform="translate(600, 160)">
+    <!-- Server rack -->
+    <rect x="0" y="0" width="180" height="50" rx="6" fill="#334155" stroke="#475569" stroke-width="2"/>
+    <circle cx="150" cy="25" r="8" fill="#22c55e" opacity="0.8"/>
+    <rect x="15" y="18" width="60" height="4" rx="1" fill="#94a3b8" opacity="0.4"/>
+    <rect x="15" y="28" width="40" height="4" rx="1" fill="#94a3b8" opacity="0.4"/>
+    <rect x="0" y="60" width="180" height="50" rx="6" fill="#334155" stroke="#475569" stroke-width="2"/>
+    <circle cx="150" cy="85" r="8" fill="#22c55e" opacity="0.8"/>
+    <rect x="15" y="78" width="70" height="4" rx="1" fill="#94a3b8" opacity="0.4"/>
+    <rect x="15" y="88" width="45" height="4" rx="1" fill="#94a3b8" opacity="0.4"/>
+    <rect x="0" y="120" width="180" height="50" rx="6" fill="#334155" stroke="#475569" stroke-width="2"/>
+    <circle cx="150" cy="145" r="8" fill="#3b82f6" opacity="0.8"/>
+    <rect x="15" y="138" width="55" height="4" rx="1" fill="#94a3b8" opacity="0.4"/>
+    <rect x="15" y="148" width="80" height="4" rx="1" fill="#94a3b8" opacity="0.4"/>
+    <!-- Label -->
+    <text x="90" y="210" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="16">Remote Server</text>
+  </g>
+  <!-- Codex logo hint -->
+  <g transform="translate(860, 200)">
+    <rect x="0" y="0" width="200" height="160" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+    <text x="100" y="50" text-anchor="middle" fill="#3b82f6" font-family="sans-serif" font-size="28" font-weight="bold">Codex</text>
+    <text x="100" y="78" text-anchor="middle" fill="#8b5cf6" font-family="monospace" font-size="14">SSH Remote</text>
+    <!-- Decorative dots -->
+    <circle cx="50" cy="110" r="4" fill="#3b82f6" opacity="0.5"/>
+    <circle cx="70" cy="110" r="4" fill="#3b82f6" opacity="0.5"/>
+    <circle cx="90" cy="110" r="4" fill="#3b82f6" opacity="0.5"/>
+    <rect x="45" y="125" width="110" height="4" rx="2" fill="#94a3b8" opacity="0.3"/>
+    <rect x="45" y="137" width="80" height="4" rx="2" fill="#94a3b8" opacity="0.3"/>
+  </g>
+  <!-- Title -->
+  <text x="600" y="520" text-anchor="middle" fill="#f1f5f9" font-family="sans-serif" font-size="38" font-weight="bold">Codex App SSH 远程开发配置指南</text>
+  <text x="600" y="560" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="18">通过 SSH 让 AI Agent 直接在远程服务器上工作</text>
+  <!-- Bottom accent -->
+  <rect y="626" width="1200" height="4" fill="url(#accent)"/>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="400" fill="url(#bg2)" rx="12"/>
+  <!-- Step boxes -->
+  <!-- Step 1 -->
+  <g transform="translate(40, 40)">
+    <rect width="240" height="320" rx="10" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <circle cx="120" cy="40" r="22" fill="#1e40af"/>
+    <text x="120" y="47" text-anchor="middle" fill="#93c5fd" font-family="sans-serif" font-size="20" font-weight="bold">1</text>
+    <text x="120" y="85" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="16" font-weight="bold">开启 Feature Flag</text>
+    <!-- Code block -->
+    <rect x="15" y="105" width="210" height="80" rx="6" fill="#0f172a"/>
+    <text x="25" y="125" fill="#94a3b8" font-family="monospace" font-size="11">~/.codex/config.toml</text>
+    <text x="25" y="145" fill="#22c55e" font-family="monospace" font-size="11">[features]</text>
+    <text x="25" y="162" fill="#93c5fd" font-family="monospace" font-size="11">remote_control = true</text>
+    <text x="25" y="179" fill="#93c5fd" font-family="monospace" font-size="11">remote_connections = true</text>
+    <text x="120" y="230" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="13">保存后重启 Codex App</text>
+    <!-- Arrow icon -->
+    <text x="120" y="290" text-anchor="middle" fill="#3b82f6" font-size="30">↓</text>
+  </g>
+  <!-- Step 2 -->
+  <g transform="translate(330, 40)">
+    <rect width="240" height="320" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+    <circle cx="120" cy="40" r="22" fill="#5b21b6"/>
+    <text x="120" y="47" text-anchor="middle" fill="#c4b5fd" font-family="sans-serif" font-size="20" font-weight="bold">2</text>
+    <text x="120" y="85" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="16" font-weight="bold">配置 SSH Host</text>
+    <!-- Code block -->
+    <rect x="15" y="105" width="210" height="100" rx="6" fill="#0f172a"/>
+    <text x="25" y="125" fill="#94a3b8" font-family="monospace" font-size="11">~/.ssh/config</text>
+    <text x="25" y="145" fill="#22c55e" font-family="monospace" font-size="11">Host devbox</text>
+    <text x="25" y="162" fill="#93c5fd" font-family="monospace" font-size="11">  HostName 1.2.3.4</text>
+    <text x="25" y="179" fill="#93c5fd" font-family="monospace" font-size="11">  User ubuntu</text>
+    <text x="25" y="196" fill="#93c5fd" font-family="monospace" font-size="11">  IdentityFile ~/.ssh/id</text>
+    <text x="120" y="240" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="13">ssh devbox 验证连通</text>
+    <text x="120" y="290" text-anchor="middle" fill="#8b5cf6" font-size="30">↓</text>
+  </g>
+  <!-- Step 3 -->
+  <g transform="translate(620, 40)">
+    <rect width="240" height="320" rx="10" fill="#1e293b" stroke="#22c55e" stroke-width="1.5"/>
+    <circle cx="120" cy="40" r="22" fill="#15803d"/>
+    <text x="120" y="47" text-anchor="middle" fill="#86efac" font-family="sans-serif" font-size="20" font-weight="bold">3</text>
+    <text x="120" y="85" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="16" font-weight="bold">远程安装 Codex</text>
+    <!-- Terminal -->
+    <rect x="15" y="105" width="210" height="70" rx="6" fill="#0f172a"/>
+    <text x="25" y="125" fill="#64748b" font-family="monospace" font-size="11">$</text>
+    <text x="38" y="125" fill="#e2e8f0" font-family="monospace" font-size="11">which codex</text>
+    <text x="25" y="145" fill="#64748b" font-family="monospace" font-size="11">$</text>
+    <text x="38" y="145" fill="#e2e8f0" font-family="monospace" font-size="11">codex --version</text>
+    <text x="25" y="165" fill="#22c55e" font-family="monospace" font-size="11">0.x.x</text>
+    <text x="120" y="220" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="13">确保 PATH 可访问</text>
+    <text x="120" y="250" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="13">确保已认证登录</text>
+    <text x="120" y="290" text-anchor="middle" fill="#22c55e" font-size="30">↓</text>
+  </g>
+</svg>
