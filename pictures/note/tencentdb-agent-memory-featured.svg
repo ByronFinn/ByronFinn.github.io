@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="pyramid" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:0.6"/>
+      <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0.8"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Decorative grid -->
+  <g opacity="0.05" stroke="#fff" stroke-width="1">
+    <line x1="0" y1="0" x2="1200" y2="630"/>
+    <line x1="400" y1="0" x2="1200" y2="400"/>
+    <line x1="0" y1="230" x2="1200" y2="230"/>
+  </g>
+  <!-- Pyramid icon -->
+  <polygon points="950,120 1050,380 850,380" fill="url(#pyramid)" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="950" y="160" text-anchor="middle" fill="#f59e0b" font-family="monospace" font-size="13" font-weight="bold">L3 Persona</text>
+  <text x="920" y="250" text-anchor="middle" fill="#a78bfa" font-family="monospace" font-size="12">L2 Scenario</text>
+  <text x="910" y="310" text-anchor="middle" fill="#60a5fa" font-family="monospace" font-size="11">L1 Atom</text>
+  <text x="950" y="370" text-anchor="middle" fill="#93c5fd" font-family="monospace" font-size="10">L0 Conversation</text>
+  <!-- Memory nodes -->
+  <g opacity="0.3">
+    <circle cx="180" cy="200" r="4" fill="#3b82f6"/>
+    <circle cx="220" cy="260" r="3" fill="#8b5cf6"/>
+    <circle cx="160" cy="340" r="5" fill="#3b82f6"/>
+    <circle cx="250" cy="400" r="3" fill="#60a5fa"/>
+    <circle cx="140" cy="440" r="4" fill="#8b5cf6"/>
+    <circle cx="200" cy="480" r="3" fill="#3b82f6"/>
+    <line x1="180" y1="200" x2="220" y2="260" stroke="#475569" stroke-width="1"/>
+    <line x1="220" y1="260" x2="160" y2="340" stroke="#475569" stroke-width="1"/>
+    <line x1="160" y1="340" x2="250" y2="400" stroke="#475569" stroke-width="1"/>
+    <line x1="250" y1="400" x2="140" y2="440" stroke="#475569" stroke-width="1"/>
+    <line x1="140" y1="440" x2="200" y2="480" stroke="#475569" stroke-width="1"/>
+  </g>
+  <!-- Title -->
+  <text x="600" y="220" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="48" font-weight="bold">TencentDB Agent Memory</text>
+  <!-- Subtitle -->
+  <text x="600" y="280" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="22">让 Agent 沉淀经验，让人专注创造</text>
+  <!-- Tags -->
+  <rect x="340" y="330" width="100" height="32" rx="16" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="390" y="351" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="13">分层记忆</text>
+  <rect x="460" y="330" width="100" height="32" rx="16" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="510" y="351" text-anchor="middle" fill="#a78bfa" font-family="sans-serif" font-size="13">符号化</text>
+  <rect x="580" y="330" width="120" height="32" rx="16" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="640" y="351" text-anchor="middle" fill="#fbbf24" font-family="sans-serif" font-size="13">零外部依赖</text>
+  <rect x="720" y="330" width="120" height="32" rx="16" fill="none" stroke="#10b981" stroke-width="1.5"/>
+  <text x="780" y="351" text-anchor="middle" fill="#34d399" font-family="sans-serif" font-size="13">开源 MIT</text>
+  <!-- Bottom bar -->
+  <rect x="0" y="590" width="1200" height="40" fill="url(#accent)" opacity="0.8"/>
+  <text x="600" y="616" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="15">Token 最高节省 61.38% · 成功率相对提升 51.52% · L0→L3 语义金字塔</text>
+</svg>
