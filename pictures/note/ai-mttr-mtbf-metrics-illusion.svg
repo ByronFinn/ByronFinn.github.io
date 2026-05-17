@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="600" fill="url(#bg)"/>
+  
+  <!-- Title -->
+  <text x="500" y="45" fill="#e2e8f0" font-size="20" text-anchor="middle" font-weight="700">指标幻觉：为什么局部绿灯掩盖了全局风险</text>
+  
+  <!-- Three columns -->
+  <!-- Column 1: Bug reports going down -->
+  <rect x="50" y="80" width="270" height="220" rx="10" fill="#1e293b" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="185" y="110" fill="#22c55e" font-size="15" text-anchor="middle" font-weight="600">Bug 报告数 ↓</text>
+  
+  <!-- Downward chart -->
+  <polyline points="80,240 120,220 160,200 200,170 240,155 280,130" fill="none" stroke="#22c55e" stroke-width="3"/>
+  <circle cx="280" cy="130" r="5" fill="#22c55e"/>
+  <text x="185" y="270" fill="#64748b" font-size="11" text-anchor="middle">看起来：质量在提升</text>
+  <text x="185" y="290" fill="#ef4444" font-size="11" text-anchor="middle">实际：隐性缺陷在积累</text>
+  
+  <!-- Column 2: Test coverage going up -->
+  <rect x="365" y="80" width="270" height="220" rx="10" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="500" y="110" fill="#3b82f6" font-size="15" text-anchor="middle" font-weight="600">测试覆盖率 ↑</text>
+  
+  <!-- Upward chart -->
+  <polyline points="395,240 435,220 475,190 515,160 555,130 595,110" fill="none" stroke="#3b82f6" stroke-width="3"/>
+  <circle cx="595" cy="110" r="5" fill="#3b82f6"/>
+  <text x="500" y="270" fill="#64748b" font-size="11" text-anchor="middle">看起来：测试更充分了</text>
+  <text x="500" y="290" fill="#ef4444" font-size="11" text-anchor="middle">实际：AI 生成的测试可能语义空洞</text>
+  
+  <!-- Column 3: Change velocity up -->
+  <rect x="680" y="80" width="270" height="220" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="815" y="110" fill="#8b5cf6" font-size="15" text-anchor="middle" font-weight="600">变更速度 ↑</text>
+  
+  <!-- Steep upward chart -->
+  <polyline points="710,250 740,240 770,220 800,180 830,140 860,100 890,85" fill="none" stroke="#8b5cf6" stroke-width="3"/>
+  <circle cx="890" cy="85" r="5" fill="#8b5cf6"/>
+  <text x="815" y="270" fill="#64748b" font-size="11" text-anchor="middle">看起来：效率在提升</text>
+  <text x="815" y="290" fill="#ef4444" font-size="11" text-anchor="middle">实际：变化太快没人理解架构</text>
+  
+  <!-- Arrow down to hidden risk -->
+  <line x1="500" y1="320" x2="500" y2="370" stroke="#ef4444" stroke-width="2"/>
+  <polygon points="490,365 510,365 500,380" fill="#ef4444"/>
+  
+  <!-- Hidden risk box -->
+  <rect x="150" y="390" width="700" height="180" rx="12" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="500" y="425" fill="#ef4444" font-size="18" text-anchor="middle" font-weight="700">潜藏风险</text>
+  
+  <text x="320" y="460" fill="#94a3b8" font-size="13">• 系统全局复杂性超出任何单人的理解范围</text>
+  <text x="320" y="485" fill="#94a3b8" font-size="13">• Bug 报告减少是因为没人注意到深层问题</text>
+  <text x="320" y="510" fill="#94a3b8" font-size="13">• 测试覆盖率高但缺少对业务语义的真正验证</text>
+  <text x="320" y="535" fill="#94a3b8" font-size="13">• 变更速度越快，架构腐化越难以被察觉</text>
+  <text x="320" y="555" fill="#64748b" font-size="11">Richard Cook：「灾难需要多个小故障的巧合，而每个小故障单独看都无害。」</text>
+</svg>

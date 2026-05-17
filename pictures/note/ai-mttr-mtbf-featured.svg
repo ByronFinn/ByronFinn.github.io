@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="danger" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Left side: MTBF -->
+  <text x="200" y="80" fill="#94a3b8" font-size="18" text-anchor="middle" font-weight="600">MTBF</text>
+  <text x="200" y="105" fill="#64748b" font-size="13" text-anchor="middle">平均故障间隔时间</text>
+  
+  <!-- Stable system graph -->
+  <polyline points="80,350 130,350 140,350 200,350 260,350 320,350" fill="none" stroke="#22c55e" stroke-width="3" stroke-dasharray="0"/>
+  <circle cx="80" cy="350" r="4" fill="#22c55e"/>
+  <circle cx="320" cy="350" r="4" fill="#22c55e"/>
+  <text x="200" y="390" fill="#22c55e" font-size="14" text-anchor="middle">稳定运行</text>
+  
+  <!-- Long time between failures -->
+  <line x1="80" y1="280" x2="320" y2="280" stroke="#334155" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="80" y1="420" x2="320" y2="420" stroke="#334155" stroke-width="1" stroke-dasharray="5,5"/>
+  <text x="200" y="460" fill="#22c55e" font-size="24" text-anchor="middle" font-weight="700">████████</text>
+  <text x="200" y="490" fill="#64748b" font-size="12" text-anchor="middle">故障间隔长</text>
+  
+  <!-- Divider -->
+  <line x1="400" y1="60" x2="400" y2="560" stroke="#334155" stroke-width="1"/>
+  <text x="400" y="580" fill="#475569" font-size="11" text-anchor="middle">VS</text>
+  
+  <!-- Right side: MTTR -->
+  <text x="600" y="80" fill="#94a3b8" font-size="18" text-anchor="middle" font-weight="600">MTTR</text>
+  <text x="600" y="105" fill="#64748b" font-size="13" text-anchor="middle">平均恢复时间</text>
+  
+  <!-- Frequent spikes with fast recovery -->
+  <polyline points="480,350 500,350 510,280 520,350 540,350 555,290 565,350 580,350 600,260 615,350 630,350 645,300 655,350 680,350 700,275 712,350 720,350" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+  <circle cx="510" cy="280" r="4" fill="#ef4444"/>
+  <circle cx="555" cy="290" r="4" fill="#ef4444"/>
+  <circle cx="600" cy="260" r="4" fill="#ef4444"/>
+  <circle cx="645" cy="300" r="4" fill="#ef4444"/>
+  <circle cx="700" cy="275" r="4" fill="#ef4444"/>
+  <text x="600" y="390" fill="#f59e0b" font-size="14" text-anchor="middle">频繁故障但快速恢复</text>
+  
+  <text x="600" y="460" fill="#f59e0b" font-size="24" text-anchor="middle" font-weight="700">▓▓▓▓</text>
+  <text x="600" y="490" fill="#64748b" font-size="12" text-anchor="middle">故障间隔短，恢复快</text>
+  
+  <!-- Far right: The Problem -->
+  <line x1="780" y1="60" x2="780" y2="560" stroke="#334155" stroke-width="1"/>
+  
+  <text x="990" y="80" fill="#ef4444" font-size="20" text-anchor="middle" font-weight="700">隐患</text>
+  
+  <!-- Hidden complexity box -->
+  <rect x="860" y="120" width="260" height="180" rx="12" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="990" y="160" fill="#94a3b8" font-size="14" text-anchor="middle">表面指标健康</text>
+  <text x="990" y="185" fill="#64748b" font-size="12" text-anchor="middle">✓ Bug 数量下降</text>
+  <text x="990" y="210" fill="#64748b" font-size="12" text-anchor="middle">✓ 测试覆盖率高</text>
+  <text x="990" y="235" fill="#64748b" font-size="12" text-anchor="middle">✓ 修复速度快</text>
+  <text x="990" y="260" fill="#64748b" font-size="12" text-anchor="middle">✓ 变更吞吐量大</text>
+  <text x="990" y="290" fill="#ef4444" font-size="13" text-anchor="middle" font-weight="600">但系统在全局层面失控</text>
+  
+  <!-- Bottom: quote -->
+  <rect x="80" y="520" width="1040" height="80" rx="8" fill="#1e293b" stroke="url(#accent)" stroke-width="1.5"/>
+  <text x="600" y="555" fill="#e2e8f0" font-size="15" text-anchor="middle" font-weight="500">你可以把自己自动化成一台极具韧性的灾难制造机</text>
+  <text x="600" y="580" fill="#64748b" font-size="12" text-anchor="middle">— 当局部指标全部绿灯时，没有人注意到架构在腐烂</text>
+</svg>
