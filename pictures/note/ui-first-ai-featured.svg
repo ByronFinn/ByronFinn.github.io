@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)" rx="12"/>
+  
+  <!-- Left: crossed-out PRD -->
+  <rect x="60" y="80" width="240" height="240" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="180" y="120" text-anchor="middle" fill="#94a3b8" font-size="14" font-family="sans-serif">PRD 文档</text>
+  <line x1="75" y1="140" x2="285" y2="140" stroke="#334155" stroke-width="1"/>
+  <text x="90" y="170" fill="#64748b" font-size="12" font-family="sans-serif">1.1 用户故事</text>
+  <text x="90" y="195" fill="#64748b" font-size="12" font-family="sans-serif">1.2 功能需求</text>
+  <text x="90" y="220" fill="#64748b" font-size="12" font-family="sans-serif">1.3 接口描述</text>
+  <text x="90" y="245" fill="#64748b" font-size="12" font-family="sans-serif">2.1 数据模型</text>
+  <text x="90" y="270" fill="#64748b" font-size="12" font-family="sans-serif">2.2 业务流程</text>
+  <text x="90" y="295" fill="#64748b" font-size="12" font-family="sans-serif">3.1 非功能需求</text>
+  <!-- Cross out -->
+  <line x1="70" y1="85" x2="290" y2="315" stroke="#ef4444" stroke-width="3" opacity="0.6"/>
+  <line x1="70" y1="315" x2="290" y2="85" stroke="#ef4444" stroke-width="3" opacity="0.6"/>
+  
+  <!-- Arrow -->
+  <path d="M330 200 L370 200" stroke="url(#accent)" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+  
+  <!-- Right: UI mockup -->
+  <rect x="400" y="80" width="340" height="240" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+  <!-- Title bar -->
+  <rect x="400" y="80" width="340" height="36" rx="10" fill="#8b5cf6" opacity="0.2"/>
+  <circle cx="422" cy="98" r="5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="440" cy="98" r="5" fill="#f59e0b" opacity="0.8"/>
+  <circle cx="458" cy="98" r="5" fill="#22c55e" opacity="0.8"/>
+  <text x="570" y="103" text-anchor="middle" fill="#c4b5fd" font-size="13" font-family="sans-serif">产品原型</text>
+  
+  <!-- Mock UI elements -->
+  <rect x="420" y="130" width="140" height="28" rx="4" fill="#3b82f6" opacity="0.3"/>
+  <text x="490" y="149" text-anchor="middle" fill="#93c5fd" font-size="11" font-family="sans-serif">主导航</text>
+  
+  <rect x="580" y="130" width="140" height="28" rx="4" fill="#334155"/>
+  <text x="650" y="149" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="sans-serif">侧边栏</text>
+  
+  <rect x="420" y="175" width="300" height="20" rx="3" fill="#334155"/>
+  <rect x="420" y="175" width="200" height="20" rx="3" fill="#3b82f6" opacity="0.2"/>
+  <text x="520" y="189" text-anchor="middle" fill="#93c5fd" font-size="10" font-family="sans-serif">搜索和筛选区域</text>
+  
+  <rect x="420" y="210" width="145" height="90" rx="6" fill="#334155" stroke="#475569" stroke-width="1"/>
+  <text x="492" y="240" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="sans-serif">卡片组件</text>
+  <rect x="435" y="260" width="115" height="10" rx="2" fill="#475569"/>
+  <rect x="435" y="276" width="80" height="10" rx="2" fill="#475569"/>
+  
+  <rect x="575" y="210" width="145" height="90" rx="6" fill="#334155" stroke="#475569" stroke-width="1"/>
+  <text x="647" y="240" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="sans-serif">数据面板</text>
+  <rect x="590" y="255" width="50" height="35" rx="4" fill="#22c55e" opacity="0.15"/>
+  <text x="615" y="277" text-anchor="middle" fill="#4ade80" font-size="18" font-family="sans-serif" font-weight="bold">87%</text>
+  <rect x="650" y="255" width="50" height="35" rx="4" fill="#3b82f6" opacity="0.15"/>
+  <text x="675" y="277" text-anchor="middle" fill="#60a5fa" font-size="18" font-family="sans-serif" font-weight="bold">23</text>
+  
+  <!-- Title -->
+  <text x="400" y="365" text-anchor="middle" fill="#e2e8f0" font-size="22" font-family="sans-serif" font-weight="bold">从 UI 倒推 PRD：可视化需求工程</text>
+</svg>
