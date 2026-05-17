@@ -5,6 +5,9 @@
   --profile-avatar-size: 6.5rem;
   --profile-transition: all 0.3s ease;
   --profile-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --profile-hero-from: #0f172a;
+  --profile-hero-to: #1e3a4f;
+  --profile-hero-dot: rgba(255, 255, 255, 0.04);
 }
 
 /* ========== 主容器 ========== */
@@ -19,7 +22,9 @@
 
 /* ========== 头部首屏 ========== */
 .profile-hero {
-  background: linear-gradient(135deg, var(--global-link-hover-color) 0%, color-mix(in srgb, var(--global-link-hover-color) 60%, var(--single-link-color, var(--global-link-hover-color))) 100%);
+  background:
+    radial-gradient(circle, var(--profile-hero-dot) 1px, transparent 1px) 0 0 / 20px 20px,
+    linear-gradient(135deg, var(--profile-hero-from) 0%, var(--profile-hero-to) 100%);
   border-radius: 16px;
   margin-bottom: 2rem;
   overflow: hidden;
@@ -29,9 +34,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem 1.5rem 2.5rem;
+  padding: 3.5rem 2rem 3rem;
   color: #fff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .profile-avatar-wrapper {
@@ -43,8 +47,8 @@
   height: var(--profile-avatar-size);
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
   transition: var(--profile-transition);
 }
 
@@ -54,15 +58,15 @@
 
 .profile-name {
   font-size: 2rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
   color: #fff;
 }
 
 .profile-tagline {
   font-size: 1rem;
   margin: 0;
-  opacity: 0.9;
+  opacity: 0.75;
   font-weight: 400;
   letter-spacing: 0.5px;
 }
@@ -133,9 +137,9 @@
   align-items: center;
   justify-content: center;
   padding: 0.75rem 2rem;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
   transition: var(--profile-transition);
   border: none;
@@ -143,28 +147,27 @@
 }
 
 .profile-cta-primary {
-  background-color: var(--global-link-hover-color);
+  background-color: #2d809a;
   color: #fff;
 }
 
 .profile-cta-primary:hover {
   opacity: 0.85;
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px color-mix(in srgb, var(--global-link-hover-color) 40%, transparent);
+  box-shadow: 0 4px 16px rgba(45, 128, 154, 0.4);
   color: #fff;
 }
 
 .profile-cta-secondary {
-  background-color: var(--global-background-color);
-  color: var(--global-font-color);
-  border: 1px solid var(--global-border-color);
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .profile-cta-secondary:hover {
-  border-color: var(--global-link-hover-color);
-  color: var(--global-link-hover-color);
+  border-color: #fff;
+  color: #fff;
   transform: translateY(-2px);
-  box-shadow: var(--profile-shadow);
 }
 
 /* ========== 信任背书 ========== */
@@ -254,6 +257,16 @@
 
 .profile-contact-icon {
   font-size: 1.15rem;
+}
+
+/* ========== 暗色模式 ========== */
+html.dark {
+  --profile-hero-from: #162a3a;
+  --profile-hero-to: #1a3a4a;
+}
+
+html.dark .profile-section:hover {
+  box-shadow: 0 4px 20px rgba(45, 128, 154, 0.15);
 }
 
 /* ========== 响应式 ========== */
