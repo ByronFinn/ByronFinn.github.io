@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f43f5e"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="4" fill="url(#accent)"/>
+  <!-- Clapperboard -->
+  <g transform="translate(80, 130)">
+    <!-- Board top (striped) -->
+    <rect x="0" y="0" width="260" height="50" rx="4" fill="#f43f5e" opacity="0.8"/>
+    <rect x="0" y="0" width="40" height="50" fill="#0f172a" opacity="0.5"/>
+    <rect x="60" y="0" width="40" height="50" fill="#0f172a" opacity="0.5"/>
+    <rect x="120" y="0" width="40" height="50" fill="#0f172a" opacity="0.5"/>
+    <rect x="180" y="0" width="40" height="50" fill="#0f172a" opacity="0.5"/>
+    <rect x="240" y="0" width="20" height="50" fill="#0f172a" opacity="0.5"/>
+    <!-- Board body -->
+    <rect x="0" y="50" width="260" height="200" rx="0" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+    <!-- Scene info -->
+    <text x="20" y="85" fill="#f43f5e" font-family="monospace" font-size="14" font-weight="bold">SCENE 22</text>
+    <text x="20" y="110" fill="#94a3b8" font-family="monospace" font-size="12">TAKE: 3</text>
+    <line x1="20" y1="120" x2="240" y2="120" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="145" fill="#64748b" font-family="sans-serif" font-size="12">DIR: 王静</text>
+    <text x="20" y="170" fill="#64748b" font-family="sans-serif" font-size="12">LOC: 白鹿原</text>
+    <text x="20" y="195" fill="#64748b" font-family="sans-serif" font-size="12">DAY: 雨天外景</text>
+    <text x="20" y="225" fill="#f97316" font-family="monospace" font-size="11">22场 / 1天</text>
+  </g>
+  <!-- Camera lens -->
+  <g transform="translate(460, 160)">
+    <circle cx="80" cy="80" r="75" fill="none" stroke="#475569" stroke-width="3"/>
+    <circle cx="80" cy="80" r="60" fill="none" stroke="#334155" stroke-width="2"/>
+    <circle cx="80" cy="80" r="45" fill="none" stroke="#475569" stroke-width="1.5"/>
+    <circle cx="80" cy="80" r="25" fill="#f43f5e" opacity="0.15" stroke="#f43f5e" stroke-width="1.5"/>
+    <circle cx="80" cy="80" r="8" fill="#f43f5e" opacity="0.4"/>
+    <!-- Lens flare -->
+    <circle cx="55" cy="60" r="4" fill="#fff" opacity="0.1"/>
+  </g>
+  <!-- City list -->
+  <g transform="translate(680, 140)">
+    <rect x="0" y="0" width="380" height="260" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="190" y="30" text-anchor="middle" fill="#f97316" font-family="sans-serif" font-size="16" font-weight="bold">短剧产业地图</text>
+    <line x1="20" y1="42" x2="360" y2="42" stroke="#334155" stroke-width="1"/>
+    <!-- City items -->
+    <circle cx="40" cy="70" r="6" fill="#f43f5e" opacity="0.7"/>
+    <text x="55" y="75" fill="#94a3b8" font-family="sans-serif" font-size="13">西安 — 白鹿原拍摄基地</text>
+    <circle cx="40" cy="100" r="6" fill="#f97316" opacity="0.7"/>
+    <text x="55" y="105" fill="#94a3b8" font-family="sans-serif" font-size="13">郑州 — 短剧制作集群</text>
+    <circle cx="40" cy="130" r="6" fill="#3b82f6" opacity="0.7"/>
+    <text x="55" y="135" fill="#94a3b8" font-family="sans-serif" font-size="13">横店 — 传统影视转型</text>
+    <circle cx="40" cy="160" r="6" fill="#8b5cf6" opacity="0.7"/>
+    <text x="55" y="165" fill="#94a3b8" font-family="sans-serif" font-size="13">成都 — 新兴制作中心</text>
+    <line x1="20" y1="185" x2="360" y2="185" stroke="#334155" stroke-width="1"/>
+    <text x="30" y="210" fill="#64748b" font-family="sans-serif" font-size="12">日均产量：数千集</text>
+    <text x="30" y="232" fill="#64748b" font-family="sans-serif" font-size="12">从业者：数十万人</text>
+  </g>
+  <!-- Title -->
+  <text x="600" y="540" text-anchor="middle" fill="#f1f5f9" font-family="sans-serif" font-size="36" font-weight="bold">短剧工厂里的光与疲惫</text>
+  <text x="600" y="580" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="18">短剧风口背后的城市疲倦与从业者生存现状</text>
+  <rect y="626" width="1200" height="4" fill="url(#accent)"/>
+</svg>

@@ -15,12 +15,52 @@ Disallow: /.gitignore
 # 特别允许重要的内容目录
 Allow: /profile/
 Allow: /posts/
-Allow: /static/
 Allow: /pictures/
 Allow: /images/
 
-# Sitemap位置
-Sitemap: https://byronfinn.github.io/sitemap.xml
+# AI Search & retrieval crawlers: allow
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# AI User-triggered fetchers: allow
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Agent
+Allow: /
+
+# AI Training crawlers: block
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+# AI Opt-out tokens
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+# Undeclared crawlers: block
+User-agent: Bytespider
+Disallow: /
 
 # 搜索引擎特定配置
 User-agent: Googlebot
@@ -35,5 +75,10 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# 优化爬虫抓取频率
+# Sitemap位置
+Sitemap: https://byronfinn.github.io/sitemap.xml
+
+# llms.txt location for AI discovery
+# https://byronfinn.github.io/llms.txt
+
 Crawl-delay: 1

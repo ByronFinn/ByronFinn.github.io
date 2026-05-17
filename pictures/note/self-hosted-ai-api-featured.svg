@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ef4444"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="4" fill="url(#accent)"/>
+  <!-- Pipeline flow -->
+  <!-- Domain -->
+  <g transform="translate(60, 200)">
+    <rect x="0" y="0" width="120" height="80" rx="10" fill="#1e293b" stroke="#f97316" stroke-width="1.5"/>
+    <circle cx="60" cy="25" r="15" fill="none" stroke="#f97316" stroke-width="2" opacity="0.7"/>
+    <text x="60" y="30" text-anchor="middle" fill="#f97316" font-family="monospace" font-size="12">@</text>
+    <text x="60" y="60" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">域名</text>
+  </g>
+  <!-- Arrow -->
+  <g transform="translate(190, 230)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#f97316" stroke-width="2" opacity="0.6"/>
+    <polygon points="45,-5 55,0 45,5" fill="#f97316" opacity="0.6"/>
+  </g>
+  <!-- Email -->
+  <g transform="translate(250, 200)">
+    <rect x="0" y="0" width="120" height="80" rx="10" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <rect x="25" y="15" width="70" height="40" rx="4" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
+    <polyline points="25,15 60,35 95,15" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
+    <text x="60" y="70" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">邮箱</text>
+  </g>
+  <!-- Arrow -->
+  <g transform="translate(380, 230)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
+    <polygon points="45,-5 55,0 45,5" fill="#3b82f6" opacity="0.6"/>
+  </g>
+  <!-- SMS -->
+  <g transform="translate(440, 200)">
+    <rect x="0" y="0" width="120" height="80" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+    <rect x="20" y="10" width="80" height="45" rx="8" fill="none" stroke="#8b5cf6" stroke-width="2" opacity="0.6"/>
+    <text x="60" y="38" text-anchor="middle" fill="#8b5cf6" font-family="monospace" font-size="11">验证码</text>
+    <text x="60" y="70" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">接码平台</text>
+  </g>
+  <!-- Arrow -->
+  <g transform="translate(570, 230)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#8b5cf6" stroke-width="2" opacity="0.6"/>
+    <polygon points="45,-5 55,0 45,5" fill="#8b5cf6" opacity="0.6"/>
+  </g>
+  <!-- Registrar -->
+  <g transform="translate(630, 200)">
+    <rect x="0" y="0" width="120" height="80" rx="10" fill="#1e293b" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="60" y="30" text-anchor="middle" fill="#22c55e" font-family="monospace" font-size="20">⚙</text>
+    <text x="60" y="55" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">注册机</text>
+  </g>
+  <!-- Arrow -->
+  <g transform="translate(760, 230)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#22c55e" stroke-width="2" opacity="0.6"/>
+    <polygon points="45,-5 55,0 45,5" fill="#22c55e" opacity="0.6"/>
+  </g>
+  <!-- Sub2API -->
+  <g transform="translate(820, 185)">
+    <rect x="0" y="0" width="140" height="110" rx="12" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+    <text x="70" y="35" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="16" font-weight="bold">Sub2API</text>
+    <line x1="15" y1="48" x2="125" y2="48" stroke="#334155" stroke-width="1"/>
+    <text x="70" y="68" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="11">AI API</text>
+    <text x="70" y="85" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="10">统一分发</text>
+  </g>
+  <!-- Cloudflare badge -->
+  <g transform="translate(100, 80)">
+    <rect x="0" y="0" width="200" height="50" rx="8" fill="#1e293b" stroke="#f97316" stroke-width="1"/>
+    <text x="100" y="20" text-anchor="middle" fill="#f97316" font-family="monospace" font-size="13">Cloudflare</text>
+    <text x="100" y="38" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">Workers 临时邮箱</text>
+  </g>
+  <!-- Full chain label -->
+  <g transform="translate(300, 370)">
+    <rect x="0" y="0" width="600" height="60" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="300" y="25" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="14">全链路：域名 → 邮箱 → 接码 → 注册 → API 分发</text>
+    <text x="300" y="48" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="12">自建 AI API 的完整部署方案</text>
+  </g>
+  <!-- Title -->
+  <text x="600" y="540" text-anchor="middle" fill="#f1f5f9" font-family="sans-serif" font-size="36" font-weight="bold">自建 AI API 全链路</text>
+  <text x="600" y="580" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="18">从域名邮箱到 Sub2API 的完整部署教程</text>
+  <rect y="626" width="1200" height="4" fill="url(#accent)"/>
+</svg>

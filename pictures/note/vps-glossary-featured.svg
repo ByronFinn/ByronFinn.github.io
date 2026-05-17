@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="4" fill="url(#accent)"/>
+  <!-- Server rack -->
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="200" height="320" rx="10" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+    <!-- Server units -->
+    <rect x="15" y="20" width="170" height="45" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <circle cx="160" cy="42" r="6" fill="#22c55e" opacity="0.8"/>
+    <rect x="30" y="35" width="50" height="4" rx="1" fill="#94a3b8" opacity="0.4"/>
+    <rect x="30" y="45" width="35" height="4" rx="1" fill="#94a3b8" opacity="0.3"/>
+    <rect x="15" y="75" width="170" height="45" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <circle cx="160" cy="97" r="6" fill="#22c55e" opacity="0.8"/>
+    <rect x="30" y="90" width="60" height="4" rx="1" fill="#94a3b8" opacity="0.4"/>
+    <rect x="30" y="100" width="45" height="4" rx="1" fill="#94a3b8" opacity="0.3"/>
+    <rect x="15" y="130" width="170" height="45" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <circle cx="160" cy="152" r="6" fill="#3b82f6" opacity="0.8"/>
+    <rect x="30" y="145" width="55" height="4" rx="1" fill="#94a3b8" opacity="0.4"/>
+    <rect x="30" y="155" width="40" height="4" rx="1" fill="#94a3b8" opacity="0.3"/>
+    <rect x="15" y="185" width="170" height="45" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <circle cx="160" cy="207" r="6" fill="#f59e0b" opacity="0.8"/>
+    <rect x="30" y="200" width="48" height="4" rx="1" fill="#94a3b8" opacity="0.4"/>
+    <rect x="30" y="210" width="65" height="4" rx="1" fill="#94a3b8" opacity="0.3"/>
+    <!-- Cable management -->
+    <rect x="15" y="245" width="170" height="60" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="100" y="275" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="11">网络交换机</text>
+    <text x="100" y="310" text-anchor="middle" fill="#334155" font-family="monospace" font-size="9">1U/2U/4U</text>
+  </g>
+  <!-- Glossary terms floating -->
+  <g transform="translate(360, 100)">
+    <!-- Term bubbles -->
+    <rect x="0" y="0" width="120" height="38" rx="19" fill="#22c55e" opacity="0.15" stroke="#22c55e" stroke-width="1"/>
+    <text x="60" y="24" text-anchor="middle" fill="#4ade80" font-family="monospace" font-size="14" font-weight="bold">MJJ</text>
+    <rect x="140" y="10" width="120" height="38" rx="19" fill="#3b82f6" opacity="0.15" stroke="#3b82f6" stroke-width="1"/>
+    <text x="200" y="34" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="14">小鸡</text>
+    <rect x="280" y="0" width="120" height="38" rx="19" fill="#f59e0b" opacity="0.15" stroke="#f59e0b" stroke-width="1"/>
+    <text x="340" y="24" text-anchor="middle" fill="#fbbf24" font-family="sans-serif" font-size="14">母鸡</text>
+    <rect x="420" y="10" width="140" height="38" rx="19" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="1"/>
+    <text x="490" y="34" text-anchor="middle" fill="#a78bfa" font-family="sans-serif" font-size="13">NAT/BLD</text>
+    <rect x="40" y="60" width="130" height="38" rx="19" fill="#ef4444" opacity="0.15" stroke="#ef4444" stroke-width="1"/>
+    <text x="105" y="84" text-anchor="middle" fill="#fca5a5" font-family="sans-serif" font-size="13">搬瓦工</text>
+    <rect x="190" y="70" width="130" height="38" rx="19" fill="#3b82f6" opacity="0.15" stroke="#3b82f6" stroke-width="1"/>
+    <text x="255" y="94" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="13">CN2 GIA</text>
+    <rect x="340" y="60" width="140" height="38" rx="19" fill="#22c55e" opacity="0.15" stroke="#22c55e" stroke-width="1"/>
+    <text x="410" y="84" text-anchor="middle" fill="#4ade80" font-family="sans-serif" font-size="13">KVM/OVZ</text>
+    <!-- Decorative question marks -->
+    <text x="540" y="80" fill="#334155" font-family="serif" font-size="40">?</text>
+    <text x="20" y="120" fill="#334155" font-family="serif" font-size="30">?</text>
+  </g>
+  <!-- Knowledge categories -->
+  <g transform="translate(360, 230)">
+    <rect x="0" y="0" width="620" height="200" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="310" y="28" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="14">知识体系</text>
+    <line x1="20" y1="38" x2="600" y2="38" stroke="#334155" stroke-width="1"/>
+    <!-- Category grid -->
+    <g transform="translate(20, 50)">
+      <rect x="0" y="0" width="140" height="35" rx="6" fill="#22c55e" opacity="0.1"/>
+      <text x="70" y="22" text-anchor="middle" fill="#4ade80" font-family="sans-serif" font-size="12">服务器类型</text>
+      <rect x="155" y="0" width="140" height="35" rx="6" fill="#3b82f6" opacity="0.1"/>
+      <text x="225" y="22" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="12">网络线路</text>
+      <rect x="310" y="0" width="140" height="35" rx="6" fill="#8b5cf6" opacity="0.1"/>
+      <text x="380" y="22" text-anchor="middle" fill="#a78bfa" font-family="sans-serif" font-size="12">虚拟化技术</text>
+      <rect x="0" y="45" width="140" height="35" rx="6" fill="#f59e0b" opacity="0.1"/>
+      <text x="70" y="67" text-anchor="middle" fill="#fbbf24" font-family="sans-serif" font-size="12">商家缩写</text>
+      <rect x="155" y="45" width="140" height="35" rx="6" fill="#ef4444" opacity="0.1"/>
+      <text x="225" y="67" text-anchor="middle" fill="#fca5a5" font-family="sans-serif" font-size="12">圈名词汇</text>
+      <rect x="310" y="45" width="140" height="35" rx="6" fill="#22c55e" opacity="0.1"/>
+      <text x="380" y="67" text-anchor="middle" fill="#4ade80" font-family="sans-serif" font-size="12">操作系统</text>
+    </g>
+    <text x="310" y="160" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="12">VPS / IDC / 服务器 / 网络 / Linux</text>
+    <text x="310" y="180" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="11">一份读懂机圈生态的入门百科</text>
+  </g>
+  <!-- Title -->
+  <text x="600" y="540" text-anchor="middle" fill="#f1f5f9" font-family="sans-serif" font-size="36" font-weight="bold">VPS 圈知识扫盲</text>
+  <text x="600" y="580" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="18">机圈黑话大全：从 MJJ 到 CN2 GIA</text>
+  <rect y="626" width="1200" height="4" fill="url(#accent)"/>
+</svg>

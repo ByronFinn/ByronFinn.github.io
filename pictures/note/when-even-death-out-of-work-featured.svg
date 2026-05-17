@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#64748b"/>
+      <stop offset="100%" style="stop-color:#94a3b8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="4" fill="url(#accent)"/>
+  <!-- Robot arm -->
+  <g transform="translate(100, 130)">
+    <!-- Robot body -->
+    <rect x="40" y="100" width="120" height="160" rx="10" fill="#334155" stroke="#475569" stroke-width="2"/>
+    <!-- Robot head -->
+    <rect x="55" y="50" width="90" height="50" rx="8" fill="#475569" stroke="#64748b" stroke-width="2"/>
+    <!-- Robot eyes (dimmed) -->
+    <circle cx="80" cy="75" r="10" fill="#64748b" opacity="0.3"/>
+    <circle cx="120" cy="75" r="10" fill="#64748b" opacity="0.3"/>
+    <!-- Robot arm -->
+    <rect x="160" y="120" width="80" height="20" rx="4" fill="#475569"/>
+    <rect x="230" y="110" width="20" height="40" rx="4" fill="#64748b"/>
+    <!-- Gripper -->
+    <rect x="250" y="105" width="8" height="20" rx="2" fill="#94a3b8" opacity="0.6"/>
+    <rect x="260" y="105" width="8" height="20" rx="2" fill="#94a3b8" opacity="0.6"/>
+    <!-- Label -->
+    <text x="100" y="300" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="14">机器</text>
+  </g>
+  <!-- Worker silhouette -->
+  <g transform="translate(480, 130)">
+    <!-- Hard hat -->
+    <ellipse cx="80" cy="50" rx="35" ry="15" fill="#f59e0b" opacity="0.6"/>
+    <rect x="45" y="50" width="70" height="10" rx="2" fill="#f59e0b" opacity="0.4"/>
+    <!-- Head -->
+    <circle cx="80" cy="80" r="25" fill="#475569" opacity="0.5"/>
+    <!-- Body -->
+    <path d="M40,110 Q80,100 120,110 L130,230 Q80,240 30,230 Z" fill="#475569" opacity="0.4"/>
+    <!-- Empty hands (open, no tool) -->
+    <ellipse cx="20" cy="160" rx="15" ry="8" fill="#64748b" opacity="0.3" transform="rotate(-20, 20, 160)"/>
+    <ellipse cx="140" cy="160" rx="15" ry="8" fill="#64748b" opacity="0.3" transform="rotate(20, 140, 160)"/>
+    <!-- Label -->
+    <text x="80" y="280" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="14">人</text>
+  </g>
+  <!-- VS divider -->
+  <g transform="translate(370, 200)">
+    <rect x="0" y="0" width="60" height="60" rx="30" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+    <text x="30" y="38" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="18" font-weight="bold">VS</text>
+  </g>
+  <!-- Question / theme text -->
+  <g transform="translate(700, 140)">
+    <rect x="0" y="0" width="380" height="280" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="190" y="35" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="16" font-weight="bold">存在主义困境</text>
+    <line x1="20" y1="48" x2="360" y2="48" stroke="#334155" stroke-width="1"/>
+    <!-- Timeline -->
+    <text x="30" y="80" fill="#22c55e" font-family="sans-serif" font-size="13">过去：</text>
+    <text x="90" y="80" fill="#64748b" font-family="sans-serif" font-size="13">拿命换钱 → "有用的人"</text>
+    <text x="30" y="115" fill="#f59e0b" font-family="sans-serif" font-size="13">现在：</text>
+    <text x="90" y="115" fill="#64748b" font-family="sans-serif" font-size="13">机器人取代 → "不被需要"</text>
+    <text x="30" y="150" fill="#ef4444" font-family="sans-serif" font-size="13">困境：</text>
+    <text x="90" y="150" fill="#64748b" font-family="sans-serif" font-size="13">最后的筹码也没了</text>
+    <line x1="20" y1="170" x2="360" y2="170" stroke="#334155" stroke-width="1"/>
+    <!-- Quote -->
+    <text x="40" y="200" fill="#94a3b8" font-family="serif" font-size="28" opacity="0.3">"</text>
+    <text x="55" y="200" fill="#94a3b8" font-family="sans-serif" font-size="13">以前，底层人再惨也有一个</text>
+    <text x="55" y="220" fill="#94a3b8" font-family="sans-serif" font-size="13">拿得出手的能力 — 拿命换钱。</text>
+    <text x="55" y="250" fill="#64748b" font-family="sans-serif" font-size="13">命，是他们最后的筹码。</text>
+  </g>
+  <!-- Title -->
+  <text x="600" y="540" text-anchor="middle" fill="#f1f5f9" font-family="sans-serif" font-size="36" font-weight="bold">连命，都没人要了</text>
+  <text x="600" y="580" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="18">机器时代人的价值困境</text>
+  <rect y="626" width="1200" height="4" fill="url(#accent)"/>
+</svg>

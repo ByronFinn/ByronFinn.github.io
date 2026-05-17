@@ -25,16 +25,10 @@
     </div>
   </div>
 
-  <!-- 核心行动点 -->
-  <div class="profile-cta">
-    <a href="/" class="profile-cta-btn profile-cta-primary">看我的文章</a>
-    <a href="mailto:blog@baifan.site" class="profile-cta-btn profile-cta-secondary">联系我</a>
-  </div>
-
   <!-- 信任背书 -->
   <div class="profile-section">
     <div class="profile-section-header">
-      <span class="profile-section-icon">📊</span>
+      <span class="profile-section-icon">──</span>
       <h3 class="profile-section-title">在写什么</h3>
     </div>
     <div class="profile-section-content">
@@ -72,7 +66,7 @@
   <!-- 联系方式 -->
   <div class="profile-section">
     <div class="profile-section-header">
-      <span class="profile-section-icon">📬</span>
+      <span class="profile-section-icon">──</span>
       <h3 class="profile-section-title">找到我</h3>
     </div>
     <div class="profile-section-content">

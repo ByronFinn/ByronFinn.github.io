@@ -1,35 +1,18 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>深度思考 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/categories/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/</link><description>深度思考 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Sun, 17 May 2026 21:41:37 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/categories/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/" rel="self" type="application/rss+xml"/><item><title>AI 编程新思路：从 UI 倒推 PRD，让需求可视化</title><link>https://byronfinn.github.io/2026-05-17-ui-first-ai-programming/</link><pubDate>Sun, 17 May 2026 21:41:37 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-05-17-ui-first-ai-programming/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/note/ui-first-ai-featured.svg" referrerpolicy="no-referrer">
             </div><!-- more -->
-<p>Vibe Coding 的常规流程大家已经很熟悉：写用户故事 → 输出 PRD → AI 生成后端 → AI 生成前端 → 演示验证。这个流程能跑通，但最终交付时往往发现 UI 交互体验和预期差距很大。问题出在哪里？出在 PRD 本身。</p>]]></description></item><item><title>深度解读 TencentDB Agent Memory：让 AI Agent 真正拥有分层记忆</title><link>https://byronfinn.github.io/2026-05-17-tencentdb-agent-memory-deep-dive/</link><pubDate>Sun, 17 May 2026 14:07:51 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-05-17-tencentdb-agent-memory-deep-dive/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/tencentdb-agent-memory-featured.svg" referrerpolicy="no-referrer">
-            </div><!-- more -->
-<h2 id="为什么-ai-agent-需要记忆系统" class="headerLink">
-    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88-ai-agent-%e9%9c%80%e8%a6%81%e8%ae%b0%e5%bf%86%e7%b3%bb%e7%bb%9f" class="header-mark"></a>为什么 AI Agent 需要记忆系统？</h2><p>如果你有过长时间使用 AI Agent 的经验，一定对以下场景不陌生：</p>
-<ul>
-<li>每次新会话都要重新解释项目背景、代码规范、输出格式偏好</li>
-<li>长任务执行到一半，上下文被海量工具日志塞满，Agent 开始&quot;遗忘&quot;早期指令</li>
-<li>想让 Agent 学习你的工作习惯，却只能靠每次手写 system prompt</li>
-</ul>
-<p><strong>Memory 不是为了让 AI 存下所有东西，而是为了让人不必重复所有事情。</strong> 这是 <a href="https://github.com/Tencent/TencentDB-Agent-Memory" target="_blank" rel="noopener noreferrer">TencentDB Agent Memory</a> 项目的核心理念。</p>]]></description></item><item><title>连命，都没人要了：机器时代人的价值困境</title><link>https://byronfinn.github.io/whenevendeathisoutofwork/</link><pubDate>Tue, 11 Nov 2025 21:30:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/whenevendeathisoutofwork/</guid><description><![CDATA[<h1 id="连命都没人要了" class="headerLink">
+<p>Vibe Coding 的常规流程大家已经很熟悉：写用户故事 → 输出 PRD → AI 生成后端 → AI 生成前端 → 演示验证。这个流程能跑通，但最终交付时往往发现 UI 交互体验和预期差距很大。问题出在哪里？出在 PRD 本身。</p>]]></description></item><item><title>连命，都没人要了：机器时代人的价值困境</title><link>https://byronfinn.github.io/2025-11-11-when-even-death-is-out-of-work/</link><pubDate>Tue, 11 Nov 2025 21:30:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2025-11-11-when-even-death-is-out-of-work/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/when-even-death-out-of-work-featured.svg" referrerpolicy="no-referrer">
+            </div><h1 id="连命都没人要了" class="headerLink">
     <a href="#%e8%bf%9e%e5%91%bd%e9%83%bd%e6%b2%a1%e4%ba%ba%e8%a6%81%e4%ba%86" class="header-mark"></a>连命，都没人要了</h1><blockquote>
   <p><a href="https://www.zaobao.com.sg/realtime/china/story20251111-7801146" target="_blank" rel="noopener noreferrer">https://www.zaobao.com.sg/realtime/china/story20251111-7801146</a></p>
 
 </blockquote><p>新闻里说机器人要大范围使用了。
 文章里讲得很体面：这是“高质量发展”，是“智能升级”。
 但我老觉得，那些词里有点冷。
-像在庆祝某种没人被邀请的葬礼。</p>]]></description></item><item><title>巴菲特2025年致股东信：告别与传承</title><link>https://byronfinn.github.io/berkshire-shareholder-letter/</link><pubDate>Tue, 11 Nov 2025 12:30:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/berkshire-shareholder-letter/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/berkshire-shareholder-letter-featured.jpg" referrerpolicy="no-referrer">
-            </div><figure><img src="/pictures/note/berkshire-shareholder-letter-featured.jpg"
-    alt="伯克希尔股东信封面"><figcaption>
-      <p>伯克希尔股东信精选封面</p>
-    </figcaption>
-</figure>
-
-<p>To My Fellow Shareholders:</p>
-<p>I will no longer be writing Berkshire’s annual report or talking endlessly at the annual meeting. As the British would say, I’m “going quiet.”</p>
-<p>Sort of.</p>
-<p>Greg Abel will become the boss at yearend. He is a great manager, a tireless worker and an honest communicator. Wish him an extended tenure.</p>]]></description></item><item><title>永生，只是永久的孤独</title><link>https://byronfinn.github.io/live-alone/</link><pubDate>Mon, 10 Nov 2025 19:35:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/live-alone/</guid><description><![CDATA[<h1 id="永生只是永久的孤独" class="headerLink">
+像在庆祝某种没人被邀请的葬礼。</p>]]></description></item><item><title>永生，只是永久的孤独</title><link>https://byronfinn.github.io/2025-11-10-immortality-eternal-loneliness/</link><pubDate>Mon, 10 Nov 2025 19:35:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2025-11-10-immortality-eternal-loneliness/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/immortality-eternal-loneliness-featured.svg" referrerpolicy="no-referrer">
+            </div><h1 id="永生只是永久的孤独" class="headerLink">
     <a href="#%e6%b0%b8%e7%94%9f%e5%8f%aa%e6%98%af%e6%b0%b8%e4%b9%85%e7%9a%84%e5%ad%a4%e7%8b%ac" class="header-mark"></a>永生，只是永久的孤独</h1><blockquote>
   <p>今天在 NT 看到一个新闻，说中国长寿事业飞速发展，人活到 150 岁，指日可待；我一搜国内新闻，全是只能活到 120 岁，后来发现是为尊者讳，囧</p>
 
@@ -37,7 +20,9 @@
 <li><a href="https://cn.nytimes.com/china/20251110/china-aging-longevity-science/" target="_blank" rel="noopener noreferrer">https://cn.nytimes.com/china/20251110/china-aging-longevity-science/</a></li>
 <li><a href="https://news.qq.com/rain/a/20251109A024FN%2900" target="_blank" rel="noopener noreferrer">https://news.qq.com/rain/a/20251109A024FN)00</a></li>
 </ul>
-<p>有时候我觉得，人类的伟大之处，不在于能飞上太空，而在于从未放弃对“活得更久”的执念。</p>]]></description></item><item><title>AI 不确定性与及时行乐：一个普通人的思考</title><link>https://byronfinn.github.io/%E5%9C%A8ai%E6%9D%A5%E4%B8%B4%E5%89%8D%E5%8F%8A%E6%97%B6%E8%A1%8C%E4%B9%90/</link><pubDate>Sat, 08 Nov 2025 12:50:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/%E5%9C%A8ai%E6%9D%A5%E4%B8%B4%E5%89%8D%E5%8F%8A%E6%97%B6%E8%A1%8C%E4%B9%90/</guid><description><![CDATA[<p>看完最近的一些杂志和报道，真的是劝大家趁这两年还可以，及时行乐，多玩玩。</p>
+<p>有时候我觉得，人类的伟大之处，不在于能飞上太空，而在于从未放弃对“活得更久”的执念。</p>]]></description></item><item><title>AI 不确定性与及时行乐：一个普通人的思考</title><link>https://byronfinn.github.io/2025-11-08-ai-uncertainty-and-carpe-diem/</link><pubDate>Sat, 08 Nov 2025 12:50:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2025-11-08-ai-uncertainty-and-carpe-diem/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/ai-uncertainty-carpe-diem-featured.svg" referrerpolicy="no-referrer">
+            </div><p>看完最近的一些杂志和报道，真的是劝大家趁这两年还可以，及时行乐，多玩玩。</p>
 <p>做两个假设：</p>
 <ol>
 <li>

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="4" fill="url(#accent)"/>
+  <!-- Newspaper -->
+  <g transform="translate(60, 100)">
+    <rect x="0" y="0" width="280" height="350" rx="4" fill="#f8fafc" opacity="0.05" stroke="#475569" stroke-width="2"/>
+    <!-- Masthead -->
+    <rect x="10" y="10" width="260" height="35" rx="2" fill="#1e40af" opacity="0.3"/>
+    <text x="140" y="34" text-anchor="middle" fill="#93c5fd" font-family="serif" font-size="18" font-weight="bold">Wall Street Journal</text>
+    <line x1="10" y1="55" x2="270" y2="55" stroke="#475569" stroke-width="1"/>
+    <!-- Headlines -->
+    <rect x="15" y="65" width="250" height="10" rx="2" fill="#94a3b8" opacity="0.4"/>
+    <rect x="15" y="82" width="200" height="10" rx="2" fill="#94a3b8" opacity="0.3"/>
+    <line x1="10" y1="100" x2="270" y2="100" stroke="#475569" stroke-width="1"/>
+    <!-- Articles -->
+    <rect x="15" y="110" width="120" height="80" rx="2" fill="#334155" opacity="0.3"/>
+    <rect x="145" y="110" width="125" height="80" rx="2" fill="#334155" opacity="0.2"/>
+    <rect x="15" y="200" width="250" height="8" rx="2" fill="#94a3b8" opacity="0.3"/>
+    <rect x="15" y="215" width="230" height="8" rx="2" fill="#94a3b8" opacity="0.2"/>
+    <rect x="15" y="230" width="240" height="8" rx="2" fill="#94a3b8" opacity="0.3"/>
+    <rect x="15" y="245" width="200" height="8" rx="2" fill="#94a3b8" opacity="0.2"/>
+    <line x1="10" y1="265" x2="270" y2="265" stroke="#475569" stroke-width="1"/>
+    <rect x="15" y="275" width="250" height="8" rx="2" fill="#94a3b8" opacity="0.2"/>
+    <rect x="15" y="290" width="220" height="8" rx="2" fill="#94a3b8" opacity="0.2"/>
+    <rect x="15" y="310" width="250" height="25" rx="3" fill="#dc2626" opacity="0.1" stroke="#dc2626" stroke-width="1"/>
+    <text x="140" y="327" text-anchor="middle" fill="#fca5a5" font-family="sans-serif" font-size="11">英伟达芯片禁令</text>
+  </g>
+  <!-- Chip icon -->
+  <g transform="translate(440, 140)">
+    <rect x="20" y="20" width="100" height="100" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="35" y="35" width="70" height="70" rx="4" fill="#0f172a"/>
+    <text x="70" y="75" text-anchor="middle" fill="#3b82f6" font-family="monospace" font-size="16" font-weight="bold">GPU</text>
+    <!-- Pins -->
+    <rect x="40" y="5" width="8" height="18" fill="#475569"/>
+    <rect x="56" y="5" width="8" height="18" fill="#475569"/>
+    <rect x="72" y="5" width="8" height="18" fill="#475569"/>
+    <rect x="88" y="5" width="8" height="18" fill="#475569"/>
+    <rect x="40" y="118" width="8" height="18" fill="#475569"/>
+    <rect x="56" y="118" width="8" height="18" fill="#475569"/>
+    <rect x="72" y="118" width="8" height="18" fill="#475569"/>
+    <rect x="88" y="118" width="8" height="18" fill="#475569"/>
+    <!-- NVIDIA label -->
+    <text x="70" y="155" text-anchor="middle" fill="#22c55e" font-family="monospace" font-size="12" opacity="0.6">NVIDIA</text>
+  </g>
+  <!-- Stock chart -->
+  <g transform="translate(620, 120)">
+    <rect x="0" y="0" width="480" height="200" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="240" y="25" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="13">经济信号</text>
+    <line x1="20" y1="35" x2="460" y2="35" stroke="#334155" stroke-width="1"/>
+    <!-- Chart line -->
+    <polyline points="30,150 80,140 130,120 180,100 230,110 280,80 330,90 380,70 430,85 450,95" fill="none" stroke="#22c55e" stroke-width="2"/>
+    <!-- Ban marker -->
+    <line x1="280" y1="50" x2="280" y2="170" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4"/>
+    <text x="285" y="185" fill="#ef4444" font-family="monospace" font-size="10">禁令</text>
+    <!-- Labels -->
+    <text x="40" y="185" fill="#64748b" font-family="monospace" font-size="9">芯片</text>
+    <text x="130" y="185" fill="#64748b" font-family="monospace" font-size="9">出行</text>
+    <text x="220" y="185" fill="#64748b" font-family="monospace" font-size="9">电费</text>
+    <text x="370" y="185" fill="#64748b" font-family="monospace" font-size="9">贸易</text>
+  </g>
+  <!-- Key themes -->
+  <g transform="translate(620, 350)">
+    <rect x="0" y="0" width="480" height="130" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="240" y="25" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="13">核心议题</text>
+    <line x1="20" y1="35" x2="460" y2="35" stroke="#334155" stroke-width="1"/>
+    <g transform="translate(20, 45)">
+      <rect x="0" y="0" width="130" height="30" rx="6" fill="#dc2626" opacity="0.1"/>
+      <text x="65" y="20" text-anchor="middle" fill="#fca5a5" font-family="sans-serif" font-size="12">英伟达芯片禁令</text>
+      <rect x="145" y="0" width="130" height="30" rx="6" fill="#3b82f6" opacity="0.1"/>
+      <text x="210" y="20" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="12">中美科技博弈</text>
+      <rect x="290" y="0" width="130" height="30" rx="6" fill="#f59e0b" opacity="0.1"/>
+      <text x="355" y="20" text-anchor="middle" fill="#fbbf24" font-family="sans-serif" font-size="12">假期出行危机</text>
+      <rect x="0" y="40" width="130" height="30" rx="6" fill="#22c55e" opacity="0.1"/>
+      <text x="65" y="60" text-anchor="middle" fill="#4ade80" font-family="sans-serif" font-size="12">贸易保护</text>
+      <rect x="145" y="40" width="130" height="30" rx="6" fill="#8b5cf6" opacity="0.1"/>
+      <text x="210" y="60" text-anchor="middle" fill="#a78bfa" font-family="sans-serif" font-size="12">政府预算</text>
+    </g>
+  </g>
+  <!-- Title -->
+  <text x="600" y="540" text-anchor="middle" fill="#f1f5f9" font-family="sans-serif" font-size="32" font-weight="bold">WSJ：芯片禁令与经济信号</text>
+  <text x="600" y="580" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="18">华尔街日报深度分析：时代换挡的声音</text>
+  <rect y="626" width="1200" height="4" fill="url(#accent)"/>
+</svg>
