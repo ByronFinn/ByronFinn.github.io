@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="620" viewBox="0 0 920 620">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="blueG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="purpleG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="greenG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+    <linearGradient id="amberG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="920" height="620" rx="12" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="460" y="38" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="20" font-weight="700">多智能体协作拓扑结构</text>
+  <line x1="300" y1="48" x2="620" y2="48" stroke="#3b82f6" stroke-width="2" opacity="0.5"/>
+
+  <!-- ======== 1. 星型 (Star) — top-left ======== -->
+  <text x="230" y="80" text-anchor="middle" fill="#3b82f6" font-family="system-ui,sans-serif" font-size="14" font-weight="600">星型 Star</text>
+  <g filter="shadow">
+    <!-- Center -->
+    <circle cx="230" cy="170" r="22" fill="url(#blueG)" opacity="0.95"/>
+    <text x="230" y="175" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Hub</text>
+    <!-- Top -->
+    <line x1="230" y1="148" x2="230" y2="110" stroke="#3b82f6" stroke-width="1.8" marker-end="url(#arrowBlue)"/>
+    <circle cx="230" cy="102" r="15" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="230" y="106" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9">A1</text>
+    <!-- Right -->
+    <line x1="252" y1="170" x2="288" y2="170" stroke="#3b82f6" stroke-width="1.8" marker-end="url(#arrowBlue)"/>
+    <circle cx="298" cy="170" r="15" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="298" y="174" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9">A2</text>
+    <!-- Bottom -->
+    <line x1="230" y1="192" x2="230" y2="228" stroke="#3b82f6" stroke-width="1.8" marker-end="url(#arrowBlue)"/>
+    <circle cx="230" cy="238" r="15" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="230" y="242" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9">A3</text>
+    <!-- Left -->
+    <line x1="208" y1="170" x2="172" y2="170" stroke="#3b82f6" stroke-width="1.8" marker-end="url(#arrowBlue)"/>
+    <circle cx="162" cy="170" r="15" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="162" y="174" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9">A4</text>
+  </g>
+
+  <!-- ======== 2. 链式 (Pipeline) — top-right ======== -->
+  <text x="690" y="80" text-anchor="middle" fill="#8b5cf6" font-family="system-ui,sans-serif" font-size="14" font-weight="600">链式 Pipeline</text>
+  <g filter="shadow">
+    <!-- Node 1 -->
+    <rect x="548" y="148" width="52" height="30" rx="8" fill="#2d1b69" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="574" y="167" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="10" font-weight="500">Step1</text>
+    <!-- Arrow -->
+    <line x1="600" y1="163" x2="618" y2="163" stroke="#8b5cf6" stroke-width="1.8" marker-end="url(#arrowPurple)"/>
+    <!-- Node 2 -->
+    <rect x="626" y="148" width="52" height="30" rx="8" fill="#2d1b69" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="652" y="167" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="10" font-weight="500">Step2</text>
+    <!-- Arrow -->
+    <line x1="678" y1="163" x2="696" y2="163" stroke="#8b5cf6" stroke-width="1.8" marker-end="url(#arrowPurple)"/>
+    <!-- Node 3 -->
+    <rect x="704" y="148" width="52" height="30" rx="8" fill="#2d1b69" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="730" y="167" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="10" font-weight="500">Step3</text>
+    <!-- Arrow -->
+    <line x1="756" y1="163" x2="774" y2="163" stroke="#8b5cf6" stroke-width="1.8" marker-end="url(#arrowPurple)"/>
+    <!-- Node 4 -->
+    <rect x="782" y="148" width="52" height="30" rx="8" fill="#2d1b69" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="808" y="167" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="10" font-weight="500">Step4</text>
+  </g>
+
+  <!-- ======== 3. 树型 (Tree) — middle-left ======== -->
+  <text x="230" y="296" text-anchor="middle" fill="#22c55e" font-family="system-ui,sans-serif" font-size="14" font-weight="600">树型 Tree</text>
+  <g filter="shadow">
+    <!-- Root -->
+    <rect x="202" y="310" width="56" height="28" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="230" y="328" text-anchor="middle" fill="#86efac" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Root</text>
+    <!-- Lines to children -->
+    <line x1="216" y1="338" x2="160" y2="365" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+    <line x1="244" y1="338" x2="300" y2="365" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+    <!-- Child L -->
+    <rect x="130" y="370" width="50" height="26" rx="7" fill="#14532d" stroke="#22c55e" stroke-width="1.2"/>
+    <text x="155" y="387" text-anchor="middle" fill="#86efac" font-family="system-ui,sans-serif" font-size="9">Child1</text>
+    <!-- Child R -->
+    <rect x="280" y="370" width="50" height="26" rx="7" fill="#14532d" stroke="#22c55e" stroke-width="1.2"/>
+    <text x="305" y="387" text-anchor="middle" fill="#86efac" font-family="system-ui,sans-serif" font-size="9">Child2</text>
+    <!-- Leaves of Child1 -->
+    <line x1="143" y1="396" x2="120" y2="418" stroke="#22c55e" stroke-width="1.2" marker-end="url(#arrowGreen)"/>
+    <line x1="167" y1="396" x2="190" y2="418" stroke="#22c55e" stroke-width="1.2" marker-end="url(#arrowGreen)"/>
+    <rect x="96" y="422" width="44" height="24" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+    <text x="118" y="438" text-anchor="middle" fill="#4ade80" font-family="system-ui,sans-serif" font-size="8">Leaf1</text>
+    <rect x="170" y="422" width="44" height="24" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+    <text x="192" y="438" text-anchor="middle" fill="#4ade80" font-family="system-ui,sans-serif" font-size="8">Leaf2</text>
+    <!-- Leaves of Child2 -->
+    <line x1="293" y1="396" x2="270" y2="418" stroke="#22c55e" stroke-width="1.2" marker-end="url(#arrowGreen)"/>
+    <line x1="317" y1="396" x2="340" y2="418" stroke="#22c55e" stroke-width="1.2" marker-end="url(#arrowGreen)"/>
+    <rect x="246" y="422" width="44" height="24" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+    <text x="268" y="438" text-anchor="middle" fill="#4ade80" font-family="system-ui,sans-serif" font-size="8">Leaf3</text>
+    <rect x="320" y="422" width="44" height="24" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+    <text x="342" y="438" text-anchor="middle" fill="#4ade80" font-family="system-ui,sans-serif" font-size="8">Leaf4</text>
+  </g>
+
+  <!-- ======== 4. 网状 (Mesh) — middle-right ======== -->
+  <text x="690" y="296" text-anchor="middle" fill="#f59e0b" font-family="system-ui,sans-serif" font-size="14" font-weight="600">网状 Mesh</text>
+  <g filter="shadow">
+    <!-- Connections (draw first, behind nodes) -->
+    <!-- Top-left to others -->
+    <line x1="652" y1="328" x2="728" y2="328" stroke="#f59e0b" stroke-width="1.3" opacity="0.6"/>
+    <line x1="648" y1="342" x2="732" y2="408" stroke="#f59e0b" stroke-width="1.3" opacity="0.6"/>
+    <line x1="640" y1="344" x2="640" y2="400" stroke="#f59e0b" stroke-width="1.3" opacity="0.6"/>
+    <!-- Top-right to others -->
+    <line x1="732" y1="344" x2="648" y2="408" stroke="#f59e0b" stroke-width="1.3" opacity="0.6"/>
+    <line x1="740" y1="344" x2="740" y2="400" stroke="#f59e0b" stroke-width="1.3" opacity="0.6"/>
+    <!-- Bottom-left to bottom-right -->
+    <line x1="652" y1="422" x2="728" y2="422" stroke="#f59e0b" stroke-width="1.3" opacity="0.6"/>
+    <!-- Nodes -->
+    <circle cx="640" cy="328" r="16" fill="#422006" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="640" y="332" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9" font-weight="500">N1</text>
+    <circle cx="740" cy="328" r="16" fill="#422006" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="740" y="332" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9" font-weight="500">N2</text>
+    <circle cx="640" cy="422" r="16" fill="#422006" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="640" y="426" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9" font-weight="500">N3</text>
+    <circle cx="740" cy="422" r="16" fill="#422006" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="740" y="426" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9" font-weight="500">N4</text>
+  </g>
+
+  <!-- ======== 5. Gateway — bottom center ======== -->
+  <text x="460" y="500" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="14" font-weight="600">网关路由 Gateway</text>
+  <g filter="shadow">
+    <!-- Entry points row -->
+    <rect x="148" y="515" width="72" height="28" rx="7" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.3"/>
+    <text x="184" y="533" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="10">Slack</text>
+
+    <rect x="278" y="515" width="72" height="28" rx="7" fill="#2d1b69" stroke="#8b5cf6" stroke-width="1.3"/>
+    <text x="314" y="533" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="10">Telegram</text>
+
+    <rect x="408" y="515" width="72" height="28" rx="7" fill="#14532d" stroke="#22c55e" stroke-width="1.3"/>
+    <text x="444" y="533" text-anchor="middle" fill="#86efac" font-family="system-ui,sans-serif" font-size="10">Discord</text>
+
+    <rect x="538" y="515" width="72" height="28" rx="7" fill="#422006" stroke="#f59e0b" stroke-width="1.3"/>
+    <text x="574" y="533" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="10">WhatsApp</text>
+
+    <!-- Arrows down to Gateway hub -->
+    <line x1="184" y1="543" x2="440" y2="572" stroke="#94a3b8" stroke-width="1.3" marker-end="url(#arrowGray)"/>
+    <line x1="314" y1="543" x2="448" y2="572" stroke="#94a3b8" stroke-width="1.3" marker-end="url(#arrowGray)"/>
+    <line x1="444" y1="543" x2="460" y2="572" stroke="#94a3b8" stroke-width="1.3" marker-end="url(#arrowGray)"/>
+    <line x1="574" y1="543" x2="472" y2="572" stroke="#94a3b8" stroke-width="1.3" marker-end="url(#arrowGray)"/>
+
+    <!-- Gateway hub -->
+    <rect x="408" y="575" width="104" height="32" rx="10" fill="#334155" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="460" y="595" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Gateway 网关</text>
+  </g>
+
+  <!-- Subtle section dividers -->
+  <line x1="460" y1="60" x2="460" y2="470" stroke="#334155" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
+  <line x1="20" y1="270" x2="460" y2="270" stroke="#334155" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
+  <line x1="460" y1="270" x2="900" y2="270" stroke="#334155" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
+  <line x1="20" y1="480" x2="900" y2="480" stroke="#334155" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
+</svg>
