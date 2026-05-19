@@ -11,7 +11,7 @@
 
 换成工程语言：谁有权创建 worker？worker 拿到多少上下文？能不能写文件？多个 worker 写同一区域怎么办？worker 失败、超时、被中断时，父任务怎么恢复？结果回来以后，谁判断冲突，谁做 merge？这些都是运行时设计问题，跟模型能力关系不大。
 
-下面从 Codex、Claude Code、OpenClaw、Hermes 四个系统的实际设计出发，把多智能体的工程问题拆开看。
+下面从 Codex、Claude Code、OpenClaw、Hermes、Qoder 五个系统的实际设计出发，把多智能体的工程问题拆开看。
 
 ## 触发和拓扑是两个问题
 
@@ -27,7 +27,7 @@
 
 **显式触发**。用户直接说 "use parallel subagents" 或 "spawn one agent per review category"。Codex 主要走这条路。它不会因为任务看起来复杂就擅自开 worker，把并行授权留给用户和主 agent。
 
-**语义触发**。主 agent 根据任务内容和 subagent description 判断是否调用某个专家。Claude Code 的普通 subagent 走这条路。description 写得越像触发条件，系统越容易在合适时机调用；写得越像愿望，越容易乱叫人。
+**语义触发**。主 agent 根据任务内容和 subagent description 判断是否调用某个专家。Claude Code 的普通 subagent 走这条路。description 写得越像触发条件，系统越容易在合适时机调用；写得越像愿望，越容易乱叫人。Qoder Experts 不是在普通 Agent 里自动切换出来的，用户先切到 Experts 模式，Team Lead 再按需求拆任务和拉专家。
 
 **路由触发**。系统不看任务复杂度，先看消息从哪来。OpenClaw 按 channel、account、thread、peer、guild、role 选择 agent。Slack ops channel 进 ops agent，私人 Telegram 进 deep work agent，家庭入口进低权限 assistant。
 
@@ -37,7 +37,7 @@
 
 **单 agent**。默认形态。需求模糊、修改很小、步骤强依赖时，单 agent 往往最稳。很多任务不需要多智能体，只需要更好的上下文和更短的反馈循环。
 
-**星型 fan-out/fan-in**。最常见的 subagent 形态。主 agent 派多个 worker，worker 之间不直接协商，结果回到主 agent 做 reduce。Codex subagents、Claude 普通 subagents、Hermes delegate\_task 都是这种结构。优点是责任中心清楚，缺点是 worker 之间不能互相纠错，所有冲突都压到主 agent 的 merge 阶段。
+**星型 fan-out/fan-in**。最常见的 subagent 形态。主 agent 派多个 worker，worker 之间不直接协商，结果回到主 agent 做 reduce。Codex subagents、Claude 普通 subagents、Hermes delegate\_task、Qoder Experts 都是这种结构。优点是责任中心清楚，缺点是 worker 之间不能互相纠错，所有冲突都压到主 agent 的 merge 阶段。
 
 **链式 pipeline**。适合强顺序任务。先定位 bug，再写修复，再补测试，再 review。硬把这种任务并行化，通常只会让后面的 worker 在错误假设上浪费时间。
 
@@ -64,7 +64,7 @@ input event
   -> final output or next task
 ```
 
-**router / dispatcher** 决定是否拆任务、拆给谁。Codex 里这个判断来自用户显式授权；Claude Code 受 description 匹配影响；OpenClaw 很多时候由入口绑定决定；Hermes 里短任务可能由父 agent 调 delegate\_task，也可能由模型按复杂度自动选择。
+**router / dispatcher** 决定是否拆任务、拆给谁。Codex 里这个判断来自用户显式授权；Claude Code 受 description 匹配影响；OpenClaw 很多时候由入口绑定决定；Hermes 里短任务可能由父 agent 调 delegate\_task，也可能由模型按复杂度自动选择；Qoder 在 Experts 模式里由 Team Lead 拆任务、选专家、收口。
 
 **context builder** 决定 worker 知道什么。子 agent 上下文不够，跑偏很正常。你不能把一个 worker 拉进来只说"修一下"，然后期待它理解项目路径、错误现场、相关文件、验收标准和禁止事项。对 subagent 来说，委派信息就是需求文档。
 
@@ -112,11 +112,11 @@ Codex 内置 agent 类型按责任划分：
 - **worker**：改代码、补测试、实现局部功能。必须有明确 ownership，比如只改 `src/auth/*` 或只负责 `tests/auth/*`。如果两个 worker 都能改同一块逻辑，省下的时间会在冲突解决里还回去。
 - **default**：通用兜底，适合边界还没完全清楚、但需要独立上下文处理的任务。越通用的 worker，越需要清楚的任务边界。
 
-Codex 支持自定义 agent。团队可以把 TOML 放在 `.codex/agents/` 里，配置 description、model、sandbox、MCP、skills。适合把固定角色沉淀下来（security-reviewer、migration-worker、docs-editor）。但 agent 越多，调度规则越需要清楚，否则只是把 prompt 混乱从主上下文搬到了 agent 注册表。
+如果一个 Codex 环境提供自定义 agent 或并发配置，适合把固定角色沉淀下来，比如 security-reviewer、migration-worker、docs-editor。但 agent 越多，调度规则越需要清楚，否则只是把 prompt 混乱从主上下文搬到了 agent 注册表。
 
-两个关键护栏：`agents.max_threads` 控制并发宽度，`agents.max_depth` 控制递归深度。默认深度通常只允许主 agent 派子 agent，不鼓励子 agent 再开孙子 agent。一次 PR review 开安全、测试、性能三个 worker 已经够用；每个 worker 又开三个，成本和行为很快不可控。
+并发宽度和递归深度必须有上限。一次 PR review 开安全、测试、性能三个 worker 已经够用；每个 worker 又开三个，成本和行为很快不可控。具体配置名以所用 Codex 版本为准，这类开关在不同发行形态里不一定一致。
 
-Codex 不适合把所有复杂任务都自动拆开。小修小补不值得 fan-out；强顺序任务不适合并行；多个 worker 会写同一文件时，需要先串行设计再并行执行；需求还模糊时，多 agent 只会把模糊放大。
+Codex 不适合把所有复杂任务都拆开。小修小补不值得 fan-out；强顺序任务不适合并行；多个 worker 会写同一文件时，需要先串行设计再并行执行；需求还模糊时，多 agent 只会把模糊放大。
 
 一个更稳健的委派示例：
 
@@ -133,7 +133,7 @@ Main agent must synthesize findings, resolve conflicts, and present one final pl
 
 ## Claude Code：description 驱动 + 三层结构
 
-Claude Code 的普通 subagent 更像本地专家注册表。每个 subagent 有 name、description、system prompt、工具权限、模型和独立上下文。主 session 根据 description 判断什么时候调用，也可以被用户显式点名。
+Claude Code 的普通 subagent 更像本地专家注册表。按 [Claude Code subagents 文档](https://docs.anthropic.com/en/docs/claude-code/sub-agents)，每个 subagent 有 name、description、system prompt、工具权限、模型和独立上下文。主 session 根据 description 判断什么时候调用，也可以被用户显式点名。
 
 一个安全 reviewer 可以这样写：
 
@@ -166,7 +166,7 @@ main session decides next step
 
 ### Agent Teams：网状协作
 
-Agent Teams 是另一套逻辑，实验功能，默认关闭。启用后，一个 lead Claude 带多个 teammate，每个 teammate 有独立上下文，可以互相通信，共享任务列表。不再是星型 fan-out，接近 team mesh：
+[Agent Teams](https://docs.anthropic.com/en/docs/claude-code/agent-teams) 是另一套逻辑。一个 lead Claude 带多个 teammate，每个 teammate 有独立上下文，可以互相通信，共享任务列表。不再是星型 fan-out，接近 team mesh：
 
 ```text
 lead Claude
@@ -305,7 +305,42 @@ Kanban:
 
 两类任务混用是常见失败点。短任务上 Kanban 显得笨重；长任务用 delegate\_task 会丢状态、难重试、难交接。另一个失败点是 context 写得太少——Hermes 已经把风险写在文档里：child 不知道父上下文，不给足够信息就只能猜。
 
-## 五个场景
+## Qoder：产品化的星型专家团
+
+按 [Qoder Experts 文档](https://docs.qoder.com/user-guide/quest/experts-mode.md) 的说法，它走的是另一条路：把多智能体协作做成一个产品级体验，而不是让用户自己搭积木。用户在 Experts 模式里提需求，Team Lead 自动拆解任务、组建专家团队、并行执行、最终交付。
+
+它的拓扑是带规划的星型。Team Lead 是唯一的 dispatcher 和 reducer，专家之间并行执行、互不等待，结果回到 Team Lead 做整合。这和 Codex 的星型 fan-out/fan-in 很像，但 Qoder 在两个地方做了产品化封装：
+
+**前置规划阶段。** Team Lead 在执行前先生成结构化的实施计划，用户可以审阅、修改、确认，然后专家团队才开始工作。这等于把 delegation contract 的生成过程暴露给了用户——Team Lead 帮你写 contract，你签字，然后才执行。Codex 和 Claude Code 没有这个明确的中间步骤，要么靠用户自己写委派指令，要么靠 description 自动匹配。
+
+**实时可视化。** 专家团全景图（Expert Team Canvas）让用户在同一个面板里看所有专家的进度、执行步骤和产出。这解决了多智能体系统的一个老大难问题：观测性。前面说 "没有观测和审计" 是反模式，Qoder 直接把这个做进了产品里。
+
+专家角色是预定义的：前端、后端、QA、代码评审、调研、运维、UX 设计。每个专家有独立的上下文和工具集。和 Codex 的 explorer / worker / default 划分类似，但 Qoder 把角色名直接对应到软件工程的功能分工，用户理解成本更低。
+
+```text
+user request
+  -> Team Lead: 理解需求、生成计划、用户确认
+  -> 前端专家 + 后端专家 + QA 专家 + 代码评审专家 (并行)
+  <- 各专家产出
+  -> Team Lead 整合、质量把关
+  -> 交付结果
+```
+
+触发方式更准确地说是模式内自动编排：用户先切到 Experts 模式，再描述需求；Team Lead 在这个模式里生成计划、拆任务、拉专家。简单、明确的文件修改仍然更适合 Agent 模式。Qoder 文档里写到内部测试质量提升约 67%，但没有公开任务集、评分标准和基线定义，谨慎参考。
+
+Qoder 还做了几件值得注意的事：
+
+**终端沙箱化。** 按 [Terminal and Sandbox 文档](https://docs.qoder.com/user-guide/quest/terminal-and-sandbox.md)，命令按风险分层处理：普通命令直接执行，潜在危险命令进入沙箱；沙箱无法完成时才请求权限升级。这直接改变了 execution sandbox 的设计——用户干预频率降低，但安全风险靠沙箱和升级审批一起兜底。
+
+**专家可扩展。** 用户可以为内置专家追加 Skills 和 MCP，也可以创建自定义 subagent 加入团队。这和 Claude Code 的 subagent 注册表思路接近——专家越多，调度规则越需要清楚。
+
+**自演进机制。** 分两层：Expert Skill（个体进化，每次任务优化专项能力）和 Team Skill（团队进化，记录组队经验，相似任务直接复用历史阵容）。这是一个有意思的设计——大多数多智能体系统是无状态的，每次从零开始。Qoder 试图把调度经验沉淀下来。效果如何，目前没有公开数据。
+
+**人类介入点很少。** 只有终端命令命中黑名单、工具调用次数达上限、或异常情况才需要用户确认。Qoder 选择信任 Team Lead 的判断，代价是用户控制感更弱。Codex 更偏显式授权，用户控制感更强。
+
+Qoder 的定位很清楚：面向不想自己搭多智能体管线、只想提需求拿结果的开发者。它把 Codex 和 Claude Code 里需要用户自己操心的触发判断、专家配置、结果整合全部包进了 Team Lead 的职责里。好处是上手成本低，坏处是灵活性受限——你很难像 Codex 那样精确控制每个 worker 的权限和 ownership。
+
+## 六个场景
 
 ### PR review
 
@@ -341,9 +376,17 @@ Claude Code：把 security-reviewer、test-reviewer 写成 description 驱动的
 
 ### repo-wide migration
 
-适合 worktree + batch。按目录或模块拆，不要按"让几个 agent 自己商量"拆。每个 worker 拥有一片文件范围，最后统一跑测试和 review。Claude Code 的 worktrees / batch 更贴这个场景；Codex 也可以用 worker 分文件范围，但 ownership 必须写清楚。
+适合 worktree + batch。按目录或模块拆，不要按“让几个 agent 自己商量”拆。每个 worker 拥有一片文件范围，最后统一跑测试和 review。Claude Code 的 worktrees / batch 更贴这个场景；Codex 也可以用 worker 分文件范围，但 ownership 必须写清楚。
 
 常见错误是按角色拆——"一个 agent 思考，一个 agent 实现，一个 agent 测试"。对 repo-wide migration 来说，更好的拆法是按文件边界：`packages/api`、`packages/web`、`packages/shared`。文件边界比抽象角色更能减少冲突。
+
+### 全栈功能开发
+
+"开发一个用户管理模块，包含注册、登录、信息管理"——这类端到端的全栈需求，Qoder Experts 的产品化封装最直接。Team Lead 自动生成计划，前后端专家并行开发，QA 同步写测试，代码评审把关质量。用户不需要自己设计 delegation contract、配置 worker profile 或操心 merge 策略。
+
+如果用 Codex 或 Claude Code 做同样的事，用户需要自己写委派指令、配置 explorer/worker/reviewer 的权限边界、处理结果冲突。Qoder 把这些全包进了 Team Lead 的职责里，代价是灵活性——你很难像 Codex 那样精确控制"这个 worker 只能改 src/auth/ 目录"。
+
+另一个差别是可视化。Qoder 的专家团全景图让你直接看到每个专家在干什么、进展到哪步。用 Codex 或 Claude Code 做多 agent 并行时，观测性通常要靠日志和 session 列表，信息密度低得多。
 
 ## 七个反模式
 
@@ -408,9 +451,9 @@ Stop condition:
 
 ## 各系统适用场景
 
-Codex 适合显式、可控的星型并行。Claude Code 适合 description 驱动的专家委派，也能在 team 和 batch 场景里做更复杂的协作。OpenClaw 适合多入口、常驻、带权限隔离的 agent 网络。Hermes 适合把短程并行和长期队列分开，用 delegate\_task 管临时 fork/join，用 Kanban 管跨 turn 的工作流。
+Codex 适合显式、可控的星型并行。Claude Code 适合 description 驱动的专家委派，也能在 team 和 batch 场景里做更复杂的协作。OpenClaw 适合多入口、常驻、带权限隔离的 agent 网络。Hermes 适合把短程并行和长期队列分开，用 delegate\_task 管临时 fork/join，用 Kanban 管跨 turn 的工作流。Qoder 适合不想自己搭管线、只想提需求拿结果的全栈开发场景——它把触发、规划、调度、收口全部包进了产品里。
 
-一个任务只需要更快地查四条线，用星型 subagents。一个问题需要多方互相挑战，用 team mesh。消息来自不同渠道和身份，用 Gateway routing。任务要跨天、重试、等待人类，用 durable board。多个 worker 会写同一片代码，先停下来把 ownership 写清楚。
+一个任务只需要更快地查四条线，用星型 subagents。一个问题需要多方互相挑战，用 team mesh。消息来自不同渠道和身份，用 Gateway routing。任务要跨天、重试、等待人类，用 durable board。多个 worker 会写同一片代码，先停下来把 ownership 写清楚。想省心做全栈开发，用 Qoder 这类产品化方案。
 
 先设计边界，再增加 agent 数量。
 
