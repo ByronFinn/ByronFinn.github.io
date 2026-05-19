@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="520" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="45" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="700">接码平台对比</text>
+  <text x="400" y="68" text-anchor="middle" fill="#94a3b8" font-size="13">截止 2026-05-20 实测</text>
+
+  <!-- Column Headers -->
+  <text x="100" y="105" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="600">平台</text>
+  <text x="250" y="105" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="600">费用</text>
+  <text x="400" y="105" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="600">国家覆盖</text>
+  <text x="570" y="105" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="600">适合场景</text>
+  <line x1="40" y1="118" x2="760" y2="118" stroke="#334155" stroke-width="1"/>
+
+  <!-- Row 1: ZUSMS -->
+  <rect x="50" y="130" width="700" height="80" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <rect x="60" y="140" width="8" height="60" rx="4" fill="url(#blue)"/>
+  <text x="82" y="163" fill="#f8fafc" font-size="15" font-weight="600">ZUSMS</text>
+  <text x="82" y="182" fill="#64748b" font-size="11">zusms.com</text>
+  <text x="250" y="168" text-anchor="middle" fill="#22c55e" font-size="14" font-weight="600">免费</text>
+  <text x="250" y="186" text-anchor="middle" fill="#64748b" font-size="11">无需注册</text>
+  <text x="400" y="163" text-anchor="middle" fill="#e2e8f0" font-size="13">20 个国家</text>
+  <text x="400" y="183" text-anchor="middle" fill="#64748b" font-size="11">美/英/港/加/中等</text>
+  <text x="570" y="163" text-anchor="middle" fill="#e2e8f0" font-size="13">一次性验证</text>
+  <text x="570" y="183" text-anchor="middle" fill="#64748b" font-size="11">只接收，中文界面</text>
+
+  <!-- Row 2: eSIM Plus -->
+  <rect x="50" y="222" width="700" height="80" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <rect x="60" y="232" width="8" height="60" rx="4" fill="url(#purple)"/>
+  <text x="82" y="255" fill="#f8fafc" font-size="15" font-weight="600">eSIM Plus</text>
+  <text x="82" y="274" fill="#64748b" font-size="11">esimplus.me</text>
+  <text x="250" y="260" text-anchor="middle" fill="#22c55e" font-size="14" font-weight="600">免费</text>
+  <text x="250" y="278" text-anchor="middle" fill="#64748b" font-size="11">付费可选私人号</text>
+  <text x="400" y="255" text-anchor="middle" fill="#e2e8f0" font-size="13">33 个国家</text>
+  <text x="400" y="275" text-anchor="middle" fill="#64748b" font-size="11">含爱沙尼亚/以色列等小众</text>
+  <text x="570" y="255" text-anchor="middle" fill="#e2e8f0" font-size="13">验证 + 匿名聊天</text>
+  <text x="570" y="275" text-anchor="middle" fill="#64748b" font-size="11">号码轮换较快</text>
+
+  <!-- Row 3: httpSMS -->
+  <rect x="50" y="314" width="700" height="80" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <rect x="60" y="324" width="8" height="60" rx="4" fill="url(#amber)"/>
+  <text x="82" y="347" fill="#f8fafc" font-size="15" font-weight="600">httpSMS</text>
+  <text x="82" y="366" fill="#64748b" font-size="11">sandbox.httpsms.com</text>
+  <text x="250" y="352" text-anchor="middle" fill="#22c55e" font-size="14" font-weight="600">免费</text>
+  <text x="250" y="370" text-anchor="middle" fill="#64748b" font-size="11">开源 / 有 Pro 付费</text>
+  <text x="400" y="347" text-anchor="middle" fill="#e2e8f0" font-size="13">美国号</text>
+  <text x="400" y="367" text-anchor="middle" fill="#64748b" font-size="11">Sandbox 提供 +1 号码</text>
+  <text x="570" y="347" text-anchor="middle" fill="#e2e8f0" font-size="13">开发测试</text>
+  <text x="570" y="367" text-anchor="middle" fill="#64748b" font-size="11">可自建网关 / 有 API</text>
+
+  <!-- Row 4: Twilio -->
+  <rect x="50" y="406" width="700" height="80" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <rect x="60" y="416" width="8" height="60" rx="4" fill="url(#green)"/>
+  <text x="82" y="439" fill="#f8fafc" font-size="15" font-weight="600">Twilio</text>
+  <text x="82" y="458" fill="#64748b" font-size="11">twilio.com</text>
+  <text x="250" y="444" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="600">按量付费</text>
+  <text x="250" y="462" text-anchor="middle" fill="#64748b" font-size="11">有免费试用额度</text>
+  <text x="400" y="439" text-anchor="middle" fill="#e2e8f0" font-size="13">全球</text>
+  <text x="400" y="459" text-anchor="middle" fill="#64748b" font-size="11">企业级覆盖 / 独占号码</text>
+  <text x="570" y="439" text-anchor="middle" fill="#e2e8f0" font-size="13">生产环境</text>
+  <text x="570" y="459" text-anchor="middle" fill="#64748b" font-size="11">完整 API / 收发均可</text>
+
+  <!-- Bottom note -->
+  <text x="400" y="508" text-anchor="middle" fill="#475569" font-size="11">免费平台的号码公开可见，不适合绑定重要账号。截图时间 2026-05-20。</text>
+</svg>
