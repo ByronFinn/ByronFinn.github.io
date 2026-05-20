@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="url(#bg)" rx="12"/>
+
+  <text x="400" y="38" text-anchor="middle" fill="#e2e8f0" font-size="17" font-weight="bold" font-family="system-ui, sans-serif">四种注册路径 + 防送回国区技巧</text>
+
+  <!-- Method A: iCloud direct -->
+  <rect x="30" y="60" width="180" height="180" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="120" y="85" text-anchor="middle" fill="#3b82f6" font-size="12" font-weight="bold" font-family="system-ui, sans-serif">iCloud 直注</text>
+  <text x="120" y="105" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">icloud.com 创建</text>
+  <text x="120" y="122" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">国家直接选目标区</text>
+  <text x="120" y="139" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">首次登录补信息</text>
+  <rect x="45" y="152" width="150" height="20" rx="4" fill="#22c55e" opacity="0.15"/>
+  <text x="120" y="166" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="bold" font-family="system-ui, sans-serif">✅ 推荐，步骤最少</text>
+  <text x="120" y="190" text-anchor="middle" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">不需要代理</text>
+  <text x="120" y="205" text-anchor="middle" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">手机浏览器即可</text>
+  <text x="120" y="220" text-anchor="middle" fill="#f59e0b" font-size="9" font-family="system-ui, sans-serif">⚠ 付款方式别点信用卡</text>
+
+  <!-- Method B: apple.com transfer -->
+  <rect x="225" y="60" width="180" height="180" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="315" y="85" text-anchor="middle" fill="#3b82f6" font-size="12" font-weight="bold" font-family="system-ui, sans-serif">官网转区</text>
+  <text x="315" y="105" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">apple.com 注册国区</text>
+  <text x="315" y="122" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">验证后改地区</text>
+  <text x="315" y="139" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">付款选「无」</text>
+  <rect x="240" y="152" width="150" height="20" rx="4" fill="#3b82f6" opacity="0.15"/>
+  <text x="315" y="166" text-anchor="middle" fill="#3b82f6" font-size="10" font-weight="bold" font-family="system-ui, sans-serif">✅ 可用，步骤多</text>
+  <text x="315" y="190" text-anchor="middle" fill="#f59e0b" font-size="9" font-family="system-ui, sans-serif">⚠ 需要 US 全局代理</text>
+  <text x="315" y="205" text-anchor="middle" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">先国区再转区</text>
+  <text x="315" y="220" text-anchor="middle" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">付款无「无」= 代理问题</text>
+
+  <!-- Method C: account.apple.com -->
+  <rect x="420" y="60" width="180" height="180" rx="8" fill="#1a3c34" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="510" y="85" text-anchor="middle" fill="#22c55e" font-size="12" font-weight="bold" font-family="system-ui, sans-serif">account.apple.com</text>
+  <text x="510" y="105" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">无痕模式访问</text>
+  <text x="510" y="122" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">国家直接选目标区</text>
+  <text x="510" y="139" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">Safari 链接强制切区</text>
+  <rect x="435" y="152" width="150" height="20" rx="4" fill="#22c55e" opacity="0.15"/>
+  <text x="510" y="166" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="bold" font-family="system-ui, sans-serif">✅ 通吃所有区</text>
+  <text x="510" y="190" text-anchor="middle" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">不需要代理</text>
+  <text x="510" y="205" text-anchor="middle" fill="#f59e0b" font-size="9" font-family="system-ui, sans-serif">⚠ 需 Safari 跳转链接</text>
+  <text x="510" y="220" text-anchor="middle" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">163 邮箱也行</text>
+
+  <!-- Method D: Android Apple Music -->
+  <rect x="615" y="60" width="160" height="180" rx="8" fill="#2d1b4e" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="695" y="85" text-anchor="middle" fill="#8b5cf6" font-size="12" font-weight="bold" font-family="system-ui, sans-serif">安卓 Music</text>
+  <text x="695" y="105" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">安卓装 Apple Music</text>
+  <text x="695" y="122" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">创建账户选美国</text>
+  <text x="695" y="139" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">iPhone 登录</text>
+  <rect x="630" y="152" width="130" height="20" rx="4" fill="#f59e0b" opacity="0.15"/>
+  <text x="695" y="166" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="bold" font-family="system-ui, sans-serif">⚠ 不稳定</text>
+  <text x="695" y="190" text-anchor="middle" fill="#ef4444" font-size="9" font-family="system-ui, sans-serif">App Store 可能报错</text>
+  <text x="695" y="205" text-anchor="middle" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">需要补双重认证</text>
+  <text x="695" y="220" text-anchor="middle" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">需要安卓机</text>
+
+  <!-- Anti-reset section -->
+  <rect x="30" y="270" width="740" height="110" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="400" y="295" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="bold" font-family="system-ui, sans-serif">防止被送回国区：三步必须做</text>
+
+  <text x="100" y="322" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="system-ui, sans-serif">① 登录前改时区</text>
+  <text x="100" y="340" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui, sans-serif">iPhone 时区改为目标国家</text>
+
+  <line x1="200" y1="310" x2="200" y2="350" stroke="#334155" stroke-width="1"/>
+  <text x="340" y="322" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="system-ui, sans-serif">② 登录后立刻下载一个 app</text>
+  <text x="340" y="340" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui, sans-serif">不下载就退出 = 大概率被送回</text>
+
+  <line x1="480" y1="310" x2="480" y2="350" stroke="#334155" stroke-width="1"/>
+  <text x="630" y="322" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="system-ui, sans-serif">③ 用 Safari 跳转链接锁区</text>
+  <text x="630" y="340" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui, sans-serif">itms-apps:// 强制切换目标商店</text>
+
+  <text x="400" y="370" text-anchor="middle" fill="#64748b" font-size="10" font-family="system-ui, sans-serif">如果已经被送回国区：网页重新转区，或重新用 Safari 跳转链接</text>
+
+  <!-- Multi-region note -->
+  <rect x="30" y="400" width="350" height="55" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="205" y="420" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">一个手机号可以绑多个地区的 Apple ID</text>
+  <text x="205" y="438" text-anchor="middle" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">国区 / 美区 / 土区 / 日区 / 尼区... 同一号不冲突</text>
+
+  <rect x="400" y="400" width="370" height="55" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="585" y="420" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">礼品卡充值需要移动端（iPhone/iPad）</text>
+  <text x="585" y="438" text-anchor="middle" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">Mac 不能用来付款，必须用移动设备</text>
+
+  <!-- Bottom summary -->
+  <rect x="30" y="475" width="740" height="30" rx="6" fill="#1a3c34" stroke="#22c55e" stroke-width="1"/>
+  <text x="400" y="495" text-anchor="middle" fill="#22c55e" font-size="11" font-family="system-ui, sans-serif">推荐路径：iCloud 直注（美区） 或 account.apple.com + Safari 跳转（任意区）</text>
+</svg>
