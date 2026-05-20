@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#3b82f6" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="520" rx="12" fill="url(#bg)"/>
+  <rect x="1" y="1" width="798" height="518" rx="12" fill="none" stroke="#334155" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#e2e8f0">Telegram 客户端生态概览</text>
+
+  <!-- Official node -->
+  <rect x="290" y="56" width="220" height="48" rx="24" fill="url(#blueGrad)" filter="url(#glow)"/>
+  <text x="400" y="86" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#fff">Telegram 官方</text>
+
+  <!-- Connector lines from official to platforms -->
+  <g stroke="#475569" stroke-width="1.5" fill="none">
+    <!-- Main trunk -->
+    <line x1="400" y1="104" x2="400" y2="130"/>
+    <!-- Horizontal bar -->
+    <line x1="72" y1="130" x2="728" y2="130"/>
+    <!-- Vertical drops to each platform -->
+    <line x1="72"  y1="130" x2="72"  y2="155"/>
+    <line x1="208" y1="130" x2="208" y2="155"/>
+    <line x1="344" y1="130" x2="344" y2="155"/>
+    <line x1="480" y1="130" x2="480" y2="155"/>
+    <line x1="616" y1="130" x2="616" y2="155"/>
+    <line x1="728" y1="130" x2="728" y2="155"/>
+  </g>
+
+  <!-- Small circles at junctions -->
+  <g fill="#475569">
+    <circle cx="72"  cy="130" r="3"/>
+    <circle cx="208" cy="130" r="3"/>
+    <circle cx="344" cy="130" r="3"/>
+    <circle cx="480" cy="130" r="3"/>
+    <circle cx="616" cy="130" r="3"/>
+    <circle cx="728" cy="130" r="3"/>
+  </g>
+
+  <!-- Platform: Android -->
+  <g filter="url(#shadow)">
+    <rect x="14" y="155" width="116" height="36" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="72" y="178" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3b82f6">Android</text>
+  </g>
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="72" y="210" text-anchor="middle">Nekogram</text>
+    <text x="72" y="226" text-anchor="middle">Cherrygram</text>
+    <text x="72" y="242" text-anchor="middle">OwlGram</text>
+  </g>
+
+  <!-- Platform: iOS -->
+  <g filter="url(#shadow)">
+    <rect x="150" y="155" width="116" height="36" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="208" y="178" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3b82f6">iOS</text>
+  </g>
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="208" y="210" text-anchor="middle">Nicegram</text>
+    <text x="208" y="226" text-anchor="middle">Cherrygram</text>
+    <text x="208" y="242" text-anchor="middle">Telegram X</text>
+  </g>
+
+  <!-- Platform: Windows -->
+  <g filter="url(#shadow)">
+    <rect x="286" y="155" width="116" height="36" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="344" y="178" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3b82f6">Windows</text>
+  </g>
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="344" y="210" text-anchor="middle">64Gram</text>
+    <text x="344" y="226" text-anchor="middle">AyuGram</text>
+    <text x="344" y="242" text-anchor="middle">Materialgram</text>
+  </g>
+
+  <!-- Platform: macOS -->
+  <g filter="url(#shadow)">
+    <rect x="422" y="155" width="116" height="36" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="480" y="178" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3b82f6">macOS</text>
+  </g>
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="480" y="210" text-anchor="middle">AyuGram</text>
+    <text x="480" y="226" text-anchor="middle">64Gram</text>
+  </g>
+
+  <!-- Platform: Linux -->
+  <g filter="url(#shadow)">
+    <rect x="558" y="155" width="116" height="36" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="616" y="178" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3b82f6">Linux</text>
+  </g>
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="616" y="210" text-anchor="middle">64Gram</text>
+    <text x="616" y="226" text-anchor="middle">AyuGram</text>
+    <text x="616" y="242" text-anchor="middle">Materialgram</text>
+  </g>
+
+  <!-- Platform: WearOS -->
+  <g filter="url(#shadow)">
+    <rect x="670" y="155" width="116" height="36" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="728" y="178" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3b82f6">WearOS</text>
+  </g>
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="728" y="210" text-anchor="middle">Nekogram</text>
+    <text x="728" y="226" text-anchor="middle">Watchgram</text>
+  </g>
+
+  <!-- Divider line -->
+  <line x1="30" y1="270" x2="770" y2="270" stroke="#334155" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Legend -->
+  <g transform="translate(30, 290)">
+    <rect x="0" y="0" width="740" height="210" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="370" y="28" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#e2e8f0">客户端分类说明</text>
+
+    <!-- Official clients -->
+    <g transform="translate(30, 46)">
+      <rect x="0" y="0" width="10" height="10" rx="2" fill="url(#blueGrad)"/>
+      <text x="18" y="10" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#3b82f6">官方客户端</text>
+      <text x="18" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8">由 Telegram 官方团队维护，支持全平台</text>
+      <text x="18" y="44" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Telegram / Telegram X / Telegram Desktop</text>
+    </g>
+
+    <!-- Third-party: Open source based -->
+    <g transform="translate(30, 100)">
+      <rect x="0" y="0" width="10" height="10" rx="2" fill="url(#purpleGrad)"/>
+      <text x="18" y="10" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#8b5cf6">第三方客户端（开源）</text>
+      <text x="18" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8">基于官方源码修改，开源可审计，功能增强</text>
+      <text x="18" y="44" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Nekogram / 64Gram / AyuGram / Materialgram</text>
+    </g>
+
+    <!-- Third-party: caution -->
+    <g transform="translate(390, 100)">
+      <rect x="0" y="0" width="10" height="10" rx="2" fill="#f59e0b"/>
+      <text x="18" y="10" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#f59e0b">第三方客户端（闭源）</text>
+      <text x="18" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8">非开源，无法审计代码，使用需谨慎</text>
+      <text x="18" y="44" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Nicegram（部分闭源）/ 其他闭源客户端</text>
+    </g>
+
+    <!-- Note -->
+    <text x="370" y="192" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#475569">所有第三方客户端均通过 Telegram API 连接，共享相同的云端消息</text>
+  </g>
+</svg>
