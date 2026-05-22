@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" rx="16" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="18" font-weight="600">Bento Grid 布局概念</text>
+
+  <!-- Grid container -->
+  <g transform="translate(40, 60)">
+    <!-- Row 1 -->
+
+    <!-- 主内容 (large card — spans 2 cols, 2 rows) -->
+    <rect x="0" y="0" width="340" height="260" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <!-- Accent bar top -->
+    <rect x="0" y="0" width="340" height="4" rx="2" fill="#3b82f6" opacity="0.6"/>
+    <!-- Placeholder content lines -->
+    <rect x="24" y="30" width="160" height="8" rx="4" fill="#3b82f6" opacity="0.5"/>
+    <rect x="24" y="50" width="280" height="6" rx="3" fill="#334155"/>
+    <rect x="24" y="64" width="240" height="6" rx="3" fill="#334155"/>
+    <rect x="24" y="78" width="260" height="6" rx="3" fill="#334155"/>
+    <!-- Mini chart placeholder -->
+    <rect x="24" y="100" width="292" height="120" rx="8" fill="#0f172a" opacity="0.6"/>
+    <polyline points="44,200 90,170 140,185 190,145 240,160 290,130" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.7" filter="url(#softglow)"/>
+    <line x1="44" y1="200" x2="290" y2="200" stroke="#334155" stroke-width="1"/>
+    <!-- Label -->
+    <text x="24" y="242" fill="#3b82f6" font-family="system-ui,sans-serif" font-size="14" font-weight="600">主内容</text>
+    <text x="76" y="242" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Main Content</text>
+
+    <!-- 数据 (medium card) -->
+    <rect x="355" y="0" width="200" height="125" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <rect x="355" y="0" width="200" height="4" rx="2" fill="#8b5cf6" opacity="0.6"/>
+    <rect x="379" y="26" width="80" height="7" rx="3.5" fill="#8b5cf6" opacity="0.5"/>
+    <!-- Data bars -->
+    <rect x="379" y="48" width="60" height="40" rx="4" fill="#8b5cf6" opacity="0.15"/>
+    <rect x="379" y="68" width="60" height="20" rx="0" fill="#8b5cf6" opacity="0.4"/>
+    <rect x="449" y="48" width="60" height="40" rx="4" fill="#8b5cf6" opacity="0.15"/>
+    <rect x="449" y="55" width="60" height="33" rx="0" fill="#8b5cf6" opacity="0.4"/>
+    <rect x="519" y="48" width="14" height="40" rx="4" fill="#8b5cf6" opacity="0.15"/>
+    <rect x="519" y="72" width="14" height="16" rx="0" fill="#8b5cf6" opacity="0.4"/>
+    <text x="379" y="110" fill="#8b5cf6" font-family="system-ui,sans-serif" font-size="13" font-weight="600">数据</text>
+    <text x="411" y="110" fill="#64748b" font-family="system-ui,sans-serif" font-size="10">Data</text>
+
+    <!-- 图表 (medium card) -->
+    <rect x="570" y="0" width="170" height="125" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <rect x="570" y="0" width="170" height="4" rx="2" fill="#22c55e" opacity="0.6"/>
+    <rect x="594" y="26" width="60" height="7" rx="3.5" fill="#22c55e" opacity="0.5"/>
+    <!-- Pie chart placeholder -->
+    <circle cx="655" cy="70" r="30" fill="none" stroke="#334155" stroke-width="8"/>
+    <circle cx="655" cy="70" r="30" fill="none" stroke="#22c55e" stroke-width="8" stroke-dasharray="60 128" stroke-dashoffset="0" opacity="0.6"/>
+    <circle cx="655" cy="70" r="30" fill="none" stroke="#3b82f6" stroke-width="8" stroke-dasharray="45 143" stroke-dashoffset="-60" opacity="0.5"/>
+    <text x="594" y="110" fill="#22c55e" font-family="system-ui,sans-serif" font-size="13" font-weight="600">图表</text>
+    <text x="626" y="110" fill="#64748b" font-family="system-ui,sans-serif" font-size="10">Chart</text>
+
+    <!-- Row 2 -->
+
+    <!-- 辅助信息 (small card 1) -->
+    <rect x="355" y="140" width="125" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <rect x="355" y="140" width="125" height="4" rx="2" fill="#f59e0b" opacity="0.6"/>
+    <rect x="379" y="164" width="50" height="6" rx="3" fill="#f59e0b" opacity="0.5"/>
+    <!-- Icon placeholder -->
+    <rect x="379" y="182" width="77" height="48" rx="6" fill="#0f172a" opacity="0.5"/>
+    <circle cx="398" cy="206" r="8" fill="none" stroke="#f59e0b" stroke-width="1.5" opacity="0.6"/>
+    <line x1="414" y1="196" x2="444" y2="196" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+    <line x1="414" y1="206" x2="438" y2="206" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+    <line x1="414" y1="216" x2="432" y2="216" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+    <text x="379" y="248" fill="#f59e0b" font-family="system-ui,sans-serif" font-size="11" font-weight="600">辅助信息</text>
+
+    <!-- 辅助信息 (small card 2) -->
+    <rect x="493" y="140" width="125" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <rect x="493" y="140" width="125" height="4" rx="2" fill="#3b82f6" opacity="0.6"/>
+    <rect x="517" y="164" width="50" height="6" rx="3" fill="#3b82f6" opacity="0.5"/>
+    <!-- Stats placeholder -->
+    <rect x="517" y="182" width="77" height="48" rx="6" fill="#0f172a" opacity="0.5"/>
+    <text x="556" y="212" text-anchor="middle" fill="#3b82f6" font-family="system-ui,sans-serif" font-size="22" font-weight="700" opacity="0.7">42</text>
+    <text x="517" y="248" fill="#3b82f6" font-family="system-ui,sans-serif" font-size="11" font-weight="600">辅助信息</text>
+
+    <!-- 辅助信息 (small card 3) -->
+    <rect x="631" y="140" width="109" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <rect x="631" y="140" width="109" height="4" rx="2" fill="#22c55e" opacity="0.6"/>
+    <rect x="655" y="164" width="50" height="6" rx="3" fill="#22c55e" opacity="0.5"/>
+    <rect x="655" y="182" width="61" height="48" rx="6" fill="#0f172a" opacity="0.5"/>
+    <!-- Mini sparkline -->
+    <polyline points="665,218 675,208 685,214 695,200 705,206" fill="none" stroke="#22c55e" stroke-width="1.5" opacity="0.6"/>
+    <text x="655" y="248" fill="#22c55e" font-family="system-ui,sans-serif" font-size="11" font-weight="600">辅助信息</text>
+
+    <!-- Row 3 — Full width info bar -->
+    <rect x="0" y="270" width="740" height="50" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <circle cx="30" cy="295" r="8" fill="none" stroke="#8b5cf6" stroke-width="1.5" opacity="0.5"/>
+    <text x="28" y="299" text-anchor="middle" fill="#8b5cf6" font-family="system-ui,sans-serif" font-size="10" font-weight="700">i</text>
+    <rect x="50" y="291" width="200" height="6" rx="3" fill="#334155"/>
+    <rect x="50" y="291" width="140" height="6" rx="3" fill="#8b5cf6" opacity="0.3"/>
+    <text x="600" y="299" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">自适应网格布局 · Responsive Grid</text>
+  </g>
+
+  <!-- Bottom attribution -->
+  <text x="400" y="388" text-anchor="middle" fill="#475569" font-family="system-ui,sans-serif" font-size="10">Bento Grid Layout — PPT Agent Design System</text>
+</svg>
