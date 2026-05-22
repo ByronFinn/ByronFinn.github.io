@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="520" fill="url(#bg)" rx="12"/>
+  
+  <!-- Title -->
+  <text x="450" y="45" fill="#f1f5f9" font-size="20" font-weight="bold" text-anchor="middle" font-family="sans-serif">Oracle 免费 VPS 全流程</text>
+  
+  <!-- Step boxes -->
+  <!-- Step 1: Prepare -->
+  <rect x="40" y="80" width="240" height="100" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+  <text x="160" y="110" fill="#3b82f6" font-size="13" font-weight="bold" text-anchor="middle" font-family="sans-serif">① 准备</text>
+  <text x="160" y="135" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="sans-serif">Visa/Mastercard 实体信用卡</text>
+  <text x="160" y="155" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="sans-serif">邮箱 +86 手机号</text>
+  <text x="160" y="175" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="sans-serif">关代理，用手机热点</text>
+  
+  <!-- Arrow 1→2 -->
+  <line x1="280" y1="130" x2="320" y2="130" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#475569"/></marker></defs>
+  
+  <!-- Step 2: Register -->
+  <rect x="320" y="80" width="240" height="100" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="440" y="110" fill="#8b5cf6" font-size="13" font-weight="bold" text-anchor="middle" font-family="sans-serif">② 注册账号</text>
+  <text x="440" y="135" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="sans-serif">区域选 Phoenix（不可改）</text>
+  <text x="440" y="155" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="sans-serif">国家选中国，地址与卡一致</text>
+  <text x="440" y="175" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="sans-serif">$1 预授权，自动退回</text>
+  
+  <!-- Arrow 2→3 -->
+  <line x1="560" y1="130" x2="600" y2="130" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Step 3: Create Instance -->
+  <rect x="600" y="80" width="260" height="100" rx="8" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+  <text x="730" y="110" fill="#22c55e" font-size="13" font-weight="bold" text-anchor="middle" font-family="sans-serif">③ 创建 ARM 实例</text>
+  <text x="730" y="135" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="sans-serif">VM.Standard.A1.Flex</text>
+  <text x="730" y="155" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="sans-serif">4 核 24 GB + 200 GB 存储</text>
+  <text x="730" y="175" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="sans-serif">上传 SSH 公钥</text>
+  
+  <!-- Spec box -->
+  <rect x="40" y="220" width="820" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="450" y="250" fill="#f59e0b" font-size="15" font-weight="bold" text-anchor="middle" font-family="sans-serif">Always Free 规格（ARM 实例）</text>
+  
+  <!-- Specs -->
+  <text x="160" y="285" fill="#e2e8f0" font-size="13" font-weight="bold" text-anchor="middle" font-family="sans-serif">4 核</text>
+  <text x="160" y="310" fill="#64748b" font-size="11" text-anchor="middle" font-family="sans-serif">Ampere A1 CPU</text>
+  
+  <line x1="280" y1="270" x2="280" y2="320" stroke="#334155" stroke-width="1"/>
+  <text x="390" y="285" fill="#e2e8f0" font-size="13" font-weight="bold" text-anchor="middle" font-family="sans-serif">24 GB</text>
+  <text x="390" y="310" fill="#64748b" font-size="11" text-anchor="middle" font-family="sans-serif">内存</text>
+  
+  <line x1="510" y1="270" x2="510" y2="320" stroke="#334155" stroke-width="1"/>
+  <text x="620" y="285" fill="#e2e8f0" font-size="13" font-weight="bold" text-anchor="middle" font-family="sans-serif">200 GB</text>
+  <text x="620" y="310" fill="#64748b" font-size="11" text-anchor="middle" font-family="sans-serif">存储</text>
+  
+  <line x1="730" y1="270" x2="730" y2="320" stroke="#334155" stroke-width="1"/>
+  <text x="820" y="285" fill="#e2e8f0" font-size="13" font-weight="bold" text-anchor="middle" font-family="sans-serif">10 TB</text>
+  <text x="820" y="310" fill="#64748b" font-size="11" text-anchor="middle" font-family="sans-serif">月流量</text>
+  
+  <!-- Price tag -->
+  <rect x="340" y="325" width="220" height="30" rx="15" fill="#22c55e" opacity="0.15"/>
+  <text x="450" y="345" fill="#22c55e" font-size="13" font-weight="bold" text-anchor="middle" font-family="sans-serif">$0 / 月 · 永久免费</text>
+  
+  <!-- Pitfalls section -->
+  <rect x="40" y="370" width="400" height="130" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="240" y="400" fill="#ef4444" font-size="13" font-weight="bold" text-anchor="middle" font-family="sans-serif">常见坑</text>
+  <text x="60" y="425" fill="#94a3b8" font-size="11" font-family="sans-serif">• 红色感叹号 → IP/信用卡/地址三者不一致</text>
+  <text x="60" y="445" fill="#94a3b8" font-size="11" font-family="sans-serif">• Out of Capacity → 区域满了，用脚本抢</text>
+  <text x="60" y="465" fill="#94a3b8" font-size="11" font-family="sans-serif">• 闲置 7 天 → CPU/内存/网络 &lt;20% 被回收</text>
+  <text x="60" y="485" fill="#94a3b8" font-size="11" font-family="sans-serif">• 区域选错 → 不能改，只能重新注册</text>
+  
+  <!-- Tips section -->
+  <rect x="460" y="370" width="400" height="130" rx="8" fill="#1e293b" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="660" y="400" fill="#22c55e" font-size="13" font-weight="bold" text-anchor="middle" font-family="sans-serif">关键决策</text>
+  <text x="480" y="425" fill="#94a3b8" font-size="11" font-family="sans-serif">• 区域首选 Phoenix，竞争低成功率高</text>
+  <text x="480" y="445" fill="#94a3b8" font-size="11" font-family="sans-serif">• 注册用手机热点，不要用 WiFi/代理</text>
+  <text x="480" y="465" fill="#94a3b8" font-size="11" font-family="sans-serif">• 抢机用 GitHub Actions 脚本自动跑</text>
+  <text x="480" y="485" fill="#94a3b8" font-size="11" font-family="sans-serif">• 保活：跑真实服务或 cron 定时 curl</text>
+</svg>
