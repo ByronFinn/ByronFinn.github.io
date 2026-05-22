@@ -1,4 +1,4 @@
-# Codex 一直 Reconnecting，四種解法
+# Codex 一直 Reconnecting，四种解法
 
 
 <!-- more -->

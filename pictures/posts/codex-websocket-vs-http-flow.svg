@@ -9,10 +9,10 @@
   <rect width="800" height="340" fill="url(#bg)" rx="12"/>
 
   <!-- Title -->
-  <text x="400" y="35" text-anchor="middle" fill="#e2e8f0" font-size="18" font-weight="bold" font-family="system-ui, sans-serif">WebSocket vs HTTP 流式：連接差異</text>
+  <text x="400" y="35" text-anchor="middle" fill="#e2e8f0" font-size="18" font-weight="bold" font-family="system-ui, sans-serif">WebSocket vs HTTP 流式：连接差异</text>
 
   <!-- WebSocket side -->
-  <text x="200" y="70" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="bold" font-family="system-ui, sans-serif">WebSocket（默認）</text>
+  <text x="200" y="70" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="bold" font-family="system-ui, sans-serif">WebSocket（默认）</text>
 
   <!-- Client -->
   <rect x="60" y="90" width="100" height="36" rx="6" fill="#1e40af" opacity="0.6" stroke="#3b82f6" stroke-width="1"/>
@@ -32,24 +32,24 @@
   <!-- Bidirectional streaming -->
   <line x1="160" y1="145" x2="240" y2="145" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3"/>
   <line x1="240" y1="155" x2="160" y2="155" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <text x="200" y="140" text-anchor="middle" fill="#86efac" font-size="9" font-family="monospace">雙向持續連接</text>
+  <text x="200" y="140" text-anchor="middle" fill="#86efac" font-size="9" font-family="monospace">双向持续连接</text>
 
   <!-- Interruption -->
   <line x1="200" y1="170" x2="200" y2="195" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <text x="200" y="210" text-anchor="middle" fill="#fca5a5" font-size="10" font-family="system-ui, sans-serif">代理/challenge 打斷</text>
+  <text x="200" y="210" text-anchor="middle" fill="#fca5a5" font-size="10" font-family="system-ui, sans-serif">代理/challenge 打断</text>
   <text x="200" y="225" text-anchor="middle" fill="#fca5a5" font-size="10" font-family="system-ui, sans-serif">→ Reconnecting... 1/5</text>
 
   <!-- Pros -->
-  <text x="200" y="252" text-anchor="middle" fill="#86efac" font-size="11" font-family="system-ui, sans-serif">✓ 實時雙向通信</text>
+  <text x="200" y="252" text-anchor="middle" fill="#86efac" font-size="11" font-family="system-ui, sans-serif">✓ 实时双向通信</text>
   <text x="200" y="268" text-anchor="middle" fill="#86efac" font-size="11" font-family="system-ui, sans-serif">✓ 可中途 interrupt/steer</text>
-  <text x="200" y="284" text-anchor="middle" fill="#fca5a5" font-size="11" font-family="system-ui, sans-serif">✗ 長連接容易斷</text>
-  <text x="200" y="300" text-anchor="middle" fill="#fca5a5" font-size="11" font-family="system-ui, sans-serif">✗ 代理環境不友好</text>
+  <text x="200" y="284" text-anchor="middle" fill="#fca5a5" font-size="11" font-family="system-ui, sans-serif">✗ 长连接容易断</text>
+  <text x="200" y="300" text-anchor="middle" fill="#fca5a5" font-size="11" font-family="system-ui, sans-serif">✗ 代理环境不友好</text>
 
   <!-- Divider -->
   <line x1="400" y1="60" x2="400" y2="320" stroke="#334155" stroke-width="1" stroke-dasharray="4,4"/>
 
   <!-- HTTP side -->
-  <text x="600" y="70" text-anchor="middle" fill="#fcd34d" font-size="14" font-weight="bold" font-family="system-ui, sans-serif">HTTP 流式（關掉 WS）</text>
+  <text x="600" y="70" text-anchor="middle" fill="#fcd34d" font-size="14" font-weight="bold" font-family="system-ui, sans-serif">HTTP 流式（关掉 WS）</text>
 
   <!-- Client -->
   <rect x="460" y="90" width="100" height="36" rx="6" fill="#78350f" opacity="0.5" stroke="#f59e0b" stroke-width="1"/>
@@ -69,13 +69,13 @@
   <text x="600" y="130" text-anchor="middle" fill="#86efac" font-size="9" font-family="monospace">SSE / chunked response</text>
 
   <!-- No persistent connection -->
-  <text x="600" y="170" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">每次請求獨立</text>
-  <text x="600" y="185" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">不存在「斷連重連」</text>
-  <text x="600" y="210" text-anchor="middle" fill="#86efac" font-size="10" font-family="system-ui, sans-serif">→ 穩定，不走 WS 協議</text>
+  <text x="600" y="170" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">每次请求独立</text>
+  <text x="600" y="185" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">不存在「断连重连」</text>
+  <text x="600" y="210" text-anchor="middle" fill="#86efac" font-size="10" font-family="system-ui, sans-serif">→ 稳定，不走 WS 协议</text>
 
   <!-- Pros -->
-  <text x="600" y="252" text-anchor="middle" fill="#86efac" font-size="11" font-family="system-ui, sans-serif">✓ 代理環境穩定</text>
-  <text x="600" y="268" text-anchor="middle" fill="#86efac" font-size="11" font-family="system-ui, sans-serif">✓ 不存在重連問題</text>
+  <text x="600" y="252" text-anchor="middle" fill="#86efac" font-size="11" font-family="system-ui, sans-serif">✓ 代理环境稳定</text>
+  <text x="600" y="268" text-anchor="middle" fill="#86efac" font-size="11" font-family="system-ui, sans-serif">✓ 不存在重连问题</text>
   <text x="600" y="284" text-anchor="middle" fill="#fca5a5" font-size="11" font-family="system-ui, sans-serif">✗ 首token可能略慢</text>
-  <text x="600" y="300" text-anchor="middle" fill="#fca5a5" font-size="11" font-family="system-ui, sans-serif">✗ 中途 steering 體驗差</text>
+  <text x="600" y="300" text-anchor="middle" fill="#fca5a5" font-size="11" font-family="system-ui, sans-serif">✗ 中途 steering 体验差</text>
 </svg>
