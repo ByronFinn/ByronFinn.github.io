@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="880" height="440" fill="url(#bg)" rx="12"/>
+
+  <text x="440" y="40" fill="#f1f5f9" font-size="18" font-weight="bold" text-anchor="middle" font-family="sans-serif">Tmux 核心概念：Session / Window / Pane</text>
+
+  <!-- Session box -->
+  <rect x="30" y="65" width="820" height="345" rx="8" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3"/>
+  <rect x="30" y="65" width="160" height="28" rx="4" fill="#3b82f6" opacity="0.2"/>
+  <text x="110" y="84" fill="#3b82f6" font-size="13" font-weight="bold" text-anchor="middle" font-family="sans-serif">Session: dev</text>
+
+  <!-- Window 0 -->
+  <rect x="55" y="110" width="375" height="280" rx="6" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+  <rect x="55" y="110" width="375" height="28" rx="6" fill="#8b5cf6" opacity="0.15"/>
+  <text x="242" y="129" fill="#8b5cf6" font-size="12" font-weight="bold" text-anchor="middle" font-family="sans-serif">Window 0: editor</text>
+
+  <!-- Panes inside window 0 -->
+  <rect x="70" y="150" width="170" height="110" rx="4" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+  <text x="155" y="175" fill="#22c55e" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">Pane 0</text>
+  <text x="155" y="195" fill="#64748b" font-size="10" text-anchor="middle" font-family="sans-serif">vim main.py</text>
+  <text x="155" y="212" fill="#475569" font-size="9" text-anchor="middle" font-family="sans-serif">编辑代码</text>
+
+  <rect x="245" y="150" width="170" height="110" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="330" y="175" fill="#f59e0b" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">Pane 1</text>
+  <text x="330" y="195" fill="#64748b" font-size="10" text-anchor="middle" font-family="sans-serif">python main.py</text>
+  <text x="330" y="212" fill="#475569" font-size="9" text-anchor="middle" font-family="sans-serif">运行代码</text>
+
+  <rect x="70" y="270" width="345" height="105" rx="4" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
+  <text x="242" y="295" fill="#ef4444" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">Pane 2</text>
+  <text x="242" y="315" fill="#64748b" font-size="10" text-anchor="middle" font-family="sans-serif">git status / git log</text>
+  <text x="242" y="335" fill="#475569" font-size="9" text-anchor="middle" font-family="sans-serif">版本控制</text>
+
+  <!-- Window 1 -->
+  <rect x="450" y="110" width="375" height="280" rx="6" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+  <rect x="450" y="110" width="375" height="28" rx="6" fill="#8b5cf6" opacity="0.15"/>
+  <text x="637" y="129" fill="#8b5cf6" font-size="12" font-weight="bold" text-anchor="middle" font-family="sans-serif">Window 1: server</text>
+
+  <!-- Panes inside window 1 -->
+  <rect x="465" y="150" width="345" height="105" rx="4" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+  <text x="637" y="175" fill="#22c55e" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">Pane 0</text>
+  <text x="637" y="195" fill="#64748b" font-size="10" text-anchor="middle" font-family="sans-serif">npm run dev</text>
+  <text x="637" y="212" fill="#475569" font-size="9" text-anchor="middle" font-family="sans-serif">开发服务器</text>
+
+  <rect x="465" y="270" width="165" height="105" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="547" y="295" fill="#f59e0b" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">Pane 1</text>
+  <text x="547" y="315" fill="#64748b" font-size="10" text-anchor="middle" font-family="sans-serif">tail -f log</text>
+  <text x="547" y="335" fill="#475569" font-size="9" text-anchor="middle" font-family="sans-serif">日志</text>
+
+  <rect x="645" y="270" width="165" height="105" rx="4" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
+  <text x="727" y="295" fill="#ef4444" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">Pane 2</text>
+  <text x="727" y="315" fill="#64748b" font-size="10" text-anchor="middle" font-family="sans-serif">htop</text>
+  <text x="727" y="335" fill="#475569" font-size="9" text-anchor="middle" font-family="sans-serif">监控</text>
+
+  <!-- Key hints -->
+  <text x="440" y="425" fill="#475569" font-size="10" text-anchor="middle" font-family="sans-serif">Ctrl+b d 分离会话 · Ctrl+b c 新窗口 · Ctrl+b % 左右分屏 · Ctrl+b " 上下分屏</text>
+</svg>
