@@ -1,4 +1,26 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/</link><description>专注于技术、经济、时事解读的深度思考博客，提供专业的技术洞察和商业分析</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Tue, 02 Jun 2026 00:27:52 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Trellis 做了什么，能不能解决 AI 编码的规范问题</title><link>https://byronfinn.github.io/2026-06-02-trellis-ai-coding-framework-guide/</link><pubDate>Tue, 02 Jun 2026 00:27:52 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-06-02-trellis-ai-coding-framework-guide/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/</link><description>专注于技术、经济、时事解读的深度思考博客，提供专业的技术洞察和商业分析</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Fri, 05 Jun 2026 09:59:49 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>AI API 的后缀是什么，为什么要这样设计</title><link>https://byronfinn.github.io/2026-06-05-ai-api-suffixes-explained/</link><pubDate>Fri, 05 Jun 2026 09:59:49 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-06-05-ai-api-suffixes-explained/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/ai-api-suffixes-protocol-evolution.svg" referrerpolicy="no-referrer">
+            </div><p>我们经常看到这种 URL：</p>
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+  <div class="
+    
+    tw-flex 
+    tw-flex-row
+    tw-flex-1 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        code-block-button
+        tw-mx-2 
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">plaintext</p>]]></description></item><item><title>Trellis 做了什么，能不能解决 AI 编码的规范问题</title><link>https://byronfinn.github.io/2026-06-02-trellis-ai-coding-framework-guide/</link><pubDate>Tue, 02 Jun 2026 00:27:52 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-06-02-trellis-ai-coding-framework-guide/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/note/trellis-core-concepts.svg" referrerpolicy="no-referrer">
             </div><p>用 AI 写代码，最烦的不是它写错，而是它每次都用不同的方式写错。同一个需求，对话三次，三种写法。规范在你脑子里，AI 不知道。</p>
 <!-- more -->
@@ -16,7 +38,4 @@
                 <img src="/pictures/posts/apple-us-id-three-methods.svg" referrerpolicy="no-referrer">
             </div><p>注册一个外区 Apple ID 本来不是什么难事，但苹果的流程改来改去，网上教程大多只记录了一条路径，评论区经常有人说&quot;不行了&quot;。更烦的是注册完首次登录 App Store，有概率被直接送回国区。</p>]]></description></item><item><title>接码平台体验分享-无广告纯享版</title><link>https://byronfinn.github.io/2026-05-20-sms-verification-platforms/</link><pubDate>Wed, 20 May 2026 00:23:18 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-05-20-sms-verification-platforms/</guid><description>&lt;p>注册各种服务如GPT/CLAUDE/TG等需要一个能收验证码的号，但又不想拿自己手机号填。这类需求催生了一批接码平台，有的免费、有的付费、有的面向开发者。以下是我实际用过的四个，截止 2026 年 5 月 20 日都还能正常访问。平台状态随时可能变化，建议用之前自己先打开看看。&lt;/p></description></item><item><title>多智能体协作的工程问题：触发、拓扑和收口</title><link>https://byronfinn.github.io/2026-05-19-multi-agent-collaboration-engineering/</link><pubDate>Tue, 19 May 2026 09:20:06 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-05-19-multi-agent-collaboration-engineering/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/posts/multi-agent-collaboration-topology.svg" referrerpolicy="no-referrer">
-            </div><p>先说结论：多智能体协作不是&quot;多开几个模型实例&quot;。它要解决的是任务调度、上下文隔离、权限控制、状态管理和结果合并——每一个都是工程问题，不是 prompt 问题。</p>]]></description></item><item><title>AI 时代的精神病：当 MTTR 狂热撞上系统韧性</title><link>https://byronfinn.github.io/2026-05-18-ai-mttr-mtbf-resilience-psychosis/</link><pubDate>Mon, 18 May 2026 10:31:58 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-05-18-ai-mttr-mtbf-resilience-psychosis/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/ai-mttr-mtbf-featured.svg" referrerpolicy="no-referrer">
-            </div><!-- more -->
-<p>我有一种强烈的直觉：现在的科技行业里，有些公司正在经历一场深度 AI 精神病（AI psychosis），而且在那些公司里，你根本没办法进行理性对话。我说的不是陌生人——是我深深尊重的个人朋友。这让我很担心事情会怎么收场。</p>]]></description></item></channel></rss>
+            </div><p>先说结论：多智能体协作不是&quot;多开几个模型实例&quot;。它要解决的是任务调度、上下文隔离、权限控制、状态管理和结果合并——每一个都是工程问题，不是 prompt 问题。</p>]]></description></item></channel></rss>
