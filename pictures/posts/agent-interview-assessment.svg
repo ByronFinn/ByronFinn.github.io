@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="goodG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+    <linearGradient id="badG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <linearGradient id="blueG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="purpleG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="amberG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="560" rx="16" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="400" y="48" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="20" font-weight="700">Agent 面试评估矩阵</text>
+  <text x="400" y="70" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="13">哪些回答说明真干过，哪些是在背概念</text>
+
+  <!-- Header row: topic -->
+  <g transform="translate(40, 95)">
+    <rect x="0" y="0" width="180" height="40" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="90" y="26" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13" font-weight="600">面试维度</text>
+
+    <!-- Good answer header -->
+    <rect x="190" y="0" width="275" height="40" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1" opacity="0.6"/>
+    <text x="327" y="26" text-anchor="middle" fill="#4ade80" font-family="system-ui,sans-serif" font-size="13" font-weight="600">✅ 真干过的人会这么说</text>
+
+    <!-- Bad answer header -->
+    <rect x="475" y="0" width="275" height="40" rx="8" fill="#3f0d12" stroke="#ef4444" stroke-width="1" opacity="0.6"/>
+    <text x="612" y="26" text-anchor="middle" fill="#f87171" font-family="system-ui,sans-serif" font-size="13" font-weight="600">❌ 背概念的会这么说</text>
+  </g>
+
+  <!-- Row 1: Multi-Agent -->
+  <g transform="translate(40, 145)">
+    <!-- Topic cell -->
+    <rect x="0" y="0" width="180" height="70" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="0" y="0" width="4" height="70" rx="2" fill="url(#blueG)"/>
+    <text x="20" y="28" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="13" font-weight="600">多 Agent 架构</text>
+    <text x="20" y="50" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">为什么需要多个 Agent？</text>
+
+    <!-- Good answer -->
+    <rect x="190" y="0" width="275" height="70" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1" opacity="0.5"/>
+    <text x="210" y="28" fill="#a7f3d0" font-family="system-ui,sans-serif" font-size="12">「按领域拆：支付、库存、用户行为</text>
+    <text x="210" y="50" fill="#a7f3d0" font-family="system-ui,sans-serif" font-size="12">  各自有自己的数据源和失败边界」</text>
+
+    <!-- Bad answer -->
+    <rect x="475" y="0" width="275" height="70" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+    <text x="495" y="28" fill="#fca5a5" font-family="system-ui,sans-serif" font-size="12">「Multi-Agent 能并行处理，</text>
+    <text x="495" y="50" fill="#fca5a5" font-family="system-ui,sans-serif" font-size="12">  提升系统吞吐和鲁棒性」</text>
+  </g>
+
+  <!-- Row 2: Communication -->
+  <g transform="translate(40, 225)">
+    <rect x="0" y="0" width="180" height="70" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="0" y="0" width="4" height="70" rx="2" fill="url(#purpleG)"/>
+    <text x="20" y="28" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Agent 通信</text>
+    <text x="20" y="50" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Agent 之间怎么交换信息？</text>
+
+    <rect x="190" y="0" width="275" height="70" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1" opacity="0.5"/>
+    <text x="210" y="28" fill="#a7f3d0" font-family="system-ui,sans-serif" font-size="12">「异步消息队列，每个 Agent 有自己</text>
+    <text x="210" y="50" fill="#a7f3d0" font-family="system-ui,sans-serif" font-size="12">  的输入管道，消息带超时和重试」</text>
+
+    <rect x="475" y="0" width="275" height="70" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+    <text x="495" y="28" fill="#fca5a5" font-family="system-ui,sans-serif" font-size="12">「Agent 通过 API 互相调用，</text>
+    <text x="495" y="50" fill="#fca5a5" font-family="system-ui,sans-serif" font-size="12">  用 HTTP/REST 或 gRPC」</text>
+  </g>
+
+  <!-- Row 3: Error Handling -->
+  <g transform="translate(40, 305)">
+    <rect x="0" y="0" width="180" height="70" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="0" y="0" width="4" height="70" rx="2" fill="url(#amberG)"/>
+    <text x="20" y="28" fill="#fde68a" font-family="system-ui,sans-serif" font-size="13" font-weight="600">错误处理</text>
+    <text x="20" y="50" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Agent 挂了怎么办？</text>
+
+    <rect x="190" y="0" width="275" height="70" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1" opacity="0.5"/>
+    <text x="210" y="28" fill="#a7f3d0" font-family="system-ui,sans-serif" font-size="12">「区分预期故障和系统性故障，</text>
+    <text x="210" y="50" fill="#a7f3d0" font-family="system-ui,sans-serif" font-size="12">  API 超时重试 3 次，状态损坏就降级」</text>
+
+    <rect x="475" y="0" width="275" height="70" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+    <text x="495" y="28" fill="#fca5a5" font-family="system-ui,sans-serif" font-size="12">「加 try-catch 和 fallback」</text>
+    <text x="495" y="50" fill="#fca5a5" font-family="system-ui,sans-serif" font-size="12">  （说不出具体 fallback 是什么）</text>
+  </g>
+
+  <!-- Row 4: State Management -->
+  <g transform="translate(40, 385)">
+    <rect x="0" y="0" width="180" height="70" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="0" y="0" width="4" height="70" rx="2" fill="url(#goodG)"/>
+    <text x="20" y="28" fill="#86efac" font-family="system-ui,sans-serif" font-size="13" font-weight="600">状态管理</text>
+    <text x="20" y="50" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Agent 的状态怎么存？</text>
+
+    <rect x="190" y="0" width="275" height="70" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1" opacity="0.5"/>
+    <text x="210" y="28" fill="#a7f3d0" font-family="system-ui,sans-serif" font-size="12">「外部化状态到 Redis/数据库，</text>
+    <text x="210" y="50" fill="#a7f3d0" font-family="system-ui,sans-serif" font-size="12">  每个 Agent 处理完就持久化一步」</text>
+
+    <rect x="475" y="0" width="275" height="70" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+    <text x="495" y="28" fill="#fca5a5" font-family="system-ui,sans-serif" font-size="12">「把 context 传给 Agent 就行，</text>
+    <text x="495" y="50" fill="#fca5a5" font-family="system-ui,sans-serif" font-size="12">  模型会自己记住上下文」</text>
+  </g>
+
+  <!-- Row 5: Tool Use -->
+  <g transform="translate(40, 465)">
+    <rect x="0" y="0" width="180" height="70" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect x="0" y="0" width="4" height="70" rx="2" fill="url(#blueG)"/>
+    <text x="20" y="28" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Tool Calling</text>
+    <text x="20" y="50" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Agent 怎么调用工具？</text>
+
+    <rect x="190" y="0" width="275" height="70" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1" opacity="0.5"/>
+    <text x="210" y="28" fill="#a7f3d0" font-family="system-ui,sans-serif" font-size="12">「工具有 schema 描述、参数校验、</text>
+    <text x="210" y="50" fill="#a7f3d0" font-family="system-ui,sans-serif" font-size="12">  超时控制，结果必须经过一层过滤」</text>
+
+    <rect x="475" y="0" width="275" height="70" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+    <text x="495" y="28" fill="#fca5a5" font-family="system-ui,sans-serif" font-size="12">「function calling 是模型自带能力，</text>
+    <text x="495" y="50" fill="#fca5a5" font-family="system-ui,sans-serif" font-size="12">  定义好 tools 参数就行」</text>
+  </g>
+
+  <!-- Bottom note -->
+  <text x="400" y="545" text-anchor="middle" fill="#475569" font-family="system-ui,sans-serif" font-size="11">关键信号：真干过的人会说"边界条件"和"你怎么兜底"，背概念的会说"架构"和"能力"</text>
+</svg>

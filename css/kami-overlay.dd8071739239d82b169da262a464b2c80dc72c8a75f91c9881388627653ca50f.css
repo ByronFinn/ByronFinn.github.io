@@ -1,0 +1,166 @@
+/* Kami Design Overlay — warm parchment, ink-blue, serif-led hierarchy
+ *
+ * Translates the kami skill's design tokens onto the DoIt theme via
+ * CSS custom property overrides. DoIt handles the layout skeleton;
+ * this file only touches visual surface: color, typography, spacing.
+ *
+ * To regenerate or customise these tokens, invoke the kami skill.
+ * See `.pi/skills/hugo/SKILL.md` (Design section) for instructions.
+ *
+ * Loaded via hugo.toml: params.page.library.css.kamiOverlay
+ */
+
+/* ===================================================================
+ *  Light mode — warm parchment
+ * =================================================================== */
+:root {
+  /* ---- Background & surface ---- */
+  --global-background-color: #faf8f5;        /* warm parchment, not white */
+  --header-background-color: #f5f0ea;        /* slightly deeper for contrast */
+  --search-background-color: #ede8e0;
+  --friend-link-background-color: #f5f0ea;
+  --related-background-color: #f5f0ea;
+  --showcase-background-color: #f5f0ea;
+
+  /* ---- Text ---- */
+  --global-font-color: #1a1816;              /* warm black */
+  --global-font-secondary-color: #5c5348;    /* warm gray */
+  --single-content-strong-color: #1a1816;
+
+  /* ---- Accent — ink-blue ---- */
+  --global-link-hover-color: #1e3a5f;        /* replaces teal #2d809a */
+  --single-link-color: #1e3a5f;
+  --single-link-hover-color: #142b47;
+  --pagination-link-color: #1e3a5f;
+  --pagination-link-hover-color: #0f1f35;
+  --friend-link-color: #1e3a5f;
+  --friend-link-hover-color: #142b47;
+
+  /* ---- Borders & dividers ---- */
+  --global-border-color: #e8e0d8;            /* warm border */
+
+  /* ---- Blockquote ---- */
+  --blockquote-color: #1e3a5f;
+  --blockquote-bg-color: rgba(30, 58, 95, 0.08);
+
+  /* ---- Selection ---- */
+  --selection-color: rgba(30, 58, 95, 0.20);
+
+  /* ---- Headings ---- */
+  --single-h-font-weight: 600;
+
+  /* ---- Code ---- */
+  --code-background-color: #f2ede6;
+  --code-header-color: #e8e0d8;
+  --code-background-color-darken-5: #e6dfd6;
+  --code-background-color-darken-6: #e3dbd2;
+  --code-background-color-code-header: var(--code-background-color-darken-6);
+  --code-background-color-code-hl: #ddd4c9;
+  --code-info-color: #8c8276;
+
+  /* ---- Tables ---- */
+  --table-background-color: #faf8f5;
+  --table-thead-color: #f0ebe4;
+
+  /* ---- Primitives ---- */
+  --fgColor-default: #1a1816;
+  --fgColor-secondary: #5c5348;
+  --fgColor-muted: #8c8276;
+  --fgColor-link: #1e3a5f;
+  --fgColor-link-hover: #142b47;
+  --bgColor-default: #faf8f5;
+  --bgColor-secondary: #f0ebe4;
+  --bgColor-accent-emphasis: #1e3a5f;
+  --bgColor-accent-muted: rgba(30, 58, 95, 0.08);
+  --bgColor-neutral-muted: rgba(92, 83, 72, 0.12);
+  --borderColor-default: #e8e0d8;
+  --selection-bgColor: rgba(30, 58, 95, 0.20);
+  --button-default-bgColor-rest: #f0ebe4;
+  --button-default-bgColor-hover: #e8e0d8;
+}
+
+/* ---- Serif-led heading hierarchy ---- */
+.single .single-title {
+  font-family: Georgia, "Noto Serif CJK SC", "Source Han Serif CN",
+               "Songti SC", SimSun, serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.single .content h2,
+.single .content h3,
+.single .content h4,
+.single .content h5,
+.single .content h6 {
+  font-family: Georgia, "Noto Serif CJK SC", "Source Han Serif CN",
+               "Songti SC", SimSun, serif;
+}
+
+/* ===================================================================
+ *  Dark mode — warm charcoal
+ * =================================================================== */
+html.dark {
+  /* ---- Background & surface ---- */
+  --global-background-color: #1a1816;        /* warm charcoal, not gray */
+  --header-background-color: #242220;
+  --search-background-color: #242220;
+  --friend-link-background-color: #242220;
+  --related-background-color: #242220;
+  --showcase-background-color: #242220;
+
+  /* ---- Text ---- */
+  --global-font-color: #e8e2da;              /* warm white */
+  --global-font-secondary-color: #a89e92;    /* warm muted */
+  --single-content-strong-color: #e8e2da;
+
+  /* ---- Accent — ink-blue (lighter for dark bg) ---- */
+  --global-link-hover-color: #8ab4d8;        /* lighter ink-blue */
+  --single-link-color: #8ab4d8;
+  --single-link-hover-color: #a8cce8;
+  --pagination-link-color: #8ab4d8;
+  --pagination-link-hover-color: #ffffff;
+  --friend-link-color: #8ab4d8;
+  --friend-link-hover-color: #a8cce8;
+
+  /* ---- Borders ---- */
+  --global-border-color: #353230;
+
+  /* ---- Blockquote ---- */
+  --blockquote-color: #5b8fc4;
+  --blockquote-bg-color: rgba(91, 143, 196, 0.12);
+
+  /* ---- Selection ---- */
+  --selection-color: rgba(91, 143, 196, 0.35);
+
+  /* ---- Headings ---- */
+  --single-h-font-weight: 600;
+
+  /* ---- Code ---- */
+  --code-background-color: #242220;
+  --code-header-color: #2d2a28;
+  --code-background-color-darken-5: #201e1c;
+  --code-background-color-darken-6: #1e1c1a;
+  --code-background-color-code-header: var(--code-background-color-darken-6);
+  --code-background-color-code-hl: #2d2a28;
+  --code-info-color: #7a7268;
+
+  /* ---- Tables ---- */
+  --table-background-color: #1a1816;
+  --table-thead-color: #242220;
+
+  /* ---- Primitives ---- */
+  --fgColor-default: #e8e2da;
+  --fgColor-secondary: #a89e92;
+  --fgColor-muted: #7a7268;
+  --fgColor-link: #8ab4d8;
+  --fgColor-link-hover: #a8cce8;
+  --bgColor-default: #1a1816;
+  --bgColor-secondary: #242220;
+  --bgColor-accent-emphasis: #5b8fc4;
+  --bgColor-accent-muted: rgba(91, 143, 196, 0.12);
+  --bgColor-neutral-muted: rgba(168, 158, 146, 0.10);
+  --borderColor-default: #353230;
+  --selection-bgColor: rgba(91, 143, 196, 0.35);
+  --button-default-bgColor-rest: #242220;
+  --button-default-bgColor-hover: #2d2a28;
+}
