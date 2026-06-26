@@ -3,6 +3,8 @@
 
 <!-- more -->
 
+> **附件下载**：[Agent 面试题整理.pdf](/files/agent-interview-questions.pdf) — 方便打印或离线阅读
+
 ## 为什么需要多个 Agent
 
 开场问题，用来区分"看过文章"和"动手搭过"。
