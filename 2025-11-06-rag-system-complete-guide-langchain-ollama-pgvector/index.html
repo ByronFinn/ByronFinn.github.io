@@ -121,7 +121,7 @@ group-[.is-wrap]:tw-text-wrap
 tw-overflow-y-hidden
 tw-overflow-x-auto
 tw-scrollbar-thin"><span class=line><span class=cl><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;3.9&#34;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>services</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>services</span><span class=p>:</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>pg</span><span class=p>:</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class=l>pgvector/pgvector:pg16</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>container_name</span><span class=p>:</span><span class=w> </span><span class=l>pgvector</span><span class=w>
@@ -167,7 +167,7 @@ tw-scrollbar-thin"><span class=line><span class=cl><span class=nt>version</span>
 </span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>LITELLM_LOG=info</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>command</span><span class=p>:</span><span class=w> </span><span class=p>[</span><span class=s2>&#34;--config&#34;</span><span class=p>,</span><span class=w> </span><span class=s2>&#34;/app/litellm.yaml&#34;</span><span class=p>]</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>volumes</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>volumes</span><span class=p>:</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>  </span><span class=l>ollama:</span></span></span></code></pre></div><h3 id=2-litellmyaml class=headerLink><a href=#2-litellmyaml class=header-mark></a>2) <code>litellm.yaml</code></h3><div class="code-block highlight is-closed show-line-numbers tw-group tw-my-2"><div class="tw-flex
 tw-flex-row
 tw-flex-1
@@ -223,7 +223,7 @@ tw-scrollbar-thin"><span class=line><span class=cl><span class=nt>model_list</sp
 </span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>litellm_params</span><span class=p>:</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>model</span><span class=p>:</span><span class=w> </span><span class=l>ollama/qwen3-embedding:4b</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>api_base</span><span class=p>:</span><span class=w> </span><span class=l>http://ollama:11434</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>server</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>server</span><span class=p>:</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>host</span><span class=p>:</span><span class=w> </span><span class=m>0.0.0.0</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>port</span><span class=p>:</span><span class=w> </span><span class=m>4000</span></span></span></code></pre></div><h3 id=3-启动容器 class=headerLink><a href=#3-%e5%90%af%e5%8a%a8%e5%ae%b9%e5%99%a8 class=header-mark></a>3) 启动容器</h3><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
 tw-flex-row
@@ -1062,12 +1062,12 @@ tw-overflow-y-hidden
 tw-overflow-x-auto
 tw-scrollbar-thin"><span class=line><span class=cl><span class=c1># Embedding 接口（直连 Ollama）</span>
 </span></span><span class=line><span class=cl>curl -X POST http://localhost:11434/api/embeddings <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>  -d <span class=s1>&#39;{&#34;model&#34;:&#34;qwen3-embedding:4b&#34;,&#34;prompt&#34;:&#34;测试一下向量&#34;}&#39;</span>
+</span></span></span><span class=line><span class=cl>  -d <span class=s1>&#39;{&#34;model&#34;:&#34;qwen3-embedding:4b&#34;,&#34;prompt&#34;:&#34;测试一下向量&#34;}&#39;</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># Chat 接口（直连 Ollama）</span>
 </span></span><span class=line><span class=cl>curl http://localhost:11434/api/chat <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>  -H <span class=s2>&#34;Content-Type: application/json&#34;</span> <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>  -d <span class=s1>&#39;{
+</span></span></span><span class=line><span class=cl>  -H <span class=s2>&#34;Content-Type: application/json&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl>  -d <span class=s1>&#39;{
 </span></span></span><span class=line><span class=cl><span class=s1>    &#34;model&#34;:&#34;qwen3:8b&#34;,
 </span></span></span><span class=line><span class=cl><span class=s1>    &#34;messages&#34;:[{&#34;role&#34;:&#34;user&#34;,&#34;content&#34;:&#34;用一句话解释什么是RAG&#34;}]
 </span></span></span><span class=line><span class=cl><span class=s1>  }&#39;</span></span></span></code></pre></div><hr><h2 id=性能调优与最佳实践 class=headerLink><a href=#%e6%80%a7%e8%83%bd%e8%b0%83%e4%bc%98%e4%b8%8e%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5 class=header-mark></a>性能调优与最佳实践</h2><ul><li><strong>切分策略</strong>：长技术文档可将 <code>chunk_size</code> 提到 1000–1200，法律/规范类文本适当增大以保留上下文。</li><li><strong>检索参数</strong>：<code>k=4~8</code>；MMR 可提高多样性（减少相似块）。</li><li><strong>索引优化</strong>：pgvector 新版支持 HNSW；可在 <code>embedding</code> 列创建 HNSW 索引以提升大数据集检索速度。</li><li><strong>缓存</strong>：对重复问题可在应用层缓存最终答案或检索结果。</li><li><strong>日志观测</strong>：开启 LiteLLM 日志与 Prometheus 导出，关注延迟、失败率与重试。</li></ul><hr><h2 id=常见问题与排错清单 class=headerLink><a href=#%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e4%b8%8e%e6%8e%92%e9%94%99%e6%b8%85%e5%8d%95 class=header-mark></a>常见问题与排错清单</h2><ul><li><strong>LiteLLM 401</strong>：<code>OPENAI_API_KEY</code> 需任意非空字符串；<code>OPENAI_API_BASE</code> 必须指向 <code>http://localhost:4000</code>。</li><li><strong>Ollama 404</strong>：确认 <code>docker compose</code> 日志中已 <code>pull</code> 对应模型；或手动 <code>docker exec -it ollama ollama pull &lt;model></code>。</li><li><strong>psycopg 连接失败</strong>：等待 pg 健康检查通过；检查 <code>PG_URL</code> 与端口映射。</li><li><strong>中文乱码</strong>：<code>TextLoader</code> 使用 <code>autodetect_encoding=True</code>；源文件统一 UTF-8。</li><li><strong>PDF 提取为空</strong>：尝试 <code>pypdf</code>/<code>unstructured</code>；或先转 <code>txt</code>。</li><li><strong>检索不相关</strong>：调大 <code>chunk_size</code>/<code>k</code>；或换更强 Embedding（如 <code>mxbai-embed-large</code>）。</li></ul><hr><h2 id=加分项makefile-与一键命令 class=headerLink><a href=#%e5%8a%a0%e5%88%86%e9%a1%b9makefile-%e4%b8%8e%e4%b8%80%e9%94%ae%e5%91%bd%e4%bb%a4 class=header-mark></a>加分项：Makefile 与一键命令</h2><p>在根目录新建 <code>Makefile</code>：</p><div class="code-block highlight is-closed show-line-numbers tw-group tw-my-2"><div class="tw-flex

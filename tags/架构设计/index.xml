@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>架构设计 - 标签 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</link><description>架构设计 - 标签 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" rel="self" type="application/rss+xml"/><item><title>3000 行 vs 50 万行：从玩具到产品的架构深渊</title><link>https://byronfinn.github.io/2026-07-23-claude-code-3000-vs-500k-lines/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-23-claude-code-3000-vs-500k-lines/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p><a href="https://github.com/saoudrizwan/claude-code-from-scratch" target="_blank" rel="noopener noreferrer">claude-code-from-scratch</a> 项目用大约 3000 行 TypeScript 实现了一个&quot;迷你版 Claude Code&quot;。它有 Think-Act-Observe 循环、工具系统、System Prompt、权限控制、记忆、Skill、多代理、MCP——我们在前面 10 篇文章里拆解的核心概念，它全都有。</p>]]></description></item><item><title>AI 编程助手的灵魂：Think-Act-Observe 循环</title><link>https://byronfinn.github.io/2026-07-03-claude-code-think-act-observe-loop/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-03-claude-code-think-act-observe-loop/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>如果你把 Claude Code 的源码翻一遍，你会发现一个反直觉的事实：</p>
+<p><strong>整个程序的核心，是一个 while 循环。</strong></p>
+<p>不是复杂的状态机，不是精巧的管道，不是分布式协调——就是一个朴素的 <code>while</code> 循环，反复做三件事：让模型想、让模型动手、把结果喂回去。</p>]]></description></item><item><title>多代理架构：分叉-汇聚模式的协作艺术</title><link>https://byronfinn.github.io/2026-07-17-claude-code-multi-agent/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-17-claude-code-multi-agent/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>有一个反直觉的现象：同一个模型，拆成多个独立实例让它协作，效果往往比单个实例更好。</p>
+<p>不是算力增加了（三个实例的总 token 消耗比一个实例多），不是能力提升了（每个实例都是同样的模型）。提升来自<strong>角色分离</strong>——当每个 Agent 只关注问题的一个方面时，它做得比&quot;全能 Agent&quot;更专注、更深刻。</p>]]></description></item><item><title>工具即能力：AI Agent 的工具系统设计哲学</title><link>https://byronfinn.github.io/2026-07-05-claude-code-tool-system-design/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-05-claude-code-tool-system-design/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>上一篇文章我们聊了 Think-Act-Observe 循环——AI 编程助手的骨架。骨架本身不会干活，它需要肌肉。在 Claude Code 里，肌肉就是<strong>工具</strong>。</p>
+<p>没有工具，循环里 Think 和 Observe 之间缺了 Act，退化回普通的问答。有了工具，模型才能触碰真实世界：读你的代码、改你的配置、跑你的测试。</p>]]></description></item></channel></rss>

@@ -244,15 +244,15 @@ tw-scrollbar-thin"><span class=line><span class=cl><span class=c1># 最简单的
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># 完整参数示例</span>
 </span></span><span class=line><span class=cl>uv run python -m pdf2markdown <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>    --input large_document.pdf <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>    --output ./results <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>    --environment development <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>    --model qwen3:8b <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>    --memory <span class=m>4</span> <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>    --workers <span class=m>4</span> <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>    --formats markdown,json <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>    --log-level DEBUG <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>    --log-file processing.log</span></span></code></pre></div><h3 id=命令行参数详解 class=headerLink><a href=#%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%8f%82%e6%95%b0%e8%af%a6%e8%a7%a3 class=header-mark></a>命令行参数详解</h3><p><strong>必需参数：</strong></p><ul><li><code>pdf</code> 或 <code>--input &lt;path></code> - PDF 文件路径</li></ul><p><strong>配置管理：</strong></p><ul><li><code>--environment &lt;env></code> - 配置环境 (development/production)</li><li><code>--chunk-size &lt;int></code> - 分块页数 (默认: 20)</li><li><code>--ocr-engine &lt;engine></code> - 指定 OCR 引擎 (可重复指定)</li><li><code>--model &lt;model_name></code> - Ollama 模型名称 (默认: qwen3:8b)</li></ul><p><strong>性能调优：</strong></p><ul><li><code>--workers &lt;int></code> - 并发工作数 (默认: 4)</li><li><code>--memory &lt;float></code> - 最大内存限制(GB) (默认: 4.0)</li></ul><p><strong>输出控制：</strong></p><ul><li><code>--output &lt;dir></code> - 输出目录 (默认: ./output)</li><li><code>--formats &lt;format></code> - 输出格式: markdown,json,text (默认: markdown,json)</li></ul><p><strong>调试选项：</strong></p><ul><li><code>--log-level &lt;level></code> - 日志级别: DEBUG,INFO,WARNING,ERROR</li><li><code>--log-file &lt;path></code> - 日志文件路径</li><li><code>--verbose</code> - 详细日志模式</li><li><code>--quiet</code> - 静默模式</li></ul><p><strong>环境检查：</strong></p><ul><li><code>--skip-checks</code> - 跳过环境自检</li><li><code>--check-only</code> - 仅运行环境检查</li><li><code>--strict-check</code> - 将警告视为错误</li></ul><h3 id=开发与测试 class=headerLink><a href=#%e5%bc%80%e5%8f%91%e4%b8%8e%e6%b5%8b%e8%af%95 class=header-mark></a>开发与测试</h3><div class="code-block highlight is-closed show-line-numbers tw-group tw-my-2"><div class="tw-flex
+</span></span></span><span class=line><span class=cl>    --input large_document.pdf <span class=se>\
+</span></span></span><span class=line><span class=cl>    --output ./results <span class=se>\
+</span></span></span><span class=line><span class=cl>    --environment development <span class=se>\
+</span></span></span><span class=line><span class=cl>    --model qwen3:8b <span class=se>\
+</span></span></span><span class=line><span class=cl>    --memory <span class=m>4</span> <span class=se>\
+</span></span></span><span class=line><span class=cl>    --workers <span class=m>4</span> <span class=se>\
+</span></span></span><span class=line><span class=cl>    --formats markdown,json <span class=se>\
+</span></span></span><span class=line><span class=cl>    --log-level DEBUG <span class=se>\
+</span></span></span><span class=line><span class=cl>    --log-file processing.log</span></span></code></pre></div><h3 id=命令行参数详解 class=headerLink><a href=#%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%8f%82%e6%95%b0%e8%af%a6%e8%a7%a3 class=header-mark></a>命令行参数详解</h3><p><strong>必需参数：</strong></p><ul><li><code>pdf</code> 或 <code>--input &lt;path></code> - PDF 文件路径</li></ul><p><strong>配置管理：</strong></p><ul><li><code>--environment &lt;env></code> - 配置环境 (development/production)</li><li><code>--chunk-size &lt;int></code> - 分块页数 (默认: 20)</li><li><code>--ocr-engine &lt;engine></code> - 指定 OCR 引擎 (可重复指定)</li><li><code>--model &lt;model_name></code> - Ollama 模型名称 (默认: qwen3:8b)</li></ul><p><strong>性能调优：</strong></p><ul><li><code>--workers &lt;int></code> - 并发工作数 (默认: 4)</li><li><code>--memory &lt;float></code> - 最大内存限制(GB) (默认: 4.0)</li></ul><p><strong>输出控制：</strong></p><ul><li><code>--output &lt;dir></code> - 输出目录 (默认: ./output)</li><li><code>--formats &lt;format></code> - 输出格式: markdown,json,text (默认: markdown,json)</li></ul><p><strong>调试选项：</strong></p><ul><li><code>--log-level &lt;level></code> - 日志级别: DEBUG,INFO,WARNING,ERROR</li><li><code>--log-file &lt;path></code> - 日志文件路径</li><li><code>--verbose</code> - 详细日志模式</li><li><code>--quiet</code> - 静默模式</li></ul><p><strong>环境检查：</strong></p><ul><li><code>--skip-checks</code> - 跳过环境自检</li><li><code>--check-only</code> - 仅运行环境检查</li><li><code>--strict-check</code> - 将警告视为错误</li></ul><h3 id=开发与测试 class=headerLink><a href=#%e5%bc%80%e5%8f%91%e4%b8%8e%e6%b5%8b%e8%af%95 class=header-mark></a>开发与测试</h3><div class="code-block highlight is-closed show-line-numbers tw-group tw-my-2"><div class="tw-flex
 tw-flex-row
 tw-flex-1
 tw-justify-between
@@ -355,36 +355,36 @@ group-[.is-wrap]:tw-text-wrap
 tw-overflow-y-hidden
 tw-overflow-x-auto
 tw-scrollbar-thin"><span class=line><span class=cl><span class=c># 资源限制</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>max_memory_gb</span><span class=p>:</span><span class=w> </span><span class=m>4.0</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>confidence_threshold</span><span class=p>:</span><span class=w> </span><span class=m>0.8</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>max_memory_gb</span><span class=p>:</span><span class=w> </span><span class=m>4.0</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>confidence_threshold</span><span class=p>:</span><span class=w> </span><span class=m>0.8</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=c># OCR 配置</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>ocr_engines</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=c># OCR 配置</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>ocr_engines</span><span class=p>:</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=l>paddleocr</span><span class=w> </span><span class=c># 中文识别优先</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=l>tesseract</span><span class=w> </span><span class=c># 英文识别备用</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>chunk_size_pages</span><span class=p>:</span><span class=w> </span><span class=m>20</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>max_workers</span><span class=p>:</span><span class=w> </span><span class=m>4</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>chunk_size_pages</span><span class=p>:</span><span class=w> </span><span class=m>20</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>max_workers</span><span class=p>:</span><span class=w> </span><span class=m>4</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=c># Ollama AI 配置</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>ollama_model</span><span class=p>:</span><span class=w> </span><span class=l>qwen3:8b</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>ollama_timeout_seconds</span><span class=p>:</span><span class=w> </span><span class=m>600.0</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>ollama_max_retries</span><span class=p>:</span><span class=w> </span><span class=m>2</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>ollama_batch_size</span><span class=p>:</span><span class=w> </span><span class=m>4</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>ollama_cache_size</span><span class=p>:</span><span class=w> </span><span class=m>128</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>ollama_num_ctx</span><span class=p>:</span><span class=w> </span><span class=m>8192</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>ollama_max_prompt_chars</span><span class=p>:</span><span class=w> </span><span class=m>12000</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>ollama_format</span><span class=p>:</span><span class=w> </span><span class=l>json</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=c># Ollama AI 配置</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>ollama_model</span><span class=p>:</span><span class=w> </span><span class=l>qwen3:8b</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>ollama_timeout_seconds</span><span class=p>:</span><span class=w> </span><span class=m>600.0</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>ollama_max_retries</span><span class=p>:</span><span class=w> </span><span class=m>2</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>ollama_batch_size</span><span class=p>:</span><span class=w> </span><span class=m>4</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>ollama_cache_size</span><span class=p>:</span><span class=w> </span><span class=m>128</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>ollama_num_ctx</span><span class=p>:</span><span class=w> </span><span class=m>8192</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>ollama_max_prompt_chars</span><span class=p>:</span><span class=w> </span><span class=m>12000</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>ollama_format</span><span class=p>:</span><span class=w> </span><span class=l>json</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=c># 输出配置</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>output_formats</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=c># 输出配置</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>output_formats</span><span class=p>:</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=l>markdown</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=l>json</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>checkpoint_dir</span><span class=p>:</span><span class=w> </span><span class=l>./checkpoints</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>temp_dir</span><span class=p>:</span><span class=w> </span><span class=l>./temp</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>checkpoint_dir</span><span class=p>:</span><span class=w> </span><span class=l>./checkpoints</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>temp_dir</span><span class=p>:</span><span class=w> </span><span class=l>./temp</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=c># PDF 渲染设置</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>pdf_render_dpi</span><span class=p>:</span><span class=w> </span><span class=m>200</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>pdf_render_format</span><span class=p>:</span><span class=w> </span><span class=l>jpeg</span></span></span></code></pre></div><h2 id=-技术架构 class=headerLink><a href=#-%e6%8a%80%e6%9c%af%e6%9e%b6%e6%9e%84 class=header-mark></a>🏗️ 技术架构</h2><h3 id=核心处理流程 class=headerLink><a href=#%e6%a0%b8%e5%bf%83%e5%a4%84%e7%90%86%e6%b5%81%e7%a8%8b class=header-mark></a>核心处理流程</h3><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+</span></span></span><span class=line><span class=cl><span class=c># PDF 渲染设置</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>pdf_render_dpi</span><span class=p>:</span><span class=w> </span><span class=m>200</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>pdf_render_format</span><span class=p>:</span><span class=w> </span><span class=l>jpeg</span></span></span></code></pre></div><h2 id=-技术架构 class=headerLink><a href=#-%e6%8a%80%e6%9c%af%e6%9e%b6%e6%9e%84 class=header-mark></a>🏗️ 技术架构</h2><h3 id=核心处理流程 class=headerLink><a href=#%e6%a0%b8%e5%bf%83%e5%a4%84%e7%90%86%e6%b5%81%e7%a8%8b class=header-mark></a>核心处理流程</h3><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
 tw-flex-row
 tw-flex-1
 tw-justify-between
@@ -874,21 +874,21 @@ tw-overflow-y-hidden
 tw-overflow-x-auto
 tw-scrollbar-thin"><span class=line><span class=cl><span class=c1># 高质量模式</span>
 </span></span><span class=line><span class=cl>uv run python -m pdf2markdown document.pdf <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>  --environment high_quality <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>  --model qwen3:8b <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>  --formats markdown,json
+</span></span></span><span class=line><span class=cl>  --environment high_quality <span class=se>\
+</span></span></span><span class=line><span class=cl>  --model qwen3:8b <span class=se>\
+</span></span></span><span class=line><span class=cl>  --formats markdown,json
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># 快速模式</span>
 </span></span><span class=line><span class=cl>uv run python -m pdf2markdown document.pdf <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>  --environment fast_processing <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>  --workers <span class=m>1</span> <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>  --memory <span class=m>2</span>
+</span></span></span><span class=line><span class=cl>  --environment fast_processing <span class=se>\
+</span></span></span><span class=line><span class=cl>  --workers <span class=m>1</span> <span class=se>\
+</span></span></span><span class=line><span class=cl>  --memory <span class=m>2</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># 低资源模式</span>
 </span></span><span class=line><span class=cl>uv run python -m pdf2markdown document.pdf <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>  --environment low_resource <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>  --chunk-size <span class=m>5</span> <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span>  --workers <span class=m>1</span></span></span></code></pre></div><h2 id=-开发指南 class=headerLink><a href=#-%e5%bc%80%e5%8f%91%e6%8c%87%e5%8d%97 class=header-mark></a>🔧 开发指南</h2><h3 id=项目结构说明 class=headerLink><a href=#%e9%a1%b9%e7%9b%ae%e7%bb%93%e6%9e%84%e8%af%b4%e6%98%8e class=header-mark></a>项目结构说明</h3><div class="code-block highlight is-closed show-line-numbers tw-group tw-my-2"><div class="tw-flex
+</span></span></span><span class=line><span class=cl>  --environment low_resource <span class=se>\
+</span></span></span><span class=line><span class=cl>  --chunk-size <span class=m>5</span> <span class=se>\
+</span></span></span><span class=line><span class=cl>  --workers <span class=m>1</span></span></span></code></pre></div><h2 id=-开发指南 class=headerLink><a href=#-%e5%bc%80%e5%8f%91%e6%8c%87%e5%8d%97 class=header-mark></a>🔧 开发指南</h2><h3 id=项目结构说明 class=headerLink><a href=#%e9%a1%b9%e7%9b%ae%e7%bb%93%e6%9e%84%e8%af%b4%e6%98%8e class=header-mark></a>项目结构说明</h3><div class="code-block highlight is-closed show-line-numbers tw-group tw-my-2"><div class="tw-flex
 tw-flex-row
 tw-flex-1
 tw-justify-between

@@ -1,32 +1,38 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>深度思考 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/categories/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/</link><description>深度思考 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Mon, 18 May 2026 10:31:58 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/categories/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/" rel="self" type="application/rss+xml"/><item><title>AI 时代的精神病：当 MTTR 狂热撞上系统韧性</title><link>https://byronfinn.github.io/2026-05-18-ai-mttr-mtbf-resilience-psychosis/</link><pubDate>Mon, 18 May 2026 10:31:58 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-05-18-ai-mttr-mtbf-resilience-psychosis/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/ai-mttr-mtbf-featured.svg" referrerpolicy="no-referrer">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>深度思考 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/categories/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/</link><description>深度思考 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/categories/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/" rel="self" type="application/rss+xml"/><item><title>3000 行 vs 50 万行：从玩具到产品的架构深渊</title><link>https://byronfinn.github.io/2026-07-23-claude-code-3000-vs-500k-lines/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-23-claude-code-3000-vs-500k-lines/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
             </div><!-- more -->
-<p>我有一种强烈的直觉：现在的科技行业里，有些公司正在经历一场深度 AI 精神病（AI psychosis），而且在那些公司里，你根本没办法进行理性对话。我说的不是陌生人——是我深深尊重的个人朋友。这让我很担心事情会怎么收场。</p>]]></description></item><item><title>AI 编程新思路：从 UI 倒推 PRD，让需求可视化</title><link>https://byronfinn.github.io/2026-05-17-ui-first-ai-programming/</link><pubDate>Sun, 17 May 2026 21:41:37 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-05-17-ui-first-ai-programming/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/ui-first-ai-featured.svg" referrerpolicy="no-referrer">
+<p><a href="https://github.com/saoudrizwan/claude-code-from-scratch" target="_blank" rel="noopener noreferrer">claude-code-from-scratch</a> 项目用大约 3000 行 TypeScript 实现了一个&quot;迷你版 Claude Code&quot;。它有 Think-Act-Observe 循环、工具系统、System Prompt、权限控制、记忆、Skill、多代理、MCP——我们在前面 10 篇文章里拆解的核心概念，它全都有。</p>]]></description></item><item><title>AI 编程工具的未来：从 Copilot 到 Autonomous Agent</title><link>https://byronfinn.github.io/2026-07-25-ai-coding-tools-future-copilot-to-agent/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-25-ai-coding-tools-future-copilot-to-agent/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
             </div><!-- more -->
-<p>Vibe Coding 的常规流程大家已经很熟悉：写用户故事 → 输出 PRD → AI 生成后端 → AI 生成前端 → 演示验证。这个流程能跑通，但最终交付时往往发现 UI 交互体验和预期差距很大。问题出在哪里？出在 PRD 本身。</p>]]></description></item><item><title>连命，都没人要了：机器时代人的价值困境</title><link>https://byronfinn.github.io/2025-11-11-when-even-death-is-out-of-work/</link><pubDate>Tue, 11 Nov 2025 21:30:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2025-11-11-when-even-death-is-out-of-work/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/when-even-death-out-of-work-featured.svg" referrerpolicy="no-referrer">
-            </div><h1 id="连命都没人要了" class="headerLink">
-    <a href="#%e8%bf%9e%e5%91%bd%e9%83%bd%e6%b2%a1%e4%ba%ba%e8%a6%81%e4%ba%86" class="header-mark"></a>连命，都没人要了</h1><blockquote>
-  <p><a href="https://www.zaobao.com.sg/realtime/china/story20251111-7801146" target="_blank" rel="noopener noreferrer">https://www.zaobao.com.sg/realtime/china/story20251111-7801146</a></p>
-
-</blockquote><p>新闻里说机器人要大范围使用了。
-文章里讲得很体面：这是“高质量发展”，是“智能升级”。
-但我老觉得，那些词里有点冷。
-像在庆祝某种没人被邀请的葬礼。</p>]]></description></item><item><title>永生，只是永久的孤独</title><link>https://byronfinn.github.io/2025-11-10-immortality-eternal-loneliness/</link><pubDate>Mon, 10 Nov 2025 19:35:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2025-11-10-immortality-eternal-loneliness/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/immortality-eternal-loneliness-featured.svg" referrerpolicy="no-referrer">
-            </div><h1 id="永生只是永久的孤独" class="headerLink">
-    <a href="#%e6%b0%b8%e7%94%9f%e5%8f%aa%e6%98%af%e6%b0%b8%e4%b9%85%e7%9a%84%e5%ad%a4%e7%8b%ac" class="header-mark"></a>永生，只是永久的孤独</h1><blockquote>
-  <p>今天在 NT 看到一个新闻，说中国长寿事业飞速发展，人活到 150 岁，指日可待；我一搜国内新闻，全是只能活到 120 岁，后来发现是为尊者讳，囧</p>
-
-</blockquote><ul>
-<li><a href="https://cn.nytimes.com/china/20251110/china-aging-longevity-science/" target="_blank" rel="noopener noreferrer">https://cn.nytimes.com/china/20251110/china-aging-longevity-science/</a></li>
-<li><a href="https://news.qq.com/rain/a/20251109A024FN%2900" target="_blank" rel="noopener noreferrer">https://news.qq.com/rain/a/20251109A024FN)00</a></li>
-</ul>
-<p>有时候我觉得，人类的伟大之处，不在于能飞上太空，而在于从未放弃对“活得更久”的执念。</p>]]></description></item><item><title>AI 不确定性与及时行乐：一个普通人的思考</title><link>https://byronfinn.github.io/2025-11-08-ai-uncertainty-and-carpe-diem/</link><pubDate>Sat, 08 Nov 2025 12:50:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2025-11-08-ai-uncertainty-and-carpe-diem/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/ai-uncertainty-carpe-diem-featured.svg" referrerpolicy="no-referrer">
-            </div><p>看完最近的一些杂志和报道，真的是劝大家趁这两年还可以，及时行乐，多玩玩。</p>
-<p>做两个假设：</p>
-<ol>
-<li>
-<p>假设 AI 真的不断突破，取代了大多数人的工作，那社会必然进入一个动荡的阵痛期，谁也不知道会发生什么。</p>]]></description></item></channel></rss>
+<p>12 篇文章，我们从 Think-Act-Observe 循环一路拆解到 50 万行的工程深渊。现在站在系列的终点，回头看整条演进路径，一个更大的问题浮出水面：</p>
+<p><strong>AI 编程工具最终会演化成什么样子？</strong></p>]]></description></item><item><title>AI 编程助手的灵魂：Think-Act-Observe 循环</title><link>https://byronfinn.github.io/2026-07-03-claude-code-think-act-observe-loop/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-03-claude-code-think-act-observe-loop/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>如果你把 Claude Code 的源码翻一遍，你会发现一个反直觉的事实：</p>
+<p><strong>整个程序的核心，是一个 while 循环。</strong></p>
+<p>不是复杂的状态机，不是精巧的管道，不是分布式协调——就是一个朴素的 <code>while</code> 循环，反复做三件事：让模型想、让模型动手、把结果喂回去。</p>]]></description></item><item><title>AI 的记忆系统：四种记忆类型与语义召回</title><link>https://byronfinn.github.io/2026-07-13-claude-code-memory-system/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-13-claude-code-memory-system/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>上一篇文章聊了上下文压缩——它解决的是&quot;当前会话能记住多少&quot;的问题。但编程助手还需要另一种记忆：<strong>跨会话的长期记忆。</strong></p>]]></description></item><item><title>MCP 协议：AI 工具互联的 USB-C</title><link>https://byronfinn.github.io/2026-07-19-claude-code-mcp-protocol/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-19-claude-code-mcp-protocol/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>在 MCP 出现之前，每个 AI 工具集成都是一次<strong>定制开发</strong>。想让 ChatGPT 连数据库？写一个插件。想让 Claude 调 GitHub API？写一个 Function Calling 定义。想让 Copilot 访问你的内部系统？写一个 Custom Tool。</p>]]></description></item><item><title>Plan Mode 与设计先行：让 AI 先想再做</title><link>https://byronfinn.github.io/2026-07-21-claude-code-plan-mode/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-21-claude-code-plan-mode/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>给建筑师一块地，他不会立刻开始砌砖。他会先画图、计算承重、考虑采光、规划管线。等蓝图确认了，施工队才进场。</p>
+<p>给 AI 编程助手一个需求，它默认会立刻开始改代码。不是因为它不懂&quot;设计先行&quot;，而是因为<strong>它的循环机制鼓励行动</strong>——Think-Act-Observe 循环里，&ldquo;Act&quot;是核心能力。模型被训练成&quot;有帮助的&rdquo;，&ldquo;有帮助&quot;在编程场景里通常意味着&quot;动手改&rdquo;。</p>]]></description></item><item><title>Skill 的本质：可复用的专业知识封装</title><link>https://byronfinn.github.io/2026-07-15-claude-code-skills-system/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-15-claude-code-skills-system/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>如果你用过 Claude Code，你可能注意到它有一个 <code>/skills</code> 命令，可以列出已安装的&quot;技能&quot;。写作规范、架构设计方法、TDD 流程、代码审查策略——听起来像一个插件市场。</p>]]></description></item><item><title>System Prompt 工程：800 行提示词背后的设计决策</title><link>https://byronfinn.github.io/2026-07-07-claude-code-system-prompt-engineering/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-07-claude-code-system-prompt-engineering/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>如果你以为 System Prompt 就是&quot;给 AI 设定一个人设&quot;，那 Claude Code 的 system prompt 会颠覆你的认知。</p>
+<p>它不是几句话。它是一个<strong>上千行的模板引擎</strong>，由多个层次组成，每一层负责不同的事：身份定义、行为约束、工具说明、项目上下文、记忆注入、技能加载。有些层是静态的（每次一样），有些层是动态的（根据项目、会话、用户偏好实时注入）。</p>]]></description></item><item><title>多代理架构：分叉-汇聚模式的协作艺术</title><link>https://byronfinn.github.io/2026-07-17-claude-code-multi-agent/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-17-claude-code-multi-agent/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>有一个反直觉的现象：同一个模型，拆成多个独立实例让它协作，效果往往比单个实例更好。</p>
+<p>不是算力增加了（三个实例的总 token 消耗比一个实例多），不是能力提升了（每个实例都是同样的模型）。提升来自<strong>角色分离</strong>——当每个 Agent 只关注问题的一个方面时，它做得比&quot;全能 Agent&quot;更专注、更深刻。</p>]]></description></item><item><title>工具即能力：AI Agent 的工具系统设计哲学</title><link>https://byronfinn.github.io/2026-07-05-claude-code-tool-system-design/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-05-claude-code-tool-system-design/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>上一篇文章我们聊了 Think-Act-Observe 循环——AI 编程助手的骨架。骨架本身不会干活，它需要肌肉。在 Claude Code 里，肌肉就是<strong>工具</strong>。</p>
+<p>没有工具，循环里 Think 和 Observe 之间缺了 Act，退化回普通的问答。有了工具，模型才能触碰真实世界：读你的代码、改你的配置、跑你的测试。</p>]]></description></item></channel></rss>

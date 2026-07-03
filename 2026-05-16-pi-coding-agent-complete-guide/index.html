@@ -514,10 +514,10 @@ tw-overflow-y-hidden
 tw-overflow-x-auto
 tw-scrollbar-thin"><span class=line><span class=cl>&lt;!-- ~/.pi/agent/skills/my-skill/SKILL.md --&gt;
 </span></span><span class=line><span class=cl><span class=gh># My Skill
-</span></span></span><span class=line><span class=cl><span class=gh></span>Use this skill when the user asks about X.
+</span></span></span><span class=line><span class=cl>Use this skill when the user asks about X.
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=gu>## Steps
-</span></span></span><span class=line><span class=cl><span class=gu></span><span class=k>1.</span> Do this
+</span></span></span><span class=line><span class=cl><span class=k>1.</span> Do this
 </span></span><span class=line><span class=cl>2. Then that</span></span></code></pre></div><p>安装路径：</p><ul><li><strong>全局</strong>：<code>~/.pi/agent/skills/</code>、<code>~/.agents/skills/</code></li><li><strong>项目</strong>：<code>.pi/skills/</code>、<code>.agents/skills/</code>（从当前工作目录向上逐级查找父目录）</li></ul><p>或封装为 pi package。详见<a href=https://pi.dev/docs/latest/skills target=_blank rel="noopener noreferrer">官方文档</a>。</p><h3 id=扩展 class=headerLink><a href=#%e6%89%a9%e5%b1%95 class=header-mark></a>扩展</h3><p>用 TypeScript 编写扩展，为 Pi 添加工具、命令、事件和自定义 UI。</p><p>放入 <code>~/.pi/agent/extensions/</code>（全局）、<code>.pi/extensions/</code>（项目）或封装为 pi package。</p><p>参见<a href=https://pi.dev/docs/latest/extensions target=_blank rel="noopener noreferrer">文档</a>和<a href=https://github.com/earendil-works/pi/tree/main/packages/coding-agent/examples/extensions target=_blank rel="noopener noreferrer">示例</a>。</p><h3 id=主题 class=headerLink><a href=#%e4%b8%bb%e9%a2%98 class=header-mark></a>主题</h3><p>内置暗色与明亮，修改主题配置后可热重载。</p><p>放入 <code>~/.pi/agent/themes/</code>（全局）、<code>.pi/themes/</code>（项目）或封装为 pi package。</p><p>详见<a href=https://pi.dev/docs/latest/themes target=_blank rel="noopener noreferrer">官方文档</a>。</p><h3 id=pi-packages class=headerLink><a href=#pi-packages class=header-mark></a>Pi Packages</h3><p>将扩展、技能、提示词和主题打包为 npm/git 包，一键安装和分享：</p><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
 tw-flex-row
 tw-flex-1

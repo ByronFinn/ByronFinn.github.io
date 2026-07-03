@@ -233,7 +233,7 @@ group-[.is-wrap]:tw-text-wrap
 tw-overflow-y-hidden
 tw-overflow-x-auto
 tw-scrollbar-thin"><span class=line><span class=cl><span class=c1>-- 初始化数据库时自动启用 pgvector 扩展
-</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>CREATE</span><span class=w> </span><span class=n>EXTENSION</span><span class=w> </span><span class=k>IF</span><span class=w> </span><span class=k>NOT</span><span class=w> </span><span class=k>EXISTS</span><span class=w> </span><span class=n>vector</span><span class=p>;</span></span></span></code></pre></div><blockquote><p>该文件会在容器首次启动、数据库初始化时自动执行。</p></blockquote><hr><h2 id=-五启动数据库 class=headerLink><a href=#-%e4%ba%94%e5%90%af%e5%8a%a8%e6%95%b0%e6%8d%ae%e5%ba%93 class=header-mark></a>🚀 五、启动数据库</h2><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+</span></span></span><span class=line><span class=cl><span class=k>CREATE</span><span class=w> </span><span class=n>EXTENSION</span><span class=w> </span><span class=k>IF</span><span class=w> </span><span class=k>NOT</span><span class=w> </span><span class=k>EXISTS</span><span class=w> </span><span class=n>vector</span><span class=p>;</span></span></span></code></pre></div><blockquote><p>该文件会在容器首次启动、数据库初始化时自动执行。</p></blockquote><hr><h2 id=-五启动数据库 class=headerLink><a href=#-%e4%ba%94%e5%90%af%e5%8a%a8%e6%95%b0%e6%8d%ae%e5%ba%93 class=header-mark></a>🚀 五、启动数据库</h2><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
 tw-flex-row
 tw-flex-1
 tw-justify-between
@@ -376,7 +376,7 @@ group-[.is-wrap]:tw-text-wrap
 tw-overflow-y-hidden
 tw-overflow-x-auto
 tw-scrollbar-thin"><span class=line><span class=cl>docker compose <span class=nb>exec</span> -T postgre bash -lc <span class=se>\
-</span></span></span><span class=line><span class=cl><span class=se></span><span class=s1>&#39;psql -U &#34;$POSTGRES_USER&#34; -d &#34;$POSTGRES_DB&#34; -c &#34;SELECT extname, extversion FROM pg_extension WHERE extname=&#39;</span><span class=se>\&#39;</span><span class=s1>&#39;vector&#39;</span><span class=se>\&#39;</span><span class=s1>&#39;;&#34;&#39;</span></span></span></code></pre></div><p>输出示例：</p><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
+</span></span></span><span class=line><span class=cl><span class=s1>&#39;psql -U &#34;$POSTGRES_USER&#34; -d &#34;$POSTGRES_DB&#34; -c &#34;SELECT extname, extversion FROM pg_extension WHERE extname=&#39;</span><span class=se>\&#39;</span><span class=s1>&#39;vector&#39;</span><span class=se>\&#39;</span><span class=s1>&#39;;&#34;&#39;</span></span></span></code></pre></div><p>输出示例：</p><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
 tw-flex-row
 tw-flex-1
 tw-justify-between

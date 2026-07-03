@@ -162,7 +162,7 @@ group-[.is-wrap]:tw-text-wrap
 tw-overflow-y-hidden
 tw-overflow-x-auto
 tw-scrollbar-thin"><span class=line><span class=cl><span class=c># clash config</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>tun</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=nt>tun</span><span class=p>:</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>enable</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>stack</span><span class=p>:</span><span class=w> </span><span class=l>system</span></span></span></code></pre></div><p>TUN 模式在系统网络层接管所有流量，Codex 的请求会自动走代理，不需要任何应用层配置。</p><p><strong>优点</strong>：全局透明代理，所有应用都受益，不只是 Codex。
 <strong>缺点</strong>：需要管理员权限，部分代理客户端不支持，可能影响其他网络应用。</p><p>适合已经有 TUN 使用习惯的人。</p><h2 id=方案四自定义-http-provider class=headerLink><a href=#%e6%96%b9%e6%a1%88%e5%9b%9b%e8%87%aa%e5%ae%9a%e4%b9%89-http-provider class=header-mark></a>方案四：自定义 HTTP Provider</h2><p>最彻底的方案，直接定义一个新的 provider 走纯 HTTP。编辑 <code>~/.codex/config.toml</code>：</p><div class="code-block highlight is-open show-line-numbers tw-group tw-my-2"><div class="tw-flex
