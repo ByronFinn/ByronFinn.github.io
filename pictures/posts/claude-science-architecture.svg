@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="820" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="layerPresentation" x1="40" y1="70" x2="780" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3b82f6" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#3b82f6" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="layerDaemon" x1="40" y1="220" x2="780" y2="370" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8b5cf6" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="layerDB" x1="40" y1="410" x2="780" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22c55e" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#22c55e" stop-opacity="0.03"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="820" height="520" rx="12" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="410" y="35" text-anchor="middle" fill="#e2e8f0" font-size="17" font-family="system-ui, sans-serif" font-weight="600">Claude Science 容器图（Container Diagram）</text>
+
+  <!-- ════════════════════════════════════════════════════════════════
+     Layer 1: 用户界面层 (Presentation Layer)
+     ════════════════════════════════════════════════════════════════ -->
+  <rect x="40" y="65" width="740" height="115" rx="8" fill="url(#layerPresentation)" stroke="#3b82f6" stroke-width="1" stroke-opacity="0.3"/>
+  <rect x="40" y="65" width="100" height="26" rx="4" fill="#3b82f6" fill-opacity="0.25"/>
+  <text x="90" y="82" text-anchor="middle" fill="#93c5fd" font-size="11" font-family="system-ui, sans-serif" font-weight="600">用户界面层</text>
+  <text x="145" y="82" fill="#64748b" font-size="10" font-family="system-ui, sans-serif">macOS 原生桌面应用</text>
+
+  <!-- ClaudeScience Swift GUI -->
+  <rect x="75" y="105" width="670" height="62" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.2" stroke-opacity="0.6"/>
+  <rect x="75" y="105" width="670" height="22" rx="6" fill="#3b82f6" fill-opacity="0.15"/>
+  <text x="410" y="120" text-anchor="middle" fill="#93c5fd" font-size="11" font-family="system-ui, sans-serif" font-weight="600">ClaudeScience.app（Swift GUI）</text>
+
+  <text x="145" y="148" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui, sans-serif">AppKit 窗口</text>
+  <text x="280" y="148" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui, sans-serif">菜单栏管理</text>
+  <text x="410" y="148" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui, sans-serif">NSTask 子进程控制</text>
+  <text x="540" y="148" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui, sans-serif">安全签名验证</text>
+  <text x="670" y="148" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui, sans-serif">安装 / 迁移</text>
+
+  <!-- ════════════════════════════════════════════════════════════════
+     Arrow: Presentation → Daemon
+     ════════════════════════════════════════════════════════════════ -->
+  <line x1="410" y1="180" x2="410" y2="220" stroke="#8b5cf6" stroke-width="1.5"/>
+  <polygon points="404,215 410,225 416,215" fill="#8b5cf6"/>
+  <text x="424" y="206" fill="#8b5cf6" font-size="9" font-family="system-ui, sans-serif">NSPipe · Stdio</text>
+
+  <!-- ════════════════════════════════════════════════════════════════
+     Layer 2: 守护进程层 (Daemon Process Layer)
+     ════════════════════════════════════════════════════════════════ -->
+  <rect x="40" y="225" width="740" height="145" rx="8" fill="url(#layerDaemon)" stroke="#8b5cf6" stroke-width="1" stroke-opacity="0.3"/>
+  <rect x="40" y="225" width="115" height="26" rx="4" fill="#8b5cf6" fill-opacity="0.25"/>
+  <text x="97" y="242" text-anchor="middle" fill="#c4b5fd" font-size="11" font-family="system-ui, sans-serif" font-weight="600">守护进程层</text>
+  <text x="160" y="242" fill="#64748b" font-size="10" font-family="system-ui, sans-serif">Bun 运行时 · 112 MB · 所有业务逻辑</text>
+
+  <!-- claude-science main box -->
+  <rect x="75" y="262" width="670" height="95" rx="6" fill="#2e1065" stroke="#8b5cf6" stroke-width="1.2" stroke-opacity="0.6"/>
+  <rect x="75" y="262" width="670" height="22" rx="6" fill="#8b5cf6" fill-opacity="0.15"/>
+  <text x="410" y="277" text-anchor="middle" fill="#c4b5fd" font-size="11" font-family="system-ui, sans-serif" font-weight="600">claude-science（Bun Daemon）· TypeScript</text>
+
+  <!-- 6 sub-columns inside daemon -->
+  <!-- Column 1: API Client -->
+  <rect x="90" y="295" width="100" height="50" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="0.6" stroke-opacity="0.4"/>
+  <text x="140" y="312" text-anchor="middle" fill="#c4b5fd" font-size="9" font-family="system-ui, sans-serif" font-weight="600">API 客户端</text>
+  <text x="140" y="328" text-anchor="middle" fill="#94a3b8" font-size="8" font-family="system-ui, sans-serif">多模型 · 工具调用</text>
+  <text x="140" y="340" text-anchor="middle" fill="#94a3b8" font-size="8" font-family="system-ui, sans-serif">Token 估算 · 并发</text>
+
+  <!-- Column 2: MCP -->
+  <rect x="205" y="295" width="100" height="50" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="0.6" stroke-opacity="0.4"/>
+  <text x="255" y="312" text-anchor="middle" fill="#c4b5fd" font-size="9" font-family="system-ui, sans-serif" font-weight="600">MCP 协议</text>
+  <text x="255" y="328" text-anchor="middle" fill="#94a3b8" font-size="8" font-family="system-ui, sans-serif">内置 · 自定义</text>
+  <text x="255" y="340" text-anchor="middle" fill="#94a3b8" font-size="8" font-family="system-ui, sans-serif">市场 三种来源</text>
+
+  <!-- Column 3: Remote Compute -->
+  <rect x="320" y="295" width="100" height="50" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="0.6" stroke-opacity="0.4"/>
+  <text x="370" y="312" text-anchor="middle" fill="#c4b5fd" font-size="9" font-family="system-ui, sans-serif" font-weight="600">远程计算</text>
+  <text x="370" y="328" text-anchor="middle" fill="#94a3b8" font-size="8" font-family="system-ui, sans-serif">SSH · SCP</text>
+  <text x="370" y="340" text-anchor="middle" fill="#94a3b8" font-size="8" font-family="system-ui, sans-serif">容器 / VM</text>
+
+  <!-- Column 4: Frame -->
+  <rect x="435" y="295" width="100" height="50" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="0.6" stroke-opacity="0.4"/>
+  <text x="485" y="312" text-anchor="middle" fill="#c4b5fd" font-size="9" font-family="system-ui, sans-serif" font-weight="600">Frame 会话</text>
+  <text x="485" y="328" text-anchor="middle" fill="#94a3b8" font-size="8" font-family="system-ui, sans-serif">对话树 · 分支</text>
+  <text x="485" y="340" text-anchor="middle" fill="#94a3b8" font-size="8" font-family="system-ui, sans-serif">归档 · 回溯</text>
+
+  <!-- Column 5: Artifacts -->
+  <rect x="550" y="295" width="100" height="50" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="0.6" stroke-opacity="0.4"/>
+  <text x="600" y="312" text-anchor="middle" fill="#c4b5fd" font-size="9" font-family="system-ui, sans-serif" font-weight="600">制品管理</text>
+  <text x="600" y="328" text-anchor="middle" fill="#94a3b8" font-size="8" font-family="system-ui, sans-serif">版本追踪</text>
+  <text x="600" y="340" text-anchor="middle" fill="#94a3b8" font-size="8" font-family="system-ui, sans-serif">快照管理</text>
+
+  <!-- Column 6: Memory -->
+  <rect x="665" y="295" width="65" height="50" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="0.6" stroke-opacity="0.4"/>
+  <text x="697" y="312" text-anchor="middle" fill="#c4b5fd" font-size="9" font-family="system-ui, sans-serif" font-weight="600">记忆</text>
+  <text x="697" y="328" text-anchor="middle" fill="#94a3b8" font-size="8" font-family="system-ui, sans-serif">持久化</text>
+  <text x="697" y="340" text-anchor="middle" fill="#94a3b8" font-size="8" font-family="system-ui, sans-serif">召回</text>
+
+  <!-- ════════════════════════════════════════════════════════════════
+     Arrow: Daemon → DB
+     ════════════════════════════════════════════════════════════════ -->
+  <line x1="410" y1="370" x2="410" y2="410" stroke="#22c55e" stroke-width="1.5"/>
+  <polygon points="404,405 410,415 416,405" fill="#22c55e"/>
+  <text x="424" y="397" fill="#22c55e" font-size="9" font-family="system-ui, sans-serif">Drizzle ORM · SQLite</text>
+
+  <!-- ════════════════════════════════════════════════════════════════
+     Layer 3: 数据持久层 (Data Persistence Layer)
+     ════════════════════════════════════════════════════════════════ -->
+  <rect x="40" y="415" width="740" height="85" rx="8" fill="url(#layerDB)" stroke="#22c55e" stroke-width="1" stroke-opacity="0.3"/>
+  <rect x="40" y="415" width="115" height="26" rx="4" fill="#22c55e" fill-opacity="0.25"/>
+  <text x="97" y="432" text-anchor="middle" fill="#86efac" font-size="11" font-family="system-ui, sans-serif" font-weight="600">数据持久层</text>
+  <text x="160" y="432" fill="#64748b" font-size="10" font-family="system-ui, sans-serif">本地 SQLite · 54 张表</text>
+
+  <!-- Session -->
+  <rect x="75" y="450" width="80" height="38" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="115" y="470" text-anchor="middle" fill="#86efac" font-size="9" font-family="system-ui, sans-serif">会话 6</text>
+  <text x="115" y="482" text-anchor="middle" fill="#94a3b8" font-size="7" font-family="system-ui, sans-serif">frames · messages</text>
+
+  <!-- Artifacts -->
+  <rect x="168" y="450" width="80" height="38" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="208" y="470" text-anchor="middle" fill="#86efac" font-size="9" font-family="system-ui, sans-serif">制品 5</text>
+  <text x="208" y="482" text-anchor="middle" fill="#94a3b8" font-size="7" font-family="system-ui, sans-serif">versions · snapshots</text>
+
+  <!-- MCP -->
+  <rect x="261" y="450" width="80" height="38" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="301" y="470" text-anchor="middle" fill="#86efac" font-size="9" font-family="system-ui, sans-serif">MCP 4</text>
+  <text x="301" y="482" text-anchor="middle" fill="#94a3b8" font-size="7" font-family="system-ui, sans-serif">servers · grants</text>
+
+  <!-- Compute -->
+  <rect x="354" y="450" width="80" height="38" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="394" y="470" text-anchor="middle" fill="#86efac" font-size="9" font-family="system-ui, sans-serif">远程计算 4</text>
+  <text x="394" y="482" text-anchor="middle" fill="#94a3b8" font-size="7" font-family="system-ui, sans-serif">providers · creds</text>
+
+  <!-- Memory -->
+  <rect x="447" y="450" width="80" height="38" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="487" y="470" text-anchor="middle" fill="#86efac" font-size="9" font-family="system-ui, sans-serif">记忆 2</text>
+  <text x="487" y="482" text-anchor="middle" fill="#94a3b8" font-size="7" font-family="system-ui, sans-serif">states · categories</text>
+
+  <!-- Security -->
+  <rect x="540" y="450" width="80" height="38" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="580" y="470" text-anchor="middle" fill="#86efac" font-size="9" font-family="system-ui, sans-serif">安全审计 5</text>
+  <text x="580" y="482" text-anchor="middle" fill="#94a3b8" font-size="7" font-family="system-ui, sans-serif">grants · logs</text>
+
+  <!-- Other -->
+  <rect x="633" y="450" width="97" height="38" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="681" y="470" text-anchor="middle" fill="#86efac" font-size="9" font-family="system-ui, sans-serif">其他 32</text>
+  <text x="681" y="482" text-anchor="middle" fill="#94a3b8" font-size="7" font-family="system-ui, sans-serif">项目 · 用户 · 日志</text>
+</svg>

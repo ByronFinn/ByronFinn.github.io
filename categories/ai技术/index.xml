@@ -1,4 +1,6 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>AI技术 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/categories/ai%E6%8A%80%E6%9C%AF/</link><description>AI技术 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Thu, 25 Jun 2026 18:04:30 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/categories/ai%E6%8A%80%E6%9C%AF/" rel="self" type="application/rss+xml"/><item><title>Agent 面试题：哪些问题能筛出真干活的人</title><link>https://byronfinn.github.io/2026-06-25-agent-interview-questions/</link><pubDate>Thu, 25 Jun 2026 18:04:30 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-06-25-agent-interview-questions/</guid><description><![CDATA[<!-- more -->
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>AI技术 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/categories/ai%E6%8A%80%E6%9C%AF/</link><description>AI技术 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Fri, 03 Jul 2026 09:17:21 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/categories/ai%E6%8A%80%E6%9C%AF/" rel="self" type="application/rss+xml"/><item><title>Claude Science 逆向：从 54 张表到中药现代化</title><link>https://byronfinn.github.io/2026-07-03-ai-agent-platform-to-tcm-future/</link><pubDate>Fri, 03 Jul 2026 09:17:21 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-03-ai-agent-platform-to-tcm-future/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/claude-science-architecture.svg" referrerpolicy="no-referrer">
+            </div><p>67 MB 的 DMG 安装包，解压后 164 MB，里面藏着 Anthropic 的 Claude Science（内部代号 Operon）。逆向之后，我看到了 54 张 SQLite 表、9 层安全模型、30 多个生物信息学 Skill，以及一个面向计算生物学的完整 AI Agent 平台。</p>]]></description></item><item><title>Agent 面试题：哪些问题能筛出真干活的人</title><link>https://byronfinn.github.io/2026-06-25-agent-interview-questions/</link><pubDate>Thu, 25 Jun 2026 18:04:30 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-06-25-agent-interview-questions/</guid><description><![CDATA[<!-- more -->
 <blockquote>
   <p><strong>附件下载</strong>：<a href="/files/agent-interview-questions.pdf" rel="">Agent 面试题整理.pdf</a> — 方便打印或离线阅读</p>
 
@@ -740,17 +742,4 @@
     <a href="#-%e4%b8%80transformer-%e6%98%af%e4%bb%80%e4%b9%88" class="header-mark"></a>🧩 一、Transformer 是什么？</h2><blockquote>
   <p><strong>Transformer 是一种深度学习架构，用来处理序列（例如文字、语音、代码等）信息。</strong></p>
 
-</blockquote><p>它最早由 Google 在 2017 年的论文《Attention Is All You Need（注意力机制就是全部）》中提出。</p>]]></description></item><item><title>AI大模型完全指南：从零基础到Token与向量的深度解析</title><link>https://byronfinn.github.io/2025-11-05-ai-llm-tutorial-token-vector-basics/</link><pubDate>Wed, 05 Nov 2025 08:58:24 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2025-11-05-ai-llm-tutorial-token-vector-basics/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/ai-llm-token-vector-basics-featured.svg" referrerpolicy="no-referrer">
-            </div><h1 id="ai-教程从基础到深入的-ai-大模型指南" class="headerLink">
-    <a href="#ai-%e6%95%99%e7%a8%8b%e4%bb%8e%e5%9f%ba%e7%a1%80%e5%88%b0%e6%b7%b1%e5%85%a5%e7%9a%84-ai-%e5%a4%a7%e6%a8%a1%e5%9e%8b%e6%8c%87%e5%8d%97" class="header-mark"></a>AI 教程：从基础到深入的 AI 大模型指南</h1><p>本文将带你深入理解 AI 大模型的核心概念，从基本原理到向量表示，循序渐进地构建完整的知识体系。</p>
-<hr>
-<h2 id="一ai-应用开发基础" class="headerLink">
-    <a href="#%e4%b8%80ai-%e5%ba%94%e7%94%a8%e5%bc%80%e5%8f%91%e5%9f%ba%e7%a1%80" class="header-mark"></a>一、AI 应用开发基础</h2><h3 id="11-基本原理与概念" class="headerLink">
-    <a href="#11-%e5%9f%ba%e6%9c%ac%e5%8e%9f%e7%90%86%e4%b8%8e%e6%a6%82%e5%bf%b5" class="header-mark"></a>1.1 基本原理与概念</h3><h4 id="通俗理解" class="headerLink">
-    <a href="#%e9%80%9a%e4%bf%97%e7%90%86%e8%a7%a3" class="header-mark"></a>通俗理解</h4><ul>
-<li><strong>核心机制</strong>：根据上一个词预测下一个词，类似成语接龙</li>
-<li><strong>工作方式</strong>：通过 token 逐字生成输出</li>
-</ul>
-<h4 id="进阶理解" class="headerLink">
-    <a href="#%e8%bf%9b%e9%98%b6%e7%90%86%e8%a7%a3" class="header-mark"></a>进阶理解</h4><p>AI 大模型包含两个关键阶段：</p>]]></description></item></channel></rss>
+</blockquote><p>它最早由 Google 在 2017 年的论文《Attention Is All You Need（注意力机制就是全部）》中提出。</p>]]></description></item></channel></rss>
