@@ -1,0 +1,291 @@
+/* Profile页面专用样式 - 编辑风排版，对齐 kami 暖色体系（暖羊皮纸 + 墨蓝 + 衬线标题） */
+
+/* ========== 全局变量 ========== */
+:root {
+  --profile-avatar-size: 5.5rem;
+  --profile-transition: all 0.3s ease;
+  --profile-shadow: 0 4px 20px rgba(30, 58, 95, 0.10);
+  --profile-accent: var(--global-link-hover-color);
+  --profile-text: var(--global-font-color);
+  --profile-text-secondary: var(--global-font-secondary-color);
+  --profile-border: var(--global-border-color);
+  --profile-serif-family: Georgia, "Noto Serif CJK SC", "Source Han Serif CN",
+               "Songti SC", SimSun, serif;
+}
+
+/* ========== 主容器 ========== */
+.profile-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+  color: var(--profile-text);
+  font-family: var(--global-font-family);
+  line-height: 1.7;
+}
+
+/* 隐藏主题默认标题「关于我」，让 hero 成为唯一主标题 */
+.page.single.special:has(.profile-container) .single-title {
+  display: none;
+}
+
+/* ========== 首屏：大留白 + 衬线 + 单一 CTA ========== */
+.profile-hero {
+  text-align: center;
+  padding: 3.5rem 0 3rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--profile-border);
+}
+
+.profile-avatar-wrapper {
+  margin-bottom: 1.25rem;
+}
+
+.profile-avatar {
+  width: var(--profile-avatar-size);
+  height: var(--profile-avatar-size);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--profile-border);
+  box-shadow: var(--profile-shadow);
+  transition: var(--profile-transition);
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05);
+}
+
+.profile-name {
+  font-family: var(--profile-serif-family);
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.75rem;
+  color: var(--profile-text);
+}
+
+.profile-tagline {
+  font-size: 1.05rem;
+  margin: 0 auto 1.75rem;
+  max-width: 480px;
+  color: var(--profile-text-secondary);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.profile-container .profile-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.6rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--profile-accent);
+  background-color: transparent;
+  color: var(--profile-accent);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--profile-transition);
+}
+
+.profile-container .profile-cta:hover {
+  background-color: color-mix(in srgb, var(--profile-accent) 8%, transparent);
+  border-color: var(--profile-accent);
+  color: var(--profile-accent);
+  transform: translateY(-1px);
+  box-shadow: var(--profile-shadow);
+  text-decoration: none;
+}
+
+/* ========== 章节：标题 + 细分隔线，无卡片盒子 ========== */
+.profile-section {
+  margin-bottom: 2.5rem;
+}
+
+.profile-section-header {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--profile-border);
+}
+
+.profile-section-title {
+  font-family: var(--profile-serif-family);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--profile-text);
+  margin: 0;
+}
+
+.profile-section-content {
+  color: var(--profile-text);
+}
+
+/* ========== 精选文章卡片 ========== */
+.profile-featured {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.profile-featured-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: var(--profile-transition);
+}
+
+.profile-featured-item:hover {
+  border-color: var(--profile-border);
+  background-color: color-mix(in srgb, var(--profile-accent) 4%, transparent);
+  box-shadow: var(--profile-shadow);
+}
+
+.profile-featured-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--profile-accent);
+  letter-spacing: 0.5px;
+}
+
+.profile-featured-title {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--profile-text);
+  line-height: 1.45;
+}
+
+.profile-featured-item:hover .profile-featured-title {
+  color: var(--profile-accent);
+}
+
+.profile-featured-desc {
+  font-size: 0.88rem;
+  color: var(--profile-text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ========== 写作方向 ========== */
+.profile-directions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.profile-direction {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--profile-border);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  color: var(--profile-text);
+  text-decoration: none;
+  transition: var(--profile-transition);
+}
+
+.profile-direction:hover {
+  border-color: var(--profile-accent);
+  color: var(--profile-accent);
+}
+
+.profile-stats-line {
+  margin-top: 1.25rem;
+  font-size: 0.82rem;
+  color: var(--profile-text-secondary);
+  opacity: 0.85;
+}
+
+/* ========== 价值主张（可扫描摘要） ========== */
+.profile-value {
+  line-height: 1.9;
+  font-size: 1.02rem;
+}
+
+.profile-value p {
+  margin: 0 0 0.75rem;
+  color: var(--profile-text);
+}
+
+.profile-value p:first-child {
+  font-family: var(--profile-serif-family);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--profile-text);
+}
+
+.profile-value p:last-child {
+  margin-bottom: 0;
+}
+
+/* ========== 联系方式 ========== */
+.profile-contact {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.profile-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--profile-border);
+  border-radius: 999px;
+  color: var(--profile-text);
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: var(--profile-transition);
+}
+
+.profile-contact-item:hover {
+  border-color: var(--profile-accent);
+  color: var(--profile-accent);
+  box-shadow: var(--profile-shadow);
+  transform: translateY(-1px);
+}
+
+.profile-contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-contact-icon svg {
+  width: 1.05em;
+  height: 1.05em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 767px) {
+  .profile-hero {
+    padding: 2.5rem 0 2rem;
+  }
+
+  .profile-avatar-size {
+    --profile-avatar-size: 4.5rem;
+  }
+
+  .profile-name {
+    font-size: 2rem;
+  }
+
+  .profile-tagline {
+    font-size: 0.98rem;
+  }
+
+  .profile-container {
+    padding: 0 1rem 2rem;
+  }
+}

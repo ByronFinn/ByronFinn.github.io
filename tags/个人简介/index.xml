@@ -1,17 +1,56 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>个人简介 - 标签 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/tags/%E4%B8%AA%E4%BA%BA%E7%AE%80%E4%BB%8B/</link><description>个人简介 - 标签 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/tags/%E4%B8%AA%E4%BA%BA%E7%AE%80%E4%BB%8B/" rel="self" type="application/rss+xml"/><item><title>关于我</title><link>https://byronfinn.github.io/profile/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/profile/</guid><description><![CDATA[<link rel="stylesheet" href="/css/profile.css">
-<div class="profile-container">
-  <!-- 头部首屏 -->
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>个人简介 - 标签 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/tags/%E4%B8%AA%E4%BA%BA%E7%AE%80%E4%BB%8B/</link><description>个人简介 - 标签 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/tags/%E4%B8%AA%E4%BA%BA%E7%AE%80%E4%BB%8B/" rel="self" type="application/rss+xml"/><item><title>关于我</title><link>https://byronfinn.github.io/profile/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/profile/</guid><description><![CDATA[<div class="profile-container">
+  <!-- 首屏：一句话价值主张 + 主 CTA -->
   <div class="profile-hero">
     <div class="profile-hero-inner">
       <div class="profile-avatar-wrapper">
         <img src="/pictures/avatar/angryCat.png" alt="ByF" class="profile-avatar">
       </div>
       <h1 class="profile-name">ByF</h1>
-      <p class="profile-tagline">后端开发工程师 · 地质学转码 · 远程工作者</p>
+      <p class="profile-tagline">用地质学的万年尺度，拆解 AI 时代的技术与商业</p>
+      <a href="/posts/" class="profile-cta">阅读最新文章 →</a>
     </div>
   </div>
-  <!-- 价值主张 -->
+  <!-- 我写什么：精选文章示例（具体 > 自报数字） -->
   <div class="profile-section">
-    <div class="profile-section-content profile-value">
-      <p>曾是地球历史的阅读者，现是数字生态的构建者。</p>
-      <p>地质学教会我用万年尺度去看待变迁，这让我即使置身于迭代极快的互联网与 AI 狂飙时代，也能保持一份长周期的冷峻。</p>]]></description></item></channel></rss>
+    <div class="profile-section-header">
+      <h2 class="profile-section-title">我写什么</h2>
+    </div>
+    <div class="profile-section-content">
+      <div class="profile-featured">
+        <a href="/rag-system-complete-guide-langchain-ollama-pgvector/" class="profile-featured-item">
+          <span class="profile-featured-tag">AI 技术教程</span>
+          <span class="profile-featured-title">RAG 系统完全指南</span>
+          <span class="profile-featured-desc">LangChain + Ollama + pgvector 从零搭建本地 RAG，含实战代码与面试清单。</span>
+        </a>
+        <a href="/claude-code-think-act-observe-loop/" class="profile-featured-item">
+          <span class="profile-featured-tag">AI Agent 系列</span>
+          <span class="profile-featured-title">Think-Act-Observe 循环</span>
+          <span class="profile-featured-desc">拆解 Claude Code 源码架构：一个循环如何撑起整个 Agent 的能力。</span>
+        </a>
+        <a href="/ai-technical-glossary-complete-guide/" class="profile-featured-item">
+          <span class="profile-featured-tag">AI 技术教程</span>
+          <span class="profile-featured-title">270+ 术语词典</span>
+          <span class="profile-featured-desc">从 Token 到 RAG、Prompt 工程，AI 技术体系的 12 大分类速查表。</span>
+        </a>
+        <a href="/economist-20251115-taiwan-boom/" class="profile-featured-item">
+          <span class="profile-featured-tag">时事深度分析</span>
+          <span class="profile-featured-title">《经济学人》2025年11月15日刊</span>
+          <span class="profile-featured-desc">台湾经济崛起背后的半导体优势与地缘风险。</span>
+        </a>
+        <a href="/china-county-economy-twilight/" class="profile-featured-item">
+          <span class="profile-featured-tag">时事深度分析</span>
+          <span class="profile-featured-title">县城的暮光：一个被遮蔽的中国</span>
+          <span class="profile-featured-desc">工厂倒闭、房地产低迷、电商冲击下的县域经济与社会变迁。</span>
+        </a>
+        <a href="/tmux-practical-guide/" class="profile-featured-item">
+          <span class="profile-featured-tag">工程实践</span>
+          <span class="profile-featured-title">Tmux 用到的就这些</span>
+          <span class="profile-featured-desc">会话 detach/attach、窗格分屏、窗口管理，只记日常用到的操作。</span>
+        </a>
+      </div>
+      <div class="profile-directions">
+        <a href="/tags/人工智能/" class="profile-direction">AI 技术教程</a>
+        <a href="/tags/经济学人/" class="profile-direction">时事深度分析</a>
+        <a href="/tags/工程实践/" class="profile-direction">工程实践</a>
+      </div>
+      <p class="profile-stats-line">30+ 篇原创 · 6 个专栏 · 5 大写作方向</p>]]></description></item></channel></rss>
