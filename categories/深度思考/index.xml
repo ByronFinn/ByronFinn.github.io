@@ -1,4 +1,13 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>深度思考 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/categories/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/</link><description>深度思考 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/categories/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/" rel="self" type="application/rss+xml"/><item><title>AI 编程工具的未来：从 Copilot 到 Autonomous Agent</title><link>https://byronfinn.github.io/2026-07-03-ai-coding-tools-future-copilot-to-agent/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-03-ai-coding-tools-future-copilot-to-agent/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>深度思考 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/categories/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/</link><description>深度思考 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Mon, 03 Aug 2026 10:00:00 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/categories/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/" rel="self" type="application/rss+xml"/><item><title>团队分工的思考</title><link>https://byronfinn.github.io/2026-08-03-team-roles-evolution-ai-era/</link><pubDate>Mon, 03 Aug 2026 10:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-08-03-team-roles-evolution-ai-era/</guid><description><![CDATA[<blockquote>
+  <p><strong>先说结论，免得你白看</strong></p>
+<p>从前分团队，按手艺分：前端、后端、产品设计。
+现在分团队，按阶段分：
+<strong>原型师</strong> —— 抓住第一个想法，飞快试错
+<strong>构建者</strong> —— 把原型做成能推向市场的产品
+<strong>维护者</strong> —— 软件跑到规模之后守住它
+<strong>扩展者</strong> —— 把跑通的产品放大 10 倍、100 倍
+<strong>收尾人</strong> —— 打磨产品和代码，把毛刺磨掉
+至于为什么现在才这么分，答案跟 AI 有关，往下看。</p>]]></description></item><item><title>AI 编程工具的未来：从 Copilot 到 Autonomous Agent</title><link>https://byronfinn.github.io/2026-07-03-ai-coding-tools-future-copilot-to-agent/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-03-ai-coding-tools-future-copilot-to-agent/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
             </div><!-- more -->
 <p>12 篇文章，我们从 Think-Act-Observe 循环一路拆解到 50 万行的工程深渊。现在站在系列的终点，回头看整条演进路径，一个更大的问题浮出水面：</p>
@@ -30,8 +39,4 @@
                 <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
             </div><!-- more -->
 <p>给 AI 编程助手文件写入权限，相当于把剪刀递给一个非常聪明但偶尔会幻视的人。</p>
-<p>它大多数时候知道自己在干什么，但偶尔会自信满满地删掉一个不该删的文件，或者把一个关键的配置改成看起来合理但实际错误的值。模型不是恶意的，它只是<strong>会犯错</strong>——而且犯错时通常很自信。</p>]]></description></item><item><title>System Prompt 工程：800 行提示词背后的设计决策</title><link>https://byronfinn.github.io/2026-06-12-claude-code-system-prompt-engineering/</link><pubDate>Fri, 12 Jun 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-06-12-claude-code-system-prompt-engineering/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
-            </div><!-- more -->
-<p>如果你以为 System Prompt 就是&quot;给 AI 设定一个人设&quot;，那 Claude Code 的 system prompt 会颠覆你的认知。</p>
-<p>它不是几句话。它是一个<strong>上千行的模板引擎</strong>，由多个层次组成，每一层负责不同的事：身份定义、行为约束、工具说明、项目上下文、记忆注入、技能加载。有些层是静态的（每次一样），有些层是动态的（根据项目、会话、用户偏好实时注入）。</p>]]></description></item></channel></rss>
+<p>它大多数时候知道自己在干什么，但偶尔会自信满满地删掉一个不该删的文件，或者把一个关键的配置改成看起来合理但实际错误的值。模型不是恶意的，它只是<strong>会犯错</strong>——而且犯错时通常很自信。</p>]]></description></item></channel></rss>

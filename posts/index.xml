@@ -1,4 +1,13 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/posts/</link><description>所有文章 | 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Tue, 07 Jul 2026 22:24:00 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>AI Agent 运行时动态干预的思考</title><link>https://byronfinn.github.io/2026-07-07-ai-agent-runtime-dynamic-intervention/</link><pubDate>Tue, 07 Jul 2026 22:24:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-07-ai-agent-runtime-dynamic-intervention/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/posts/</link><description>所有文章 | 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Mon, 03 Aug 2026 10:00:00 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>团队分工的思考</title><link>https://byronfinn.github.io/2026-08-03-team-roles-evolution-ai-era/</link><pubDate>Mon, 03 Aug 2026 10:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-08-03-team-roles-evolution-ai-era/</guid><description><![CDATA[<blockquote>
+  <p><strong>先说结论，免得你白看</strong></p>
+<p>从前分团队，按手艺分：前端、后端、产品设计。
+现在分团队，按阶段分：
+<strong>原型师</strong> —— 抓住第一个想法，飞快试错
+<strong>构建者</strong> —— 把原型做成能推向市场的产品
+<strong>维护者</strong> —— 软件跑到规模之后守住它
+<strong>扩展者</strong> —— 把跑通的产品放大 10 倍、100 倍
+<strong>收尾人</strong> —— 打磨产品和代码，把毛刺磨掉
+至于为什么现在才这么分，答案跟 AI 有关，往下看。</p>]]></description></item><item><title>AI Agent 运行时动态干预的思考</title><link>https://byronfinn.github.io/2026-07-07-ai-agent-runtime-dynamic-intervention/</link><pubDate>Tue, 07 Jul 2026 22:24:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-07-ai-agent-runtime-dynamic-intervention/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/note/ai-agent-runtime-intervention-featured.svg" referrerpolicy="no-referrer">
             </div><h1 id="ai-agent-运行时动态干预的思考" class="headerLink">
     <a href="#ai-agent-%e8%bf%90%e8%a1%8c%e6%97%b6%e5%8a%a8%e6%80%81%e5%b9%b2%e9%a2%84%e7%9a%84%e6%80%9d%e8%80%83" class="header-mark"></a>AI Agent 运行时动态干预的思考</h1><p>几周前的一个深夜，我盯着终端里不断刷新的的 Agent 日志，急得想砸键盘。它正按部就班地生成一份需求分析报告，已经跑了十几分钟，拉取了大量数据、画了图表，眼看就要收尾——我突然意识到，需求里漏了一个关键维度：&ldquo;别按地区分，按用户年龄段分&rdquo;。如果我此时打断它，之前所有的上下文、中间结果、工具调用状态全都得丢弃，重头再来。如果不打断，它很快就会产出一份我需要花同样时间手动修改的错误报告。</p>]]></description></item><item><title>AI Agent 的 Skill 和 MCP，哪些值得装</title><link>https://byronfinn.github.io/2026-07-06-ai-agent-skills-mcp-review/</link><pubDate>Mon, 06 Jul 2026 21:52:06 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-07-06-ai-agent-skills-mcp-review/</guid><description><![CDATA[<p>先说结论：市面上能装的工具不少，但大多数装完就放着吃灰了。下面是从我自己在用的东西里筛出来的，按场景分了五类，每类列几个真实用过的。</p>
@@ -32,8 +41,4 @@
   <p><strong>附件下载</strong>：<a href="/files/agent-interview-questions.pdf" rel="">Agent 面试题整理.pdf</a> — 方便打印或离线阅读</p>
 
 </blockquote><h2 id="为什么需要多个-agent" class="headerLink">
-    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e9%9c%80%e8%a6%81%e5%a4%9a%e4%b8%aa-agent" class="header-mark"></a>为什么需要多个 Agent</h2><p>开场问题，用来区分&quot;看过文章&quot;和&quot;动手搭过&quot;。</p>]]></description></item><item><title>多代理架构：分叉-汇聚模式的协作艺术</title><link>https://byronfinn.github.io/2026-06-24-claude-code-multi-agent/</link><pubDate>Wed, 24 Jun 2026 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/2026-06-24-claude-code-multi-agent/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
-            </div><!-- more -->
-<p>有一个反直觉的现象：同一个模型，拆成多个独立实例让它协作，效果往往比单个实例更好。</p>
-<p>不是算力增加了（三个实例的总 token 消耗比一个实例多），不是能力提升了（每个实例都是同样的模型）。提升来自<strong>角色分离</strong>——当每个 Agent 只关注问题的一个方面时，它做得比&quot;全能 Agent&quot;更专注、更深刻。</p>]]></description></item></channel></rss>
+    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e9%9c%80%e8%a6%81%e5%a4%9a%e4%b8%aa-agent" class="header-mark"></a>为什么需要多个 Agent</h2><p>开场问题，用来区分&quot;看过文章&quot;和&quot;动手搭过&quot;。</p>]]></description></item></channel></rss>
