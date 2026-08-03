@@ -1,4 +1,4 @@
-# 利用 MCP 实现 Claude Skills 的渐进式披露机制: 复用Claude Code Skill in Anywhere
+# MCP 实现 Claude Skills 渐进式披露：Skill in Anywhere
 
 
 {{< figure src="/pictures/note/claudecodeskills.png" alt="Claude Code Skill in Anywhere" caption="Claude Code Skill in Anywhere" >}}

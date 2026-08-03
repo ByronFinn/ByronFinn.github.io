@@ -3,7 +3,7 @@
             </div><!-- more -->
 <h2 id="前言" class="headerLink">
     <a href="#%e5%89%8d%e8%a8%80" class="header-mark"></a>前言</h2><p>按照作者的话来说，Pi Coding Agent 是一个<strong>有主见且极简</strong>的 Coding Agent。上手了一段时间后，我认为它是目前最好用的 AI Agent CLI 之一。</p>
-<p>很多项目爆火后都会迎来各种低质量的 issues 和 AI 生成的 PR，而 <strong>pi</strong> 这个名字非常有意思——它会与数学常数产生关联，这正是作者有意为之，目的是降低知名度，保持社区质量。</p>]]></description></item><item><title>利用 MCP 实现 Claude Skills 的渐进式披露机制: 复用Claude Code Skill in Anywhere</title><link>https://byronfinn.github.io/mcp-claude-skills-progressive-disclosure/</link><pubDate>Fri, 26 Dec 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/mcp-claude-skills-progressive-disclosure/</guid><description><![CDATA[<div class="featured-image">
+<p>很多项目爆火后都会迎来各种低质量的 issues 和 AI 生成的 PR，而 <strong>pi</strong> 这个名字非常有意思——它会与数学常数产生关联，这正是作者有意为之，目的是降低知名度，保持社区质量。</p>]]></description></item><item><title>MCP 实现 Claude Skills 渐进式披露：Skill in Anywhere</title><link>https://byronfinn.github.io/mcp-claude-skills-progressive-disclosure/</link><pubDate>Fri, 26 Dec 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/mcp-claude-skills-progressive-disclosure/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/note/claudecodeskills.png" referrerpolicy="no-referrer">
             </div><figure><img src="/pictures/note/claudecodeskills.png"
     alt="Claude Code Skill in Anywhere"><figcaption>

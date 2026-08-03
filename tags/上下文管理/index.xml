@@ -2,7 +2,7 @@
                 <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
             </div><!-- more -->
 <p>Think-Act-Observe 循环有一个天然的敌人：<strong>上下文窗口是有限的。</strong></p>
-<p>每次循环迭代都在消耗 token——模型的思考、工具调用的请求、工具返回的结果。读一个大文件可能消耗几千 token，跑一次测试的输出可能上万。循环跑个十几轮，上下文窗口就被撑满了。</p>]]></description></item><item><title>利用 MCP 实现 Claude Skills 的渐进式披露机制: 复用Claude Code Skill in Anywhere</title><link>https://byronfinn.github.io/mcp-claude-skills-progressive-disclosure/</link><pubDate>Fri, 26 Dec 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/mcp-claude-skills-progressive-disclosure/</guid><description><![CDATA[<div class="featured-image">
+<p>每次循环迭代都在消耗 token——模型的思考、工具调用的请求、工具返回的结果。读一个大文件可能消耗几千 token，跑一次测试的输出可能上万。循环跑个十几轮，上下文窗口就被撑满了。</p>]]></description></item><item><title>MCP 实现 Claude Skills 渐进式披露：Skill in Anywhere</title><link>https://byronfinn.github.io/mcp-claude-skills-progressive-disclosure/</link><pubDate>Fri, 26 Dec 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/mcp-claude-skills-progressive-disclosure/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/note/claudecodeskills.png" referrerpolicy="no-referrer">
             </div><figure><img src="/pictures/note/claudecodeskills.png"
     alt="Claude Code Skill in Anywhere"><figcaption>

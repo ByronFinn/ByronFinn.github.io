@@ -16,7 +16,7 @@
 - [工具即能力：AI Agent 的工具系统设计哲学](https://byronfinn.github.io/claude-code-tool-system-design/) (2026-05-12)
 - [System Prompt 工程：800 行提示词背后的设计决策](https://byronfinn.github.io/claude-code-system-prompt-engineering/) (2026-05-16)
 - [权限与安全：让 AI 有破坏力但不失控](https://byronfinn.github.io/claude-code-permissions-security/) (2026-05-20)
-- [上下文压缩：让 AI 拥有\](https://byronfinn.github.io/claude-code-context-compression/) (2026-05-23)
+- [上下文压缩：让 AI 拥有「无限记忆」的工程秘密](https://byronfinn.github.io/claude-code-context-compression/) (2026-05-23)
 - [AI 的记忆系统：四种记忆类型与语义召回](https://byronfinn.github.io/claude-code-memory-system/) (2026-06-02)
 - [Skill 的本质：可复用的专业知识封装](https://byronfinn.github.io/claude-code-skills-system/) (2026-06-05)
 - [多代理架构：分叉-汇聚模式的协作艺术](https://byronfinn.github.io/claude-code-multi-agent-architecture/) (2026-06-09)
@@ -163,6 +163,12 @@ Date: 2026-03-24
 Tags: Telegram, 第三方客户端, Android, iOS, 开源
 
 按平台整理的第三方 Telegram 客户端清单，涵盖 Android、iOS、桌面端，标注开源/闭源状态、维护活跃度和安全风险等级，附选型建议和避坑指南。
+
+### [苹果外区 ID 注册，四条路径和防送回国区的办法](https://byronfinn.github.io/apple-us-id-registration/)
+Date: 2026-03-17
+Tags: Apple, 美区ID, 土区ID, App Store, iOS, 教程, 注册
+
+四种苹果外区 Apple ID 注册方法实测对比（美区/土区/日区通用），加上防止首次登录被送回国区的完整方案。
 
 ### [接码平台体验分享-无广告纯享版](https://byronfinn.github.io/sms-verification-platforms/)
 Date: 2026-03-10

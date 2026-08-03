@@ -38,9 +38,6 @@ Allow: /
 User-agent: Perplexity-User
 Allow: /
 
-User-agent: Google-Agent
-Allow: /
-
 # AI Training crawlers: block
 User-agent: GPTBot
 Disallow: /
@@ -80,5 +77,3 @@ Sitemap: https://byronfinn.github.io/sitemap.xml
 
 # llms.txt location for AI discovery
 # https://byronfinn.github.io/llms.txt
-
-Crawl-delay: 1
