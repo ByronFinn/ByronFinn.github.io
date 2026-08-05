@@ -1,4 +1,7 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>ByF - 作者 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/authors/byf/</link><description>ByF - 作者 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Mon, 03 Aug 2026 10:00:00 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/authors/byf/" rel="self" type="application/rss+xml"/><item><title>团队分工的思考</title><link>https://byronfinn.github.io/team-roles-evolution-ai-era/</link><pubDate>Mon, 03 Aug 2026 10:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/team-roles-evolution-ai-era/</guid><description><![CDATA[<blockquote>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>ByF - 作者 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/authors/byf/</link><description>ByF - 作者 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Wed, 05 Aug 2026 14:28:39 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/authors/byf/" rel="self" type="application/rss+xml"/><item><title>给 AI 写一本法典——从“向它许愿”到“让它守规矩”</title><link>https://byronfinn.github.io/give-ai-a-rulebook/</link><pubDate>Wed, 05 Aug 2026 14:28:39 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/give-ai-a-rulebook/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/give-ai-a-rulebook-workflow.svg" referrerpolicy="no-referrer">
+            </div><p>先讲一件真实发生的事。</p>
+<p>2025 年初，我给内部系统加一个功能：导出 Excel。需求很小，我甚至没写文档，直接在对话框里打了句&quot;给列表页加个导出按钮&quot;。</p>]]></description></item><item><title>团队分工的思考</title><link>https://byronfinn.github.io/team-roles-evolution-ai-era/</link><pubDate>Mon, 03 Aug 2026 10:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/team-roles-evolution-ai-era/</guid><description><![CDATA[<blockquote>
   <p><strong>先说结论，免得你白看</strong></p>
 <p>从前分团队，按手艺分：前端、后端、产品设计。
 现在分团队，按阶段分：
@@ -37,7 +40,4 @@
                 <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
             </div><!-- more -->
 <p>有一个反直觉的现象：同一个模型，拆成多个独立实例让它协作，效果往往比单个实例更好。</p>
-<p>不是算力增加了（三个实例的总 token 消耗比一个实例多），不是能力提升了（每个实例都是同样的模型）。提升来自<strong>角色分离</strong>——当每个 Agent 只关注问题的一个方面时，它做得比&quot;全能 Agent&quot;更专注、更深刻。</p>]]></description></item><item><title>Skill 的本质：可复用的专业知识封装</title><link>https://byronfinn.github.io/claude-code-skills-system/</link><pubDate>Fri, 05 Jun 2026 09:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/claude-code-skills-system/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
-            </div><!-- more -->
-<p>如果你用过 Claude Code，你可能注意到它有一个 <code>/skills</code> 命令，可以列出已安装的&quot;技能&quot;。写作规范、架构设计方法、TDD 流程、代码审查策略——听起来像一个插件市场。</p>]]></description></item></channel></rss>
+<p>不是算力增加了（三个实例的总 token 消耗比一个实例多），不是能力提升了（每个实例都是同样的模型）。提升来自<strong>角色分离</strong>——当每个 Agent 只关注问题的一个方面时，它做得比&quot;全能 Agent&quot;更专注、更深刻。</p>]]></description></item></channel></rss>

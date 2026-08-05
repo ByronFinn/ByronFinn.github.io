@@ -128,6 +128,12 @@ Tags: 大模型, 人工智能, 思考
 
 ## 技术实践
 
+### [给 AI 写一本法典——从“向它许愿”到“让它守规矩”](https://byronfinn.github.io/give-ai-a-rulebook/)
+Date: 2026-08-05
+Tags: dev-skills, AI 工作流, Claude Skills, 子代理, 测试驱动开发
+
+同一个需求，直接让 AI 写和先对齐再动手，用的是同一个模型，差距在于有没有一套可执行的规矩。dev-skills 把流程阶段变成 12 个技能，加载后 AI 就知道规矩。
+
 ### [一个 PPT Agent 的完整拆解：从需求调研到 SVG 出图](https://byronfinn.github.io/ppt-agent-workflow-deep-dive/)
 Date: 2026-04-28
 Tags: AI, PPT, Agent, SVG, Gemini

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="620" viewBox="0 0 920 620">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="blueG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="purpleG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="amberG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="920" height="620" rx="12" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="460" y="38" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="20" font-weight="700">/tdd：两道人工门，两个独立进程</text>
+  <line x1="330" y1="48" x2="590" y2="48" stroke="#8b5cf6" stroke-width="2" opacity="0.5"/>
+  <text x="460" y="70" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13">测试子代理与开发子代理互不相识，只在磁盘上交汇</text>
+
+  <!-- 主代理 -->
+  <g filter="shadow">
+    <rect x="340" y="90" width="240" height="48" rx="24" fill="url(#blueG)" opacity="0.95"/>
+    <text x="460" y="120" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="15" font-weight="700">主代理（/tdd 编排）</text>
+  </g>
+
+  <!-- 分叉箭头 -->
+  <path d="M390 138 L270 176" stroke="#3b82f6" stroke-width="2" fill="none" marker-end="url(#arrowBlue)"/>
+  <path d="M530 138 L650 176" stroke="#3b82f6" stroke-width="2" fill="none" marker-end="url(#arrowBlue)"/>
+
+  <!-- 两道门 -->
+  <g filter="shadow">
+    <rect x="110" y="160" width="320" height="46" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="130" y="174" text-anchor="start" fill="#fbbf24" font-family="system-ui,sans-serif" font-size="14" font-weight="600">门①</text>
+    <text x="185" y="174" text-anchor="start" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13.5">人审场景设计，不过不放行</text>
+    <text x="185" y="194" text-anchor="start" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">人不在场，流程停下</text>
+  </g>
+  <g filter="shadow">
+    <rect x="490" y="160" width="320" height="46" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="510" y="174" text-anchor="start" fill="#fbbf24" font-family="system-ui,sans-serif" font-size="14" font-weight="600">门②</text>
+    <text x="565" y="174" text-anchor="start" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13.5">人审用例，通过才实现</text>
+    <text x="565" y="194" text-anchor="start" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">审不过就重来</text>
+  </g>
+
+  <!-- 门下箭头 -->
+  <line x1="270" y1="206" x2="270" y2="238" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)"/>
+  <line x1="650" y1="206" x2="650" y2="238" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)"/>
+
+  <!-- 测试子代理 -->
+  <g filter="shadow">
+    <rect x="80" y="242" width="380" height="130" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    <text x="270" y="272" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="16" font-weight="700">测试子代理</text>
+    <text x="270" y="298" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13.5">独立进程 · 只写用例，不看实现</text>
+    <text x="270" y="322" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12.5">不知道代码会怎么写</text>
+    <text x="270" y="354" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="12.5">从磁盘重读全部上下文</text>
+  </g>
+
+  <!-- 开发子代理 -->
+  <g filter="shadow">
+    <rect x="460" y="242" width="380" height="130" rx="12" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="650" y="272" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="16" font-weight="700">开发子代理</text>
+    <text x="650" y="298" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13.5">独立进程 · 只读用例，真正读懂</text>
+    <text x="650" y="322" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12.5">读懂了才动手写实现</text>
+    <text x="650" y="354" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="12.5">从磁盘重读全部上下文</text>
+  </g>
+
+  <!-- 中间：不共享记忆 -->
+  <line x1="460" y1="242" x2="460" y2="372" stroke="#ef4444" stroke-width="2" stroke-dasharray="6 4"/>
+  <g transform="translate(466, 290)">
+    <circle cx="16" cy="16" r="16" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+    <line x1="10" y1="10" x2="22" y2="22" stroke="#fca5a5" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="22" y1="10" x2="10" y2="22" stroke="#fca5a5" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <text x="498" y="310" text-anchor="start" fill="#f87171" font-family="system-ui,sans-serif" font-size="12.5" font-weight="600">不共享会话记忆</text>
+  <text x="498" y="330" text-anchor="start" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">不能从对方的话里猜行为</text>
+
+  <!-- 磁盘 -->
+  <g filter="shadow">
+    <rect x="310" y="420" width="300" height="64" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="6 3"/>
+    <text x="460" y="448" text-anchor="middle" fill="#86efac" font-family="system-ui,sans-serif" font-size="14.5" font-weight="700">磁盘（唯一共享物）</text>
+    <text x="460" y="470" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12.5">测试 · 用例 · PRD 落在这里</text>
+  </g>
+
+  <!-- 子代理 → 磁盘 -->
+  <path d="M270 372 L370 420" stroke="#94a3b8" stroke-width="1.8" fill="none" stroke-dasharray="6 4" marker-end="url(#arrowGray)"/>
+  <text x="290" y="404" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">写用例</text>
+  <path d="M650 372 L550 420" stroke="#94a3b8" stroke-width="1.8" fill="none" stroke-dasharray="6 4" marker-end="url(#arrowGray)"/>
+  <text x="630" y="404" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">重读上下文</text>
+
+  <!-- 底部说明 -->
+  <text x="460" y="522" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="12.5">「独立」不是让 AI 换个身份演两个角色，而是两个从零开始、只认磁盘的进程</text>
+
+  <!-- 侧边点评 -->
+  <g>
+    <rect x="80" y="540" width="380" height="56" rx="10" fill="#1e293b" stroke="#22c55e" stroke-width="1.2"/>
+    <text x="270" y="566" text-anchor="middle" fill="#86efac" font-family="system-ui,sans-serif" font-size="13" font-weight="600">门① 审的是「场景」</text>
+    <text x="270" y="584" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">验证是不是在测真实行为</text>
+  </g>
+  <g>
+    <rect x="460" y="540" width="380" height="56" rx="10" fill="#1e293b" stroke="#22c55e" stroke-width="1.2"/>
+    <text x="650" y="566" text-anchor="middle" fill="#86efac" font-family="system-ui,sans-serif" font-size="13" font-weight="600">门② 审的是「用例」</text>
+    <text x="650" y="584" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">过了，开发子代理才许动手</text>
+  </g>
+</svg>
