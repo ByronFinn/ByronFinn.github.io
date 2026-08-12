@@ -46,6 +46,12 @@
 
 ## AI技术
 
+### [多 Agent 协作的技术内核：价值来自结构，不是并发](https://byronfinn.github.io/multi-agent-technical-core/)
+Date: 2026-08-12
+Tags: 多Agent, AI Agent, 架构设计, 上下文管理, 状态机
+
+多 Agent 协作系统的技术内核拆解：生产与验证的对抗分离、上下文的显式隔离、状态外化与记忆沉淀。为什么没有结构的多 Agent 只是更贵的并发，以及这套方案自己没答全的六个问题。
+
 ### [AI Agent 运行时动态干预的思考](https://byronfinn.github.io/ai-agent-runtime-dynamic-intervention/)
 Date: 2026-07-27
 Tags: AI Agent, 运行时动态干预, ReAct, OpenClaw, LangGraph

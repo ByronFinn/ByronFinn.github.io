@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="cBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="cPurple" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#4c1d95"/>
+    </linearGradient>
+    <linearGradient id="cAmber" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#92400e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg2)"/>
+
+  <!-- title -->
+  <text x="640" y="70" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="34" font-weight="700" fill="#f1f5f9">上下文是钱：三类无法靠加大 context window 解决的成本</text>
+  <text x="640" y="110" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="19" fill="#94a3b8">隔离是默认，共享是例外</text>
+
+  <!-- card 1: 交接成本 -->
+  <g>
+    <rect x="80" y="160" width="350" height="400" rx="20" fill="url(#cBlue)" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="255" y="215" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="26" font-weight="700" fill="#ffffff">交接成本</text>
+    <text x="255" y="252" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="16" fill="#bfdbfe">handoff</text>
+    <!-- handoff icon -->
+    <rect x="150" y="280" width="120" height="52" rx="10" fill="#1e40af"/>
+    <rect x="230" y="280" width="120" height="52" rx="10" fill="#2563eb"/>
+    <path d="M 270 306 L 228 306" stroke="#93c5fd" stroke-width="3" fill="none"/>
+    <polygon points="228,300 216,306 228,312" fill="#93c5fd"/>
+    <text x="255" y="372" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="16" fill="#dbeafe">同一段信息要在 Agent 间重新组织</text>
+    <text x="255" y="404" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="16" fill="#dbeafe">对策：交接文件 + 共享留言板</text>
+    <text x="255" y="436" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="16" fill="#dbeafe">「文件路径 + 摘要」慢通信</text>
+    <text x="255" y="496" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#93c5fd">不打断，不塞满上下文</text>
+  </g>
+
+  <!-- card 2: 共享成本 -->
+  <g>
+    <rect x="465" y="160" width="350" height="400" rx="20" fill="url(#cPurple)" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="640" y="215" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="26" font-weight="700" fill="#ffffff">共享成本</text>
+    <text x="640" y="252" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="16" fill="#ddd6fe">shared context</text>
+    <!-- shared icon: 三档递进 -->
+    <rect x="505" y="278" width="270" height="44" rx="8" fill="#5b21b6"/>
+    <text x="640" y="306" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#ede9fe">① Agent 内记忆：广播</text>
+    <rect x="505" y="330" width="270" height="44" rx="8" fill="#6d28d9"/>
+    <text x="640" y="358" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#ede9fe">② 通讯通道：直接对话</text>
+    <rect x="505" y="382" width="270" height="44" rx="8" fill="#7c3aed"/>
+    <text x="640" y="410" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#ede9fe">③ 白板：大容量按需读</text>
+    <text x="640" y="464" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#c4b5fd">每多一段共享内容，每个 Worker 每轮都付费</text>
+    <text x="640" y="496" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#c4b5fd">主动通知 → 直接对话 → 按需读取</text>
+  </g>
+
+  <!-- card 3: 聚合成本 -->
+  <g>
+    <rect x="850" y="160" width="350" height="400" rx="20" fill="url(#cAmber)" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="1025" y="215" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="26" font-weight="700" fill="#ffffff">聚合成本</text>
+    <text x="1025" y="252" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="16" fill="#fde68a">aggregation</text>
+    <!-- aggregate icon: 10 -> 1 -->
+    <g fill="#b45309">
+      <rect x="900" y="280" width="34" height="34" rx="6"/>
+      <rect x="948" y="280" width="34" height="34" rx="6"/>
+      <rect x="996" y="280" width="34" height="34" rx="6"/>
+      <rect x="1044" y="280" width="34" height="34" rx="6"/>
+      <rect x="1092" y="280" width="34" height="34" rx="6"/>
+    </g>
+    <rect x="978" y="352" width="96" height="48" rx="10" fill="#f59e0b"/>
+    <text x="1026" y="383" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#451a03">1 份</text>
+    <path d="M 1026 316 L 1026 350" stroke="#fbbf24" stroke-width="3" fill="none"/>
+    <polygon points="1020,344 1026,356 1032,344" fill="#fbbf24"/>
+    <text x="1025" y="450" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#fcd34d">并行收集容易，合成很难</text>
+    <text x="1025" y="482" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#fcd34d">事实一致 + 引用对得上 + 风格统一</text>
+    <text x="1025" y="514" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#fcd34d">聚合是 Leader 的贵活：「把 10 份合到 1 份」</text>
+  </g>
+
+  <!-- bottom note -->
+  <text x="640" y="608" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="17" fill="#64748b">共享信息按「是否值得每个 Worker 每轮付费」来评估</text>
+</svg>

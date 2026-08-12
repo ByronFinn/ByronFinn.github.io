@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+
+  <!-- grid dots -->
+  <g fill="#334155" opacity="0.5">
+    <circle cx="60" cy="60" r="2"/><circle cx="180" cy="60" r="2"/><circle cx="300" cy="60" r="2"/>
+    <circle cx="420" cy="60" r="2"/><circle cx="540" cy="60" r="2"/><circle cx="660" cy="60" r="2"/>
+    <circle cx="780" cy="60" r="2"/><circle cx="900" cy="60" r="2"/><circle cx="1020" cy="60" r="2"/>
+    <circle cx="1140" cy="60" r="2"/><circle cx="1220" cy="60" r="2"/>
+    <circle cx="60" cy="180" r="2"/><circle cx="1220" cy="180" r="2"/>
+    <circle cx="60" cy="300" r="2"/><circle cx="1220" cy="300" r="2"/>
+    <circle cx="60" cy="420" r="2"/><circle cx="1220" cy="420" r="2"/>
+    <circle cx="60" cy="540" r="2"/><circle cx="1220" cy="540" r="2"/>
+    <circle cx="60" cy="660" r="2"/><circle cx="1220" cy="660" r="2"/>
+  </g>
+
+  <!-- title -->
+  <text x="640" y="72" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="34" font-weight="700" fill="#f1f5f9">生产-验证对抗分离</text>
+  <text x="640" y="110" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="19" fill="#94a3b8">验证不是自我改进，而是独立主体的否决权</text>
+
+  <!-- Worker node -->
+  <g filter="url(#glow)">
+    <rect x="180" y="220" width="320" height="210" rx="18" fill="url(#blue)"/>
+  </g>
+  <text x="340" y="278" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#ffffff">Worker · 生产者</text>
+  <text x="340" y="318" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="17" fill="#dbeafe">执行子任务</text>
+  <text x="340" y="350" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="17" fill="#dbeafe">自己的工具与上下文</text>
+  <text x="340" y="382" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="17" fill="#dbeafe">「我干完了」</text>
+
+  <!-- Verifier node -->
+  <g filter="url(#glow)">
+    <rect x="780" y="220" width="320" height="210" rx="18" fill="url(#amber)"/>
+  </g>
+  <text x="940" y="278" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#ffffff">Verifier · 验证者</text>
+  <text x="940" y="318" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="17" fill="#fef3c7">检查事实来源与覆盖清单</text>
+  <text x="940" y="350" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="17" fill="#fef3c7">风险边界与外部锚点</text>
+  <text x="940" y="382" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="17" fill="#fef3c7">「可以交付」或「打回去」</text>
+
+  <!-- producing -> verifying arrow -->
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#60a5fa"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#f87171"/>
+    </marker>
+  </defs>
+  <line x1="500" y1="300" x2="770" y2="300" stroke="#60a5fa" stroke-width="3.5" marker-end="url(#arrowBlue)"/>
+  <text x="635" y="282" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="17" fill="#93c5fd">producing</text>
+  <text x="635" y="322" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#64748b">→ verifying</text>
+
+  <!-- reject loop back -->
+  <path d="M 940 430 C 940 520, 340 520, 340 436" stroke="#f87171" stroke-width="3.5" fill="none" stroke-dasharray="10 8" marker-end="url(#arrowRed)"/>
+  <text x="640" y="540" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="17" fill="#fca5a5">未通过 → 重新唤起 producing，循环直到通过或触发停止条件</text>
+
+  <!-- done node -->
+  <g filter="url(#glow)">
+    <rect x="440" y="590" width="400" height="80" rx="16" fill="url(#green)"/>
+  </g>
+  <text x="640" y="640" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="24" font-weight="700" fill="#ffffff">done · 可交付</text>
+
+  <!-- arrow to done -->
+  <path d="M 940 436 C 940 610, 850 610, 850 600" stroke="#34d399" stroke-width="3" fill="none" marker-end="url(#arrowGreen)"/>
+  <defs>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#34d399"/>
+    </marker>
+  </defs>
+
+  <text x="1120" y="430" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="15" fill="#64748b">通过</text>
+</svg>
