@@ -1,4 +1,68 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>技术实践 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/</link><description>技术实践 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Wed, 05 Aug 2026 14:28:39 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/" rel="self" type="application/rss+xml"/><item><title>给 AI 写一本法典——从“向它许愿”到“让它守规矩”</title><link>https://byronfinn.github.io/give-ai-a-rulebook/</link><pubDate>Wed, 05 Aug 2026 14:28:39 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/give-ai-a-rulebook/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>技术实践 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/</link><description>技术实践 - 分类 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Tue, 18 Aug 2026 14:42:15 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/" rel="self" type="application/rss+xml"/><item><title>Cursor Local (Private Inference 版）全平台下载地址</title><link>https://byronfinn.github.io/cursor-local-download/</link><pubDate>Tue, 18 Aug 2026 14:42:15 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/cursor-local-download/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/cursor-local-download.svg" referrerpolicy="no-referrer">
+            </div><p>以下直链永远指向 local 版最新构建：</p>
+<!-- more -->
+<h2 id="windows" class="headerLink">
+    <a href="#windows" class="header-mark"></a>Windows</h2><table>
+  <thead>
+      <tr>
+          <th>版本</th>
+          <th>链接</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x64（用户安装版）</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/win32-x64-user/cursor-local/latestWindows" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/win32-x64-user/cursor-local/latestWindows</a></td>
+      </tr>
+      <tr>
+          <td>ARM64</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/win32-arm64-user/cursor-local/latestWindows" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/win32-arm64-user/cursor-local/latestWindows</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="macos" class="headerLink">
+    <a href="#macos" class="header-mark"></a>macOS</h2><table>
+  <thead>
+      <tr>
+          <th>版本</th>
+          <th>链接</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Apple Silicon (M 系列，推荐）</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-arm64-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-arm64-user/cursor-local/latestMac</a></td>
+      </tr>
+      <tr>
+          <td>Intel 芯片</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-x64-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-x64-user/cursor-local/latestMac</a></td>
+      </tr>
+      <tr>
+          <td>通用版</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-universal-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-universal-user/cursor-local/latestMac</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="linux-ubuntudebian" class="headerLink">
+    <a href="#linux-ubuntudebian" class="header-mark"></a>Linux (Ubuntu/Debian)</h2><table>
+  <thead>
+      <tr>
+          <th>版本</th>
+          <th>链接</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x64 AppImage</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/linux-x64-user/cursor-local/latestLinux" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/linux-x64-user/cursor-local/latestLinux</a></td>
+      </tr>
+      <tr>
+          <td>ARM64 AppImage</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/linux-arm64-user/cursor-local/latestLinux" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/linux-arm64-user/cursor-local/latestLinux</a></td>
+      </tr>
+  </tbody>
+</table>]]></description></item><item><title>给 AI 写一本法典——从“向它许愿”到“让它守规矩”</title><link>https://byronfinn.github.io/give-ai-a-rulebook/</link><pubDate>Wed, 05 Aug 2026 14:28:39 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/give-ai-a-rulebook/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/posts/give-ai-a-rulebook-workflow.svg" referrerpolicy="no-referrer">
             </div><p>先讲一件真实发生的事。</p>
 <p>2025 年初，我给内部系统加一个功能：导出 Excel。需求很小，我甚至没写文档，直接在对话框里打了句&quot;给列表页加个导出按钮&quot;。</p>]]></description></item><item><title>Agent 面试题：哪些问题能筛出真干活的人</title><link>https://byronfinn.github.io/agent-interview-questions/</link><pubDate>Mon, 13 Jul 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/agent-interview-questions/</guid><description><![CDATA[<!-- more -->
@@ -42,4 +106,4 @@
             </div><p>Oracle 的 Always Free 计划每个月给一台 4 核 CPU、24 GB 内存的 ARM 服务器，不限期，不扣钱。同样配置在 AWS 上月费 $80–100。这篇把注册、避坑、创建实例和保活串一遍。</p>]]></description></item><item><title>Codex 一直 Reconnecting，四种解法</title><link>https://byronfinn.github.io/codex-websocket-reconnect-fix/</link><pubDate>Tue, 31 Mar 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/codex-websocket-reconnect-fix/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/posts/codex-websocket-reconnect-solutions.svg" referrerpolicy="no-referrer">
             </div><!-- more -->
-<p>Codex 默认走 WebSocket 跟 ChatGPT backend 通信。如果你的网络中间有 Clash、公司代理、跨境线路或者 Cloudflare 的 challenge 页，WebSocket 长连接很容易被打断，然后你就会反复看到 <code>Reconnecting... 1/5</code>。关掉 WebSocket，改走普通 HTTP 流式请求，这个问题基本消失。</p>]]></description></item><item><title>第三方 Telegram 客户端大合集：谁在维护，谁该避坑</title><link>https://byronfinn.github.io/third-party-telegram-clients/</link><pubDate>Tue, 24 Mar 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/third-party-telegram-clients/</guid><description>&lt;p>先说结论：第三方 Telegram 客户端数量很多，质量参差不齐，闭源的尽量别碰。2021 年起 Telegram 限制首次注册必须用官方手机客户端收验证码，桌面端和第三方不能直接注册——这已经是一个信号。&lt;/p></description></item><item><title>接码平台体验分享-无广告纯享版</title><link>https://byronfinn.github.io/sms-verification-platforms/</link><pubDate>Tue, 10 Mar 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/sms-verification-platforms/</guid><description>&lt;p>注册各种服务如GPT/CLAUDE/TG等需要一个能收验证码的号，但又不想拿自己手机号填。这类需求催生了一批接码平台，有的免费、有的付费、有的面向开发者。以下是我实际用过的四个，截止 2026 年 5 月 20 日都还能正常访问。平台状态随时可能变化，建议用之前自己先打开看看。&lt;/p></description></item></channel></rss>
+<p>Codex 默认走 WebSocket 跟 ChatGPT backend 通信。如果你的网络中间有 Clash、公司代理、跨境线路或者 Cloudflare 的 challenge 页，WebSocket 长连接很容易被打断，然后你就会反复看到 <code>Reconnecting... 1/5</code>。关掉 WebSocket，改走普通 HTTP 流式请求，这个问题基本消失。</p>]]></description></item><item><title>第三方 Telegram 客户端大合集：谁在维护，谁该避坑</title><link>https://byronfinn.github.io/third-party-telegram-clients/</link><pubDate>Tue, 24 Mar 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/third-party-telegram-clients/</guid><description>&lt;p>先说结论：第三方 Telegram 客户端数量很多，质量参差不齐，闭源的尽量别碰。2021 年起 Telegram 限制首次注册必须用官方手机客户端收验证码，桌面端和第三方不能直接注册——这已经是一个信号。&lt;/p></description></item></channel></rss>

@@ -1,0 +1,65 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Cursor Local - 标签 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/tags/cursor-local/</link><description>Cursor Local - 标签 - 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Tue, 18 Aug 2026 14:42:15 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/tags/cursor-local/" rel="self" type="application/rss+xml"/><item><title>Cursor Local (Private Inference 版）全平台下载地址</title><link>https://byronfinn.github.io/cursor-local-download/</link><pubDate>Tue, 18 Aug 2026 14:42:15 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/cursor-local-download/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/cursor-local-download.svg" referrerpolicy="no-referrer">
+            </div><p>以下直链永远指向 local 版最新构建：</p>
+<!-- more -->
+<h2 id="windows" class="headerLink">
+    <a href="#windows" class="header-mark"></a>Windows</h2><table>
+  <thead>
+      <tr>
+          <th>版本</th>
+          <th>链接</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x64（用户安装版）</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/win32-x64-user/cursor-local/latestWindows" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/win32-x64-user/cursor-local/latestWindows</a></td>
+      </tr>
+      <tr>
+          <td>ARM64</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/win32-arm64-user/cursor-local/latestWindows" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/win32-arm64-user/cursor-local/latestWindows</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="macos" class="headerLink">
+    <a href="#macos" class="header-mark"></a>macOS</h2><table>
+  <thead>
+      <tr>
+          <th>版本</th>
+          <th>链接</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Apple Silicon (M 系列，推荐）</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-arm64-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-arm64-user/cursor-local/latestMac</a></td>
+      </tr>
+      <tr>
+          <td>Intel 芯片</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-x64-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-x64-user/cursor-local/latestMac</a></td>
+      </tr>
+      <tr>
+          <td>通用版</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-universal-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-universal-user/cursor-local/latestMac</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="linux-ubuntudebian" class="headerLink">
+    <a href="#linux-ubuntudebian" class="header-mark"></a>Linux (Ubuntu/Debian)</h2><table>
+  <thead>
+      <tr>
+          <th>版本</th>
+          <th>链接</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x64 AppImage</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/linux-x64-user/cursor-local/latestLinux" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/linux-x64-user/cursor-local/latestLinux</a></td>
+      </tr>
+      <tr>
+          <td>ARM64 AppImage</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/linux-arm64-user/cursor-local/latestLinux" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/linux-arm64-user/cursor-local/latestLinux</a></td>
+      </tr>
+  </tbody>
+</table>]]></description></item></channel></rss>

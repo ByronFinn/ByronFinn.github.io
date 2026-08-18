@@ -134,6 +134,12 @@ Tags: 大模型, 人工智能, 思考
 
 ## 技术实践
 
+### [Cursor Local (Private Inference 版）全平台下载地址](https://byronfinn.github.io/cursor-local-download/)
+Date: 2026-08-18
+Tags: Cursor Local, Private Inference, 本地推理, 下载
+
+Cursor Local（Private Inference 版）全平台最新构建直链汇总：Windows、macOS、Linux 各架构下载地址，链接永远指向 local 版最新版本。
+
 ### [给 AI 写一本法典——从“向它许愿”到“让它守规矩”](https://byronfinn.github.io/give-ai-a-rulebook/)
 Date: 2026-08-05
 Tags: dev-skills, AI 工作流, Claude Skills, 子代理, 测试驱动开发

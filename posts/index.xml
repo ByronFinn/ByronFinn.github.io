@@ -1,4 +1,68 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/posts/</link><description>所有文章 | 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Wed, 12 Aug 2026 14:33:59 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>多 Agent 协作的技术内核：价值来自结构，不是并发</title><link>https://byronfinn.github.io/multi-agent-technical-core/</link><pubDate>Wed, 12 Aug 2026 14:33:59 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/multi-agent-technical-core/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - 每日深度思考 | 技术、经济分析与深度思考</title><link>https://byronfinn.github.io/posts/</link><description>所有文章 | 每日深度思考 | 技术、经济分析与深度思考</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Tue, 18 Aug 2026 14:42:15 +0800</lastBuildDate><atom:link href="https://byronfinn.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>Cursor Local (Private Inference 版）全平台下载地址</title><link>https://byronfinn.github.io/cursor-local-download/</link><pubDate>Tue, 18 Aug 2026 14:42:15 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/cursor-local-download/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/cursor-local-download.svg" referrerpolicy="no-referrer">
+            </div><p>以下直链永远指向 local 版最新构建：</p>
+<!-- more -->
+<h2 id="windows" class="headerLink">
+    <a href="#windows" class="header-mark"></a>Windows</h2><table>
+  <thead>
+      <tr>
+          <th>版本</th>
+          <th>链接</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x64（用户安装版）</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/win32-x64-user/cursor-local/latestWindows" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/win32-x64-user/cursor-local/latestWindows</a></td>
+      </tr>
+      <tr>
+          <td>ARM64</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/win32-arm64-user/cursor-local/latestWindows" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/win32-arm64-user/cursor-local/latestWindows</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="macos" class="headerLink">
+    <a href="#macos" class="header-mark"></a>macOS</h2><table>
+  <thead>
+      <tr>
+          <th>版本</th>
+          <th>链接</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Apple Silicon (M 系列，推荐）</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-arm64-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-arm64-user/cursor-local/latestMac</a></td>
+      </tr>
+      <tr>
+          <td>Intel 芯片</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-x64-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-x64-user/cursor-local/latestMac</a></td>
+      </tr>
+      <tr>
+          <td>通用版</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-universal-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-universal-user/cursor-local/latestMac</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="linux-ubuntudebian" class="headerLink">
+    <a href="#linux-ubuntudebian" class="header-mark"></a>Linux (Ubuntu/Debian)</h2><table>
+  <thead>
+      <tr>
+          <th>版本</th>
+          <th>链接</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x64 AppImage</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/linux-x64-user/cursor-local/latestLinux" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/linux-x64-user/cursor-local/latestLinux</a></td>
+      </tr>
+      <tr>
+          <td>ARM64 AppImage</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/linux-arm64-user/cursor-local/latestLinux" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/linux-arm64-user/cursor-local/latestLinux</a></td>
+      </tr>
+  </tbody>
+</table>]]></description></item><item><title>多 Agent 协作的技术内核：价值来自结构，不是并发</title><link>https://byronfinn.github.io/multi-agent-technical-core/</link><pubDate>Wed, 12 Aug 2026 14:33:59 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/multi-agent-technical-core/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/posts/multi-agent-technical-core-featured.svg" referrerpolicy="no-referrer">
             </div><p>先说结论：多 Agent 的价值不来自模型多，来自结构对。没有结构的多 Agent 只是更贵的并发——多花 2 到 3 倍的 token，听一群模型互相点头；有结构的多 Agent，才是能委派、能并行、能验证的执行系统。</p>]]></description></item><item><title>给 AI 写一本法典——从“向它许愿”到“让它守规矩”</title><link>https://byronfinn.github.io/give-ai-a-rulebook/</link><pubDate>Wed, 05 Aug 2026 14:28:39 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/give-ai-a-rulebook/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/pictures/posts/give-ai-a-rulebook-workflow.svg" referrerpolicy="no-referrer">
@@ -35,7 +99,4 @@
                 <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
             </div><!-- more -->
 <p>给建筑师一块地，他不会立刻开始砌砖。他会先画图、计算承重、考虑采光、规划管线。等蓝图确认了，施工队才进场。</p>
-<p>给 AI 编程助手一个需求，它默认会立刻开始改代码。不是因为它不懂&quot;设计先行&quot;，而是因为<strong>它的循环机制鼓励行动</strong>——Think-Act-Observe 循环里，&ldquo;Act&quot;是核心能力。模型被训练成&quot;有帮助的&rdquo;，&ldquo;有帮助&quot;在编程场景里通常意味着&quot;动手改&rdquo;。</p>]]></description></item><item><title>MCP 协议：AI 工具互联的 USB-C</title><link>https://byronfinn.github.io/claude-code-mcp-protocol/</link><pubDate>Fri, 12 Jun 2026 09:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://byronfinn.github.io/claude-code-mcp-protocol/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
-            </div><!-- more -->
-<p>在 MCP 出现之前，每个 AI 工具集成都是一次<strong>定制开发</strong>。想让 ChatGPT 连数据库？写一个插件。想让 Claude 调 GitHub API？写一个 Function Calling 定义。想让 Copilot 访问你的内部系统？写一个 Custom Tool。</p>]]></description></item></channel></rss>
+<p>给 AI 编程助手一个需求，它默认会立刻开始改代码。不是因为它不懂&quot;设计先行&quot;，而是因为<strong>它的循环机制鼓励行动</strong>——Think-Act-Observe 循环里，&ldquo;Act&quot;是核心能力。模型被训练成&quot;有帮助的&rdquo;，&ldquo;有帮助&quot;在编程场景里通常意味着&quot;动手改&rdquo;。</p>]]></description></item></channel></rss>
