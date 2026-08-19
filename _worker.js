@@ -95,8 +95,10 @@ function estimateTokens(str) {
 }
 
 // Security/cache-relevant headers to preserve on the converted response.
+// NOTE: "cache-control" is intentionally NOT here — the markdown response
+// forces its own `public, max-age=3600` rather than reusing the origin's
+// `max-age=0, must-revalidate` so agents get a cacheable variant.
 const KEEP_HEADERS = [
-  "cache-control",
   "content-security-policy",
   "strict-transport-security",
   "x-frame-options",
@@ -137,9 +139,19 @@ export default {
     }
 
     // Content negotiation: try each candidate markdown asset in turn.
+    // IMPORTANT: we fetch the .md asset with a CLEAN request (no markdown
+    // Accept header). Passing the original agent request into env.ASSETS.fetch
+    // can make the static-assets binding itself honor "text/markdown" and
+    // return a pre-converted/empty body, which breaks our token estimate.
+    const cleanHeaders = new Headers();
+    cleanHeaders.set("accept", "*/*");
     const candidates = markdownCandidates(url.pathname);
     for (const cand of candidates) {
-      const assetResp = await env.ASSETS.fetch(new Request(new URL(cand, url), request));
+      const assetReq = new Request(new URL(cand, url), {
+        method: "GET",
+        headers: cleanHeaders,
+      });
+      const assetResp = await env.ASSETS.fetch(assetReq);
       if (!assetResp.ok) continue;
 
       const contentType = assetResp.headers.get("content-type") || "";
@@ -156,7 +168,7 @@ export default {
 
       // Estimate the original HTML token count for x-original-tokens.
       let htmlTokens = 0;
-      const htmlResp = await env.ASSETS.fetch(new Request(url, request));
+      const htmlResp = await env.ASSETS.fetch(new Request(url, { headers: cleanHeaders }));
       if (htmlResp.ok) {
         htmlTokens = estimateTokens(await htmlResp.text());
       }
