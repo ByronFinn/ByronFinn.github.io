@@ -73,7 +73,7 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap位置
-Sitemap: https://byronfinn.github.io/sitemap.xml
+Sitemap: https://blog.baifan.site/sitemap.xml
 
 # llms.txt location for AI discovery
-# https://byronfinn.github.io/llms.txt
+# https://blog.baifan.site/llms.txt

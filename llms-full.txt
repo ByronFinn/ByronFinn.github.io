@@ -1,321 +1,492 @@
+
 # 每日深度思考 — 完整内容索引
 
-> ByF 的个人博客，专注于 AI 技术、经济时事与深度思考。
+> 每日深度思考是一个技术博客，由 ByF 运营，聚焦三大方向：
+
+**AI 技术**：覆盖大模型原理（Token、向量、Transformer）、Prompt Engineering、GPU 训练、RAG 系统搭建、AI Agent 架构、MCP 协议等，从理论到实战的系统性教程和源码拆解。
+
+**时事分析**：深度解读《经济学人》《华尔街日报》等国际刊物，分析地缘政治、中美科技博弈、经济趋势、社会变迁等议题。
+
+**深度思考**：关于团队管理、软件工程、生命意义、科技伦理、AI 不确定性等哲学与思辨类文章。
+
+博客使用 Hugo + DoIt 主题构建，托管在 GitHub Pages。
+>
 > 本文件为 AI 系统提供的完整站点索引，包含所有文章的标题、摘要与链接。
 
 ## Links
 
-- [所有文章](https://byronfinn.github.io/posts/)
-- [关于我](https://byronfinn.github.io/profile/)
+- [所有文章](https://blog.baifan.site/posts/)
+- [关于我](https://blog.baifan.site/profile/)
 - [GitHub](https://github.com/ByronFinn)
 
 ## Series
-
-### Claude Code 源码拆解
-- [AI 编程助手的灵魂：Think-Act-Observe 循环](https://byronfinn.github.io/claude-code-think-act-observe-loop/) (2026-05-07)
-- [工具即能力：AI Agent 的工具系统设计哲学](https://byronfinn.github.io/claude-code-tool-system-design/) (2026-05-12)
-- [System Prompt 工程：800 行提示词背后的设计决策](https://byronfinn.github.io/claude-code-system-prompt-engineering/) (2026-05-16)
-- [权限与安全：让 AI 有破坏力但不失控](https://byronfinn.github.io/claude-code-permissions-security/) (2026-05-20)
-- [上下文压缩：让 AI 拥有「无限记忆」的工程秘密](https://byronfinn.github.io/claude-code-context-compression/) (2026-05-23)
-- [AI 的记忆系统：四种记忆类型与语义召回](https://byronfinn.github.io/claude-code-memory-system/) (2026-06-02)
-- [Skill 的本质：可复用的专业知识封装](https://byronfinn.github.io/claude-code-skills-system/) (2026-06-05)
-- [多代理架构：分叉-汇聚模式的协作艺术](https://byronfinn.github.io/claude-code-multi-agent-architecture/) (2026-06-09)
-- [MCP 协议：AI 工具互联的 USB-C](https://byronfinn.github.io/claude-code-mcp-protocol/) (2026-06-12)
-- [Plan Mode 与设计先行：让 AI 先想再做](https://byronfinn.github.io/claude-code-plan-mode/) (2026-06-16)
-- [3000 行 vs 50 万行：从玩具到产品的架构深渊](https://byronfinn.github.io/claude-code-3000-vs-500k-lines/) (2026-07-02)
-- [AI 编程工具的未来：从 Copilot 到 Autonomous Agent](https://byronfinn.github.io/ai-coding-tools-future-copilot-to-autonomous-agent/) (2026-07-06)
-
 ### AI 开发工具
-- [Trellis 做了什么，能不能解决 AI 编码的规范问题](https://byronfinn.github.io/trellis-ai-coding-framework-guide/) (2026-04-30)
-
-### 《经济学人》札记
-- [经济学人2025年11月刊深度分析：全球经济趋势与地缘政治格局解读](https://byronfinn.github.io/economist-202511-global-analysis/) (2025-09-09)
-- [当世界开始重新洗牌：读《经济学人》2025年11月8日刊](https://byronfinn.github.io/economist-2025-11-world-rebalancing/) (2025-10-21)
-- [《经济学人》2025年11月15日刊](https://byronfinn.github.io/economist-20251115-taiwan-boom/) (2025-12-22)
-
+- [Trellis 做了什么，能不能解决 AI 编码的规范问题](https://blog.baifan.site/trellis-ai-coding-framework-guide/) (2026-04-30)
 ### AI大模型系统教程
-- [AI大模型完全指南：从零基础到Token与向量的深度解析](https://byronfinn.github.io/ai-llm-tutorial-token-vector-basics/) (2025-07-22)
-- [AI专业名词解释表：270+术语完全指南与AI技术体系词典](https://byronfinn.github.io/ai-technical-glossary-complete-guide/) (2025-07-30)
-- [Transformer架构深度解析：注意力机制与AI大模型的核心技术](https://byronfinn.github.io/transformer-attention-mechanism-deep-dive/) (2025-08-05)
-- [Prompt Engineering完全指南：从提示工程到上下文工程的实战教程](https://byronfinn.github.io/prompt-engineering-context-management-complete-guide/) (2025-08-13)
-- [CPU/GPU 与大模型训练](https://byronfinn.github.io/gpu-accelerated-training-cuda-complete-guide/) (2025-08-20)
-- [RAG系统完全指南——从零搭建本地检索增强生成系统](https://byronfinn.github.io/rag-system-complete-guide-langchain-ollama-pgvector/) (2025-08-27)
-
+- [RAG系统完全指南——从零搭建本地检索增强生成系统](https://blog.baifan.site/rag-system-complete-guide-langchain-ollama-pgvector/) (2025-08-27)
+- [CPU/GPU 与大模型训练](https://blog.baifan.site/gpu-accelerated-training-cuda-complete-guide/) (2025-08-20)
+- [Prompt Engineering完全指南：从提示工程到上下文工程的实战教程](https://blog.baifan.site/prompt-engineering-context-management-complete-guide/) (2025-08-13)
+- [Transformer架构深度解析：注意力机制与AI大模型的核心技术](https://blog.baifan.site/transformer-attention-mechanism-deep-dive/) (2025-08-05)
+- [AI专业名词解释表：270+术语完全指南与AI技术体系词典](https://blog.baifan.site/ai-technical-glossary-complete-guide/) (2025-07-30)
+- [AI大模型完全指南：从零基础到Token与向量的深度解析](https://blog.baifan.site/ai-llm-tutorial-token-vector-basics/) (2025-07-22)
+### Claude Code 源码拆解
+- [AI 编程工具的未来：从 Copilot 到 Autonomous Agent](https://blog.baifan.site/ai-coding-tools-future-copilot-to-autonomous-agent/) (2026-07-06)
+- [3000 行 vs 50 万行：从玩具到产品的架构深渊](https://blog.baifan.site/claude-code-3000-vs-500k-lines/) (2026-07-02)
+- [Plan Mode 与设计先行：让 AI 先想再做](https://blog.baifan.site/claude-code-plan-mode/) (2026-06-16)
+- [MCP 协议：AI 工具互联的 USB-C](https://blog.baifan.site/claude-code-mcp-protocol/) (2026-06-12)
+- [多代理架构：分叉-汇聚模式的协作艺术](https://blog.baifan.site/claude-code-multi-agent-architecture/) (2026-06-09)
+- [Skill 的本质：可复用的专业知识封装](https://blog.baifan.site/claude-code-skills-system/) (2026-06-05)
+- [AI 的记忆系统：四种记忆类型与语义召回](https://blog.baifan.site/claude-code-memory-system/) (2026-06-02)
+- [上下文压缩：让 AI 拥有"无限记忆"的四种手段](https://blog.baifan.site/claude-code-context-compression/) (2026-05-23)
+- [权限与安全：让 AI 有破坏力但不失控](https://blog.baifan.site/claude-code-permissions-security/) (2026-05-20)
+- [System Prompt 工程：800 行提示词背后的设计决策](https://blog.baifan.site/claude-code-system-prompt-engineering/) (2026-05-16)
+- [工具即能力：AI Agent 的工具系统设计哲学](https://blog.baifan.site/claude-code-tool-system-design/) (2026-05-12)
+- [AI 编程助手的灵魂：Think-Act-Observe 循环](https://blog.baifan.site/claude-code-think-act-observe-loop/) (2026-05-07)
+### 《经济学人》札记
+- [《经济学人》2025年11月15日刊](https://blog.baifan.site/economist-20251115-taiwan-boom/) (2025-12-22)
+- [当世界开始重新洗牌：读《经济学人》2025年11月8日刊](https://blog.baifan.site/economist-2025-11-world-rebalancing/) (2025-10-21)
+- [经济学人2025年11月刊深度分析：全球经济趋势与地缘政治格局解读](https://blog.baifan.site/economist-202511-global-analysis/) (2025-09-09)
 ### 项目设计文档
-- [时间线记录器：从MVP到可扩展的技术架构设计](https://byronfinn.github.io/time-line-editor-architecture-design/) (2025-07-14)
-
+- [时间线记录器：从MVP到可扩展的技术架构设计](https://blog.baifan.site/time-line-editor-architecture-design/) (2025-07-14)
 ## AI技术
 
-### [多 Agent 协作的技术内核：价值来自结构，不是并发](https://byronfinn.github.io/multi-agent-technical-core/)
+### [多 Agent 协作的技术内核：价值来自结构，不是并发](https://blog.baifan.site/multi-agent-technical-core/)
 Date: 2026-08-12
 Tags: 多Agent, AI Agent, 架构设计, 上下文管理, 状态机
 
 多 Agent 协作系统的技术内核拆解：生产与验证的对抗分离、上下文的显式隔离、状态外化与记忆沉淀。为什么没有结构的多 Agent 只是更贵的并发，以及这套方案自己没答全的六个问题。
 
-### [AI Agent 运行时动态干预的思考](https://byronfinn.github.io/ai-agent-runtime-dynamic-intervention/)
+### [AI Agent 运行时动态干预的思考](https://blog.baifan.site/ai-agent-runtime-dynamic-intervention/)
 Date: 2026-07-27
-Tags: AI Agent, 运行时动态干预, ReAct, OpenClaw, LangGraph
+Tags: AI Agent, 运行时动态干预, ReAct, OpenClaw, LangGraph, SWE-PRM, Harness 编排层, 人机协作, Agent 架构
 
 AI Agent 一旦开始执行就无法中途干预，这是当前架构的致命盲区。分析 LangGraph interrupt()、OpenClaw /steer、SWE-PRM 等五种方案，提出异步消息队列、分层回滚、PRM 自动纠偏等五层干预架构。
 
-### [AI Agent 的 Skill 和 MCP，哪些值得装](https://byronfinn.github.io/ai-agent-skills-mcp-review/)
+### [AI Agent 的 Skill 和 MCP，哪些值得装](https://blog.baifan.site/ai-agent-skills-mcp-review/)
 Date: 2026-07-20
 Tags: AI Agent, MCP, Skill, 工具推荐, 开发效率
 
 个人用了大半年的 AI Agent Skill 和 MCP 工具盘点，从思考推理到工程 DevOps 按场景分类，附真实使用评价和安装说明
 
-### [Agent 面试题：哪些问题能筛出真干活的人](https://byronfinn.github.io/agent-interview-questions/)
+### [Agent 面试题：哪些问题能筛出真干活的人](https://blog.baifan.site/agent-interview-questions/)
 Date: 2026-07-13
-Tags: Agent, 面试, 系统设计, 工程实践, AI系统
+Tags: Agent, 面试, 系统设计, 工程实践, AI系统, 招聘
 
 面了十几个 Agent 方向的候选人之后，一个感觉越来越强烈。五个面试问题，回答的细节决定了是真干过还是背概念。多 Agent 架构、通信、错误处理、状态管理、tool calling，每个都有明显的信号。
 
-### [Claude Science 逆向：从 54 张表到中药现代化](https://byronfinn.github.io/ai-agent-platform-to-tcm-future/)
+### [Claude Science 逆向：从 54 张表到中药现代化](https://blog.baifan.site/ai-agent-platform-to-tcm-future/)
 Date: 2026-02-20
 Tags: Claude Science, 逆向工程, TCMSP, AI Agent, Agent Runtime
 
 逆向拆解 Claude Science 的架构设计，思考这些思路与 TCMSP AI-native 中药平台的交汇点。
 
-### [深度解读 TencentDB Agent Memory：让 AI Agent 真正拥有分层记忆](https://byronfinn.github.io/tencentdb-agent-memory-deep-dive/)
+### [深度解读 TencentDB Agent Memory：让 AI Agent 真正拥有分层记忆](https://blog.baifan.site/tencentdb-agent-memory-deep-dive/)
 Date: 2026-02-03
 Tags: AI Agent, 长期记忆, RAG, TencentDB
 
 TencentDB Agent Memory 是腾讯开源的 Agent 长期记忆框架，通过 L0-L3 语义金字塔和符号化 Mermaid 画布，实现最高 61.38% 的 Token 节省和 51.52% 的成功率提升。
 
-### [Prompt Optimizer：一个让你写出更好 Prompt 的开源利器](https://byronfinn.github.io/prompt-optimizer-tool-guide/)
+### [Prompt Optimizer：一个让你写出更好 Prompt 的开源利器](https://blog.baifan.site/prompt-optimizer-tool-guide/)
 Date: 2026-01-20
 Tags: Prompt, AI工具, 开源, 提示词工程, 效率工具
 
 Prompt Optimizer 是一款开源的 AI 提示词优化工具，支持一键优化、多轮迭代、对比评估和多模型接入，帮你系统性地提升 Prompt 质量。
 
-### [PDF2Markdown - 大型PDF文档智能文章提取工具完全指南](https://byronfinn.github.io/pdf2markdown-intelligent-pdf-extraction-tool/)
+### [PDF2Markdown - 大型PDF文档智能文章提取工具完全指南](https://blog.baifan.site/pdf2markdown-intelligent-pdf-extraction-tool/)
 Date: 2025-11-25
 Tags: OCR, PaddleOCR, Ollama, 文档处理
 
 深入解析PDF2Markdown智能PDF处理工具，支持大型扫描件文档处理，结合PaddleOCR、Tesseract与Ollama AI大模型，实现精准文章内容提取。包含完整安装配置、性能优化、技术架构和实战应用指南。
 
-## 深度思考
+### [RAG系统完全指南——从零搭建本地检索增强生成系统](https://blog.baifan.site/rag-system-complete-guide-langchain-ollama-pgvector/)
+Date: 2025-08-27
+Tags: RAG, LangChain, Ollama, 向量数据库
 
-### [团队分工的思考](https://byronfinn.github.io/team-roles-evolution-ai-era/)
-Date: 2026-08-03
-Tags: AI时代, 团队管理, 软件工程, 组织架构, AI编程
+AI教程第五篇：RAG系统完全指南。深入讲解LangChain+Ollama+pgvector搭建本地RAG系统，涵盖文档切分、向量化、检索优化、提示工程等核心技术。包含完整实战代码、面试指南和排错清单，助你掌握企业级RAG应用开发。
 
-AI让写代码变便宜，团队分工逻辑随之改变。本文提出按软件生命周期划分的五种角色——原型师、构建者、维护者、扩展者、收尾人。稀缺从'写'变成了'判断'，这五种判断恰好对应五个角色，AI不会替掉它们，只会放大它们。
+### [CPU/GPU 与大模型训练](https://blog.baifan.site/gpu-accelerated-training-cuda-complete-guide/)
+Date: 2025-08-20
+Tags: GPU, CUDA, PyTorch, 模型训练
 
-### [AI 时代的精神病：当 MTTR 狂热撞上系统韧性](https://byronfinn.github.io/ai-mttr-mtbf-resilience-psychosis/)
-Date: 2026-02-24
-Tags: AI, 软件工程, 系统设计, 基础设施, 技术债务
+AI教程第四篇：深度学习GPU加速实战指南。涵盖CPU/GPU架构对比、张量与精度量化、CUDA编程实战、PyTorch训练工作流、硬件选型与显存优化，包含面试问答与排错清单，助你掌握AI模型训练的核心工程技能。
 
-从基础设施 MTBF vs MTTR 的老争论出发，看当前 AI 编程狂热中一个被忽略的问题：当局部指标全绿灯的时候，系统的全局风险可能正在积累，而没人注意到。
+### [Prompt Engineering完全指南：从提示工程到上下文工程的实战教程](https://blog.baifan.site/prompt-engineering-context-management-complete-guide/)
+Date: 2025-08-13
+Tags: Prompt工程, RAG, 大模型, AI应用
 
-### [AI 编程新思路：从 UI 倒推 PRD，让需求可视化](https://byronfinn.github.io/ui-first-ai-programming-prd/)
-Date: 2026-02-17
-Tags: AI编程, PRD, Vibe Coding, UI设计
+全面掌握Prompt Engineering与Context Engineering核心技术：从基础提示词设计到高级上下文管理，包括RAG、上下文优化、持久化等技术。解决实际开发中的污染问题、注意力偏移等挑战，提升AI应用效果。
 
-探讨一种 AI 编程的逆向工作流：先构建 UI 原型，再从视觉材料反向推导 PRD，用可视化手段消除需求理解偏差，减少返工并提高交付质量。
+### [Transformer架构深度解析：注意力机制与AI大模型的核心技术](https://blog.baifan.site/transformer-attention-mechanism-deep-dive/)
+Date: 2025-08-05
+Tags: Transformer, 注意力机制, 大模型, 神经网络
 
-### [永生，只是永久的孤独](https://byronfinn.github.io/immortality-eternal-loneliness/)
-Date: 2025-12-05
-Tags: 哲学, 生命, 价值观, 科技伦理
+深入解析Transformer架构核心技术：自注意力机制、多头注意力、位置编码等核心组件。详细阐述Query/Key/Value原理，理解GPT、BERT等大模型的技术基础，掌握现代AI的核心架构。
 
-从中国长寿科技发展谈起，探讨人类对永生的执念与生命意义的本质。当科技让活到150岁成为可能，我们是否真的准备好面对永恒的孤独？死亡的边界才让生命有了意义。
+### [AI专业名词解释表：270+术语完全指南与AI技术体系词典](https://blog.baifan.site/ai-technical-glossary-complete-guide/)
+Date: 2025-07-30
+Tags: 大模型, 机器学习, 深度学习, 术语词典
 
-### [连命，都没人要了：机器时代人的价值困境](https://byronfinn.github.io/when-even-death-is-out-of-work/)
-Date: 2025-11-04
-Tags: 社会观察, 技术反思, 价值观
+最全面的AI专业名词解释表，涵盖270+个AI术语：从Token、Transformer到RAG、Prompt工程。系统学习AI大模型技术体系，包含12大分类和A-Z速查表，是AI学习者的必备词典。
 
-在机器人大规模应用的时代背景下，深入思考当机器取代人类劳动时，底层劳动者的'被需要感'消失所带来的存在主义困境。
+### [AI大模型完全指南：从零基础到Token与向量的深度解析](https://blog.baifan.site/ai-llm-tutorial-token-vector-basics/)
+Date: 2025-07-22
+Tags: 大模型, Token, 向量, Transformer
 
-### [AI 不确定性与及时行乐：一个普通人的思考](https://byronfinn.github.io/ai-uncertainty-and-carpe-diem/)
-Date: 2025-10-28
-Tags: 大模型, 人工智能, 思考
-
-深度分析 AI 技术发展的两种假设路径：不断突破取代人工工作，或无法突破导致泡沫破灭。探讨面对未来巨大不确定性时，普通人为什么应该选择及时行乐的生活态度。
-
+AI大模型完全指南：从零基础到Token与向量的深度解析。系统学习AI核心技术原理，包括Token机制、向量表示、Transformer架构等关键概念。深入理解LLM工作机制，掌握人工智能基础理论，通过实例和图表详细阐述AI应用开发的核心要点，为深度学习和AI实践奠定扎实基础。
 ## 技术实践
 
-### [Cursor Local (Private Inference 版）全平台下载地址](https://byronfinn.github.io/cursor-local-download/)
+### [Cursor Local (Private Inference 版）全平台下载地址](https://blog.baifan.site/cursor-local-download/)
 Date: 2026-08-18
-Tags: Cursor Local, Private Inference, 本地推理, 下载
+Tags: Cursor, Cursor Local, Private Inference, 本地推理, 下载
 
 Cursor Local（Private Inference 版）全平台最新构建直链汇总：Windows、macOS、Linux 各架构下载地址，链接永远指向 local 版最新版本。
 
-### [给 AI 写一本法典——从“向它许愿”到“让它守规矩”](https://byronfinn.github.io/give-ai-a-rulebook/)
+### [给 AI 写一本法典——从“向它许愿”到“让它守规矩”](https://blog.baifan.site/give-ai-a-rulebook/)
 Date: 2026-08-05
-Tags: dev-skills, AI 工作流, Claude Skills, 子代理, 测试驱动开发
+Tags: dev-skills, AI 工作流, Claude Skills, AI Agent, 子代理, PRD, 测试驱动开发
 
 同一个需求，直接让 AI 写和先对齐再动手，用的是同一个模型，差距在于有没有一套可执行的规矩。dev-skills 把流程阶段变成 12 个技能，加载后 AI 就知道规矩。
 
-### [一个 PPT Agent 的完整拆解：从需求调研到 SVG 出图](https://byronfinn.github.io/ppt-agent-workflow-deep-dive/)
+### [Agent 面试题：哪些问题能筛出真干活的人](https://blog.baifan.site/agent-interview-questions/)
+Date: 2026-07-13
+Tags: Agent, 面试, 系统设计, 工程实践, AI系统, 招聘
+
+面了十几个 Agent 方向的候选人之后，一个感觉越来越强烈。五个面试问题，回答的细节决定了是真干过还是背概念。多 Agent 架构、通信、错误处理、状态管理、tool calling，每个都有明显的信号。
+
+### [Trellis 做了什么，能不能解决 AI 编码的规范问题](https://blog.baifan.site/trellis-ai-coding-framework-guide/)
+Date: 2026-04-30
+Tags: AI, Trellis, Claude Code, Cursor, 编码规范, 开发工具, Spec驱动
+
+实测 Trellis AI 编码框架：通过 Spec 驱动 + 跨会话记忆 + 自动工作流，让 AI 按项目规范写代码，而不是每次随机发挥。
+
+### [一个 PPT Agent 的完整拆解：从需求调研到 SVG 出图](https://blog.baifan.site/ppt-agent-workflow-deep-dive/)
 Date: 2026-04-28
-Tags: AI, PPT, Agent, SVG, Gemini
+Tags: AI, PPT, Agent, SVG, Gemini, Bento Grid, 提示词工程
 
 拆解一个商业级 PPT Agent 的四阶段工作流：需求调研、资料检索、策划稿、SVG 设计，附可复现的提示词和工程思路。
 
-### [Tmux 用到的就这些：会话、分屏、 detach](https://byronfinn.github.io/tmux-practical-guide/)
+### [Tmux 用到的就这些：会话、分屏、 detach](https://blog.baifan.site/tmux-practical-guide/)
 Date: 2026-04-21
 Tags: Tmux, Linux, 终端, SSH, VPS
 
 Tmux 终端复用器的实际用法：会话 detach/attach、窗格分屏、窗口管理，只记日常用到的操作，附速查图。
 
-### [AI API 的后缀是什么，为什么要这样设计](https://byronfinn.github.io/ai-api-suffixes-explained/)
+### [AI API 的后缀是什么，为什么要这样设计](https://blog.baifan.site/ai-api-suffixes-explained/)
 Date: 2026-04-14
-Tags: AI, API, OpenAI, Claude, Gemini
+Tags: AI, API, OpenAI, Claude, Gemini, 协议设计, REST API
 
 从 /v1/completions 到 /v1/responses，AI API 的后缀规定了请求和响应的数据结构，这篇文章把这条链路讲清楚。
 
-### [Oracle 白送 4 核 24G 服务器，注册到跑起来一次讲清](https://byronfinn.github.io/oracle-free-vps-guide/)
+### [Oracle 白送 4 核 24G 服务器，注册到跑起来一次讲清](https://blog.baifan.site/oracle-free-vps-guide/)
 Date: 2026-04-07
 Tags: VPS, Oracle Cloud, Linux, 服务器, 自建服务
 
 Oracle Always Free 计划提供 4 核 24GB ARM 服务器，不限期不扣钱。从注册避坑、区域选择、ARM 实例创建到保活策略，一篇搞定。
 
-### [Codex 一直 Reconnecting，四种解法](https://byronfinn.github.io/codex-websocket-reconnect-fix/)
+### [Codex 一直 Reconnecting，四种解法](https://blog.baifan.site/codex-websocket-reconnect-fix/)
 Date: 2026-03-31
-Tags: Codex, WebSocket, ChatGPT, 代理, AI编程
+Tags: Codex, WebSocket, ChatGPT, 代理, AI编程, 网络配置
 
 Codex App 频繁出现 Reconnecting 1/5 的原因和四种解决方案：关 WebSocket、自定义 provider、TUN 模式、env 代理。
 
-### [第三方 Telegram 客户端大合集：谁在维护，谁该避坑](https://byronfinn.github.io/third-party-telegram-clients/)
+### [第三方 Telegram 客户端大合集：谁在维护，谁该避坑](https://blog.baifan.site/third-party-telegram-clients/)
 Date: 2026-03-24
-Tags: Telegram, 第三方客户端, Android, iOS, 开源
+Tags: Telegram, 第三方客户端, Android, iOS, 开源, 隐私安全
 
 按平台整理的第三方 Telegram 客户端清单，涵盖 Android、iOS、桌面端，标注开源/闭源状态、维护活跃度和安全风险等级，附选型建议和避坑指南。
 
-### [苹果外区 ID 注册，四条路径和防送回国区的办法](https://byronfinn.github.io/apple-us-id-registration/)
-Date: 2026-03-17
-Tags: Apple, 美区ID, 土区ID, App Store, iOS, 教程, 注册
-
-四种苹果外区 Apple ID 注册方法实测对比（美区/土区/日区通用），加上防止首次登录被送回国区的完整方案。
-
-### [接码平台体验分享-无广告纯享版](https://byronfinn.github.io/sms-verification-platforms/)
+### [接码平台体验分享-无广告纯享版](https://blog.baifan.site/sms-verification-platforms/)
 Date: 2026-03-10
-Tags: 接码, 临时号码, SMS, Twilio, httpSMS
+Tags: 接码, 临时号码, SMS, Twilio, httpSMS, ZUSMS, eSIM Plus, 开发工具
 
 ZUSMS、eSIM Plus、httpSMS、Twilio 四个接码平台的实测对比，截止 2026 年 5 月可用状态和使用建议。
 
-### [多智能体协作的工程问题：触发、拓扑和收口](https://byronfinn.github.io/multi-agent-collaboration-engineering/)
+### [多智能体协作的工程问题：触发、拓扑和收口](https://blog.baifan.site/multi-agent-collaboration-engineering/)
 Date: 2026-03-03
-Tags: AI, Agent, 多智能体, Codex, Claude Code
+Tags: AI, Agent, 多智能体, Codex, Claude Code, OpenClaw, Hermes, Qoder
 
 从 Codex、Claude Code、OpenClaw、Hermes、Qoder 的实际设计出发，拆解多智能体系统在触发、拓扑、上下文隔离和结果合并上的工程取舍。
 
-### [Codex App SSH 远程开发配置指南](https://byronfinn.github.io/codex-ssh-remote-development-guide/)
+### [Claude Science 逆向：从 54 张表到中药现代化](https://blog.baifan.site/ai-agent-platform-to-tcm-future/)
+Date: 2026-02-20
+Tags: Claude Science, 逆向工程, TCMSP, AI Agent, Agent Runtime
+
+逆向拆解 Claude Science 的架构设计，思考这些思路与 TCMSP AI-native 中药平台的交汇点。
+
+### [Codex App SSH 远程开发配置指南](https://blog.baifan.site/codex-ssh-remote-development-guide/)
 Date: 2026-02-10
 Tags: Codex, SSH, 远程开发, AI编程
 
 详细讲解如何在 Codex App 中通过 SSH 连接远程服务器进行开发，涵盖配置步骤、SSH Host 设置、远程环境准备及常见问题排查。
 
-### [Linux 内存不足？ZRAM 压缩方案详解与实战配置](https://byronfinn.github.io/zram-memory-optimization-linux/)
+### [Linux 内存不足？ZRAM 压缩方案详解与实战配置](https://blog.baifan.site/zram-memory-optimization-linux/)
 Date: 2026-01-31
 Tags: Linux, ZRAM, 内存优化, VPS
 
 对比 SWAP 与 ZRAM 的原理差异，详解 ZRAM 在低内存 Linux 设备上的适用场景、配置方法与混合策略，帮助你选择最优内存扩展方案。
 
-### [VPS圈知识扫盲：机圈黑话大全](https://byronfinn.github.io/vps-glossary-jargon-guide/)
+### [VPS圈知识扫盲：机圈黑话大全](https://blog.baifan.site/vps-glossary-jargon-guide/)
 Date: 2026-01-27
 Tags: VPS, Linux, 服务器
 
 全面整理VPS与云服务器圈子中的黑话术语，从MJJ、小鸡、母鸡到线路、商家缩写，一份读懂机圈生态的入门百科。
 
-### [Pi Coding Agent 完全指南：极简主义 Coding Agent 的终极玩法](https://byronfinn.github.io/pi-coding-agent-complete-guide/)
+### [Pi Coding Agent 完全指南：极简主义 Coding Agent 的终极玩法](https://blog.baifan.site/pi-coding-agent-complete-guide/)
 Date: 2026-01-13
 Tags: Pi Coding Agent, AI编程, CLI工具, 大模型
 
 Pi Coding Agent 是一个极简且高度可扩展的终端 Coding Agent，通过 extensions、skills 和 packages 实现无限可能。本文从安装到高阶自定义，全面覆盖其核心功能与最佳实践。
 
-### [自建 AI API 全链路：从域名邮箱到 Sub2API](https://byronfinn.github.io/self-hosted-ai-api-pipeline/)
+### [自建 AI API 全链路：从域名邮箱到 Sub2API](https://blog.baifan.site/self-hosted-ai-api-pipeline/)
 Date: 2026-01-06
 Tags: Cloudflare, Sub2API, 自建服务, AI API
 
 从零开始搭建自建 AI API 全链路，涵盖域名邮箱、Cloudflare Workers、接码平台、注册机到 Sub2API 的完整部署教程。
 
-### [利用 MCP 实现 Claude Skills 的渐进式披露机制: 复用Claude Code Skill in Anywhere](https://byronfinn.github.io/mcp-claude-skills-progressive-disclosure/)
+### [MCP 实现 Claude Skills 渐进式披露：Skill in Anywhere](https://blog.baifan.site/mcp-claude-skills-progressive-disclosure/)
 Date: 2025-12-26
 Tags: MCP, 大模型, AI Agent, 上下文管理
 
 详细介绍如何利用 MCP 协议实现类似 Claude Skills 的动态能力加载机制，包括技术架构设计、工程验证和完整实现方案。涵盖渐进式披露、上下文优化、跨 Agent 兼容性等关键技术要点。
 
-### [分布式系统中的心跳机制：原理、实现与最佳实践](https://byronfinn.github.io/distributed-system-heartbeat-mechanism/)
+### [PDF2Markdown - 大型PDF文档智能文章提取工具完全指南](https://blog.baifan.site/pdf2markdown-intelligent-pdf-extraction-tool/)
+Date: 2025-11-25
+Tags: OCR, PaddleOCR, Ollama, 文档处理
+
+深入解析PDF2Markdown智能PDF处理工具，支持大型扫描件文档处理，结合PaddleOCR、Tesseract与Ollama AI大模型，实现精准文章内容提取。包含完整安装配置、性能优化、技术架构和实战应用指南。
+
+### [分布式系统中的心跳机制：原理、实现与最佳实践](https://blog.baifan.site/distributed-system-heartbeat-mechanism/)
 Date: 2025-09-27
 Tags: 分布式系统, 心跳机制, Kubernetes, 微服务
 
 详细介绍分布式系统中心跳机制的核心原理、实现方法和最佳实践，包括心跳间隔配置、故障检测算法、Gossip协议以及Kubernetes等实际应用场景。
 
-### [Docker安装PostgreSQL+pgvector完整教程：AI向量数据库快速部署指南](https://byronfinn.github.io/postgresql-pgvector-docker-installation-guide/)
+### [Docker安装PostgreSQL+pgvector完整教程：AI向量数据库快速部署指南](https://blog.baifan.site/postgresql-pgvector-docker-installation-guide/)
 Date: 2025-09-02
 Tags: PostgreSQL, Docker, 向量数据库
 
 详细介绍在Docker容器中部署PostgreSQL+pgvector向量数据库的完整流程，包括环境准备、配置文件编写、初始化脚本和功能测试，为AI应用和RAG系统提供高效的向量存储解决方案。
 
+### [时间线记录器：从MVP到可扩展的技术架构设计](https://blog.baifan.site/time-line-editor-architecture-design/)
+Date: 2025-07-14
+Tags: Go, 系统架构, SQLite, 设计, API设计, 技术文档, SvelteKit
+
+一份关于“时间线记录器”应用的详细产品需求与技术架构设计文档。涵盖从MVP到可扩展功能规划，包括用户故事、领域模型、API设计、技术栈选型（Go, SvelteKit, SQLite）、以及部署策略，旨在构建一款本地优先、数据主权可控的个人记录工具。
+## 技术思考
+
+### [AI Agent 运行时动态干预的思考](https://blog.baifan.site/ai-agent-runtime-dynamic-intervention/)
+Date: 2026-07-27
+Tags: AI Agent, 运行时动态干预, ReAct, OpenClaw, LangGraph, SWE-PRM, Harness 编排层, 人机协作, Agent 架构
+
+AI Agent 一旦开始执行就无法中途干预，这是当前架构的致命盲区。分析 LangGraph interrupt()、OpenClaw /steer、SWE-PRM 等五种方案，提出异步消息队列、分层回滚、PRM 自动纠偏等五层干预架构。
+## 技术管理
+
+### [团队分工的思考](https://blog.baifan.site/team-roles-evolution-ai-era/)
+Date: 2026-08-03
+Tags: AI时代, 团队管理, 软件工程, 组织架构, AI编程, 团队协作, 深度思考
+
+AI让写代码变便宜，团队分工逻辑随之改变。本文提出按软件生命周期划分的五种角色——原型师、构建者、维护者、扩展者、收尾人。稀缺从'写'变成了'判断'，这五种判断恰好对应五个角色，AI不会替掉它们，只会放大它们。
+## 政治
+
+### [信访新规：中央与地方的冲突加剧了](https://blog.baifan.site/petition-new-rules-central-local-cost-shift/)
+Date: 2025-12-19
+Tags: 信访新规, 央地关系, 基层治理, 经济下行
+
+7月1日新版信访规定不只是限制上访，而是央地关系的一次成本重新分配。权力上收、责任下压、成本地方化，地方成了中央的缓冲垫。
+## 教程
+
+### [苹果外区 ID 注册，四条路径和防送回国区的办法](https://blog.baifan.site/apple-us-id-registration/)
+Date: 2026-03-17
+Tags: Apple, 美区ID, 土区ID, App Store, iOS, 教程, 注册
+
+四种苹果外区 Apple ID 注册方法实测对比（美区/土区/日区通用），加上防止首次登录被送回国区的完整方案。
 ## 时事分析
 
-### [2026放假通知](https://byronfinn.github.io/china-2026-official-holidays-schedule/)
+### [《经济学人》2025年11月15日刊](https://blog.baifan.site/economist-20251115-taiwan-boom/)
+Date: 2025-12-22
+Tags: 经济学人, 地缘政治, 经济观察
+
+《经济学人》2025年11月15日刊深度解读：台湾经济崛起背后的半导体优势与地缘风险，全球贸易格局重塑下的供应链脆弱性，以及AI驱动的生产力变革对劳动力市场的冲击。
+
+### [2026放假通知](https://blog.baifan.site/china-2026-official-holidays-schedule/)
 Date: 2025-12-12
 Tags: 假期, 政府通知, 生活
 
 国务院办公厅发布2026年部分节假日安排通知，涵盖元旦、春节、清明节、劳动节、端午节、中秋节和国庆节的放假调休日期。全文详细列出了7个法定节假日的具体放假时间、调休安排和放假天数，包括春节9天长假、国庆7天假期等重要信息，为民众合理安排假期计划提供官方指导。
 
-### [黄金商业趋势分析：全球经济不确定性下的贵金属市场](https://byronfinn.github.io/gold-business-trend-analysis/)
+### [黄金商业趋势分析：全球经济不确定性下的贵金属市场](https://blog.baifan.site/gold-business-trend-analysis/)
 Date: 2025-11-28
 Tags: 黄金, 投资, 经济分析, 避险资产
 
 深度分析当前黄金市场的商业趋势，探讨全球经济不确定性、通胀预期、央行政策等因素对贵金属价格的影响，以及投资者和企业的应对策略。
 
-### [短剧工厂里的光与疲惫](https://byronfinn.github.io/short-drama-industry-fatigue/)
+### [短剧工厂里的光与疲惫](https://blog.baifan.site/short-drama-industry-fatigue/)
 Date: 2025-11-18
 Tags: 短剧, 文化产业, 影视行业
 
 深度报道短剧行业现状：从西安、郑州的拍摄现场到行业生态，揭示短剧风口背后的城市疲倦与从业者生存现状。
 
-### [县城的暮光：一个被遮蔽的中国](https://byronfinn.github.io/china-county-economy-twilight/)
+### [县城的暮光：一个被遮蔽的中国](https://blog.baifan.site/china-county-economy-twilight/)
 Date: 2025-11-11
 Tags: 县域经济, 城镇化, 房地产, 就业
 
 深度分析中国县城经济现状，探讨工厂倒闭、房地产低迷、电商冲击对县域经济的影响，以及县城权力结构和财政困境背后的社会变迁。
 
-### [巴菲特2025年致股东信：告别与传承](https://byronfinn.github.io/berkshire-hathaway-shareholder-letter-2025/)
+### [巴菲特2025年致股东信：告别与传承](https://blog.baifan.site/berkshire-hathaway-shareholder-letter-2025/)
 Date: 2025-10-31
 Tags: 巴菲特, 价值投资, 投资哲学, 商业分析
 
 沃伦·巴菲特2025年致股东信，宣布将不再撰写年度报告，回顾人生经历，讨论财富传承计划，并对伯克希尔未来前景进行展望。
 
-### [特朗普与纽约新市长的对决：一场政治风暴的序幕](https://byronfinn.github.io/trump-vs-mamdani-nyc-showdown/)
+### [当世界开始重新洗牌：读《经济学人》2025年11月8日刊](https://blog.baifan.site/economist-2025-11-world-rebalancing/)
+Date: 2025-10-21
+Tags: 经济学人, 地缘政治, 经济观察
+
+《经济学人》这期说世界在再平衡，但更像是场没人知道规则的牌局。美国、中国、欧洲，还有那个被吹上天的AI，都在各自摸牌。
+
+### [特朗普与纽约新市长的对决：一场政治风暴的序幕](https://blog.baifan.site/trump-vs-mamdani-nyc-showdown/)
 Date: 2025-10-14
 Tags: 美国政治, 地缘政治, 纽约
 
 深度解析特朗普总统与纽约市新当选市长佐兰·马姆达尼之间的政治对峙。文章探讨了双方的公开言论与私下评估，分析了联邦资金、城市自主权等关键冲突点，并揭示了这场地方与中央的权力博弈如何成为全国政治的风向标。
 
-### [稀土战争：在地缘政治重构中中国的战略自信与资源主权](https://byronfinn.github.io/rare-earth-war-china-strategic-confidence/)
+### [稀土战争：在地缘政治重构中中国的战略自信与资源主权](https://blog.baifan.site/rare-earth-war-china-strategic-confidence/)
 Date: 2025-10-07
 Tags: 地缘政治, 国际关系, 战略资源
 
 深度分析全球稀土产业格局，探讨中国在地缘政治博弈中的资源主权优势与战略定力。从产业链完整性、技术自立到国际合作，全面解读稀土作为战略资源的重要意义。
 
-### [当TikTok遇上特朗普：做多错多，何以关关难过关关过](https://byronfinn.github.io/tiktok-trump-geopolitical-analysis/)
+### [当TikTok遇上特朗普：做多错多，何以关关难过关关过](https://blog.baifan.site/tiktok-trump-geopolitical-analysis/)
 Date: 2025-09-23
 Tags: 地缘政治, 社交媒体, 中美关系, 科技行业
 
 深度解析TikTok在特朗普政府时期的生存策略、内部管理危机和地缘政治博弈。基于Emily Baker-White新书《Every Screen on the Planet》的调查报道，揭示TikTok内部权斗和管理层误判如何影响其在美发展，探讨科技公司在大国博弈中的生存之道。
 
-### [华尔街日报深度分析：英伟达芯片禁令与假期出行危机背后的经济信号](https://byronfinn.github.io/wsj-nvidia-chip-ban-economic-analysis/)
+### [华尔街日报深度分析：英伟达芯片禁令与假期出行危机背后的经济信号](https://blog.baifan.site/wsj-nvidia-chip-ban-economic-analysis/)
 Date: 2025-09-16
 Tags: 华尔街日报, 英伟达, 中美科技博弈, 经济分析
 
 深度解读华尔街日报2025年11月4日头条，分析英伟达芯片禁令、假期出行危机、电费上涨等关键经济事件。探讨中美科技博弈、政府预算问题对企业的影响，以及贸易保护措施的实际效果，提供专业财经洞察。
 
-## 政治
+### [经济学人2025年11月刊深度分析：全球经济趋势与地缘政治格局解读](https://blog.baifan.site/economist-202511-global-analysis/)
+Date: 2025-09-09
+Tags: 经济学人, 地缘政治, 经济分析, 国际关系
 
-### [信访新规：中央与地方的冲突加剧了](https://byronfinn.github.io/petition-new-rules-central-local-cost-shift/)
-Date: 2025-12-19
-Tags: 信访新规, 央地关系, 基层治理, 经济下行
+深度解读《经济学人》2025年11月刊核心观点，分析中美科技博弈、全球经济走势、地缘政治变化等关键议题。涵盖政治外交、经济金融、科技产业、社会民生等多个维度，为读者提供专业的国际关系洞察和经济学分析。
+## 深度思考
 
-7月1日新版信访规定不只是限制上访，而是央地关系的一次成本重新分配。权力上收、责任下压、成本地方化，地方成了中央的缓冲垫。
+### [团队分工的思考](https://blog.baifan.site/team-roles-evolution-ai-era/)
+Date: 2026-08-03
+Tags: AI时代, 团队管理, 软件工程, 组织架构, AI编程, 团队协作, 深度思考
+
+AI让写代码变便宜，团队分工逻辑随之改变。本文提出按软件生命周期划分的五种角色——原型师、构建者、维护者、扩展者、收尾人。稀缺从'写'变成了'判断'，这五种判断恰好对应五个角色，AI不会替掉它们，只会放大它们。
+
+### [AI 编程工具的未来：从 Copilot 到 Autonomous Agent](https://blog.baifan.site/ai-coding-tools-future-copilot-to-autonomous-agent/)
+Date: 2026-07-06
+Tags: Claude Code, BYF, AI Agent, 软件工程, 开发范式, 开源, 行业趋势
+
+Claude Code 源码拆解系列收官之作：回顾 AI 编程工具从代码补全到自主代理的演进路径。探讨 CLAUDE.md “项目宪法" 带来的开发范式变革，以及 BYF 的 AGENTS.md 工程、ByfHarness SDK、vis 可视化调试对未来 Agent 开发的启示。
+
+### [3000 行 vs 50 万行：从玩具到产品的架构深渊](https://blog.baifan.site/claude-code-3000-vs-500k-lines/)
+Date: 2026-07-02
+Tags: Claude Code, BYF, AI Agent, 软件工程, 架构设计, 开源, 源码分析
+
+对比 claude-code-from-scratch 的 3000 行极简实现和 Claude Code 官方源码的 50 万行工程巨兽：从玩具到产品，架构深渊里藏着多少工程细节？BYF 作为中间的实战案例——一个真实项目的工程化决策和设计债清理经验。
+
+### [Plan Mode 与设计先行：让 AI 先想再做](https://blog.baifan.site/claude-code-plan-mode/)
+Date: 2026-06-16
+Tags: Claude Code, BYF, AI Agent, 开发流程, 设计先行, 开源, 源码分析
+
+拆解 Claude Code 的 Plan Mode：为什么“只读规划"模式能显著提高代码质量？读-想-写的分离为什么是 AI 编程的关键分水岭。BYF 在 ADR 0008 中主动移除了 Plan Mode，用自然语言 + 工具方案替代——这个反向案例同样值得深思。
+
+### [MCP 协议：AI 工具互联的 USB-C](https://blog.baifan.site/claude-code-mcp-protocol/)
+Date: 2026-06-12
+Tags: Claude Code, BYF, MCP, AI Agent, 协议设计, 开源, 源码分析
+
+拆解 Claude Code 的 MCP 协议集成：Model Context Protocol 为什么被称为“AI 工具互联的 USB-C"？JSON-RPC over stdio 的设计取舍。BYF 的 McpConnectionManager 和 /mcp-config 对话式配置如何让 MCP 更易用。
+
+### [多代理架构：分叉-汇聚模式的协作艺术](https://blog.baifan.site/claude-code-multi-agent-architecture/)
+Date: 2026-06-09
+Tags: Claude Code, BYF, AI Agent, 多代理, 架构设计, 开源, 源码分析
+
+拆解 Claude Code 的多代理架构：为什么一个 AI 干不过三个 AI？explore、plan、general 三种角色的分工逻辑，分叉-汇聚模式的协作机制。BYF 的前台子代理系统、/agent 实时查看器和 TaskEntry 判别联合的实践。
+
+### [Skill 的本质：可复用的专业知识封装](https://blog.baifan.site/claude-code-skills-system/)
+Date: 2026-06-05
+Tags: Claude Code, BYF, AI Agent, Skill, 提示词工程, 开源, 源码分析
+
+拆解 Claude Code 的 Skill 系统：可复用的专业知识封装。为什么 Skill 不是插件而是“提示词模块"？按需加载与全量注入的取舍。BYF 的 Skill 渐进式披露（ADR 0009）和 update-config 作为内置 Skill 的工程实践。
+
+### [AI 的记忆系统：四种记忆类型与语义召回](https://blog.baifan.site/claude-code-memory-system/)
+Date: 2026-06-02
+Tags: Claude Code, BYF, AI Agent, 记忆系统, 语义召回, 开源, 源码分析
+
+拆解 Claude Code 的记忆系统：用户记忆、反馈记忆、项目记忆、引用记忆——四种记忆类型如何协同工作，让 AI 跨会话记住你的偏好和项目约定。结合 BYF 的 Wire Records 事件溯源机制，看会话持久化和 vis 调试工具的设计。
+
+### [上下文压缩：让 AI 拥有"无限记忆"的四种手段](https://blog.baifan.site/claude-code-context-compression/)
+Date: 2026-05-23
+Tags: Claude Code, BYF, AI Agent, 上下文管理, 压缩策略, 开源, 源码分析
+
+拆解 Claude Code 的上下文压缩策略：四层管道如何在有限的上下文窗口里塞进尽可能多的有效信息。消息裁剪、对话压缩、窗口管理——AI 的“无限记忆"是精心设计的幻觉。BYF 的 Observation Masking 和 CacheStakingStrategy 在实践中验证了这些策略。
+
+### [权限与安全：让 AI 有破坏力但不失控](https://blog.baifan.site/claude-code-permissions-security/)
+Date: 2026-05-20
+Tags: Claude Code, BYF, AI Agent, 安全设计, 权限管理, 开源, 源码分析
+
+拆解 Claude Code 的权限系统设计：5 级权限模型如何平衡 AI 的自主性和用户的安全感。读、写、执行——不是所有操作都同等危险。结合 BYF 的 Approval 系统和生命周期 hooks，看真实项目如何校准信任刻度。
+
+### [System Prompt 工程：800 行提示词背后的设计决策](https://blog.baifan.site/claude-code-system-prompt-engineering/)
+Date: 2026-05-16
+Tags: Claude Code, BYF, AI Agent, Prompt Engineering, 系统提示词, 开源, 源码分析
+
+拆解 Claude Code 的 system prompt 工程：生产级 Agent 的提示词是上千行的精密架构，不是几句话。分析分层架构、占位符注入、行为约束、动态上下文设计，结合 BYF 的 PromptPlan 和 ephemeral injection 实践。
+
+### [工具即能力：AI Agent 的工具系统设计哲学](https://blog.baifan.site/claude-code-tool-system-design/)
+Date: 2026-05-12
+Tags: Claude Code, BYF, AI Agent, 架构设计, 工具系统, 开源, 源码分析
+
+拆解 Claude Code 的工具系统设计哲学：30 多个工具如何被组织、描述、调度。为什么工具描述的质量直接决定了 AI 能干什么、不能干什么，以及渐进式披露如何避免上下文爆炸。结合 BYF（Be Your Friend）的 Kaos 执行环境抽象与 TaskEntry 设计债清理，看真实项目如何落地这些思想。
+
+### [AI 编程助手的灵魂：Think-Act-Observe 循环](https://blog.baifan.site/claude-code-think-act-observe-loop/)
+Date: 2026-05-07
+Tags: Claude Code, BYF, AI Agent, 架构设计, Agent Loop, 开源, 源码分析
+
+拆解 Claude Code 源码的核心架构思想：Think-Act-Observe 循环如何让 AI 从聊天机器人变成真正的编程助手。从 ReAct 模式到生产级实现，结合 BYF（Be Your Friend）开源项目的实战经验，看一个简单循环如何撑起整个 Agent 的能力。
+
+### [AI 时代的精神病：当 MTTR 狂热撞上系统韧性](https://blog.baifan.site/ai-mttr-mtbf-resilience-psychosis/)
+Date: 2026-02-24
+Tags: AI, 软件工程, 系统设计, 基础设施, 技术债务, vibe-coding
+
+从基础设施 MTBF vs MTTR 的老争论出发，看当前 AI 编程狂热中一个被忽略的问题：当局部指标全绿灯的时候，系统的全局风险可能正在积累，而没人注意到。
+
+### [AI 编程新思路：从 UI 倒推 PRD，让需求可视化](https://blog.baifan.site/ui-first-ai-programming-prd/)
+Date: 2026-02-17
+Tags: AI编程, PRD, Vibe Coding, UI设计
+
+探讨一种 AI 编程的逆向工作流：先构建 UI 原型，再从视觉材料反向推导 PRD，用可视化手段消除需求理解偏差，减少返工并提高交付质量。
+
+### [永生，只是永久的孤独](https://blog.baifan.site/immortality-eternal-loneliness/)
+Date: 2025-12-05
+Tags: 哲学, 生命, 价值观, 科技伦理
+
+从中国长寿科技发展谈起，探讨人类对永生的执念与生命意义的本质。当科技让活到150岁成为可能，我们是否真的准备好面对永恒的孤独？死亡的边界才让生命有了意义。
+
+### [连命，都没人要了：机器时代人的价值困境](https://blog.baifan.site/when-even-death-is-out-of-work/)
+Date: 2025-11-04
+Tags: 社会观察, 技术反思, 价值观
+
+在机器人大规模应用的时代背景下，深入思考当机器取代人类劳动时，底层劳动者的'被需要感'消失所带来的存在主义困境。
+
+### [AI 不确定性与及时行乐：一个普通人的思考](https://blog.baifan.site/ai-uncertainty-and-carpe-diem/)
+Date: 2025-10-28
+Tags: 大模型, 人工智能, 思考
+
+深度分析 AI 技术发展的两种假设路径：不断突破取代人工工作，或无法突破导致泡沫破灭。探讨面对未来巨大不确定性时，普通人为什么应该选择及时行乐的生活态度。
 
 ## Author
 
 - Name: ByF
-- Blog: https://byronfinn.github.io/
+- Blog: https://blog.baifan.site/
 - GitHub: https://github.com/ByronFinn
 - Email: blog@baifan.site
 
@@ -324,4 +495,4 @@ Tags: 信访新规, 央地关系, 基层治理, 经济下行
 - Static Site Generator: Hugo
 - Theme: DoIt v0.4.2
 - Hosting: GitHub Pages
-- Domain: byronfinn.github.io
+- Domain: https://blog.baifan.site
