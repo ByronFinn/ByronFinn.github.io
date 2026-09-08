@@ -1,0 +1,43 @@
+
+# Daily Deep Think — Complete content index
+
+> Daily Deep Think is a technology blog run by ByF, focused on three areas:
+
+**AI & Engineering**: LLM internals (tokens, vectors, Transformers), prompt engineering, GPU training, RAG systems, AI agents, and the MCP protocol — systematic tutorials and source-code deep dives from theory to practice.
+
+**Current Affairs**: In-depth readings of The Economist, The Wall Street Journal and other international publications, analyzing geopolitics, US-China tech competition, economic trends and social change.
+
+**Deep Thinking**: Essays on the philosophy of engineering, team management, the meaning of life, and the uncertainty of AI.
+
+Built with Hugo and the DoIt theme, hosted on GitHub Pages.
+>
+> This file is a complete site index for AI systems, listing the title, summary and link of every article.
+
+## Links
+
+- [All posts](https://blog.baifan.site/en/posts/)
+- [About me](https://blog.baifan.site/en/profile/)
+- [GitHub](https://github.com/ByronFinn)
+
+## Series
+## Personal
+
+### [About Me](https://blog.baifan.site/en/profile/)
+Date: 2024-01-01
+Tags: about, profile
+
+ByF — a geologist's timescale applied to AI-era tech and business. Backend engineer, long-cycle thinker, plain-spoken writer.
+
+## Author
+
+- Name: ByF
+- Blog: https://blog.baifan.site/
+- GitHub: https://github.com/ByronFinn
+- Email: blog@baifan.site
+
+## Tech Stack
+
+- Static Site Generator: Hugo
+- Theme: DoIt v0.4.2
+- Hosting: GitHub Pages
+- Domain: https://blog.baifan.site

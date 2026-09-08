@@ -1,0 +1,56 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>ByF - Author - Daily Deep Think</title><link>https://blog.baifan.site/en/authors/byf/</link><description>ByF - Author - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/authors/byf/" rel="self" type="application/rss+xml"/><item><title>About Me</title><link>https://blog.baifan.site/en/profile/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/profile/</guid><description><![CDATA[<div class="profile-container">
+  <!-- Hero: value proposition + primary CTA -->
+  <div class="profile-hero">
+    <div class="profile-hero-inner">
+      <div class="profile-avatar-wrapper">
+        <img src="/pictures/avatar/angryCat.png" alt="ByF" class="profile-avatar">
+      </div>
+      <h1 class="profile-name">ByF</h1>
+      <p class="profile-tagline">Technology and business in the AI age, taken apart on the timescale of geology</p>
+      <a href="/posts/" class="profile-cta">Read the latest posts →</a>
+    </div>
+  </div>
+  <!-- What I write: featured posts (concrete > numbers) -->
+  <div class="profile-section">
+    <div class="profile-section-header">
+      <h2 class="profile-section-title">What I Write</h2>
+    </div>
+    <div class="profile-section-content">
+      <div class="profile-featured">
+        <a href="/rag-system-complete-guide-langchain-ollama-pgvector/" class="profile-featured-item">
+          <span class="profile-featured-tag">AI Tutorial</span>
+          <span class="profile-featured-title">The Complete Guide to RAG Systems</span>
+          <span class="profile-featured-desc">LangChain + Ollama + pgvector: build a local RAG system from scratch, with working code and interview checkpoints.</span>
+        </a>
+        <a href="/claude-code-think-act-observe-loop/" class="profile-featured-item">
+          <span class="profile-featured-tag">AI Agent Series</span>
+          <span class="profile-featured-title">The Think-Act-Observe Loop</span>
+          <span class="profile-featured-desc">A source-level look at Claude Code: how one loop carries the entire agent's capability.</span>
+        </a>
+        <a href="/ai-technical-glossary-complete-guide/" class="profile-featured-item">
+          <span class="profile-featured-tag">AI Tutorial</span>
+          <span class="profile-featured-title">A Glossary of 270+ AI Terms</span>
+          <span class="profile-featured-desc">From token to RAG to prompt engineering — a quick-reference map of 12 AI domains.</span>
+        </a>
+        <a href="/economist-20251115-taiwan-boom/" class="profile-featured-item">
+          <span class="profile-featured-tag">Analysis</span>
+          <span class="profile-featured-title">The Economist, Nov 15 2025</span>
+          <span class="profile-featured-desc">The semiconductor advantage — and geopolitical risk — behind Taiwan's economic boom.</span>
+        </a>
+        <a href="/china-county-economy-twilight/" class="profile-featured-item">
+          <span class="profile-featured-tag">Analysis</span>
+          <span class="profile-featured-title">Twilight of the County Town</span>
+          <span class="profile-featured-desc">Factories shutting down, real estate in decline, e-commerce squeezing local shops — the hidden China beneath headline growth.</span>
+        </a>
+        <a href="/tmux-practical-guide/" class="profile-featured-item">
+          <span class="profile-featured-tag">Engineering Practice</span>
+          <span class="profile-featured-title">Tmux: The Practical Bits</span>
+          <span class="profile-featured-desc">Detach/attach, panes, windows — only the operations you will actually use.</span>
+        </a>
+      </div>
+      <div class="profile-directions">
+        <a href="/tags/人工智能/" class="profile-direction">AI Tutorial</a>
+        <a href="/tags/经济学人/" class="profile-direction">Analysis</a>
+        <a href="/tags/工程实践/" class="profile-direction">Engineering Practice</a>
+      </div>
+      <p class="profile-stats-line">30+ original posts · 6 series · 5 directions</p>]]></description></item></channel></rss>

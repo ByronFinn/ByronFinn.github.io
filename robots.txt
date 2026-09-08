@@ -72,7 +72,7 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# Sitemap位置
+# Sitemap位置 (robots.txt 只生成于根目录, 指向默认语言 sitemap)
 Sitemap: https://blog.baifan.site/sitemap.xml
 
 # llms.txt location for AI discovery
