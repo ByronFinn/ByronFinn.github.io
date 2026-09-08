@@ -10,6 +10,11 @@
 - [GitHub](https://github.com/ByronFinn)
 
 ## Series
+- [AI Development Tools](https://blog.baifan.site/en/series/ai-development-tools/) — 1 posts
+- [AI LLM Systematic Tutorials](https://blog.baifan.site/en/series/ai-llm-systematic-tutorials/) — 6 posts
+- [Claude Code Source Code Deconstruction](https://blog.baifan.site/en/series/claude-code-source-code-deconstruction/) — 12 posts
+- [Project Design Documents](https://blog.baifan.site/en/series/project-design-documents/) — 1 posts
+- [The Economist Notes](https://blog.baifan.site/en/series/the-economist-notes/) — 3 posts
 
 ## About
 

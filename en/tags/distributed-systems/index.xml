@@ -1,0 +1,11 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Distributed Systems - Tag - Daily Deep Think</title><link>https://blog.baifan.site/en/tags/distributed-systems/</link><description>Distributed Systems - Tag - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Sat, 27 Sep 2025 14:00:00 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/tags/distributed-systems/" rel="self" type="application/rss+xml"/><item><title>Heartbeats in Distributed Systems: Principles and Practice</title><link>https://blog.baifan.site/en/distributed-system-heartbeat-mechanism/</link><pubDate>Sat, 27 Sep 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/distributed-system-heartbeat-mechanism/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/distributed-heartbeat-featured.png" referrerpolicy="no-referrer">
+            </div><figure><img src="/pictures/note/distributed-heartbeat-featured.png"
+    alt="Heartbeat mechanism in distributed systems"><figcaption>
+      <p>Heartbeat mechanism in distributed systems</p>
+    </figcaption>
+</figure>
+
+<h1 id="heartbeat-mechanisms-in-distributed-systems-principles-implementation-and-best-practices" class="headerLink">
+    <a href="#heartbeat-mechanisms-in-distributed-systems-principles-implementation-and-best-practices" class="header-mark"></a>Heartbeat Mechanisms in Distributed Systems: Principles, Implementation, and Best Practices</h1><h2 id="introduction" class="headerLink">
+    <a href="#introduction" class="header-mark"></a>Introduction</h2><p>In a distributed system, how do you know whether a node or service is alive and running as it should? Unlike a monolithic application, where all components run inside a single process, a distributed system spans many machines, multiple networks, and several data centers. The question becomes even more pressing when the nodes are geographically separated. That is exactly where heartbeat mechanisms come in.</p>]]></description></item></channel></rss>

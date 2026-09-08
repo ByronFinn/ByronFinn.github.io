@@ -1,0 +1,65 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Local Inference - Tag - Daily Deep Think</title><link>https://blog.baifan.site/en/tags/local-inference/</link><description>Local Inference - Tag - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Tue, 18 Aug 2026 14:42:15 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/tags/local-inference/" rel="self" type="application/rss+xml"/><item><title>Cursor Local (Private Inference) Downloads for All Platforms</title><link>https://blog.baifan.site/en/cursor-local-download/</link><pubDate>Tue, 18 Aug 2026 14:42:15 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/cursor-local-download/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/cursor-local-download.svg" referrerpolicy="no-referrer">
+            </div><p>The direct links below always point to the latest local build:</p>
+<!-- more -->
+<h2 id="windows" class="headerLink">
+    <a href="#windows" class="header-mark"></a>Windows</h2><table>
+  <thead>
+      <tr>
+          <th>Version</th>
+          <th>Link</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x64 (user installer)</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/win32-x64-user/cursor-local/latestWindows" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/win32-x64-user/cursor-local/latestWindows</a></td>
+      </tr>
+      <tr>
+          <td>ARM64</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/win32-arm64-user/cursor-local/latestWindows" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/win32-arm64-user/cursor-local/latestWindows</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="macos" class="headerLink">
+    <a href="#macos" class="header-mark"></a>macOS</h2><table>
+  <thead>
+      <tr>
+          <th>Version</th>
+          <th>Link</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Apple Silicon (M-series, recommended)</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-arm64-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-arm64-user/cursor-local/latestMac</a></td>
+      </tr>
+      <tr>
+          <td>Intel chips</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-x64-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-x64-user/cursor-local/latestMac</a></td>
+      </tr>
+      <tr>
+          <td>Universal</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-universal-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-universal-user/cursor-local/latestMac</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="linux-ubuntudebian" class="headerLink">
+    <a href="#linux-ubuntudebian" class="header-mark"></a>Linux (Ubuntu/Debian)</h2><table>
+  <thead>
+      <tr>
+          <th>Version</th>
+          <th>Link</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x64 AppImage</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/linux-x64-user/cursor-local/latestLinux" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/linux-x64-user/cursor-local/latestLinux</a></td>
+      </tr>
+      <tr>
+          <td>ARM64 AppImage</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/linux-arm64-user/cursor-local/latestLinux" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/linux-arm64-user/cursor-local/latestLinux</a></td>
+      </tr>
+  </tbody>
+</table>]]></description></item></channel></rss>

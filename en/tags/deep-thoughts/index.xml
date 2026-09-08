@@ -1,0 +1,10 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Deep Thoughts - Tag - Daily Deep Think</title><link>https://blog.baifan.site/en/tags/deep-thoughts/</link><description>Deep Thoughts - Tag - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Mon, 03 Aug 2026 10:00:00 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/tags/deep-thoughts/" rel="self" type="application/rss+xml"/><item><title>Rethinking Team Division of Labor</title><link>https://blog.baifan.site/en/team-roles-evolution-ai-era/</link><pubDate>Mon, 03 Aug 2026 10:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/team-roles-evolution-ai-era/</guid><description><![CDATA[<blockquote>
+  <p><strong>The conclusion first, so you don&rsquo;t waste your read</strong></p>
+<p>We used to split teams by craft: frontend, backend, product design.
+Now we split teams by stage:
+<strong>Prototyper</strong> — grabs the first idea and fails fast
+<strong>Builder</strong> — turns the prototype into a product you can take to market
+<strong>Maintainer</strong> — holds the fort once the software reaches scale
+<strong>Scaler</strong> — takes a proven product and scales it 10x, 100x
+<strong>Finisher</strong> — polishes the product and the code, sands off the burrs
+As for why we&rsquo;re only splitting this way now — the answer involves AI. Read on.</p>]]></description></item></channel></rss>

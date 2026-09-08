@@ -1,0 +1,11 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Long-Term Memory - Tag - Daily Deep Think</title><link>https://blog.baifan.site/en/tags/long-term-memory/</link><description>Long-Term Memory - Tag - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Tue, 03 Feb 2026 14:00:00 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/tags/long-term-memory/" rel="self" type="application/rss+xml"/><item><title>TencentDB Agent Memory: Real Layered Memory for AI Agents</title><link>https://blog.baifan.site/en/tencentdb-agent-memory-deep-dive/</link><pubDate>Tue, 03 Feb 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/tencentdb-agent-memory-deep-dive/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/tencentdb-agent-memory-featured.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<h2 id="why-ai-agents-need-a-memory-system" class="headerLink">
+    <a href="#why-ai-agents-need-a-memory-system" class="header-mark"></a>Why AI Agents Need a Memory System</h2><p>If you&rsquo;ve spent serious time with AI agents, these scenarios will feel familiar:</p>
+<ul>
+<li>Re-explaining the project background, coding conventions, and output format preferences in every new session</li>
+<li>Halfway through a long task, the context fills up with tool logs and the agent starts &ldquo;forgetting&rdquo; earlier instructions</li>
+<li>Wanting the agent to learn your working habits, but having no way to do it except hand-writing a system prompt every time</li>
+</ul>
+<p><strong>Memory isn&rsquo;t about making the AI store everything — it&rsquo;s about making sure humans never have to repeat themselves.</strong> That&rsquo;s the core idea behind <a href="https://github.com/Tencent/TencentDB-Agent-Memory" target="_blank" rel="noopener noreferrer">TencentDB Agent Memory</a>.</p>]]></description></item></channel></rss>

@@ -1,0 +1,124 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>AI Technology - Category - Daily Deep Think</title><link>https://blog.baifan.site/en/categories/ai-technology/</link><description>AI Technology - Category - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Wed, 12 Aug 2026 14:33:59 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/categories/ai-technology/" rel="self" type="application/rss+xml"/><item><title>Multi-Agent Collaboration: Value From Structure, Not Concurrency</title><link>https://blog.baifan.site/en/multi-agent-technical-core/</link><pubDate>Wed, 12 Aug 2026 14:33:59 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/multi-agent-technical-core/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/multi-agent-technical-core-featured.svg" referrerpolicy="no-referrer">
+            </div><p>Conclusion first: the value of multi-agent doesn&rsquo;t come from more models; it comes from the right structure. Multi-agent without structure is just more expensive concurrency — burn 2 to 3 times the tokens to watch a group of models nod at each other. Multi-agent with structure is an execution system that can delegate, parallelize, and verify.</p>
+<!-- more -->
+<h2 id="why-a-single-agent-fails-at-long-tasks" class="headerLink">
+    <a href="#why-a-single-agent-fails-at-long-tasks" class="header-mark"></a>Why a Single Agent Fails at Long Tasks</h2><p>Diagnosis first. A single agent executing complex tasks has five structural defects — blame the execution structure, not the model&rsquo;s intelligence:</p>]]></description></item><item><title>Thoughts on Dynamic Intervention in AI Agent Runtimes</title><link>https://blog.baifan.site/en/ai-agent-runtime-dynamic-intervention/</link><pubDate>Mon, 27 Jul 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ai-agent-runtime-dynamic-intervention/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/ai-agent-runtime-intervention-featured.svg" referrerpolicy="no-referrer">
+            </div><h1 id="thoughts-on-dynamic-intervention-in-ai-agent-runtimes" class="headerLink">
+    <a href="#thoughts-on-dynamic-intervention-in-ai-agent-runtimes" class="header-mark"></a>Thoughts on Dynamic Intervention in AI Agent Runtimes</h1><p>A few weeks ago, late at night, I stared at the agent logs scrolling through my terminal, frustrated enough to want to smash the keyboard. It was dutifully generating a requirements analysis report — it had been running for a dozen-plus minutes, pulling loads of data and drawing charts, clearly on the verge of wrapping up — when I suddenly realized the requirements were missing a key dimension: &ldquo;Don&rsquo;t split by region, split by user age group.&rdquo; If I interrupted it now, all the context, intermediate results, and tool call state would be thrown away and it would start over. If I didn&rsquo;t, it would soon produce a wrong report that would cost me just as long to fix by hand.</p>]]></description></item><item><title>AI Agent Skills and MCP: Which Ones Are Worth Installing</title><link>https://blog.baifan.site/en/ai-agent-skills-mcp-review/</link><pubDate>Mon, 20 Jul 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ai-agent-skills-mcp-review/</guid><description><![CDATA[<p>Conclusion first: plenty of tools out there can be installed, but most of them sit there gathering dust after installation. Below is what I filtered out of the things I actually use, sorted into five scenario categories, with a few genuinely used picks in each.</p>
+<!-- more -->
+<h2 id="first-one-all-rounder-recommendation" class="headerLink">
+    <a href="#first-one-all-rounder-recommendation" class="header-mark"></a>First, One All-Rounder Recommendation</h2><p>If you want a single install that covers most scenarios, take a look at this one:</p>
+<p><strong>dev-skills</strong>, at: <a href="https://github.com/ByronFinn/dev-skills" target="_blank" rel="noopener noreferrer">https://github.com/ByronFinn/dev-skills</a></p>]]></description></item><item><title>Agent Interview Questions: Who Has Actually Done the Work</title><link>https://blog.baifan.site/en/agent-interview-questions/</link><pubDate>Mon, 13 Jul 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/agent-interview-questions/</guid><description><![CDATA[<!-- more -->
+<blockquote>
+  <p><strong>Attachment download</strong>: <a href="/files/agent-interview-questions.pdf" rel="">Agent Interview Questions.pdf</a> — handy for printing or offline reading</p>
+
+</blockquote><h2 id="why-would-you-need-multiple-agents" class="headerLink">
+    <a href="#why-would-you-need-multiple-agents" class="header-mark"></a>Why Would You Need Multiple Agents</h2><p>An opening question to separate people who have &ldquo;read the articles&rdquo; from people who have &ldquo;actually built one&rdquo;.</p>
+<p><strong>The bad answer:</strong> &ldquo;Multi-agent enables parallel processing, which improves system throughput and robustness.&rdquo;</p>
+<p>Every word of that is correct, but if you follow up with &ldquo;so after splitting into two agents, did throughput actually double?&rdquo;, they stall. The reality: inter-agent communication has overhead, coordination has complexity, and after the split total throughput may well drop. Adding agents is not like adding CPU cores.</p>]]></description></item><item><title>Reverse Engineering Claude Science: From 54 Tables to Modern TCM</title><link>https://blog.baifan.site/en/ai-agent-platform-to-tcm-future/</link><pubDate>Fri, 20 Feb 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ai-agent-platform-to-tcm-future/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/claude-science-architecture.svg" referrerpolicy="no-referrer">
+            </div><p>A 67 MB DMG installer, 164 MB unpacked, hiding Anthropic&rsquo;s Claude Science (internal codename Operon). After reverse engineering it, I found 54 SQLite tables, a 9-layer security model, 30+ bioinformatics skills, and a complete AI agent platform for computational biology.</p>
+<p>On the other side is TCMSP, an AI-native Traditional Chinese Medicine systems pharmacology platform under active development. Looking at the two projects side by side, some design ideas are worth cross-referencing.</p>]]></description></item><item><title>TencentDB Agent Memory: Real Layered Memory for AI Agents</title><link>https://blog.baifan.site/en/tencentdb-agent-memory-deep-dive/</link><pubDate>Tue, 03 Feb 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/tencentdb-agent-memory-deep-dive/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/tencentdb-agent-memory-featured.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<h2 id="why-ai-agents-need-a-memory-system" class="headerLink">
+    <a href="#why-ai-agents-need-a-memory-system" class="header-mark"></a>Why AI Agents Need a Memory System</h2><p>If you&rsquo;ve spent serious time with AI agents, these scenarios will feel familiar:</p>
+<ul>
+<li>Re-explaining the project background, coding conventions, and output format preferences in every new session</li>
+<li>Halfway through a long task, the context fills up with tool logs and the agent starts &ldquo;forgetting&rdquo; earlier instructions</li>
+<li>Wanting the agent to learn your working habits, but having no way to do it except hand-writing a system prompt every time</li>
+</ul>
+<p><strong>Memory isn&rsquo;t about making the AI store everything — it&rsquo;s about making sure humans never have to repeat themselves.</strong> That&rsquo;s the core idea behind <a href="https://github.com/Tencent/TencentDB-Agent-Memory" target="_blank" rel="noopener noreferrer">TencentDB Agent Memory</a>.</p>]]></description></item><item><title>Prompt Optimizer: An Open-Source Tool for Better Prompts</title><link>https://blog.baifan.site/en/prompt-optimizer-tool-guide/</link><pubDate>Tue, 20 Jan 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/prompt-optimizer-tool-guide/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/prompt-optimizer-demo.png" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>Anyone who has used AI knows the feeling: with the same request, a well-written prompt and a badly written one produce wildly different results. The problem is that most people simply aren&rsquo;t good at writing prompts — not for lack of talent, but for lack of a systematic optimization process.</p>
+<p>I recently came across an open-source project, <a href="https://github.com/linshenkx/prompt-optimizer" target="_blank" rel="noopener noreferrer">Prompt Optimizer</a> — nearly 29k stars on GitHub — built to solve exactly this.</p>]]></description></item><item><title>PDF2Markdown: Complete Guide to Smart PDF Article Extraction</title><link>https://blog.baifan.site/en/pdf2markdown-intelligent-pdf-extraction-tool/</link><pubDate>Tue, 25 Nov 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/pdf2markdown-intelligent-pdf-extraction-tool/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/pdf2markdown-featured.svg" referrerpolicy="no-referrer">
+            </div><h1 id="pdf2markdown---an-intelligent-article-extraction-tool-for-large-pdf-documents" class="headerLink">
+    <a href="#pdf2markdown---an-intelligent-article-extraction-tool-for-large-pdf-documents" class="header-mark"></a>PDF2Markdown - An Intelligent Article Extraction Tool for Large PDF Documents</h1><p><a href="https://python.org" target="_blank" rel="noopener noreferrer"><img class="tw-inline" loading="lazy" src='/python-3.13+-blue_1423277123478464751.svg'   alt="Python Version"  ></a>
+<a href="https://github.com/astral-sh/ruff" target="_blank" rel="noopener noreferrer"><img class="tw-inline" loading="lazy" src='/code%20style-ruff-green_7678052461911854896.svg'   alt="Code Style"  ></a>
+<a href="https://mypy.readthedocs.io/" target="_blank" rel="noopener noreferrer"><img class="tw-inline" loading="lazy" src='/type%20checking-mypy-blue_13250137686053437545.svg'   alt="Type Checking"  ></a>
+<a href="LICENSE" rel=""><img class="tw-inline" loading="lazy" src='/license-MIT-green_10730612941528799645.svg'   alt="License"  ></a></p>
+<h2 id="project-overview" class="headerLink">
+    <a href="#project-overview" class="header-mark"></a>Project Overview</h2><p>PDF2Markdown is an intelligent content extraction tool built specifically for large scanned PDF files. It combines traditional OCR technology with modern AI large language models to intelligently extract pure article content from documents, automatically filtering out non-article elements such as images and tables. Mixed Chinese-English documents are fully supported.</p>]]></description></item><item><title>RAG Complete Guide: Build a Local RAG System from Scratch</title><link>https://blog.baifan.site/en/rag-system-complete-guide-langchain-ollama-pgvector/</link><pubDate>Wed, 27 Aug 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/rag-system-complete-guide-langchain-ollama-pgvector/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/ai-tutorial-5-rag-system.jpg" referrerpolicy="no-referrer">
+            </div><h1 id="building-a-local-rag-with-langchain--ollama--pgvector-a-complete-hands-on-walkthrough-from-0-to-1-with-uv-dependency-management-and-an-interview-guide" class="headerLink">
+    <a href="#building-a-local-rag-with-langchain--ollama--pgvector-a-complete-hands-on-walkthrough-from-0-to-1-with-uv-dependency-management-and-an-interview-guide" class="header-mark"></a>Building a Local RAG with LangChain + Ollama + pgvector: A Complete Hands-On Walkthrough from 0 to 1 (with uv Dependency Management and an Interview Guide)</h1><blockquote>
+  <p>This post is a directly actionable document. Follow it top to bottom and you will build a local RAG (retrieval-augmented generation) system from scratch and understand the key concepts and code. All core scripts come with comments to make learning and interview review easier.</p>]]></description></item><item><title>CPU, GPU, and Training Large Language Models</title><link>https://blog.baifan.site/en/gpu-accelerated-training-cuda-complete-guide/</link><pubDate>Wed, 20 Aug 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/gpu-accelerated-training-cuda-complete-guide/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/ai-tutorial-4-gpu-training.jpg" referrerpolicy="no-referrer">
+            </div><h1 id="ai-tutorial-cpugpu-and-large-model-training" class="headerLink">
+    <a href="#ai-tutorial-cpugpu-and-large-model-training" class="header-mark"></a>AI Tutorial: CPU/GPU and Large Model Training</h1><blockquote>
+  <p>This is a highly condensed reference: clearly structured, right to the point — covering CPU/GPU fundamentals, tensors and numerical precision, CUDA and PyTorch in practice, hardware selection, common interview questions, and a debugging checklist.</p>
+
+</blockquote><hr>
+<h2 id="0-quick-overview-30-seconds" class="headerLink">
+    <a href="#0-quick-overview-30-seconds" class="header-mark"></a>0. Quick Overview (30 Seconds)</h2><ul>
+<li><strong>CPU vs GPU</strong>: CPUs excel at <strong>general-purpose/sequential</strong> work; GPUs excel at <strong>massive parallelism</strong> (matrices/vectors).</li>
+<li><strong>Large models need GPUs</strong>: training/inference is fundamentally matrix multiplication and parallelization — exactly what a GPU&rsquo;s high concurrency + high-bandwidth memory deliver.</li>
+<li><strong>Tensors and precision</strong>: all data becomes tensors; precision (FP16/FP8) and <strong>quantization</strong> (INT8/INT4) trade speed/VRAM against quality.</li>
+<li><strong>The PyTorch GPU mantra</strong>: <code>device = &quot;cuda&quot; if ...; model.to(device); data.to(device)</code></li>
+<li><strong>Pick a GPU by VRAM first</strong>: VRAM first, then bandwidth/compute; for production, prefer <strong>full-strength high-quality models</strong> or cloud-hosted APIs.</li>
+</ul>
+<hr>
+<h2 id="1-cpu-vs-gpu-differences-workloads-and-analogies" class="headerLink">
+    <a href="#1-cpu-vs-gpu-differences-workloads-and-analogies" class="header-mark"></a>1. CPU vs GPU: Differences, Workloads, and Analogies</h2><h3 id="11-the-one-line-comparison" class="headerLink">
+    <a href="#11-the-one-line-comparison" class="header-mark"></a>1.1 The One-Line Comparison</h3><table>
+  <thead>
+      <tr>
+          <th>Dimension</th>
+          <th>CPU</th>
+          <th>GPU</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Architecture</td>
+          <td>Few cores, complex control flow</td>
+          <td>Massive small cores, SIMT parallelism</td>
+      </tr>
+      <tr>
+          <td>Excels at</td>
+          <td>Branching/system tasks/small-scale compute</td>
+          <td>Matrix multiplication, convolution, attention, graphics rendering</td>
+      </tr>
+      <tr>
+          <td>Task model</td>
+          <td>Time-sliced, low-latency switching</td>
+          <td>Batch- and throughput-oriented</td>
+      </tr>
+      <tr>
+          <td>Typical use</td>
+          <td>Business logic, scheduling, I/O</td>
+          <td>Main training/inference operators (GEMM, Conv, etc.)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="12-an-intuitive-analogy" class="headerLink">
+    <a href="#12-an-intuitive-analogy" class="header-mark"></a>1.2 An Intuitive Analogy</h3><ul>
+<li><strong>CPU = a veteran expert</strong>: meticulous thinking, does one thing at a time with fast switching.</li>
+<li><strong>GPU = a massive army</strong>: hordes of soldiers working simultaneously — built for parallel <strong>homogeneous small tasks</strong>.</li>
+</ul>
+<h3 id="13-optional-mermaid-diagram-cpu-execution-vs-gpu-parallelism" class="headerLink">
+    <a href="#13-optional-mermaid-diagram-cpu-execution-vs-gpu-parallelism" class="header-mark"></a>1.3 Optional Mermaid Diagram (CPU Execution vs GPU Parallelism)</h3><pre class="mermaid">flowchart LR
+    subgraph CPU["CPU (sequential/few cores)"]
+      A1[Task1-SliceA] --> A2[Task2-SliceB] --> A3[Task3-SliceC]
+    end
+    subgraph GPU["GPU (parallel/many cores)"]
+      B1[Element1 compute]:::p
+      B2[Element2 compute]:::p
+      B3[Element3 compute]:::p
+      B4[Element4 compute]:::p
+    end
+    classDef p fill:#e9f5ff,stroke:#3b82f6,stroke-width:1px;
+</pre><hr>
+<h2 id="2-tensors-precision-and-quantization-with-examples" class="headerLink">
+    <a href="#2-tensors-precision-and-quantization-with-examples" class="header-mark"></a>2. Tensors, Precision, and Quantization (with Examples)</h2><h3 id="21-tensor-hierarchy" class="headerLink">
+    <a href="#21-tensor-hierarchy" class="header-mark"></a>2.1 Tensor Hierarchy</h3><ul>
+<li><strong>0D</strong>: scalar <code>3.14</code></li>
+<li><strong>1D</strong>: vector <code>[1,2,3]</code></li>
+<li><strong>2D</strong>: matrix (e.g. a 3×3 table)</li>
+<li><strong>3D+</strong>: still called a tensor (e.g. <code>batch×channel×height×width</code>)</li>
+</ul>
+<p><strong>Image example</strong>: a batch of 32 224×224 RGB images → <code>32×3×224×224</code> (or <code>N×H×W×C</code>, depending on the framework).</p>]]></description></item></channel></rss>

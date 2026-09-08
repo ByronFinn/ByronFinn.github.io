@@ -1,0 +1,36 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>AI - Tag - Daily Deep Think</title><link>https://blog.baifan.site/en/tags/ai/</link><description>AI - Tag - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Thu, 30 Apr 2026 14:00:00 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/tags/ai/" rel="self" type="application/rss+xml"/><item><title>What Trellis Does, and Whether It Fixes AI Coding Standards</title><link>https://blog.baifan.site/en/trellis-ai-coding-framework-guide/</link><pubDate>Thu, 30 Apr 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/trellis-ai-coding-framework-guide/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/trellis-core-concepts.svg" referrerpolicy="no-referrer">
+            </div><p>The most annoying thing about coding with AI isn&rsquo;t that it writes bugs — it&rsquo;s that it writes them differently every time. Same requirement, three conversations, three implementations. The standards live in your head; the AI doesn&rsquo;t know them.</p>
+<!-- more -->
+<p>Trellis tries to solve this. It&rsquo;s not yet another AI coding assistant — it&rsquo;s a framework for injecting project standards into AI: the AI reads your standards before writing code, gets checked automatically after writing, and once the check is done, anything newly learned gets distilled back into the standards. The more you use it, the better the AI knows your project.</p>]]></description></item><item><title>Dissecting a PPT Agent: From Research to SVG Output</title><link>https://blog.baifan.site/en/ppt-agent-workflow-deep-dive/</link><pubDate>Tue, 28 Apr 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ppt-agent-workflow-deep-dive/</guid><description><![CDATA[<p>Conclusion first: this is not another &ldquo;type a topic → force it into a template → output garbage&rdquo; AI PPT tool.</p>
+<p>It runs a complete expert workflow — requirement research, material retrieval, outline planning, layout planning, visual design — where every step allows manual fine-tuning, or the whole thing can run automatically end to end. In terms of output, pages generated with Gemini 3 Flash already reach commercial delivery quality.</p>]]></description></item><item><title>AI API Suffixes: What They Mean and Why They Exist</title><link>https://blog.baifan.site/en/ai-api-suffixes-explained/</link><pubDate>Tue, 14 Apr 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ai-api-suffixes-explained/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/ai-api-suffixes-protocol-evolution.svg" referrerpolicy="no-referrer">
+            </div><p>We often see URLs like these:</p>
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+  <div class="
+    
+    tw-flex 
+    tw-flex-row
+    tw-flex-1 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        code-block-button
+        tw-mx-2 
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">plaintext</p>]]></description></item><item><title>Multi-Agent Collaboration: Triggers, Topology, and Merging</title><link>https://blog.baifan.site/en/multi-agent-collaboration-engineering/</link><pubDate>Tue, 03 Mar 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/multi-agent-collaboration-engineering/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/multi-agent-collaboration-topology.svg" referrerpolicy="no-referrer">
+            </div><p>Conclusion first: multi-agent collaboration is not &ldquo;spinning up a few more model instances.&rdquo; It has to solve task scheduling, context isolation, permission control, state management, and result merging — every one of which is an engineering problem, not a prompt problem.</p>
+<!-- more -->
+<p>The multi-agent stories on TikTok and Xiaohongshu usually go like this: one agent researches, one agent writes code, one agent runs tests, one agent does review, and the main agent collects results like a project manager. The comments: &ldquo;Whoa, that&rsquo;s insane.&rdquo;</p>]]></description></item><item><title>AI Psychosis: When MTTR Fanaticism Meets Resilience</title><link>https://blog.baifan.site/en/ai-mttr-mtbf-resilience-psychosis/</link><pubDate>Tue, 24 Feb 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ai-mttr-mtbf-resilience-psychosis/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/ai-mttr-mtbf-featured.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>I have a strong intuition: some companies in the tech industry right now are going through a full-blown AI psychosis, and inside those companies, rational conversation is simply impossible. I&rsquo;m not talking about strangers — I&rsquo;m talking about personal friends I deeply respect. That leaves me worried about how this ends.</p>
+<p>This fear has a specific source. I lived through the great MTBF (mean time between failures) vs MTTR (mean time to recovery) debate when infrastructure moved from traditional ops to cloud and cloud automation. Now those exact same arguments are resurfacing in a new costume — only the scope has widened from infrastructure to the entire software industry, and possibly to the whole world.</p>]]></description></item></channel></rss>

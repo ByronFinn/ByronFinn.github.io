@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Large Language Models - Tag - Daily Deep Think</title><link>https://blog.baifan.site/en/tags/large-language-models/</link><description>Large Language Models - Tag - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Fri, 26 Dec 2025 14:00:00 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/tags/large-language-models/" rel="self" type="application/rss+xml"/><item><title>Claude Skills Progressive Disclosure via MCP: Skill in Anywhere</title><link>https://blog.baifan.site/en/mcp-claude-skills-progressive-disclosure/</link><pubDate>Fri, 26 Dec 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/mcp-claude-skills-progressive-disclosure/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claudecodeskills.png" referrerpolicy="no-referrer">
+            </div><figure><img src="/pictures/note/claudecodeskills.png"
+    alt="Claude Code Skill in Anywhere"><figcaption>
+      <p>Claude Code Skill in Anywhere</p>
+    </figcaption>
+</figure>
+
+<h1 id="implementing-claude-skills-progressive-disclosure-via-mcp-reusing-claude-code-skills-anywhere" class="headerLink">
+    <a href="#implementing-claude-skills-progressive-disclosure-via-mcp-reusing-claude-code-skills-anywhere" class="header-mark"></a>Implementing Claude Skills&rsquo; Progressive Disclosure via MCP: Reusing Claude Code Skills Anywhere</h1><h3 id="-a-feasible-approach-to-capability-encapsulation-and-dynamic-context-extension-technical-proposal-and-verification" class="headerLink">
+    <a href="#-a-feasible-approach-to-capability-encapsulation-and-dynamic-context-extension-technical-proposal-and-verification" class="header-mark"></a>— A feasible approach to capability encapsulation and dynamic context extension (technical proposal and verification)</h3><h2 id="preface" class="headerLink">
+    <a href="#preface" class="header-mark"></a>Preface</h2><p>Claude Skills introduced a remarkably advanced concept:
+<strong>encapsulating professional knowledge, process standards, and task methods into &ldquo;skill packages&rdquo; that load dynamically, only when a task actually needs them.</strong></p>
+<p>This &ldquo;progressive disclosure&rdquo; mechanism is essentially a <strong>dynamic context extension protocol</strong> — it effectively reduces the model&rsquo;s context burden and markedly improves the quality of complex task handling.</p>]]></description></item></channel></rss>

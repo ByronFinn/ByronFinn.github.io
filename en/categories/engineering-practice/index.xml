@@ -1,0 +1,128 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Engineering Practice - Category - Daily Deep Think</title><link>https://blog.baifan.site/en/categories/engineering-practice/</link><description>Engineering Practice - Category - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Tue, 18 Aug 2026 14:42:15 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/categories/engineering-practice/" rel="self" type="application/rss+xml"/><item><title>Cursor Local (Private Inference) Downloads for All Platforms</title><link>https://blog.baifan.site/en/cursor-local-download/</link><pubDate>Tue, 18 Aug 2026 14:42:15 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/cursor-local-download/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/cursor-local-download.svg" referrerpolicy="no-referrer">
+            </div><p>The direct links below always point to the latest local build:</p>
+<!-- more -->
+<h2 id="windows" class="headerLink">
+    <a href="#windows" class="header-mark"></a>Windows</h2><table>
+  <thead>
+      <tr>
+          <th>Version</th>
+          <th>Link</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x64 (user installer)</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/win32-x64-user/cursor-local/latestWindows" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/win32-x64-user/cursor-local/latestWindows</a></td>
+      </tr>
+      <tr>
+          <td>ARM64</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/win32-arm64-user/cursor-local/latestWindows" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/win32-arm64-user/cursor-local/latestWindows</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="macos" class="headerLink">
+    <a href="#macos" class="header-mark"></a>macOS</h2><table>
+  <thead>
+      <tr>
+          <th>Version</th>
+          <th>Link</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Apple Silicon (M-series, recommended)</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-arm64-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-arm64-user/cursor-local/latestMac</a></td>
+      </tr>
+      <tr>
+          <td>Intel chips</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-x64-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-x64-user/cursor-local/latestMac</a></td>
+      </tr>
+      <tr>
+          <td>Universal</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-universal-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-universal-user/cursor-local/latestMac</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="linux-ubuntudebian" class="headerLink">
+    <a href="#linux-ubuntudebian" class="header-mark"></a>Linux (Ubuntu/Debian)</h2><table>
+  <thead>
+      <tr>
+          <th>Version</th>
+          <th>Link</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x64 AppImage</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/linux-x64-user/cursor-local/latestLinux" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/linux-x64-user/cursor-local/latestLinux</a></td>
+      </tr>
+      <tr>
+          <td>ARM64 AppImage</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/linux-arm64-user/cursor-local/latestLinux" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/linux-arm64-user/cursor-local/latestLinux</a></td>
+      </tr>
+  </tbody>
+</table>]]></description></item><item><title>Give AI a Rulebook: From Wishing Upon It to Making It Behave</title><link>https://blog.baifan.site/en/give-ai-a-rulebook/</link><pubDate>Wed, 05 Aug 2026 14:28:39 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/give-ai-a-rulebook/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/give-ai-a-rulebook-workflow.svg" referrerpolicy="no-referrer">
+            </div><p>Let me start with something that actually happened.</p>
+<p>In early 2025, I added a feature to an internal system: export to Excel. Small requirement — I didn&rsquo;t even write it up, just typed &ldquo;add an export button to the list page&rdquo; into the chat box.</p>
+<p>The AI delivered in ten minutes. Frontend changes, new endpoint, SQL — all in one pass. I was pleased when I opened the PR, right up until review revealed: the export columns didn&rsquo;t match the list page, a hundred thousand rows would hang the service outright, there was no permission check, and the tests only covered the happy path.</p>]]></description></item><item><title>Agent Interview Questions: Who Has Actually Done the Work</title><link>https://blog.baifan.site/en/agent-interview-questions/</link><pubDate>Mon, 13 Jul 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/agent-interview-questions/</guid><description><![CDATA[<!-- more -->
+<blockquote>
+  <p><strong>Attachment download</strong>: <a href="/files/agent-interview-questions.pdf" rel="">Agent Interview Questions.pdf</a> — handy for printing or offline reading</p>
+
+</blockquote><h2 id="why-would-you-need-multiple-agents" class="headerLink">
+    <a href="#why-would-you-need-multiple-agents" class="header-mark"></a>Why Would You Need Multiple Agents</h2><p>An opening question to separate people who have &ldquo;read the articles&rdquo; from people who have &ldquo;actually built one&rdquo;.</p>
+<p><strong>The bad answer:</strong> &ldquo;Multi-agent enables parallel processing, which improves system throughput and robustness.&rdquo;</p>
+<p>Every word of that is correct, but if you follow up with &ldquo;so after splitting into two agents, did throughput actually double?&rdquo;, they stall. The reality: inter-agent communication has overhead, coordination has complexity, and after the split total throughput may well drop. Adding agents is not like adding CPU cores.</p>]]></description></item><item><title>What Trellis Does, and Whether It Fixes AI Coding Standards</title><link>https://blog.baifan.site/en/trellis-ai-coding-framework-guide/</link><pubDate>Thu, 30 Apr 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/trellis-ai-coding-framework-guide/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/trellis-core-concepts.svg" referrerpolicy="no-referrer">
+            </div><p>The most annoying thing about coding with AI isn&rsquo;t that it writes bugs — it&rsquo;s that it writes them differently every time. Same requirement, three conversations, three implementations. The standards live in your head; the AI doesn&rsquo;t know them.</p>
+<!-- more -->
+<p>Trellis tries to solve this. It&rsquo;s not yet another AI coding assistant — it&rsquo;s a framework for injecting project standards into AI: the AI reads your standards before writing code, gets checked automatically after writing, and once the check is done, anything newly learned gets distilled back into the standards. The more you use it, the better the AI knows your project.</p>]]></description></item><item><title>Dissecting a PPT Agent: From Research to SVG Output</title><link>https://blog.baifan.site/en/ppt-agent-workflow-deep-dive/</link><pubDate>Tue, 28 Apr 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ppt-agent-workflow-deep-dive/</guid><description><![CDATA[<p>Conclusion first: this is not another &ldquo;type a topic → force it into a template → output garbage&rdquo; AI PPT tool.</p>
+<p>It runs a complete expert workflow — requirement research, material retrieval, outline planning, layout planning, visual design — where every step allows manual fine-tuning, or the whole thing can run automatically end to end. In terms of output, pages generated with Gemini 3 Flash already reach commercial delivery quality.</p>]]></description></item><item><title>All the Tmux You'll Ever Use: Sessions, Panes, Detach</title><link>https://blog.baifan.site/en/tmux-practical-guide/</link><pubDate>Tue, 21 Apr 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/tmux-practical-guide/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/tmux-session-window-pane.svg" referrerpolicy="no-referrer">
+            </div><p>You SSH into a server to run a long task, the network drops, and the task is gone. Tmux exists to solve exactly this — it decouples the terminal session from the window, so the process keeps running after you close the terminal.</p>
+<!-- more -->
+<figure class="center"><a class="lightgallery" href="/pictures/posts/tmux-session-window-pane.svg" title="Tmux&#39;s three layers" data-thumbnail="/pictures/posts/tmux-session-window-pane.svg" data-sub-html="<h2>Tmux&rsquo;s three layers: a Session contains Windows, a Window contains Panes</h2><p>Tmux&#39;s three layers</p>"><img  loading="lazy" src='/pictures/posts/tmux-session-window-pane.svg'   alt="Tmux session-window-pane structure diagram"  width="800"></a><figcaption class="image-caption">Tmux&rsquo;s three layers: a Session contains Windows, a Window contains Panes</figcaption>
+    </figure>
+<h2 id="the-core-problem-it-solves" class="headerLink">
+    <a href="#the-core-problem-it-solves" class="header-mark"></a>The Core Problem It Solves</h2><p>An ordinary terminal window is bound to its processes. Close the window and the processes die. Same story when SSH drops.</p>]]></description></item><item><title>AI API Suffixes: What They Mean and Why They Exist</title><link>https://blog.baifan.site/en/ai-api-suffixes-explained/</link><pubDate>Tue, 14 Apr 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ai-api-suffixes-explained/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/ai-api-suffixes-protocol-evolution.svg" referrerpolicy="no-referrer">
+            </div><p>We often see URLs like these:</p>
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+  <div class="
+    
+    tw-flex 
+    tw-flex-row
+    tw-flex-1 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        code-block-button
+        tw-mx-2 
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">plaintext</p>]]></description></item><item><title>Oracle's Free 4-Core 24GB Server: From Signup to Running</title><link>https://blog.baifan.site/en/oracle-free-vps-guide/</link><pubDate>Tue, 07 Apr 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/oracle-free-vps-guide/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/oracle-free-vps-flow.svg" referrerpolicy="no-referrer">
+            </div><p>Oracle&rsquo;s Always Free plan gives you a 4-core, 24 GB ARM server every month — no expiry, no charge. The same specs cost $80–100/month on AWS. This post strings together signup, pitfalls, instance creation, and keep-alive.</p>
+<!-- more -->
+<figure class="center"><a class="lightgallery" href="/pictures/posts/oracle-free-vps-flow.svg" title="Full workflow overview" data-thumbnail="/pictures/posts/oracle-free-vps-flow.svg" data-sub-html="<h2>Oracle free VPS: the full path from preparation to running</h2><p>Full workflow overview</p>"><img  loading="lazy" src='/pictures/posts/oracle-free-vps-flow.svg'   alt="Oracle free VPS full workflow"  width="800"></a><figcaption class="image-caption">Oracle free VPS: the full path from preparation to running</figcaption>
+    </figure>
+<h2 id="what-you-get" class="headerLink">
+    <a href="#what-you-get" class="header-mark"></a>What You Get</h2><p>Oracle&rsquo;s free tier is called <strong>Always Free</strong>. Not a trial, not a limited-time promo.</p>]]></description></item><item><title>Codex Keeps Reconnecting? Four Fixes</title><link>https://blog.baifan.site/en/codex-websocket-reconnect-fix/</link><pubDate>Tue, 31 Mar 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/codex-websocket-reconnect-fix/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/codex-websocket-reconnect-solutions.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>Codex talks to the ChatGPT backend over WebSocket by default. If your network path involves Clash, a corporate proxy, cross-border transit, or Cloudflare challenge pages, that long-lived WebSocket gets killed easily — and you end up staring at <code>Reconnecting... 1/5</code> over and over. Turn off WebSocket and switch to plain HTTP streaming requests, and the problem mostly disappears.</p>
+<figure><a class="lightgallery" href="/pictures/posts/codex-websocket-reconnect-solutions.svg" title="" data-thumbnail="/pictures/posts/codex-websocket-reconnect-solutions.svg" data-sub-html="<h2>Comparison of the four fixes</h2>"><img  loading="lazy" src='/pictures/posts/codex-websocket-reconnect-solutions.svg'     width="900px"></a><figcaption class="image-caption">Comparison of the four fixes</figcaption>
+    </figure>
+<h2 id="why-websocket-breaks-behind-proxies" class="headerLink">
+    <a href="#why-websocket-breaks-behind-proxies" class="header-mark"></a>Why WebSocket Breaks Behind Proxies</h2><p>The WebSocket protocol starts with an HTTP Upgrade request; only after the server returns 101 does it switch to the long-lived connection. That long-lived connection is exactly where the problem sits — proxy servers, firewalls, and CDN nodes all run timeout policies on idle connections, and Cloudflare&rsquo;s challenge mechanism can inject an interstitial page mid-path. Any link in that chain kills the connection, and the Codex client starts <code>Reconnecting</code>.</p>]]></description></item><item><title>Third-Party Telegram Clients: What to Use and What to Avoid</title><link>https://blog.baifan.site/en/third-party-telegram-clients/</link><pubDate>Tue, 24 Mar 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/third-party-telegram-clients/</guid><description><![CDATA[<p>Conclusion first: there are a lot of third-party Telegram clients, quality varies wildly, and you should avoid the closed-source ones as a rule. Since 2021, Telegram has required first-time registration to receive its verification code on the official mobile client — desktop and third-party clients can&rsquo;t register directly. That&rsquo;s already a signal.</p>
+<!-- more -->
+<figure class="center"><a class="lightgallery" href="/pictures/posts/third-party-telegram-clients-overview.svg" title="Third-party Telegram client distribution" data-thumbnail="/pictures/posts/third-party-telegram-clients-overview.svg" data-sub-html="<h2>Third-party Telegram clients by platform: an overview</h2><p>Third-party Telegram client distribution</p>"><img  loading="lazy" src='/pictures/posts/third-party-telegram-clients-overview.svg'   alt="Distribution of third-party Telegram clients"  width="800"></a><figcaption class="image-caption">Third-party Telegram clients by platform: an overview</figcaption>
+    </figure>
+<p>This post is a curated list. The source is a roundup post by <a href="https://t.me/LCGFX/2794" target="_blank" rel="noopener noreferrer">Telegram&rsquo;s @LCGFX</a>; I&rsquo;ve reorganized it by platform and added open-source status and risk judgments.</p>]]></description></item></channel></rss>

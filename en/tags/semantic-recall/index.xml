@@ -1,0 +1,12 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Semantic Recall - Tag - Daily Deep Think</title><link>https://blog.baifan.site/en/tags/semantic-recall/</link><description>Semantic Recall - Tag - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Tue, 02 Jun 2026 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/tags/semantic-recall/" rel="self" type="application/rss+xml"/><item><title>AI Memory Systems: Four Memory Types and Semantic Recall</title><link>https://blog.baifan.site/en/claude-code-memory-system/</link><pubDate>Tue, 02 Jun 2026 09:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/claude-code-memory-system/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>Last time we covered context compaction — solving &ldquo;how much the current session can remember&rdquo;. But a coding assistant needs another kind of memory: <strong>long-term memory across sessions.</strong></p>
+<p>You close Claude Code and reopen it tomorrow. What should it know?</p>
+<ul>
+<li>You prefer TypeScript over JavaScript</li>
+<li>You said last time &ldquo;don&rsquo;t use the underscore library&rdquo;</li>
+<li>This project uses Vitest, not Jest</li>
+<li>You once corrected one of its misunderstandings</li>
+</ul>
+<p>Context compaction can&rsquo;t handle these. The session ends, the history clears, tomorrow is a fresh window. If the AI needs you to re-explain everything each time, it isn&rsquo;t an assistant — it&rsquo;s a burden.</p>]]></description></item></channel></rss>

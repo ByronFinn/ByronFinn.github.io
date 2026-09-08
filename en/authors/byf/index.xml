@@ -1,56 +1,114 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>ByF - Author - Daily Deep Think</title><link>https://blog.baifan.site/en/authors/byf/</link><description>ByF - Author - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/authors/byf/" rel="self" type="application/rss+xml"/><item><title>About Me</title><link>https://blog.baifan.site/en/profile/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/profile/</guid><description><![CDATA[<div class="profile-container">
-  <!-- Hero: value proposition + primary CTA -->
-  <div class="profile-hero">
-    <div class="profile-hero-inner">
-      <div class="profile-avatar-wrapper">
-        <img src="/pictures/avatar/angryCat.png" alt="ByF" class="profile-avatar">
-      </div>
-      <h1 class="profile-name">ByF</h1>
-      <p class="profile-tagline">Technology and business in the AI age, taken apart on the timescale of geology</p>
-      <a href="/posts/" class="profile-cta">Read the latest posts →</a>
-    </div>
-  </div>
-  <!-- What I write: featured posts (concrete > numbers) -->
-  <div class="profile-section">
-    <div class="profile-section-header">
-      <h2 class="profile-section-title">What I Write</h2>
-    </div>
-    <div class="profile-section-content">
-      <div class="profile-featured">
-        <a href="/rag-system-complete-guide-langchain-ollama-pgvector/" class="profile-featured-item">
-          <span class="profile-featured-tag">AI Tutorial</span>
-          <span class="profile-featured-title">The Complete Guide to RAG Systems</span>
-          <span class="profile-featured-desc">LangChain + Ollama + pgvector: build a local RAG system from scratch, with working code and interview checkpoints.</span>
-        </a>
-        <a href="/claude-code-think-act-observe-loop/" class="profile-featured-item">
-          <span class="profile-featured-tag">AI Agent Series</span>
-          <span class="profile-featured-title">The Think-Act-Observe Loop</span>
-          <span class="profile-featured-desc">A source-level look at Claude Code: how one loop carries the entire agent's capability.</span>
-        </a>
-        <a href="/ai-technical-glossary-complete-guide/" class="profile-featured-item">
-          <span class="profile-featured-tag">AI Tutorial</span>
-          <span class="profile-featured-title">A Glossary of 270+ AI Terms</span>
-          <span class="profile-featured-desc">From token to RAG to prompt engineering — a quick-reference map of 12 AI domains.</span>
-        </a>
-        <a href="/economist-20251115-taiwan-boom/" class="profile-featured-item">
-          <span class="profile-featured-tag">Analysis</span>
-          <span class="profile-featured-title">The Economist, Nov 15 2025</span>
-          <span class="profile-featured-desc">The semiconductor advantage — and geopolitical risk — behind Taiwan's economic boom.</span>
-        </a>
-        <a href="/china-county-economy-twilight/" class="profile-featured-item">
-          <span class="profile-featured-tag">Analysis</span>
-          <span class="profile-featured-title">Twilight of the County Town</span>
-          <span class="profile-featured-desc">Factories shutting down, real estate in decline, e-commerce squeezing local shops — the hidden China beneath headline growth.</span>
-        </a>
-        <a href="/tmux-practical-guide/" class="profile-featured-item">
-          <span class="profile-featured-tag">Engineering Practice</span>
-          <span class="profile-featured-title">Tmux: The Practical Bits</span>
-          <span class="profile-featured-desc">Detach/attach, panes, windows — only the operations you will actually use.</span>
-        </a>
-      </div>
-      <div class="profile-directions">
-        <a href="/tags/人工智能/" class="profile-direction">AI Tutorial</a>
-        <a href="/tags/经济学人/" class="profile-direction">Analysis</a>
-        <a href="/tags/工程实践/" class="profile-direction">Engineering Practice</a>
-      </div>
-      <p class="profile-stats-line">30+ original posts · 6 series · 5 directions</p>]]></description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>ByF - Author - Daily Deep Think</title><link>https://blog.baifan.site/en/authors/byf/</link><description>ByF - Author - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Tue, 18 Aug 2026 14:42:15 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/authors/byf/" rel="self" type="application/rss+xml"/><item><title>Cursor Local (Private Inference) Downloads for All Platforms</title><link>https://blog.baifan.site/en/cursor-local-download/</link><pubDate>Tue, 18 Aug 2026 14:42:15 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/cursor-local-download/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/cursor-local-download.svg" referrerpolicy="no-referrer">
+            </div><p>The direct links below always point to the latest local build:</p>
+<!-- more -->
+<h2 id="windows" class="headerLink">
+    <a href="#windows" class="header-mark"></a>Windows</h2><table>
+  <thead>
+      <tr>
+          <th>Version</th>
+          <th>Link</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x64 (user installer)</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/win32-x64-user/cursor-local/latestWindows" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/win32-x64-user/cursor-local/latestWindows</a></td>
+      </tr>
+      <tr>
+          <td>ARM64</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/win32-arm64-user/cursor-local/latestWindows" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/win32-arm64-user/cursor-local/latestWindows</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="macos" class="headerLink">
+    <a href="#macos" class="header-mark"></a>macOS</h2><table>
+  <thead>
+      <tr>
+          <th>Version</th>
+          <th>Link</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Apple Silicon (M-series, recommended)</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-arm64-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-arm64-user/cursor-local/latestMac</a></td>
+      </tr>
+      <tr>
+          <td>Intel chips</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-x64-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-x64-user/cursor-local/latestMac</a></td>
+      </tr>
+      <tr>
+          <td>Universal</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/darwin-universal-user/cursor-local/latestMac" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/darwin-universal-user/cursor-local/latestMac</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="linux-ubuntudebian" class="headerLink">
+    <a href="#linux-ubuntudebian" class="header-mark"></a>Linux (Ubuntu/Debian)</h2><table>
+  <thead>
+      <tr>
+          <th>Version</th>
+          <th>Link</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x64 AppImage</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/linux-x64-user/cursor-local/latestLinux" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/linux-x64-user/cursor-local/latestLinux</a></td>
+      </tr>
+      <tr>
+          <td>ARM64 AppImage</td>
+          <td><a href="https://api2.cursor.sh/updates/download/golden/linux-arm64-user/cursor-local/latestLinux" target="_blank" rel="noopener noreferrer">https://api2.cursor.sh/updates/download/golden/linux-arm64-user/cursor-local/latestLinux</a></td>
+      </tr>
+  </tbody>
+</table>]]></description></item><item><title>Multi-Agent Collaboration: Value From Structure, Not Concurrency</title><link>https://blog.baifan.site/en/multi-agent-technical-core/</link><pubDate>Wed, 12 Aug 2026 14:33:59 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/multi-agent-technical-core/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/multi-agent-technical-core-featured.svg" referrerpolicy="no-referrer">
+            </div><p>Conclusion first: the value of multi-agent doesn&rsquo;t come from more models; it comes from the right structure. Multi-agent without structure is just more expensive concurrency — burn 2 to 3 times the tokens to watch a group of models nod at each other. Multi-agent with structure is an execution system that can delegate, parallelize, and verify.</p>
+<!-- more -->
+<h2 id="why-a-single-agent-fails-at-long-tasks" class="headerLink">
+    <a href="#why-a-single-agent-fails-at-long-tasks" class="header-mark"></a>Why a Single Agent Fails at Long Tasks</h2><p>Diagnosis first. A single agent executing complex tasks has five structural defects — blame the execution structure, not the model&rsquo;s intelligence:</p>]]></description></item><item><title>Give AI a Rulebook: From Wishing Upon It to Making It Behave</title><link>https://blog.baifan.site/en/give-ai-a-rulebook/</link><pubDate>Wed, 05 Aug 2026 14:28:39 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/give-ai-a-rulebook/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/give-ai-a-rulebook-workflow.svg" referrerpolicy="no-referrer">
+            </div><p>Let me start with something that actually happened.</p>
+<p>In early 2025, I added a feature to an internal system: export to Excel. Small requirement — I didn&rsquo;t even write it up, just typed &ldquo;add an export button to the list page&rdquo; into the chat box.</p>
+<p>The AI delivered in ten minutes. Frontend changes, new endpoint, SQL — all in one pass. I was pleased when I opened the PR, right up until review revealed: the export columns didn&rsquo;t match the list page, a hundred thousand rows would hang the service outright, there was no permission check, and the tests only covered the happy path.</p>]]></description></item><item><title>Rethinking Team Division of Labor</title><link>https://blog.baifan.site/en/team-roles-evolution-ai-era/</link><pubDate>Mon, 03 Aug 2026 10:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/team-roles-evolution-ai-era/</guid><description><![CDATA[<blockquote>
+  <p><strong>The conclusion first, so you don&rsquo;t waste your read</strong></p>
+<p>We used to split teams by craft: frontend, backend, product design.
+Now we split teams by stage:
+<strong>Prototyper</strong> — grabs the first idea and fails fast
+<strong>Builder</strong> — turns the prototype into a product you can take to market
+<strong>Maintainer</strong> — holds the fort once the software reaches scale
+<strong>Scaler</strong> — takes a proven product and scales it 10x, 100x
+<strong>Finisher</strong> — polishes the product and the code, sands off the burrs
+As for why we&rsquo;re only splitting this way now — the answer involves AI. Read on.</p>]]></description></item><item><title>Thoughts on Dynamic Intervention in AI Agent Runtimes</title><link>https://blog.baifan.site/en/ai-agent-runtime-dynamic-intervention/</link><pubDate>Mon, 27 Jul 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ai-agent-runtime-dynamic-intervention/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/ai-agent-runtime-intervention-featured.svg" referrerpolicy="no-referrer">
+            </div><h1 id="thoughts-on-dynamic-intervention-in-ai-agent-runtimes" class="headerLink">
+    <a href="#thoughts-on-dynamic-intervention-in-ai-agent-runtimes" class="header-mark"></a>Thoughts on Dynamic Intervention in AI Agent Runtimes</h1><p>A few weeks ago, late at night, I stared at the agent logs scrolling through my terminal, frustrated enough to want to smash the keyboard. It was dutifully generating a requirements analysis report — it had been running for a dozen-plus minutes, pulling loads of data and drawing charts, clearly on the verge of wrapping up — when I suddenly realized the requirements were missing a key dimension: &ldquo;Don&rsquo;t split by region, split by user age group.&rdquo; If I interrupted it now, all the context, intermediate results, and tool call state would be thrown away and it would start over. If I didn&rsquo;t, it would soon produce a wrong report that would cost me just as long to fix by hand.</p>]]></description></item><item><title>AI Agent Skills and MCP: Which Ones Are Worth Installing</title><link>https://blog.baifan.site/en/ai-agent-skills-mcp-review/</link><pubDate>Mon, 20 Jul 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ai-agent-skills-mcp-review/</guid><description><![CDATA[<p>Conclusion first: plenty of tools out there can be installed, but most of them sit there gathering dust after installation. Below is what I filtered out of the things I actually use, sorted into five scenario categories, with a few genuinely used picks in each.</p>
+<!-- more -->
+<h2 id="first-one-all-rounder-recommendation" class="headerLink">
+    <a href="#first-one-all-rounder-recommendation" class="header-mark"></a>First, One All-Rounder Recommendation</h2><p>If you want a single install that covers most scenarios, take a look at this one:</p>
+<p><strong>dev-skills</strong>, at: <a href="https://github.com/ByronFinn/dev-skills" target="_blank" rel="noopener noreferrer">https://github.com/ByronFinn/dev-skills</a></p>]]></description></item><item><title>Agent Interview Questions: Who Has Actually Done the Work</title><link>https://blog.baifan.site/en/agent-interview-questions/</link><pubDate>Mon, 13 Jul 2026 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/agent-interview-questions/</guid><description><![CDATA[<!-- more -->
+<blockquote>
+  <p><strong>Attachment download</strong>: <a href="/files/agent-interview-questions.pdf" rel="">Agent Interview Questions.pdf</a> — handy for printing or offline reading</p>
+
+</blockquote><h2 id="why-would-you-need-multiple-agents" class="headerLink">
+    <a href="#why-would-you-need-multiple-agents" class="header-mark"></a>Why Would You Need Multiple Agents</h2><p>An opening question to separate people who have &ldquo;read the articles&rdquo; from people who have &ldquo;actually built one&rdquo;.</p>
+<p><strong>The bad answer:</strong> &ldquo;Multi-agent enables parallel processing, which improves system throughput and robustness.&rdquo;</p>
+<p>Every word of that is correct, but if you follow up with &ldquo;so after splitting into two agents, did throughput actually double?&rdquo;, they stall. The reality: inter-agent communication has overhead, coordination has complexity, and after the split total throughput may well drop. Adding agents is not like adding CPU cores.</p>]]></description></item><item><title>The Future of AI Coding Tools: From Copilot to Autonomous Agent</title><link>https://blog.baifan.site/en/ai-coding-tools-future-copilot-to-autonomous-agent/</link><pubDate>Mon, 06 Jul 2026 09:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ai-coding-tools-future-copilot-to-autonomous-agent/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>Twelve articles, from the Think-Act-Observe loop all the way down into the 500,000-line engineering abyss. Now, standing at the end of the series and looking back over the whole evolutionary path, a bigger question surfaces:</p>
+<p><strong>What will AI coding tools ultimately evolve into?</strong></p>
+<p>A better Copilot? A more powerful IDE plugin? Or something new that we haven&rsquo;t named yet?</p>
+<h2 id="three-evolutionary-paths" class="headerLink">
+    <a href="#three-evolutionary-paths" class="header-mark"></a>Three Evolutionary Paths</h2><p>Looking back at the development of AI coding tools, you can see three clear stages of evolution:</p>]]></description></item><item><title>3,000 vs 500K Lines: The Architectural Abyss From Toy to Product</title><link>https://blog.baifan.site/en/claude-code-3000-vs-500k-lines/</link><pubDate>Thu, 02 Jul 2026 09:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/claude-code-3000-vs-500k-lines/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>The <a href="https://github.com/saoudrizwan/claude-code-from-scratch" target="_blank" rel="noopener noreferrer">claude-code-from-scratch</a> project implements a &ldquo;mini Claude Code&rdquo; in roughly 3,000 lines of TypeScript. It has the Think-Act-Observe loop, a tool system, a system prompt, permission control, memory, Skills, multi-agent, MCP — every core concept we tore down over the previous ten posts.</p>
+<p>And the official Claude Code source? Roughly 500K lines of TypeScript/TSX.</p>
+<p><strong>That&rsquo;s a 100x+ gap between 3,000 lines and 500K.</strong> What&rsquo;s in it?</p>
+<p>The gap isn&rsquo;t &ldquo;number of features&rdquo;. from-scratch already covers every core concept. The gap is <strong>the road each concept travels from &ldquo;it runs&rdquo; to &ldquo;it&rsquo;s usable&rdquo;</strong> — that road is called productionization.</p>]]></description></item><item><title>Plan Mode and Design-First: Making AI Think Before It Acts</title><link>https://blog.baifan.site/en/claude-code-plan-mode/</link><pubDate>Tue, 16 Jun 2026 09:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/claude-code-plan-mode/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>Hand an architect a plot of land and he won&rsquo;t start laying bricks immediately. He draws first, calculates load, considers daylight, plans the plumbing. Only when the blueprints are confirmed does the construction crew move in.</p>
+<p>Hand an AI coding assistant a requirement and by default it starts editing code immediately. Not because it doesn&rsquo;t understand &ldquo;design first&rdquo;, but because <strong>its loop mechanism rewards action</strong> — in the Think-Act-Observe loop, &ldquo;Act&rdquo; is the core capability. The model is trained to be &ldquo;helpful&rdquo;, and &ldquo;helpful&rdquo; in a coding context usually means &ldquo;start changing things&rdquo;.</p>]]></description></item></channel></rss>

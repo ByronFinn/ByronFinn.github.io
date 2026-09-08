@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Vector - Tag - Daily Deep Think</title><link>https://blog.baifan.site/en/tags/vector/</link><description>Vector - Tag - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Tue, 22 Jul 2025 14:00:00 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/tags/vector/" rel="self" type="application/rss+xml"/><item><title>A Complete Guide to LLMs: Tokens and Vectors in Depth</title><link>https://blog.baifan.site/en/ai-llm-tutorial-token-vector-basics/</link><pubDate>Tue, 22 Jul 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ai-llm-tutorial-token-vector-basics/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/ai-llm-token-vector-basics-featured.svg" referrerpolicy="no-referrer">
+            </div><h1 id="ai-tutorial-a-guide-to-ai-llms-from-basics-to-depth" class="headerLink">
+    <a href="#ai-tutorial-a-guide-to-ai-llms-from-basics-to-depth" class="header-mark"></a>AI Tutorial: A Guide to AI LLMs, from Basics to Depth</h1><p>This article takes you deep into the core concepts of large language models — from basic principles to vector representation — building a complete knowledge system step by step.</p>
+<hr>
+<h2 id="1-foundations-of-ai-application-development" class="headerLink">
+    <a href="#1-foundations-of-ai-application-development" class="header-mark"></a>1. Foundations of AI Application Development</h2><h3 id="11-basic-principles-and-concepts" class="headerLink">
+    <a href="#11-basic-principles-and-concepts" class="header-mark"></a>1.1 Basic Principles and Concepts</h3><h4 id="in-plain-words" class="headerLink">
+    <a href="#in-plain-words" class="header-mark"></a>In Plain Words</h4><ul>
+<li><strong>Core mechanism</strong>: predict the next word from the previous one — like a word-chain game</li>
+<li><strong>How it works</strong>: output is generated token by token</li>
+</ul>
+<h4 id="a-deeper-look" class="headerLink">
+    <a href="#a-deeper-look" class="header-mark"></a>A Deeper Look</h4><p>A large AI model involves two key stages:</p>]]></description></item></channel></rss>

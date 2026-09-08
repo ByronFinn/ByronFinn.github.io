@@ -1,0 +1,734 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>AI LLM Systematic Tutorials - Series - Daily Deep Think</title><link>https://blog.baifan.site/en/series/ai-llm-systematic-tutorials/</link><description>AI LLM Systematic Tutorials - Series - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Wed, 27 Aug 2025 14:00:00 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/series/ai-llm-systematic-tutorials/" rel="self" type="application/rss+xml"/><item><title>RAG Complete Guide: Build a Local RAG System from Scratch</title><link>https://blog.baifan.site/en/rag-system-complete-guide-langchain-ollama-pgvector/</link><pubDate>Wed, 27 Aug 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/rag-system-complete-guide-langchain-ollama-pgvector/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/ai-tutorial-5-rag-system.jpg" referrerpolicy="no-referrer">
+            </div><h1 id="building-a-local-rag-with-langchain--ollama--pgvector-a-complete-hands-on-walkthrough-from-0-to-1-with-uv-dependency-management-and-an-interview-guide" class="headerLink">
+    <a href="#building-a-local-rag-with-langchain--ollama--pgvector-a-complete-hands-on-walkthrough-from-0-to-1-with-uv-dependency-management-and-an-interview-guide" class="header-mark"></a>Building a Local RAG with LangChain + Ollama + pgvector: A Complete Hands-On Walkthrough from 0 to 1 (with uv Dependency Management and an Interview Guide)</h1><blockquote>
+  <p>This post is a directly actionable document. Follow it top to bottom and you will build a local RAG (retrieval-augmented generation) system from scratch and understand the key concepts and code. All core scripts come with comments to make learning and interview review easier.</p>]]></description></item><item><title>CPU, GPU, and Training Large Language Models</title><link>https://blog.baifan.site/en/gpu-accelerated-training-cuda-complete-guide/</link><pubDate>Wed, 20 Aug 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/gpu-accelerated-training-cuda-complete-guide/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/ai-tutorial-4-gpu-training.jpg" referrerpolicy="no-referrer">
+            </div><h1 id="ai-tutorial-cpugpu-and-large-model-training" class="headerLink">
+    <a href="#ai-tutorial-cpugpu-and-large-model-training" class="header-mark"></a>AI Tutorial: CPU/GPU and Large Model Training</h1><blockquote>
+  <p>This is a highly condensed reference: clearly structured, right to the point — covering CPU/GPU fundamentals, tensors and numerical precision, CUDA and PyTorch in practice, hardware selection, common interview questions, and a debugging checklist.</p>
+
+</blockquote><hr>
+<h2 id="0-quick-overview-30-seconds" class="headerLink">
+    <a href="#0-quick-overview-30-seconds" class="header-mark"></a>0. Quick Overview (30 Seconds)</h2><ul>
+<li><strong>CPU vs GPU</strong>: CPUs excel at <strong>general-purpose/sequential</strong> work; GPUs excel at <strong>massive parallelism</strong> (matrices/vectors).</li>
+<li><strong>Large models need GPUs</strong>: training/inference is fundamentally matrix multiplication and parallelization — exactly what a GPU&rsquo;s high concurrency + high-bandwidth memory deliver.</li>
+<li><strong>Tensors and precision</strong>: all data becomes tensors; precision (FP16/FP8) and <strong>quantization</strong> (INT8/INT4) trade speed/VRAM against quality.</li>
+<li><strong>The PyTorch GPU mantra</strong>: <code>device = &quot;cuda&quot; if ...; model.to(device); data.to(device)</code></li>
+<li><strong>Pick a GPU by VRAM first</strong>: VRAM first, then bandwidth/compute; for production, prefer <strong>full-strength high-quality models</strong> or cloud-hosted APIs.</li>
+</ul>
+<hr>
+<h2 id="1-cpu-vs-gpu-differences-workloads-and-analogies" class="headerLink">
+    <a href="#1-cpu-vs-gpu-differences-workloads-and-analogies" class="header-mark"></a>1. CPU vs GPU: Differences, Workloads, and Analogies</h2><h3 id="11-the-one-line-comparison" class="headerLink">
+    <a href="#11-the-one-line-comparison" class="header-mark"></a>1.1 The One-Line Comparison</h3><table>
+  <thead>
+      <tr>
+          <th>Dimension</th>
+          <th>CPU</th>
+          <th>GPU</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Architecture</td>
+          <td>Few cores, complex control flow</td>
+          <td>Massive small cores, SIMT parallelism</td>
+      </tr>
+      <tr>
+          <td>Excels at</td>
+          <td>Branching/system tasks/small-scale compute</td>
+          <td>Matrix multiplication, convolution, attention, graphics rendering</td>
+      </tr>
+      <tr>
+          <td>Task model</td>
+          <td>Time-sliced, low-latency switching</td>
+          <td>Batch- and throughput-oriented</td>
+      </tr>
+      <tr>
+          <td>Typical use</td>
+          <td>Business logic, scheduling, I/O</td>
+          <td>Main training/inference operators (GEMM, Conv, etc.)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="12-an-intuitive-analogy" class="headerLink">
+    <a href="#12-an-intuitive-analogy" class="header-mark"></a>1.2 An Intuitive Analogy</h3><ul>
+<li><strong>CPU = a veteran expert</strong>: meticulous thinking, does one thing at a time with fast switching.</li>
+<li><strong>GPU = a massive army</strong>: hordes of soldiers working simultaneously — built for parallel <strong>homogeneous small tasks</strong>.</li>
+</ul>
+<h3 id="13-optional-mermaid-diagram-cpu-execution-vs-gpu-parallelism" class="headerLink">
+    <a href="#13-optional-mermaid-diagram-cpu-execution-vs-gpu-parallelism" class="header-mark"></a>1.3 Optional Mermaid Diagram (CPU Execution vs GPU Parallelism)</h3><pre class="mermaid">flowchart LR
+    subgraph CPU["CPU (sequential/few cores)"]
+      A1[Task1-SliceA] --> A2[Task2-SliceB] --> A3[Task3-SliceC]
+    end
+    subgraph GPU["GPU (parallel/many cores)"]
+      B1[Element1 compute]:::p
+      B2[Element2 compute]:::p
+      B3[Element3 compute]:::p
+      B4[Element4 compute]:::p
+    end
+    classDef p fill:#e9f5ff,stroke:#3b82f6,stroke-width:1px;
+</pre><hr>
+<h2 id="2-tensors-precision-and-quantization-with-examples" class="headerLink">
+    <a href="#2-tensors-precision-and-quantization-with-examples" class="header-mark"></a>2. Tensors, Precision, and Quantization (with Examples)</h2><h3 id="21-tensor-hierarchy" class="headerLink">
+    <a href="#21-tensor-hierarchy" class="header-mark"></a>2.1 Tensor Hierarchy</h3><ul>
+<li><strong>0D</strong>: scalar <code>3.14</code></li>
+<li><strong>1D</strong>: vector <code>[1,2,3]</code></li>
+<li><strong>2D</strong>: matrix (e.g. a 3×3 table)</li>
+<li><strong>3D+</strong>: still called a tensor (e.g. <code>batch×channel×height×width</code>)</li>
+</ul>
+<p><strong>Image example</strong>: a batch of 32 224×224 RGB images → <code>32×3×224×224</code> (or <code>N×H×W×C</code>, depending on the framework).</p>]]></description></item><item><title>Prompt Engineering: From Prompts to Context Engineering</title><link>https://blog.baifan.site/en/prompt-engineering-context-management-complete-guide/</link><pubDate>Wed, 13 Aug 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/prompt-engineering-context-management-complete-guide/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/ai-tutorial-3-prompt.jpg" referrerpolicy="no-referrer">
+            </div><h1 id="ai-tutorial-prompt-engineering" class="headerLink">
+    <a href="#ai-tutorial-prompt-engineering" class="header-mark"></a>AI Tutorial: Prompt Engineering</h1><p>Prompt engineering focuses on designing, optimizing, and strategizing prompts — helping users mobilize the capabilities of large language models more effectively, and pushing their adoption across real-world scenarios and research domains.</p>
+<h2 id="1-basic-concepts" class="headerLink">
+    <a href="#1-basic-concepts" class="header-mark"></a>1. Basic Concepts</h2><h3 id="11-what-is-prompt-engineering" class="headerLink">
+    <a href="#11-what-is-prompt-engineering" class="header-mark"></a>1.1 What Is Prompt Engineering</h3><p>A prompt is simply this: you use natural language to tell the model what to do, how to do it, what it may do, and what it must not do. That is all there is to it.</p>]]></description></item><item><title>Transformer Architecture Deep Dive: The Attention Mechanism</title><link>https://blog.baifan.site/en/transformer-attention-mechanism-deep-dive/</link><pubDate>Tue, 05 Aug 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/transformer-attention-mechanism-deep-dive/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/ai-tutorial-2-transformer.jpg" referrerpolicy="no-referrer">
+            </div><h1 id="ai-tutorial--transformer" class="headerLink">
+    <a href="#ai-tutorial--transformer" class="header-mark"></a>AI Tutorial — Transformer</h1><h2 id="-1-what-is-the-transformer" class="headerLink">
+    <a href="#-1-what-is-the-transformer" class="header-mark"></a>🧩 1. What Is the Transformer?</h2><blockquote>
+  <p><strong>The Transformer is a deep learning architecture for processing sequential information — text, speech, code, and so on.</strong></p>
+
+</blockquote><p>It was first proposed by Google in the 2017 paper <em>Attention Is All You Need</em>.</p>
+<p>That paper laid the foundation for nearly every large language model today. GPT, BERT, Claude, Gemini, Qwen, ERNIE Bot — all of them are built on the Transformer.</p>]]></description></item><item><title>AI Technical Glossary: A Complete Guide to 270+ Terms</title><link>https://blog.baifan.site/en/ai-technical-glossary-complete-guide/</link><pubDate>Wed, 30 Jul 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ai-technical-glossary-complete-guide/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/2025-11-05-ai-03-001.png" referrerpolicy="no-referrer">
+            </div><h1 id="ai-technical-glossary" class="headerLink">
+    <a href="#ai-technical-glossary" class="header-mark"></a>AI Technical Glossary</h1><p>This reference gathers the core terminology of the LLM field, from basic concepts to advanced technical architecture, to help you build a systematic understanding of the AI technology landscape.</p>
+<hr>
+<h2 id="-fundamentals" class="headerLink">
+    <a href="#-fundamentals" class="header-mark"></a>📚 Fundamentals</h2><table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Technical definition</th>
+          <th>Plain-language explanation</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>AGI (Artificial General Intelligence)</strong></td>
+          <td>An AI system with human-level intelligence</td>
+          <td>An all-capable AI that can think, learn, and create like a person</td>
+          <td>A robot that can write poetry, code, cook, and chat at the same time</td>
+      </tr>
+      <tr>
+          <td><strong>LLM (Large Language Model)</strong></td>
+          <td>A large neural network model trained on massive data</td>
+          <td>A &ldquo;super brain&rdquo; that understands and generates human language</td>
+          <td>GPT-4, Claude, ERNIE Bot, and the like are all LLMs</td>
+      </tr>
+      <tr>
+          <td><strong>Training</strong></td>
+          <td>The process of fitting neural network parameters on large data</td>
+          <td>The AI&rsquo;s &ldquo;study phase&rdquo; — like a person absorbing knowledge from books</td>
+          <td>Training a model on all text on the internet until it learns language</td>
+      </tr>
+      <tr>
+          <td><strong>Inference</strong></td>
+          <td>A trained model generating output from input</td>
+          <td>The AI&rsquo;s &ldquo;application phase&rdquo; — like a person answering questions from what they learned</td>
+          <td>The model generating an answer after you ask it a question</td>
+      </tr>
+      <tr>
+          <td><strong>Token</strong></td>
+          <td>The smallest unit of text a model processes, a fragment split by a tokenization algorithm</td>
+          <td>The particles of AI language, processed one at a time</td>
+          <td><code>&quot;我喜欢苹果&quot;</code> → <code>[&quot;我&quot;, &quot;喜欢&quot;, &quot;苹果&quot;]</code></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-architecture" class="headerLink">
+    <a href="#-architecture" class="header-mark"></a>🏗️ Architecture</h2><table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Technical definition</th>
+          <th>Plain-language explanation</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Transformer</strong></td>
+          <td>A deep learning architecture based on self-attention, proposed by Google in 2017</td>
+          <td>The &ldquo;neural skeleton&rdquo; of modern AI that lets models understand language efficiently</td>
+          <td>GPT, BERT, and every other large model is built on Transformer</td>
+      </tr>
+      <tr>
+          <td><strong>Encoder</strong></td>
+          <td>A neural network component that encodes an input sequence into semantic representations</td>
+          <td>The AI&rsquo;s &ldquo;understanding unit&rdquo; — turns text into vectors machines understand</td>
+          <td>BERT uses an encoder for text understanding tasks</td>
+      </tr>
+      <tr>
+          <td><strong>Decoder</strong></td>
+          <td>A neural network component that generates output token by token based on context</td>
+          <td>The AI&rsquo;s &ldquo;writing unit&rdquo; — generates answers from what it understood</td>
+          <td>The GPT series are all decoder-only models</td>
+      </tr>
+      <tr>
+          <td><strong>Self-Attention</strong></td>
+          <td>A mechanism that computes how much each element in a sequence relates to the others</td>
+          <td>The AI automatically &ldquo;focuses on what matters&rdquo;, like a person picking out key points while reading</td>
+          <td>In &ldquo;deposit money at the bank&rdquo;, &ldquo;bank&rdquo; attends to &ldquo;money&rdquo;; in &ldquo;fish by the river bank&rdquo;, it attends to &ldquo;river&rdquo;</td>
+      </tr>
+      <tr>
+          <td><strong>Multi-Head Attention</strong></td>
+          <td>Several self-attention mechanisms run in parallel to capture different types of dependencies</td>
+          <td>The AI understands text from multiple angles at once</td>
+          <td>One head tracks syntax while another tracks semantics</td>
+      </tr>
+      <tr>
+          <td><strong>Positional Encoding</strong></td>
+          <td>Vector representations that add position information to each token</td>
+          <td>Lets the model know &ldquo;who comes first, who comes later&rdquo;</td>
+          <td>&ldquo;The dog bit the man&rdquo; and &ldquo;the man bit the dog&rdquo; mean different things</td>
+      </tr>
+      <tr>
+          <td><strong>Query</strong></td>
+          <td>The vector that actively asks for related information — what the current word needs</td>
+          <td>The numeric expression of &ldquo;what am I looking for&rdquo;</td>
+          <td>&ldquo;Apple&rdquo; queries attributes like taste and color</td>
+      </tr>
+      <tr>
+          <td><strong>Key</strong></td>
+          <td>The identifier vector for information being queried — what each word can offer</td>
+          <td>The label of &ldquo;what I can provide&rdquo;</td>
+          <td>&ldquo;Sweet&rdquo; serves as the Key for a taste feature, waiting to be queried</td>
+      </tr>
+      <tr>
+          <td><strong>Value</strong></td>
+          <td>The representation vector holding the actual content and true semantic information</td>
+          <td>&ldquo;My actual content&rdquo;, in numbers</td>
+          <td>The actual semantic representation of &ldquo;sweet&rdquo;: <code>[0.8, 0.2, -0.1]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Attention Weight</strong></td>
+          <td>Importance scores expressing how much to attend, usually normalized via softmax</td>
+          <td>&ldquo;How much to pay attention&rdquo;, quantified</td>
+          <td>0.8 means strong attention, 0.1 weak; all weights sum to 1</td>
+      </tr>
+      <tr>
+          <td><strong>Cross-Attention</strong></td>
+          <td>Attention across two sequences — Query comes from one, Key/Value from another</td>
+          <td>Cross-modal information exchange</td>
+          <td>In image-text matching, text Queries attend to image Keys/Values</td>
+      </tr>
+      <tr>
+          <td><strong>Causal Attention</strong></td>
+          <td>Attention restricted to the current position and earlier, preventing future information leaks</td>
+          <td>Attention that can &ldquo;only look backward&rdquo;</td>
+          <td>When GPT generates the 5th word it can only see the previous 4</td>
+      </tr>
+      <tr>
+          <td><strong>Softmax Function</strong></td>
+          <td>An activation function that turns any real-valued vector into a probability distribution</td>
+          <td>Converts scores into &ldquo;importance percentages&rdquo;</td>
+          <td><code>[2,1,0] → [0.67,0.24,0.09]</code>, preserving relative magnitudes</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-mathematical-representation" class="headerLink">
+    <a href="#-mathematical-representation" class="header-mark"></a>🔢 Mathematical Representation</h2><table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Technical definition</th>
+          <th>Plain-language explanation</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Vector</strong></td>
+          <td>A mathematical object with magnitude and direction; an ordered list of numbers</td>
+          <td>A &ldquo;numeric ID card&rdquo; that describes a thing with numbers</td>
+          <td><code>[25, 180, 70]</code> can represent a person&rsquo;s age, height, and weight</td>
+      </tr>
+      <tr>
+          <td><strong>Embedding</strong></td>
+          <td>The technique of mapping discrete symbols into a continuous vector space</td>
+          <td>Turns words into &ldquo;numeric coordinates&rdquo;</td>
+          <td><code>&quot;king&quot;→[0.25, -0.12, 0.78, ...]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Query / Key / Value</strong></td>
+          <td>The three core vector matrices in self-attention: what is asked, what is labeled, what is delivered</td>
+          <td>Query = what I want, Key = what I can offer, Value = my actual content</td>
+          <td><code>Query=[0.1,0.2]</code> asks about taste, <code>Key=[0.8,0.1]</code> labels sweetness, <code>Value=[0.9,0.05]</code> is the actual representation of sweetness</td>
+      </tr>
+      <tr>
+          <td><strong>Feed-Forward Network</strong></td>
+          <td>Applies an independent nonlinear transform at each position</td>
+          <td>Deepens the model&rsquo;s understanding of each word</td>
+          <td>From &ldquo;spring&rdquo; the model further associates &ldquo;warmth, growth&rdquo;</td>
+      </tr>
+      <tr>
+          <td><strong>Layer Normalization</strong></td>
+          <td>Standardizes a layer&rsquo;s inputs</td>
+          <td>A &ldquo;stabilizer&rdquo; for training</td>
+          <td>Prevents gradient explosion or divergence</td>
+      </tr>
+      <tr>
+          <td><strong>Residual Connection</strong></td>
+          <td>A cross-layer connection that preserves the original information</td>
+          <td>An &ldquo;express lane&rdquo; for information, preventing loss</td>
+          <td>Like a shortcut path that keeps deep networks from degrading</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-processing-pipeline" class="headerLink">
+    <a href="#-processing-pipeline" class="header-mark"></a>🔄 Processing Pipeline</h2><table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Technical definition</th>
+          <th>Plain-language explanation</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Tokenizer</strong></td>
+          <td>Converts text into a sequence of tokens</td>
+          <td>A &ldquo;knife for chopping text&rdquo;</td>
+          <td><code>&quot;Hello world&quot; → [&quot;Hello&quot;, &quot; world&quot;]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Context Window</strong></td>
+          <td>The maximum number of tokens a model can process</td>
+          <td>The AI&rsquo;s &ldquo;memory limit&rdquo;</td>
+          <td>GPT-4 has a 128K context</td>
+      </tr>
+      <tr>
+          <td><strong>Decoding</strong></td>
+          <td>Generates text token by token from a probability distribution</td>
+          <td>The AI&rsquo;s &ldquo;writing process&rdquo;</td>
+          <td>Starts generating from the most probable word</td>
+      </tr>
+      <tr>
+          <td><strong>Temperature</strong></td>
+          <td>A parameter controlling generation randomness</td>
+          <td>A &ldquo;creativity dial&rdquo;</td>
+          <td>High temperature is more creative, low more stable</td>
+      </tr>
+      <tr>
+          <td><strong>Top-p Sampling</strong></td>
+          <td>A sampling strategy based on cumulative probability</td>
+          <td>An &ldquo;essence filter&rdquo;</td>
+          <td>Only considers candidates whose cumulative probability reaches 90%</td>
+      </tr>
+      <tr>
+          <td><strong>Max Tokens</strong></td>
+          <td>Caps the length of generated output</td>
+          <td>A &ldquo;word-count limiter&rdquo;</td>
+          <td>Keeps the AI from answering too long</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-engineering-practice" class="headerLink">
+    <a href="#-engineering-practice" class="header-mark"></a>🛠️ Engineering Practice</h2><table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Technical definition</th>
+          <th>Plain-language explanation</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>RAG (Retrieval-Augmented Generation)</strong></td>
+          <td>An AI approach combining retrieval and generation</td>
+          <td>An &ldquo;open-book exam&rdquo; AI</td>
+          <td>Look up references first, then answer the question</td>
+      </tr>
+      <tr>
+          <td><strong>Prompt Engineering</strong></td>
+          <td>The craft of designing and optimizing prompts</td>
+          <td>&ldquo;The art of asking&rdquo;</td>
+          <td>Helping the AI understand your needs better</td>
+      </tr>
+      <tr>
+          <td><strong>Fine-tuning</strong></td>
+          <td>Training a pretrained model on a specific task</td>
+          <td>&ldquo;Targeted job training&rdquo;</td>
+          <td>Turning a general model into a medical assistant</td>
+      </tr>
+      <tr>
+          <td><strong>BPE (Byte Pair Encoding)</strong></td>
+          <td>A common tokenization algorithm</td>
+          <td>A &ldquo;text compression technique&rdquo;</td>
+          <td><code>&quot;unhappiness&quot; → [&quot;un&quot;,&quot;happi&quot;,&quot;ness&quot;]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Detokenization</strong></td>
+          <td>Turns a token sequence back into readable text</td>
+          <td>&ldquo;Reassembling the pieces&rdquo;</td>
+          <td><code>[&quot;我&quot;,&quot;喜欢&quot;,&quot;苹果&quot;]→&quot;我喜欢苹果&quot;</code></td>
+      </tr>
+      <tr>
+          <td><strong>Streaming</strong></td>
+          <td>Generates output token by token in real time</td>
+          <td>The &ldquo;typewriter effect&rdquo;</td>
+          <td>A chatbot thinking while it types</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-classic-models-compared" class="headerLink">
+    <a href="#-classic-models-compared" class="header-mark"></a>🧠 Classic Models Compared</h2><table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Technical definition</th>
+          <th>Plain-language explanation</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>RNN (Recurrent Neural Network)</strong></td>
+          <td>A neural network that processes sequences step by step</td>
+          <td>A &ldquo;read-one-word-at-a-time AI&rdquo;</td>
+          <td>Translating <code>&quot;我爱你&quot;</code> word by word</td>
+      </tr>
+      <tr>
+          <td><strong>LSTM (Long Short-Term Memory)</strong></td>
+          <td>An improved RNN that handles long-range dependencies</td>
+          <td>&ldquo;A better memory&rdquo;</td>
+          <td>Can remember content from the beginning</td>
+      </tr>
+      <tr>
+          <td><strong>CNN (Convolutional Neural Network)</strong></td>
+          <td>A neural network that excels at image patterns</td>
+          <td>An &ldquo;image specialist&rdquo;</td>
+          <td>Recognizing cats, dogs, and faces</td>
+      </tr>
+      <tr>
+          <td><strong>Encoder-Decoder Architecture</strong></td>
+          <td>A model containing both understanding and generation modules</td>
+          <td>An &ldquo;all-round AI&rdquo;</td>
+          <td>Machine translation models</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-application-scenarios" class="headerLink">
+    <a href="#-application-scenarios" class="header-mark"></a>📊 Application Scenarios</h2><table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Technical definition</th>
+          <th>Plain-language explanation</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Chat product</strong></td>
+          <td>A user-facing AI application interface</td>
+          <td>An &ldquo;AI chat shell&rdquo;</td>
+          <td>ChatGPT, Claude</td>
+      </tr>
+      <tr>
+          <td><strong>API call</strong></td>
+          <td>An interface for program-to-program communication</td>
+          <td>The &ldquo;AI phone line&rdquo;</td>
+          <td>An application calling the OpenAI API</td>
+      </tr>
+      <tr>
+          <td><strong>Context management</strong></td>
+          <td>The technique of maintaining conversation history</td>
+          <td>The &ldquo;AI&rsquo;s memory&rdquo;</td>
+          <td>A chatbot remembers what you said</td>
+      </tr>
+      <tr>
+          <td><strong>Multi-turn dialogue</strong></td>
+          <td>A continuous human-machine interaction mode</td>
+          <td>&ldquo;Ongoing conversation&rdquo;</td>
+          <td>Ask about the weather, then what to wear</td>
+      </tr>
+      <tr>
+          <td><strong>Function Calling</strong></td>
+          <td>The model invoking external APIs to perform tasks</td>
+          <td>The &ldquo;AI&rsquo;s ability to act&rdquo;</td>
+          <td>The AI checks the weather or searches automatically</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-model-optimization-and-training-techniques" class="headerLink">
+    <a href="#-model-optimization-and-training-techniques" class="header-mark"></a>🧩 Model Optimization and Training Techniques</h2><table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Technical definition</th>
+          <th>Plain-language explanation</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>LoRA (Low-Rank Adaptation)</strong></td>
+          <td>Fine-tunes model parameters via low-rank matrices</td>
+          <td>&ldquo;Lightweight fine-tuning&rdquo;</td>
+          <td>Lets an LLM quickly adapt to a new domain</td>
+      </tr>
+      <tr>
+          <td><strong>Quantization</strong></td>
+          <td>Represents model parameters at lower precision</td>
+          <td>&ldquo;Slimming the model down&rdquo;</td>
+          <td>FP32→INT8 speeds up inference</td>
+      </tr>
+      <tr>
+          <td><strong>Pruning</strong></td>
+          <td>Removes redundant neurons or connections</td>
+          <td>&ldquo;Trimming the branches&rdquo;</td>
+          <td>Cutting useless parameters</td>
+      </tr>
+      <tr>
+          <td><strong>Distillation (Knowledge Distillation)</strong></td>
+          <td>A large model teaches a small one</td>
+          <td>&ldquo;Teacher trains the student&rdquo;</td>
+          <td>GPT-4 teaching a small model</td>
+      </tr>
+      <tr>
+          <td><strong>Checkpoint</strong></td>
+          <td>A saved intermediate state during model training</td>
+          <td>A &ldquo;training save point&rdquo;</td>
+          <td>Prevents losing progress on a power cut</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-vector-retrieval-and-knowledge-integration" class="headerLink">
+    <a href="#-vector-retrieval-and-knowledge-integration" class="header-mark"></a>🔍 Vector Retrieval and Knowledge Integration</h2><table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Technical definition</th>
+          <th>Plain-language explanation</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Embedding Model</strong></td>
+          <td>A model that converts text into semantic vectors</td>
+          <td>A &ldquo;semantic coordinate machine&rdquo;</td>
+          <td>text-embedding-3-large</td>
+      </tr>
+      <tr>
+          <td><strong>Vector Database</strong></td>
+          <td>A database supporting vector retrieval</td>
+          <td>A &ldquo;semantic warehouse&rdquo;</td>
+          <td>Milvus, Pinecone, FAISS</td>
+      </tr>
+      <tr>
+          <td><strong>Cosine Similarity</strong></td>
+          <td>Measures how similar two vectors&rsquo; directions are</td>
+          <td>A &ldquo;semantic similarity meter&rdquo;</td>
+          <td><code>A cat is sleeping ≈ The cat is resting</code></td>
+      </tr>
+      <tr>
+          <td><strong>Knowledge Graph</strong></td>
+          <td>Stores knowledge as nodes and relationships</td>
+          <td>A &ldquo;knowledge map&rdquo;</td>
+          <td><code>apple → is a → fruit</code></td>
+      </tr>
+      <tr>
+          <td><strong>Hybrid Search</strong></td>
+          <td>Combines semantic retrieval with keyword matching</td>
+          <td>&ldquo;Belt-and-suspenders search&rdquo;</td>
+          <td>Searching both <code>cat</code> and <code>pet animal</code> at once</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-multimodal-and-agents" class="headerLink">
+    <a href="#-multimodal-and-agents" class="header-mark"></a>🧩 Multimodal and Agents</h2><table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Technical definition</th>
+          <th>Plain-language explanation</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Multimodal Model</strong></td>
+          <td>Handles text, images, audio, and other modalities at once</td>
+          <td>A &ldquo;full-senses AI&rdquo;</td>
+          <td>GPT-4V, Gemini</td>
+      </tr>
+      <tr>
+          <td><strong>VLM (Vision-Language Model)</strong></td>
+          <td>Vision-Language Model</td>
+          <td>An AI that can &ldquo;see pictures&rdquo;</td>
+          <td>A visual question-answering AI</td>
+      </tr>
+      <tr>
+          <td><strong>Speech Recognition</strong></td>
+          <td>Converts speech to text</td>
+          <td>A &ldquo;dictation AI&rdquo;</td>
+          <td>Voice input methods</td>
+      </tr>
+      <tr>
+          <td><strong>TTS (Text-to-Speech)</strong></td>
+          <td>Converts text to speech</td>
+          <td>An &ldquo;AI announcer&rdquo;</td>
+          <td>The AI reads its answer aloud</td>
+      </tr>
+      <tr>
+          <td><strong>AI Agent</strong></td>
+          <td>An AI capable of autonomous action and decision-making</td>
+          <td>An AI assistant &ldquo;that can act&rdquo;</td>
+          <td>Devin, AutoGPT</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-model-evaluation-and-safety" class="headerLink">
+    <a href="#-model-evaluation-and-safety" class="header-mark"></a>⚙️ Model Evaluation and Safety</h2><table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Technical definition</th>
+          <th>Plain-language explanation</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Hallucination</strong></td>
+          <td>The model generating false information</td>
+          <td>&ldquo;Confident nonsense&rdquo;</td>
+          <td>Inventing papers or facts</td>
+      </tr>
+      <tr>
+          <td><strong>Alignment</strong></td>
+          <td>Bringing the model in line with human values</td>
+          <td>&ldquo;Values training&rdquo;</td>
+          <td>Tuning a model with RLHF</td>
+      </tr>
+      <tr>
+          <td><strong>RLHF (Reinforcement Learning from Human Feedback)</strong></td>
+          <td>Optimizes a model with human preferences</td>
+          <td>&ldquo;Humans teaching AI to speak&rdquo;</td>
+          <td>How ChatGPT was trained</td>
+      </tr>
+      <tr>
+          <td><strong>Red Teaming</strong></td>
+          <td>Adversarial testing of model safety</td>
+          <td>A &ldquo;security penetration test&rdquo;</td>
+          <td>Testing whether the model leaks secrets</td>
+      </tr>
+      <tr>
+          <td><strong>Bias</strong></td>
+          <td>Systematic prejudice in model outputs</td>
+          <td>&ldquo;The AI plays favorites&rdquo;</td>
+          <td>Preference for a gender or language</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-emerging-trends-and-future-directions" class="headerLink">
+    <a href="#-emerging-trends-and-future-directions" class="header-mark"></a>🧰 Emerging Trends and Future Directions</h2><table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Technical definition</th>
+          <th>Plain-language explanation</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Mixture of Experts</strong></td>
+          <td>A structure with multiple sub-models activated dynamically</td>
+          <td>A &ldquo;panel-of-experts AI&rdquo;</td>
+          <td>The <code>Gemini 1.5 Pro</code> architecture</td>
+      </tr>
+      <tr>
+          <td><strong>Context Compression</strong></td>
+          <td>Compresses conversation history to save tokens</td>
+          <td>&ldquo;Memory compression&rdquo;</td>
+          <td>Summarizing long conversations</td>
+      </tr>
+      <tr>
+          <td><strong>Memory-Augmented Model</strong></td>
+          <td>An AI combined with long-term memory mechanisms</td>
+          <td>An AI &ldquo;with a memory&rdquo;</td>
+          <td><code>ChatGPT</code> long-term memory</td>
+      </tr>
+      <tr>
+          <td><strong>Autonomous Agent</strong></td>
+          <td>An AI that can plan and execute tasks on its own</td>
+          <td>A &ldquo;self-managing AI&rdquo;</td>
+          <td><code>AutoGPT</code>, <code>Devin</code></td>
+      </tr>
+      <tr>
+          <td><strong>Synthetic Data</strong></td>
+          <td>Virtual training data generated by AI</td>
+          <td>&ldquo;AI-made textbooks&rdquo;</td>
+          <td>Expanding a training set with AI</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-study-advice" class="headerLink">
+    <a href="#-study-advice" class="header-mark"></a>💡 Study Advice</h2><h3 id="-priority-for-mastering-core-concepts" class="headerLink">
+    <a href="#-priority-for-mastering-core-concepts" class="header-mark"></a>🎯 Priority for Mastering Core Concepts</h3><ol>
+<li><strong>Beginner (must know)</strong>: Token, Embedding, Transformer, LLM</li>
+<li><strong>Intermediate (important)</strong>: Self-Attention, RAG, Context Window</li>
+<li><strong>Advanced (optional)</strong>: LoRA, Mixture of Experts, Red Teaming</li>
+</ol>
+<h3 id="-suggested-learning-path" class="headerLink">
+    <a href="#-suggested-learning-path" class="header-mark"></a>📖 Suggested Learning Path</h3><ol>
+<li><strong>Understand the basics</strong>: what a token is, and why vector representation is needed</li>
+<li><strong>Master the core architecture</strong>: the Transformer encoder-decoder structure</li>
+<li><strong>Practice application techniques</strong>: combining prompt engineering with RAG</li>
+<li><strong>Go deeper into technical details</strong>: attention mechanisms and alignment training</li>
+</ol>
+<h3 id="-concept-map" class="headerLink">
+    <a href="#-concept-map" class="header-mark"></a>🔗 Concept Map</h3><div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+  <div class="
+    
+    tw-flex 
+    tw-flex-row
+    tw-flex-1 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        code-block-button
+        tw-mx-2 
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">text</p>]]></description></item><item><title>A Complete Guide to LLMs: Tokens and Vectors in Depth</title><link>https://blog.baifan.site/en/ai-llm-tutorial-token-vector-basics/</link><pubDate>Tue, 22 Jul 2025 14:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/ai-llm-tutorial-token-vector-basics/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/ai-llm-token-vector-basics-featured.svg" referrerpolicy="no-referrer">
+            </div><h1 id="ai-tutorial-a-guide-to-ai-llms-from-basics-to-depth" class="headerLink">
+    <a href="#ai-tutorial-a-guide-to-ai-llms-from-basics-to-depth" class="header-mark"></a>AI Tutorial: A Guide to AI LLMs, from Basics to Depth</h1><p>This article takes you deep into the core concepts of large language models — from basic principles to vector representation — building a complete knowledge system step by step.</p>
+<hr>
+<h2 id="1-foundations-of-ai-application-development" class="headerLink">
+    <a href="#1-foundations-of-ai-application-development" class="header-mark"></a>1. Foundations of AI Application Development</h2><h3 id="11-basic-principles-and-concepts" class="headerLink">
+    <a href="#11-basic-principles-and-concepts" class="header-mark"></a>1.1 Basic Principles and Concepts</h3><h4 id="in-plain-words" class="headerLink">
+    <a href="#in-plain-words" class="header-mark"></a>In Plain Words</h4><ul>
+<li><strong>Core mechanism</strong>: predict the next word from the previous one — like a word-chain game</li>
+<li><strong>How it works</strong>: output is generated token by token</li>
+</ul>
+<h4 id="a-deeper-look" class="headerLink">
+    <a href="#a-deeper-look" class="header-mark"></a>A Deeper Look</h4><p>A large AI model involves two key stages:</p>]]></description></item></channel></rss>

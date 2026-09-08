@@ -1,0 +1,45 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Architecture Design - Tag - Daily Deep Think</title><link>https://blog.baifan.site/en/tags/architecture-design/</link><description>Architecture Design - Tag - Daily Deep Think</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>blog@baifan.site (ByF)</managingEditor><webMaster>blog@baifan.site (ByF)</webMaster><lastBuildDate>Wed, 12 Aug 2026 14:33:59 +0800</lastBuildDate><atom:link href="https://blog.baifan.site/en/tags/architecture-design/" rel="self" type="application/rss+xml"/><item><title>Multi-Agent Collaboration: Value From Structure, Not Concurrency</title><link>https://blog.baifan.site/en/multi-agent-technical-core/</link><pubDate>Wed, 12 Aug 2026 14:33:59 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/multi-agent-technical-core/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/posts/multi-agent-technical-core-featured.svg" referrerpolicy="no-referrer">
+            </div><p>Conclusion first: the value of multi-agent doesn&rsquo;t come from more models; it comes from the right structure. Multi-agent without structure is just more expensive concurrency — burn 2 to 3 times the tokens to watch a group of models nod at each other. Multi-agent with structure is an execution system that can delegate, parallelize, and verify.</p>
+<!-- more -->
+<h2 id="why-a-single-agent-fails-at-long-tasks" class="headerLink">
+    <a href="#why-a-single-agent-fails-at-long-tasks" class="header-mark"></a>Why a Single Agent Fails at Long Tasks</h2><p>Diagnosis first. A single agent executing complex tasks has five structural defects — blame the execution structure, not the model&rsquo;s intelligence:</p>]]></description></item><item><title>3,000 vs 500K Lines: The Architectural Abyss From Toy to Product</title><link>https://blog.baifan.site/en/claude-code-3000-vs-500k-lines/</link><pubDate>Thu, 02 Jul 2026 09:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/claude-code-3000-vs-500k-lines/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>The <a href="https://github.com/saoudrizwan/claude-code-from-scratch" target="_blank" rel="noopener noreferrer">claude-code-from-scratch</a> project implements a &ldquo;mini Claude Code&rdquo; in roughly 3,000 lines of TypeScript. It has the Think-Act-Observe loop, a tool system, a system prompt, permission control, memory, Skills, multi-agent, MCP — every core concept we tore down over the previous ten posts.</p>
+<p>And the official Claude Code source? Roughly 500K lines of TypeScript/TSX.</p>
+<p><strong>That&rsquo;s a 100x+ gap between 3,000 lines and 500K.</strong> What&rsquo;s in it?</p>
+<p>The gap isn&rsquo;t &ldquo;number of features&rdquo;. from-scratch already covers every core concept. The gap is <strong>the road each concept travels from &ldquo;it runs&rdquo; to &ldquo;it&rsquo;s usable&rdquo;</strong> — that road is called productionization.</p>]]></description></item><item><title>Multi-Agent Architecture: The Art of Fork-Join Collaboration</title><link>https://blog.baifan.site/en/claude-code-multi-agent-architecture/</link><pubDate>Tue, 09 Jun 2026 09:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/claude-code-multi-agent-architecture/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>There&rsquo;s a counterintuitive phenomenon: take the same model, split it into multiple independent instances, and have them collaborate — the result is often better than a single instance.</p>
+<p>Not more compute (three instances burn more total tokens than one), not more capability (every instance is the same model). The gain comes from <strong>role separation</strong> — when each agent attends to only one facet of the problem, it works with more focus and more depth than a &ldquo;do-everything agent&rdquo;.</p>]]></description></item><item><title>Tools Are Capability: AI Agent Tool System Design Philosophy</title><link>https://blog.baifan.site/en/claude-code-tool-system-design/</link><pubDate>Tue, 12 May 2026 09:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/claude-code-tool-system-design/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>Last time we talked about the Think-Act-Observe loop — the skeleton of an AI coding assistant. A skeleton can&rsquo;t work on its own; it needs muscle. In Claude Code, that muscle is <strong>tools</strong>.</p>
+<p>Without tools, the loop loses the Act between Think and Observe and degenerates into plain Q&amp;A. With tools, the model can touch the real world: read your code, change your configs, run your tests.</p>]]></description></item><item><title>The Soul of an AI Coding Assistant: The Think-Act-Observe Loop</title><link>https://blog.baifan.site/en/claude-code-think-act-observe-loop/</link><pubDate>Thu, 07 May 2026 09:00:00 +0800</pubDate><author><name>ByF</name></author><guid>https://blog.baifan.site/en/claude-code-think-act-observe-loop/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/pictures/note/claude-code-deconstruction-series.svg" referrerpolicy="no-referrer">
+            </div><!-- more -->
+<p>If you dig through the Claude Code source, you will discover a counterintuitive fact:</p>
+<p><strong>The core of the entire program is a while loop.</strong></p>
+<p>Not a complex state machine, not an elaborate pipeline, not distributed coordination — just a plain <code>while</code> loop that does three things over and over: let the model think, let the model act, feed the results back.</p>
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+  <div class="
+    
+    tw-flex 
+    tw-flex-row
+    tw-flex-1 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        code-block-button
+        tw-mx-2 
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">text</p>]]></description></item></channel></rss>
