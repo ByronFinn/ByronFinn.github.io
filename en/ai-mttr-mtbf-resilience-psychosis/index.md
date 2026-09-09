@@ -83,8 +83,6 @@ It's like a city where every car drives faster (local efficiency up) while the a
 
 Let me be clear about my position: I am not against AI coding tools. I use them myself every day. For example, in my earlier [AI programming practice]({{< ref "posts/2026-05-17-ui-first-ai-programming.md" >}}), I explored deriving the PRD backward from UI prototypes to reduce requirement drift — itself an attempt to fight the "arbitrariness" of AI programming with structured process.
 
-I use AI coding tools myself every day. For example, in my earlier [AI programming practice]({{< ref "posts/2026-05-17-ui-first-ai-programming.md" >}}), I explored deriving the PRD backward from UI prototypes to reduce requirement drift — itself an attempt to fight the "arbitrariness" of AI programming with structured process.
-
 But one pattern of use deeply unsettles me: treating AI as a pass to skip engineering discipline. Specifically —
 
 - Letting AI-generated test coverage replace deep review of code correctness
