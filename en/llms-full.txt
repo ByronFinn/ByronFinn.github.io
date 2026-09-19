@@ -317,6 +317,12 @@ Tags: LLM, Artificial Intelligence, Reflections
 Two possible paths for AI: relentless breakthroughs that replace human jobs, or stagnation that bursts the bubble. Why ordinary people should choose carpe diem amid vast uncertainty about the future.
 ## Engineering Practice
 
+### [OpenAI Gave Me Six Months of ChatGPT Pro for Maintaining Open Source](https://blog.baifan.site/en/codex-for-open-source/)
+Date: 2026-09-19
+Tags: Open Source, OpenAI, Codex, ChatGPT Pro, Open Source Maintenance
+
+Applied to OpenAI's Codex for Open Source on a whim and got in — six months of Pro for free. Noting it down: feels great.
+
 ### [Cursor Local (Private Inference) Downloads for All Platforms](https://blog.baifan.site/en/cursor-local-download/)
 Date: 2026-08-18
 Tags: Cursor, Cursor Local, Private Inference, Local Inference, Downloads

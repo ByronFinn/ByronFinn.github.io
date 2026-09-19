@@ -135,6 +135,12 @@ Tags: 大模型, Token, 向量, Transformer
 AI大模型完全指南：从零基础到Token与向量的深度解析。系统学习AI核心技术原理，包括Token机制、向量表示、Transformer架构等关键概念。深入理解LLM工作机制，掌握人工智能基础理论，通过实例和图表详细阐述AI应用开发的核心要点，为深度学习和AI实践奠定扎实基础。
 ## 技术实践
 
+### [OpenAI 送了我半年 ChatGPT Pro，理由是我在维护开源](https://blog.baifan.site/codex-for-open-source/)
+Date: 2026-09-19
+Tags: 开源, OpenAI, Codex, ChatGPT Pro, 开源维护
+
+申请 OpenAI 的 Codex for Open Source 居然过了，白嫖半年 Pro。记一下，很爽。
+
 ### [Cursor Local (Private Inference 版）全平台下载地址](https://blog.baifan.site/cursor-local-download/)
 Date: 2026-08-18
 Tags: Cursor, Cursor Local, Private Inference, 本地推理, 下载
