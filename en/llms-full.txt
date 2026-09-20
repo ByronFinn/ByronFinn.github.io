@@ -50,6 +50,12 @@ Built with Hugo and the DoIt theme, hosted on GitHub Pages.
 - [The Economist, November 2025: Global Trends and Geopolitics](https://blog.baifan.site/en/economist-202511-global-analysis/) (2025-09-09)
 ## AI Technology
 
+### [The Classifier Is the Savior Again](https://blog.baifan.site/en/the-classifier-returns/)
+Date: 2026-09-20
+Tags: LLM-as-a-Judge, Jev, LangChain, RAG, GraphRAG, LLM Evaluation
+
+LangChain benchmarked Jev: 100.0% judge accuracy at $0.00035 per call vs Claude Sonnet 4.6. The savior behind LLM-as-a-judge is a BERT-era classifier.
+
 ### [Multi-Agent Collaboration: Value From Structure, Not Concurrency](https://blog.baifan.site/en/multi-agent-technical-core/)
 Date: 2026-08-12
 Tags: Multi-Agent, AI Agent, Architecture Design, Context Management, State Machine

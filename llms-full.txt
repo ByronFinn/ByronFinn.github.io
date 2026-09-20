@@ -50,6 +50,12 @@
 - [时间线记录器：从MVP到可扩展的技术架构设计](https://blog.baifan.site/time-line-editor-architecture-design/) (2025-07-14)
 ## AI技术
 
+### [分类器又成了救世主](https://blog.baifan.site/the-classifier-returns/)
+Date: 2026-09-20
+Tags: LLM-as-a-Judge, Jev, LangChain, RAG, GraphRAG, 模型评估
+
+企业评估流水线里最贵的图腾是 LLM-as-a-Judge。LangChain 实测 TypeSafe 的 Jev：二元判定准确率 100%、单次 0.00035 美元、比 Claude 便宜 80 倍——原来救世主是个 BERT 时代的分类器。
+
 ### [多 Agent 协作的技术内核：价值来自结构，不是并发](https://blog.baifan.site/multi-agent-technical-core/)
 Date: 2026-08-12
 Tags: 多Agent, AI Agent, 架构设计, 上下文管理, 状态机
