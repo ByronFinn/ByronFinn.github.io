@@ -1,86 +1,104 @@
-# Multi-Agent Collaboration: Triggers, Topology, and Merging
+# The Engineering Reality of Multi-Agent Collaboration: Triggers, Topologies, and Deterministic Merging
 
 
-Conclusion first: multi-agent collaboration is not "spinning up a few more model instances." It has to solve task scheduling, context isolation, permission control, state management, and result merging — every one of which is an engineering problem, not a prompt problem.
+Packing multiple probabilistically sampled large language model instances into a single codebase or production pipeline is, fundamentally, constructing a distributed system over an unreliable network using stochastic state machines. The axiomatic foundations of classical distributed computing—deterministic state transitions, reproducible failure modes, Byzantine fault tolerance, and atomic commits—collapse almost entirely when applied to modern generative models.
 
 <!-- more -->
 
-The multi-agent stories on TikTok and Xiaohongshu usually go like this: one agent researches, one agent writes code, one agent runs tests, one agent does review, and the main agent collects results like a project manager. The comments: "Whoa, that's insane."
+Tech social media abounds with utopian product demos: one agent searches documentation, another implements business logic, a third writes unit tests, and a fourth conducts code review, while an orchestrator agent glides over the process like an infallible engineering manager. Yet anyone who has pushed such topologies into a 500,000-line monolithic repository or a high-concurrency production environment knows the reality: the system rapidly degenerates into distributed chaos. Unsynchronized modifications cause silent overwrites and split-brain states; non-deterministic rollouts cause cognitive divergence; token consumption explodes in a positive-feedback avalanche; and parent and child processes lock each other in cognitive livelocks.
 
-People who have actually used it just shake their heads.
+Multi-agent collaboration is not an exercise in clever prompt engineering; it is an unforgiving distributed runtime challenge. Who holds the write lease? How are the failure domains of subagents isolated? How do we bound context decay and SNR degradation? And when two workers concurrently mutate caller and callee semantics, what deterministic Compare-And-Swap (CAS) oracle reconciles their changes?
 
-In engineering terms: who is allowed to create workers? How much context does a worker get? Can it write files? What happens when multiple workers write to the same area? When a worker fails, times out, or gets interrupted, how does the parent task recover? Once results come back, who adjudicates conflicts and who does the merge? These are runtime design questions, with little to do with model capability.
+Setting aside marketing hype, this analysis examines multi-agent architecture through the lens of classical distributed systems theory (the Actor model, State Machine Replication, CAS, and Crash-Only Software) alongside five production architectures: OpenAI Codex, Claude Code, OpenClaw, Hermes, and Qoder.
 
-What follows takes the actual designs of five systems — Codex, Claude Code, OpenClaw, Hermes, and Qoder — and takes the engineering problems of multi-agent systems apart.
+---
 
-## Triggering and Topology Are Two Different Problems
+## 1. The Collapse of Foundational Axioms: Non-Deterministic State Machines and the Quorum Illusion
 
-Many discussions get muddled because they treat two problems as one.
+To diagnose the chronic fragility of multi-agent workflows, one must return to the foundational prerequisites of distributed consensus.
 
-**Triggering**: when does the system go from one agent to many?
+### The Breakdown of the Deterministic State Machine (DSM)
 
-**Topology**: once there are multiple agents, how are they organized? Does the main agent dispatch workers and merge everything itself, or can workers talk to each other? Do you wait for results within the current turn, or drop tasks into a durable queue and continue tomorrow?
+Since Leslie Lamport formulated Paxos and Diego Ongaro alongside John Ousterhout introduced Raft (2014), State Machine Replication (SMR) has rested on an immutable mathematical premise: **the Deterministic State Machine**. For any node in a replica set, given an identical initial state $S_0$ and an identical sequence of input log entries $L = \langle e_1, e_2, \dots, e_n \rangle$, the state transition function must be strictly deterministic and invariant:
 
-### Four Triggering Modes
+$$
+\text{apply}(S_t, e_{t+1}) \to S_{t+1} \quad \text{uniquely and deterministically}
+$$
 
-{{< image src="/pictures/posts/multi-agent-collaboration-topology.svg" caption="The main topologies of multi-agent systems" width="100%">}}
+Auto-regressive language models, by contrast, are high-dimensional probabilistic samplers:
 
-**Explicit triggering**. The user literally says "use parallel subagents" or "spawn one agent per review category". Codex mainly takes this road. It won't start workers on its own just because a task looks complicated; it leaves the parallelism decision to the user and the main agent.
+$$
+P(w_{t+1} \mid w_1, w_2, \dots, w_t; \theta, T)
+$$
 
-**Semantic triggering**. The main agent decides whether to call a particular expert based on the task content and each subagent description. Claude Code's ordinary subagents work this way. The more a description reads like a trigger condition, the more reliably the system calls it at the right moment; the more it reads like a wish, the more chaotically agents get summoned. Qoder Experts is not auto-switched into from normal agent mode — the user switches to Experts mode first, then the Team Lead breaks down the task and pulls in experts as needed.
+Even when inference temperature $T$ is clamped to 0, underlying GPU hardware non-determinism—specifically floating-point non-associativity ($(a + b) + c \neq a + (b + c)$) across parallel warp reductions, dynamic CUDA thread scheduling jitter, and mixed-precision quantization kernels—induces non-trivial deviations in token generation trajectories over long rollouts.
 
-**Route triggering**. The system doesn't look at task complexity; it looks first at where the message came from. OpenClaw selects agents by channel, account, thread, peer, guild, and role. The Slack ops channel goes to the ops agent, private Telegram goes to the deep work agent, the household entry point goes to a low-privilege assistant.
+The architectural consequence is stark: **multi-agent systems possess zero deterministic replicas.**
 
-**Queue triggering**. Tasks are written to a board, queue, cron, or background job, and a dispatcher pulls up workers by status and assignee. Hermes Kanban takes this road. The key question isn't whether the current turn can return a result — it's whether tasks survive across turns, days, restarts, and human intervention.
+When an orchestrator fans out a task to three supposedly homogeneous worker instances, the system does not create three fault-tolerant redundant replicas; it branches into three divergent stochastic Markov chains. Classical quorum voting cannot validate correctness here. Quorum arbitration assumes independent, uncorrelated hardware failure distributions ($p^k$). LLMs instantiated from shared base weights exhibit highly correlated **common-mode failures**: when confronted with tricky prompt ambiguities or subtle API edge cases, parallel instances hallucinate along identical cognitive fault lines. Blind majority voting merely executes collective delusions with higher statistical confidence.
 
-### Six Topologies
+### Context Decay and the Token Avalanche
 
-**Single agent**. The default. When requirements are vague, changes are small, or steps are tightly coupled, a single agent is usually the most stable. Plenty of tasks don't need multiple agents — they need better context and shorter feedback loops.
+In conventional distributed RPC frameworks, message payloads are decoupled from the execution engine: transport overhead scales linearly ($O(M)$). In multi-agent systems, however, payload *is* state, and state *is* attention context.
 
-**Star fan-out/fan-in**. The most common subagent shape. The main agent dispatches multiple workers, workers don't negotiate directly with each other, and results flow back to the main agent for the reduce. Codex subagents, Claude's ordinary subagents, Hermes delegate\_task, and Qoder Experts all use this structure. The advantage is a clear center of responsibility; the disadvantage is that workers can't correct each other, and every conflict piles onto the main agent's merge stage.
+As demonstrated by Nelson F. Liu et al. (2023) in *Lost in the Middle: How Language Models Use Long Contexts*, transformer retrieval and rule adherence degrade along a pronounced U-shaped curve as prompt lengths expand. When an orchestrator dumps sprawling repository ASTs, call stacks, and architectural contracts into a subagent's prompt, the signal-to-noise ratio (SNR) plummets.
 
-**Chain pipeline**. For strongly sequential tasks. First locate the bug, then write the fix, then add tests, then review. Forcing parallelism onto tasks like these usually just makes later workers waste time on wrong assumptions.
+Compounding this is the quadratic nature of attention cache memory and cumulative token consumption. Consider an orchestrator fanning out to $K$ concurrent workers. Each worker runs a tool-execution loop, consuming $T_{\text{in}}$ tokens and generating $T_{\text{out}}$ trace tokens. When these $K$ parallel branches fan in for synthesis, the orchestrator's ingestion footprint surges:
 
-**Tree**. For layering big tasks. The main agent dispatches orchestrators, which dispatch leaf workers. It looks powerful, but depth and concurrency must be strictly capped or the fan-out inflates exponentially. OpenClaw and Hermes both keep default depth very low precisely to control this risk.
+$$
+T_{\text{reduce}} \approx T_{\text{base}} + \sum_{i=1}^{K} (T_{\text{in}}^{(i)} + T_{\text{out}}^{(i)})
+$$
 
-**Mesh team**. For multi-hypothesis problems. A production login failure might come from frontend state, backend tokens, database sessions, cache, or deployment config; multiple teammates each verify a hypothesis and challenge each other. The cost: more messages, more context, higher coordination overhead, and file conflicts become more likely.
+Without aggressive, lossy semantic summarization, the orchestrator's context window saturates within two iterations, forcing destructive context compaction (see [Claude Code Context Compression Analysis]({{< ref "2026-06-17-claude-code-context-compression.en.md" >}})). As context saturates, reasoning fidelity degrades, which prompts the orchestrator to trigger additional corrective sub-queries. The runtime rapidly enters a **token consumption avalanche**: budgets evaporate while the root objective remains unresolved.
 
-**Gateway routing**. For always-on, multi-entry systems. Not "one task split across multiple agents" but "different entry points flow into different agents." A large share of OpenClaw's multi-agent value lives here.
+### The Straggler Problem and Cognitive Deadlocks
 
-## The Call Chain
+In their seminal 2004 MapReduce paper, Jeffrey Dean and Sanjay Ghemawat highlighted the operational bottleneck of **stragglers**: in any barrier-synchronized parallel computation, latency is bounded not by mean worker throughput, but by tail latency ($P_{99}$).
 
-{{< image src="/pictures/posts/multi-agent-delegation-chain.svg" caption="The call chain of a multi-agent system" width="100%">}}
+In LLM multi-agent systems, generation variance magnifies straggler penalties by an order of magnitude. A subagent assigned to "security audit" may encounter a convoluted regex, stalling in a 180-second loop of ReDoS analysis and repeated AST tool invocations, while sibling workers assigned to interface design and unit testing sit idle at the synchronization barrier.
 
-Take a multi-agent system apart into one call chain:
+Even more pernicious are implicit topological deadlocks:
+- Worker A patches authentication routines while awaiting external configuration schema definitions;
+- Worker B refactors configuration structures, assuming its interface must match the auth worker's new token struct;
+- In the absence of an explicitly defined Directed Acyclic Graph (DAG) with validated topological sort order, the agents enter a cognitive livelock, politely trading tentative status updates until their step budget is exhausted.
+
+---
+
+## 2. Triggering Boundaries: Call Stack Bloat and Ingress Perimeter
+
+The first perimeter of any multi-agent architecture is triggering: under what rigorous conditions is a single-threaded execution thread permitted to fork into concurrent branches? This boundary dictates the system's fault domain.
 
 ```text
-input event
-  -> router / dispatcher
-  -> context builder
-  -> worker profile selection
-  -> execution sandbox
-  -> state store
-  -> merge / reduce
-  -> final output or next task
+               +----------------------------------+
+               |        Input Ingress Event       |
+               +-----------------+----------------+
+                                 |
+                     [ Authentication Gate ]
+                                 |
+              +------------------v------------------+
+              |   Entry Gateway Router (OpenClaw)   |
+              +------------------+------------------+
+                                 | (Resolved Identity & Policy)
+              +------------------v------------------+
+              |      Master Agent Loop (Claude)     |
+              +--------+--------------------+-------+
+                       |                    |
+       [Explicit Command / Contract]    [Semantic Match]
+                       |                    |
+        +--------------v---+            +---v--------------+
+        |  Codex Dispatch  |            | Ephemeral Worker |
+        |  (Scoped Worker) |            | (Read-Only Tools)|
+        +--------------+---+            +---+--------------+
+                       |                    |
+              +--------v--------------------v-------+
+              | Durable Execution Queue / Postgres   |
+              | Checkpointer (Hermes / LangGraph)   |
+              +-------------------------------------+
 ```
 
-**router / dispatcher** decides whether to split a task and to whom. In Codex this judgment comes from explicit user authorization; in Claude Code it's driven by description matching; in OpenClaw it's often decided by entry-point binding; in Hermes a short task may be delegated by the parent agent calling delegate\_task, or auto-selected by the model based on complexity; in Qoder's Experts mode the Team Lead splits tasks, picks experts, and merges results.
+### Explicit Triggering: Concurrency as a Privileged Operation
 
-**context builder** decides what the worker knows. Under-contextualized subagents drift off course as a matter of course. You can't pull a worker in with nothing but "fix it" and expect it to understand the project path, the error scene, the relevant files, the acceptance criteria, and the no-go list. For a subagent, the delegation brief is the requirements document.
-
-**worker profile selection** decides which role to use. Read-only explorer, code-editing worker, security reviewer, test reviewer, a profile with long-term memory, a one-shot child — pick the wrong role and the permissions and output that follow will be wrong too.
-
-**execution sandbox** decides what the worker can do. Can it run a shell? Go online? Write files? Spawn children of its own? These aren't just security settings — they directly change the collaboration pattern. A read-only reviewer and a writable implementer are two completely different agents.
-
-**state store** decides where state lives. A one-shot subagent's state usually only lives inside the current task, returning a summary at the end. OpenClaw's agents have their own session store. Hermes Kanban writes task, comment, handoff, and blocked/retry state into a database. Where state lives determines whether the system can span turns, days, and restarts.
-
-**merge / reduce** owns the final merge. After multiple workers return results, who adjudicates conflicts, who makes trade-offs, who writes the final patch, who is accountable to the user? Many multi-agent demos look beautiful precisely because they skip the merge problem. In real engineering, merge is where success or failure is decided.
-
-Finally there's cancellation and failure propagation. If the parent task is interrupted, do the children stop too? What happens when a worker times out? When two workers return opposite conclusions? When one worker writes a bad patch and another worker's tests keep running on top of it — how do you roll back? These are runtime design questions.
-
-## Codex: Explicit Fan-Out
-
-Codex's subagent strategy is restrained. By default it will not spin up a fleet of agents just because a task sounds complex. You have to grant parallelism explicitly:
+OpenAI Codex adopts the most conservative stance in production. By default, Codex refuses to fork subagents merely because a user's prompt sounds conceptually broad ("Refactor this module and improve performance"). It treats concurrency like `rm -rf`—a high-privilege, potentially hazardous primitive requiring explicit human authorization:
 
 ```text
 Use parallel subagents.
@@ -88,372 +106,347 @@ Spawn one agent per review category.
 Delegate this work in parallel and synthesize the results.
 ```
 
-If you only say "dig into this" or "review it thoroughly," Codex usually reads that as a quality bar, not multi-agent authorization. It's a product trade-off: Codex leaves fan-out control with the user and the main agent instead of automatically translating complexity into more workers.
+The underlying architectural rationale is the prevention of **unbounded call stack bloat**. Left to their own devices, language models given autonomous delegation privileges will routinely fan out to avoid making difficult analytical decisions—spawning five subagents to run redundant web searches and dumping unvetted summaries back into parent memory. Codex nails the delegation trigger to the user, ensuring system behavior remains fully deterministic and predictable.
 
-There are practical reasons behind this design. More agents mean more tokens, latency, log volume, and merge cost; workers that can write files add conflict risk; subagents returning long explanations raise the main agent's reduce cost. Explicit authorization looks a little less "automatic," but system behavior stays predictable.
+### Semantic Dispatch and Description Flutter
 
-The default topology is a star:
+Anthropic's Claude Code implements semantic triggering for standard subagents (see [Claude Code Multi-Agent System Architecture]({{< ref "2026-06-24-claude-code-multi-agent.en.md" >}})). Each registered subagent declares an isolated system prompt, tool manifest, and trigger description. The main loop matches user intent against this registry at each turn.
 
-```text
-main Codex agent
-  -> explorer A: read-only search
-  -> explorer B: trace call path
-  -> worker C: scoped patch
-  -> reviewer D: test and risk review
-  <- summaries / patch / findings
-main Codex agent reduces result
+The vulnerability here lies in **semantic overlap and route fluttering**:
+
+Consider two registered subagents:
+- `security-auditor`: "Use proactively to review authentication, encryption, and vulnerability concerns."
+- `code-reviewer`: "Use proactively to review code logic, design patterns, and potential defects."
+
+When handling a pull request modifying JWT expiration routines, the router operates in an ambiguous vector subspace. It may summon `security-auditor` on turn 1, flip to `code-reviewer` on turn 2, or oscillate between the two, duplicating effort and fragmenting context.
+
+**Production descriptions must be codified as rigid preconditions rather than aspirational wish lists:**
+
+```yaml
+name: auth-crypto-reviewer
+description: >
+  MANDATORY trigger condition: Invoke ONLY when files under src/auth/ or src/crypto/
+  have modifications in the git diff. Do NOT invoke for general styling, performance,
+  or UI component changes.
+tools: [Read, Grep, Glob]
+permissions: read-only
 ```
 
-The main agent plays both dispatcher and reducer. A subagent's value isn't just "one more brain" — it's context isolation: codebase searches, long logs, test output, and call-path exploration can all live in the child's context, keeping the main context from being polluted by noise.
+### Ingress Isolation: Gateways and the Principle of Least Privilege
 
-Codex's built-in agent types divide by responsibility:
+OpenClaw approaches triggering from a completely different perspective: **perimeter ingress routing**.
 
-- **explorer**: reads code, finds paths, locates call chains, searches for related files. Stays read-only and outputs file paths, function names, key evidence, risk points, and suggestions. Its value is cutting the main context's exploration cost, not editing code directly.
-- **worker**: edits code, adds tests, implements local features. Must have clear ownership, such as only touching `src/auth/*` or only owning `tests/auth/*`. If two workers can both edit the same logic, the time you saved gets paid back in conflict resolution.
-- **default**: the general-purpose fallback, for tasks whose boundaries aren't fully clear yet but that need independent context handling. The more general the worker, the clearer the task boundary it needs.
+Operating as an enterprise gateway bridging WhatsApp, Telegram, Discord, and Slack into an agent runtime, OpenClaw recognizes that diverse communication channels represent distinct trust domains. Requests from an enterprise Slack `#devops` channel and public webhooks must never inhabit the same execution context.
 
-If your Codex environment offers custom agents or concurrency configuration, it's worth codifying fixed roles like security-reviewer, migration-worker, or docs-editor. But the more agents you have, the clearer the dispatch rules need to be — otherwise you've just moved prompt chaos from the main context into the agent registry.
+Adhering to Saltzer and Schroeder's (1975) Principle of Least Privilege, OpenClaw enforces authorization at ingress:
+1. Match incoming events against channel IDs, account boundaries, and guild roles;
+2. Bind the execution to a designated workspace (`AGENTS.md`, `SOUL.md`) and isolated `agentDir` credentials;
+3. Physically filter the tool surface—an agent serving customer-facing webhooks is never injected with terminal access or infrastructure deployment tools.
 
-Concurrency width and recursion depth must be capped. Three workers — security, tests, performance — is already enough for one PR review; if each of those spawns three more, cost and behavior quickly spiral out of control. Exact configuration names depend on your Codex version; these switches aren't necessarily consistent across distribution forms.
+In OpenClaw's design, multi-agent architecture is first and foremost a **mechanism for fault domain and privilege isolation**, and only secondarily an engine for cooperative problem-solving.
 
-Codex doesn't suit breaking apart every complex task. Small fixes aren't worth a fan-out; strongly sequential tasks don't parallelize; when multiple workers would write the same file, design serially first, then execute in parallel; when requirements are still vague, multiple agents only amplify the vagueness.
+---
 
-A more robust delegation example:
+## 3. Topologies and Concurrency: From Fan-Out to Mesh Split-Brain
 
-```text
-Use parallel subagents.
+Topology dictates the pathways of communication and state mutation. The engineering cost of maintaining consistency varies exponentially across structures:
 
-Explorer A: trace the auth request path from UI to API. Read-only.
-Explorer B: inspect session persistence and cookie handling. Read-only.
-Worker C: patch only src/auth/session.ts after A and B report back.
-Reviewer D: review the final diff and test coverage. Read-only.
+| Topology | Communication Complexity | Consistency Guarantee | Write Collision Risk | Production Exemplar |
+| :--- | :--- | :--- | :--- | :--- |
+| **Single Agent** | $O(1)$ | Strong (Single-threaded transaction) | Zero collision | Localized bug fixing, linear debugging |
+| **Star Fan-Out/In** | $O(K)$ | Weak (Reconciled at central sink) | High (Reducer bottleneck) | Codex Subagents, Qoder Experts |
+| **Pipeline (DAG)** | $O(N)$ | Sequential (Output feeds input) | Low (Serialized ownership) | Audit $\to$ Patch $\to$ Verify pipelines |
+| **Hierarchical Tree** | $O(B^D)$ | Tiered (Vulnerable to root loss) | Moderate (Strict namespace isolation)| Deep architecture migrations |
+| **Mesh Team** | $O(N^2)$ | Extremely weak (Split-brain prone) | Critical (Requires locks / CRDT) | Multi-hypothesis incident triage |
 
-Main agent must synthesize findings, resolve conflicts, and present one final plan.
-```
+### Star Fan-Out/Fan-In: The Central Bottleneck
 
-## Claude Code: Description-Driven, Three Layers Deep
+Star topologies dominate the subagent landscape. The orchestrator dispatches $K$ leaf workers, which execute independently and return summaries for central reduction.
 
-Claude Code's ordinary subagents are closer to a local expert registry. Per the [Claude Code subagents docs](https://docs.anthropic.com/en/docs/claude-code/sub-agents), each subagent has a name, description, system prompt, tool permissions, model, and its own context. The main session decides when to call one based on the description; users can also name one explicitly.
+The fatal defect of the star model is **cognitive overload at the sink**. The orchestrator must act as both dispatcher and universal reducer. When three subagents return hundreds of lines of complex refactoring analysis, the orchestrator's context is overwhelmed with heterogenous prose. Because workers cannot communicate laterally, Worker A cannot warn Worker B that its interface assumptions have been invalidated. Every semantic contradiction is deferred to the final merge, forcing the orchestrator to gamble on reconciliation.
 
-A security reviewer can be written like this:
+### Mesh Topologies and Actor Model Pitfalls
 
-```text
-name: security-reviewer
-description: Use proactively after authentication or session code changes
-             to review token handling, cookie flags, expiry, and missing tests.
-tools: Read, Grep, Glob, Bash
-model: sonnet
-```
+Claude Code Agent Teams introduces peer-to-peer mesh collaboration: a leader coordinates with multiple teammates who share a common task board and can message each other directly. This model strongly echoes Carl Hewitt's (1973) Actor model and Joe Armstrong's Erlang/OTP process architecture.
 
-The description is the routing rule — it answers "when should you call me." Written specifically, Claude tends to invoke it at the right moments; written too broadly (say, "review code quality"), it may show up constantly and become noise.
+However, Erlang's industrial resilience depends on three foundational primitives:
+1. **Strictly private process heaps** with zero shared memory;
+2. **Bounded mailboxes** equipped with explicit backpressure;
+3. **Supervision trees** with deterministic failure semantics (`one_for_one`, `one_for_all`, `rest_for_one`).
 
-Ordinary subagents are short-lived. The main session invokes them, they execute in an independent context, and they return a summary. They don't naturally become long-term roles and don't negotiate with other subagents by default. They suit context-noisy work: exploration, review, log analysis, localized debugging, codebase comprehension.
+Current LLM agent teams lack both bounded mailboxes and deterministic supervisors. When four agents engage in open-ended peer-to-peer discourse regarding a production outage, message complexity scales quadratically:
 
-The built-in Explore, Plan, and General-purpose are three default worker profiles: Explore leans read-only, Plan does research (exploration material goes into the child context to keep the main context from bloating), and General-purpose is broader and handles multi-step tasks.
+$$
+M = \frac{N(N - 1)}{2} \times \text{Turns}
+$$
 
-The difference from Codex is the trigger threshold. Codex waits for explicit user authorization by default; Claude Code can delegate automatically based on descriptions. Codex asks "has the user authorized parallelism"; Claude Code asks "is there a description matching the current task."
+Context windows burn rapidly, while sycophancy bias and attention drift take over. Agent A proposes an unverified hypothesis; Agent B elaborates upon it; the peer group rapidly converges around a collective hallucination, completely subverting the objective of diverse, independent verification.
 
-Ordinary Claude subagents are still a star:
+### Filesystem Split-Brain and Write Contention
 
-```text
-main Claude session
-  -> Explore
-  -> security-reviewer
-  -> test-reviewer
-  <- summaries
-main session decides next step
-```
+When multi-agent systems are restricted to read-only exploration, topological failures waste only compute. But when workers are granted filesystem write privileges, distributed anomalies hit bare metal.
 
-### Agent Teams: Mesh Collaboration
-
-[Agent Teams](https://docs.anthropic.com/en/docs/claude-code/agent-teams) is a different logic altogether. One lead Claude with multiple teammates, each teammate with its own context, able to message each other and share a task list. No longer a star fan-out — closer to a team mesh:
+Consider Worker 1 updating authentication logic in `src/auth/token.ts` while Worker 2 concurrently instruments the codebase with distributed tracing spans:
+1. Worker 1 reads `token.ts` and prepares an updated authentication routine;
+2. Worker 2 reads the original `token.ts` and inserts a trace header;
+3. Worker 2 writes its copy to disk a split second later, executing a Last-Write-Wins (LWW) clobber.
+4. **Worker 1's authentication patches are silently erased without generating a single compiler syntax error.**
 
 ```text
-lead Claude
-  <-> frontend teammate
-  <-> backend teammate
-  <-> database teammate
-  <-> test teammate
-shared task list
-direct teammate messages
+       [Shared Repository Working Tree] (NO Concurrency Control)
+                     |
+       +-------------+-------------+
+       |                           |
+  Worker 1 reads              Worker 2 reads
+  src/auth/token.ts           src/auth/token.ts
+       |                           |
+  Modifies Auth Logic         Injects TraceID Logging
+       |                           |
+  Writes token.ts (t=1)            |
+       |                      Writes token.ts (t=2) -> SILENT OVERWRITE!
+       v                           v
+  [Changes Lost!]             [Corrupted State Committed]
 ```
 
-Team mode suits multi-hypothesis problems. A production login failure might originate in frontend state, backend tokens, database sessions, cache, or deployment config. A single agent following one thread anchors early; multiple teammates verifying separately and challenging each other cover more ground.
+In distributed systems, this is resolved via Distributed Lock Managers (DLM) or Two-Phase Locking (2PL). In generative AI runtimes, we cannot assume probabilistic models will honor POSIX `flock` conventions.
 
-The costs are just as direct: more context, more messages, more intermediate judgments. Teammates may edit the same file, give conflicting advice, or turn the shared task list into an administrative burden. The lead must clearly own the final merge. A team without ownership easily becomes "several sessions all busy, nobody responsible for the final result."
+**The only production-grade defense is physical workspace isolation via Git Worktrees.**
 
-### The Three Layers
+As implemented in Claude Code's batch layer, the runtime isolates concurrent mutators:
 
-Claude Code splits into three layers:
+```bash
+git worktree add -b feat/worker-auth .worktrees/worker-auth HEAD
+git worktree add -b feat/worker-trace .worktrees/worker-trace HEAD
+```
 
-**Layer 1: ordinary subagents** — description-based auto-routing, independent context, summary returned.
+Each writable worker operates within its own physical filesystem checkout. Workers remain oblivious to concurrent modifications on disk; all write contention is deferred to an atomic Git 3-way merge at commit time. **We replace wishful assumptions about agent discipline with optimistic concurrency control (OCC) enforced by the filesystem.**
 
-**Layer 2: Agent Teams** — lead + teammates, shared task list, teammates can message each other.
+---
 
-**Layer 3: Agent View / worktrees / batch** — humans orchestrating multiple sessions, writes isolated with worktrees, suited to large-scale mechanical overhauls.
+## 4. State Reconciliation: Who Writes the Final Commit Log?
 
-Agent View is more like a human dispatch console. Launch multiple background sessions, watch their states, and step in — pause or take over — when needed. Human involvement is higher; the system doesn't pretend the models handle all coordination automatically.
-
-Worktrees are the file-isolation mechanism. With multiple agents writing to the same repo in one working tree, conflicts are nearly inevitable. Worktrees let each worker edit its own copy and merge at the end.
-
-/batch suits repo-wide migration or mechanical refactoring. Split by directory into multiple worktree-isolated subagents, each agent owning one slice, then run tests and review across everything at the end.
-
-Claude Code's common failure points come from descriptions and permission boundaries: too-broad descriptions misfire; oversized tool permissions overstep; teams without ownership collide; batch runs without acceptance criteria produce piles of patches that look done but are stylistically inconsistent.
-
-A good description should read like a trigger condition:
+Multi-agent demonstrations look immaculate because they conveniently conclude at the "advisory" stage. Real software engineering begins when divergent states must be merged, compiled, and passed through integration suites.
 
 ```text
-Use after auth/session/cookie code changes.
-Check token handling, cookie flags, expiry, replay risk, and missing tests.
-Return findings with file paths and severity.
-Do not modify files.
+       [Worker Worktree 1]       [Worker Worktree 2]
+                |                         |
+                +------------+------------+
+                             |
+                   [ Git 3-Way Merge ]
+                             |
+             +---------------+---------------+
+             | (Clean Merge)                 | (Conflict / Invariant Broken)
+             v                               v
+    [ Deterministic Verification ]    [ Automatic Rollback / Abort ]
+    - tsc / ast-grep / lint                  |
+    - unit tests / integration tests         v
+             |                        [ Log Failure Snapshot ]
+    +--------+--------+               [ Erlang-style Restart ]
+    | (Pass)          | (Fail)
+    v                 v
+[ Atomic Commit ]  [ Reject Patch ]
 ```
 
-Claude Code's initiative comes from descriptions — and so does its controllability.
+### Semantic Drift Breaches Textual 3-Way Merge
 
-## OpenClaw: The Multi-Entry Gateway
-
-OpenClaw starts from a different place than Codex or Claude Code. Those two mostly operate inside a single coding session; OpenClaw faces a multi-channel event stream first — closer to a self-hosted gateway that connects WhatsApp, Telegram, Discord, Slack, and other channels to an agent runtime.
-
-In OpenClaw, what arrives isn't necessarily a unified "task." It might come from the ops channel on the company Slack, a private Telegram, a Discord thread. Different entry points mean different identities, permissions, contexts, and risk. So OpenClaw's first layer isn't subagents — it's routing:
+Standard version control systems rely on line-based diff algorithms (`diff3`):
 
 ```text
-incoming message
-  -> channel/account/thread/peer matching
-  -> selected agent
-  -> agent workspace + session store
-  -> response or background task
+<<<<<<< HEAD
+export async function authenticate(token: string, timeoutMs: number): Promise<Session> {
+=======
+export async function authenticate(token: string, options: AuthOptions): Promise<Session> {
+>>>>>>> feat/worker-auth
 ```
 
-Agents can be selected by rules like peer, thread inheritance, Discord guild/role, Slack team, accountId, or channel-level fallback. Messages from the Slack ops channel go to the ops agent; from private Telegram to the deep work agent; from the household entry to a low-privilege assistant.
+If two workers edit disjoint functions in the same file—or touch entirely separate files—Git reports a clean merge.
 
-The trigger isn't the user saying "spawn a subagent," nor the model matching a description — it's the event-entry binding. OpenClaw first answers "which agent does this message belong to," and only then whether that agent should split the task.
+Yet software correctness depends on **semantic invariants**, not line offsets:
+- Worker A updates `UserService.getUserById(id: string)` to `getUser(id: UserId)`;
+- Worker B, working on an API controller in another directory, introduces new calls to `getUserById(id)`;
+- The Git 3-way merge succeeds without a single text conflict.
 
-An agent in OpenClaw is more like an isolated runtime unit. Each agent has its own workspace (AGENTS.md, SOUL.md, USER.md, notes, persona rules), its own agentDir (credentials, model registry, per-agent config), and its own session store. Mind the boundary: sub-agent auth resolves by agent id, but main profiles are merged in as a fallback — so it's not "every agent's credentials fully hard-isolated." More precisely, it's isolation of agent-level config, workspace, sessions, and tool policy.
+Shipped to production, this yields immediate runtime panics (`NoSuchMethodError`). **The reconciliation of multi-agent state cannot rely on an LLM writing a polite summary; it requires an algorithmic, deterministic Verification Oracle:**
 
-Much of the multi-agent value comes from isolation — entry-identity isolation, context isolation, permission isolation, tool isolation. The ops agent can have logging and deployment tools; the household assistant shouldn't have dangerous shell access; the deep work agent can hold long-term project context; a throwaway chat agent shouldn't share any of that state.
+1. **AST Semantic Validation**: Running static type checkers (`tsc --noEmit`, `cargo check`) and symbol analyzers across the unified codebase;
+2. **Runtime Verification**: Automatically triggering regression suites targeting affected modules;
+3. **Atomic Abort**: Rolling back immediately upon verification failure, discarding the worktree diff completely to prevent dirty state contamination.
 
-The second layer is the background subagent. An existing agent can launch a background agent run via `/subagents` spawn or `sessions_spawn`. You get back a run id and the main conversation doesn't block. The child agent runs in its own session and announces results when done.
+### Durable Checkpointing: LangGraph's State Machine
 
-Similar to Codex's fan-out, but the lifecycle differs. Codex's child agents are more like parallel workers inside the current task, with the main agent waiting for results to merge; OpenClaw's background subagents are more like async jobs, fitting always-on chat scenarios. Have it check logs, run research, wait on slow tools — the main conversation continues without being stuck in the same turn.
+In the Python landscape, LangGraph provides a robust template for state persistence. Its `Checkpointer` interface (such as `PostgresSaver`) decouples multi-agent state progression into an append-only event-sourced log:
 
-Nesting is allowed but heavily restricted by default. `maxSpawnDepth` defaults to 1. Raised to 2, tree structures where an orchestrator dispatches workers become possible, but child counts and concurrency stay capped, and depth-2 workers cannot spawn further.
+```python
+# LangGraph Checkpointer State Snapshot Tuple
+CheckpointTuple(
+    config={"configurable": {"thread_id": "tx_20260929", "checkpoint_ns": "subagent_auth"}},
+    checkpoint={
+        "v": 1,
+        "ts": "2026-09-29T00:40:00Z",
+        "channel_values": {"files_modified": ["src/auth.ts"], "tests_passing": False},
+        "channel_versions": {"files_modified": 3, "tests_passing": 3},
+        "versions_seen": {"worker_1": 2}
+    },
+    metadata={"source": "loop", "step": 4, "writes": {"worker_1": {"status": "retry"}}},
+    parent_config={"configurable": {"checkpoint_id": "019e59ca-7536-753a-bf78"}}
+)
+```
 
-The third layer is ACP Agents. OpenClaw can plug in external coding harnesses (Codex, Claude Code, Cursor, Gemini CLI). When the user says "run this in Codex," OpenClaw can route to the Codex runtime. It doesn't need its native subagents to cover every execution scenario — it turns itself into the unified entry point.
+By versioning state into PostgreSQL, the runtime unlocks two vital architectural primitives:
+1. **Time Travel and Clean Rollback**: When a subagent's remediation breaks integration suites, the engine does not pollute context trying to undo the mess; it resets the state pointer to `checkpoint_id`, restoring a pristine state to retry with alternative heuristics;
+2. **Asynchronous Human-in-the-Loop Interruption**: Long-running transactions can pause, flush their state to disk, free compute resources, and await human approval before resuming.
 
-The three layers:
+### Crash-Only Software and Fail-Stop Semantics
+
+George Candea and Armando Fox (2001) argued in *Crash-Only Software* that resilient distributed systems should possess only two state transitions: starting and crashing. Rather than relying on fragile graceful shutdown routines, components must be designed to withstand sudden failure and recover instantly from checkpoints.
+
+Multi-agent process hierarchies must enforce these rules:
+- **Cascading Interruption**: When a parent task disconnects or receives a `SIGINT`, the runtime must issue immediate termination signals across its process group or container cgroups. Hermes codifies this explicitly: when a parent turn aborts, all active child workers are instantly killed to prevent background token hemorrhaging;
+- **Fail-Stop Isolation**: A subagent crash must never crash the orchestrator. The parent registers the worker failure as an error event, falling back to a deterministic fallback or rescheduling the task.
+
+---
+
+## 5. Deconstructing Five Production Architectures
+
+Abstract theory proves its value only in production execution. The table below contrasts five major agent runtimes:
 
 ```text
-Routing layer:
-  channel/account/thread/peer -> agent
-
-Agent isolation layer:
-  workspace / agentDir / session store / sandbox / tool policy
-
-Execution layer:
-  native background subagent
-  or external ACP harness
+  +-----------------------------------------------------------------------------------+
+  |                           Five Real-World Architectures                           |
+  +-----------------------------------------------------------------------------------+
+  | Codex      | Explicit Fan-out  | Star (Isolated)   | Ephemeral    | Strict Sandbox|
+  | Claude Code| Description / Team| Star / Mesh / Tree| Session / WT | Git Worktree  |
+  | OpenClaw   | Gateway Ingress   | Multi-tenant Gate | Persistent   | Per-Agent Dir |
+  | Hermes     | RPC / Kanban Board| RPC / Durable DAG | SQLite / WAL | Capped Workers|
+  | Qoder      | Upfront Plan Gate | Star (Specialized)| Transactional| Tiered Sandbox|
+  +-----------------------------------------------------------------------------------+
 ```
 
-OpenClaw's engineering focus isn't "how to make several agents think together" but "how to keep a network of agents with different entry points, identities, and permissions running stably for the long haul." It's closer to an agent operating system or message gateway than a parallelizer for one-off coding tasks.
+### OpenAI Codex: Determinism via Sandbox Containment
 
-## Hermes: RPC for Short Tasks, a Durable Queue for Long Ones
+Codex reflects the restraint of battle-tested infrastructure engineering. It foregoes speculative autonomous collaboration in favor of strict sandbox isolation:
+- **Zero Recursive Delegation**: Subagents cannot spawn child agents; delegation depth is capped at 1;
+- **Strict Role Separation**: The `explorer` role is strictly read-only, emitting structured file paths and call graphs; the `worker` role possesses restricted write access, governed by explicit file ownership paths in the prompt;
+- **Patch Reconciliation**: All mutations are synthesized into a consolidated Git patch by the orchestrator, anchoring AI concurrency firmly within version control transactions.
 
-Hermes splits short-horizon parallelism and long-horizon collaboration into two primitives: delegate\_task and Kanban.
+### Claude Code: The Three-Tier Escalation Model
 
-### delegate\_task: Short-Horizon Parallelism
+Claude Code cleanly stratifies collaboration into three distinct runtime layers:
+1. **Tier 1 (Ephemeral Subagents)**: Context isolation for single sessions. Verbose test outputs and codebase greps are relegated to throwaway child contexts, returning only distilled summaries;
+2. **Tier 2 (Agent Teams)**: Parallel multi-hypothesis investigation. Teammates explore distinct debugging vectors concurrently, sharing progress via a synchronized task list;
+3. **Tier 3 (Worktrees & Batch)**: Monolithic repository refactoring. The system drops conversational peer collaboration entirely, physically partitioning concurrent workers across isolated `git worktrees` and validating all mutations with test suites.
 
-The parent agent initiates the call, a child agent executes, a summary comes back. Like an RPC. Hermes docs say agents choose delegation automatically based on task complexity, but mechanically it still works by spawning a child agent via delegate\_task:
+### OpenClaw: The Multi-Tenant Messaging Gateway
+
+OpenClaw is less a coding agent and more an operating system for intelligent message routing:
+- **Ingress Multiplexing**: Normalizes heterogenous incoming message streams, routing events to designated agent runtimes via deterministic policy tables;
+- **Security Sandboxing**: Isolates workspace directories, persona rules, and API credentials per agent, preventing cross-tenant context leaks;
+- **ACP Harness Layer**: Treats external specialized coding runtimes (Codex, Claude Code CLI) as downstream tools, preserving its identity as an unopinionated message gateway.
+
+### Hermes: Ephemeral RPC vs. Durable State Machines
+
+Hermes resolves the chronic confusion between transient tasks and long-lived workflows:
+- **Ephemeral RPC (`delegate_task`)**: The parent blocks while a child runs in an isolated terminal session, returning a structured summary within seconds or minutes;
+- **Durable State Machine (Kanban)**: Long-horizon workflows persist to SQLite with WAL mode. Tasks transition through formal states (`TODO -> IN_PROGRESS -> BLOCKED -> COMPLETED`). Workflows can span days, survive host reboots, and wait for asynchronous human feedback.
+
+### Qoder: Upfront Contract Planning and Tiered Sandboxes
+
+Qoder strikes a practical compromise between automation and human oversight:
+- **Upfront Planning Gate**: In Experts mode, the Team Lead must synthesize a structured execution plan and await explicit user confirmation before mobilizing specialists. The concurrency contract is signed by a human before a single line of code is touched;
+- **Tiered Sandbox Isolation**: Benign commands execute directly; destructive filesystem mutations are quarantined in containers; privilege escalations halt and demand human authorization.
+
+---
+
+## 6. Architectural Decision Checklist: A Pragmatic Guide
+
+Before deploying a multi-agent topology to production, evaluate your system against these distributed systems criteria:
 
 ```text
-parent agent
-  -> delegate_task(goal, context)
-    -> child A
-    -> child B
-    -> child C
-  <- ordered summaries
-parent continues
+                     [ New Task Arrives ]
+                              |
+                +-------------v-------------+
+                | Can a single agent loop   |
+                | handle it deterministically?
+                +-------------+-------------+
+                              |
+                     [Yes]    |    [No]
+             +----------------+----------------+
+             |                                 |
+     (Run Single Agent)          +-------------v-------------+
+     Keep context lean;          | Is context pollution or   |
+     Short feedback loop.        | long-tail search the issue?
+                                 +-------------+-------------+
+                                               |
+                                      [Yes]    |    [No]
+                              +----------------+----------------+
+                              |                                 |
+                      (Star Fan-Out)              +-------------v-------------+
+                      Spawn Read-Only             | Do tasks have strict sequential
+                      Explorer Workers            | data dependencies?
+                                                  +-------------+-------------+
+                                                                |
+                                                       [Yes]    |    [No]
+                                               +----------------+----------------+
+                                               |                                 |
+                                       (Serial Pipeline)          +-------------v-------------+
+                                       Pass context downstream;   | Will workers write to disk
+                                       Topological order execution| simultaneously?
+                                                                  +-------------+-------------+
+                                                                                |
+                                                                       [Yes]    |    [No]
+                                                               +----------------+----------------+
+                                                               |                                 |
+                                                       (Git Worktree OCC)         (Actor Mesh Team)
+                                                       Physical isolation;        Read-only hypothesis
+                                                       Compiler verification.     testing; bounded turns.
 ```
 
-The child agent gets a fresh conversation, restricted tools, and its own terminal session. It doesn't know the parent agent's full context — only what's written in the goal and context.
+### The Five Commandments of Production Agent Architectures
 
-The docs' line that "subagents know nothing" is critical. A child agent doesn't inherit background automatically. The parent must write in the project path, error messages, relevant files, task goals, acceptance criteria, no-go items, and output format. Writing only "fix the error" is like handing an incomplete brief to a new colleague.
+1. **The Single-Agent Default**: If a problem fits within a single context window and has tight step dependencies, run it in a single agent loop. Multi-agent coordination entropy routinely outstrips its parallelism gains;
+2. **Read/Write Segregation**: Fan-out workers must be read-only by default. When write access is required, allocate isolated physical workspaces (Git worktrees or ephemeral containers); never permit uncoordinated writes to a shared directory;
+3. **The Deterministic Verification Oracle**: Every fan-in reduction must pass through compilers, linters, and regression suites. Any patch failing automated verification must trigger an immediate atomic abort and rollback;
+4. **State Persistence Decoupling**: Workflows spanning more than a single interaction turn must be persisted as state machines in durable storage (PostgreSQL/SQLite). Never rely on long-running memory processes;
+5. **Circuit Breaking and Cascading Termination**: Strictly bound concurrency width ($\le 4$) and recursion depth ($\le 2$). The cancellation of a parent task must broadcast immediate physical kill signals to all active subagents.
 
-The limits are explicit: at most 3 concurrent children by default, with an error raised beyond that instead of silent truncation; batch results return in input order; active children are interrupted together when the parent turn is interrupted; by default a leaf subagent cannot delegate further; nesting requires making the child an orchestrator and raising max spawn depth. Three levels deep with 3 concurrent each is already 27 leaf agents.
+### The Formal Delegation Contract Specification
 
-Leaf workers are further restricted: they cannot call delegate\_task again, cannot clarify with the user, cannot write shared persistent memory, cannot message across platforms, and cannot use certain dangerous execution tools. Short tasks can run in parallel — but parallel width, recursion depth, tool permissions, and interrupt propagation all have to stay controlled.
+In production runtimes, orchestrators must never delegate work via vague conversational prompts. All delegations should be governed by a structured, machine-verifiable contract:
 
-### Kanban: The Durable Queue
-
-Kanban isn't a subagent — it's a durable queue plus a state machine. Tasks, handoffs, and comments are written to a SQLite task board. Workers have profiles, names, and memory. The dispatcher pulls up workers by assignee. Tasks can block, unblock, and retry, and can wait for human input.
-
-The difference between the two task kinds, viewed by lifecycle:
-
-```text
-delegate_task:
-  temporary child, parent agent waits for the result
-  state lives mostly within the current call
-  suits parallel research, checks, and local fixes lasting seconds to minutes
-
-Kanban:
-  durable task, worker profiles take over in relay
-  state lives on the board
-  suits work spanning turns and days, waiting on humans, retry on failure, audits
+```yaml
+Contract:
+  Version: "1.0-RFC"
+  TaskID: "task_auth_audit_0929"
+  Timestamp: "2026-09-29T00:40:00Z"
+  Identity:
+    Role: "Read-Only Security Explorer"
+    Profile: "security-auditor-v2"
+  Scope:
+    TargetPaths:
+      - "src/auth/**"
+      - "src/middleware/session.ts"
+    ForbiddenPaths:
+      - "src/database/**"
+      - "config/secrets/**"
+  Capabilities:
+    FileRead: true
+    FileWrite: false
+    NetworkAccess: false
+    TerminalCommandLevel: "read-only-inspect"
+    SubagentSpawnAllowed: false
+  Invariants:
+    - "Do NOT alter any existing business interfaces."
+    - "Do NOT attempt to format or refactor unrelated files."
+  VerificationOracle:
+    Format: "JSON"
+    Schema:
+      type: "object"
+      required: ["findings", "risk_level", "suggested_patch_boundaries"]
+  TimeoutSeconds: 120
+  OnFailure: "Fail-Stop and emit snapshot"
 ```
 
-Three researchers each checking one source and then pooling results — delegate\_task. A two-day research report — gather material first, then analyze, then draft, then review — possibly waiting for a human to add direction midway — that goes to Kanban.
+---
 
-Mixing up the two task kinds is a common failure mode. Putting short tasks on Kanban feels ponderous; running long tasks through delegate\_task loses state and makes retry and handoff hard. The other failure point is writing too little context — Hermes states the risk right in the docs: the child doesn't know the parent's context, and without enough information it can only guess.
-
-## Qoder: A Productized Star of Experts
-
-Per the [Qoder Experts docs](https://docs.qoder.com/user-guide/quest/experts-mode.md), it takes another road entirely: turning multi-agent collaboration into a product-grade experience instead of making users assemble the blocks themselves. In Experts mode the user states a need, and the Team Lead automatically decomposes tasks, assembles the expert team, runs execution in parallel, and delivers.
-
-Its topology is a star with planning in front. The Team Lead is the sole dispatcher and reducer; experts execute in parallel without waiting on each other, and results flow back to the Team Lead for synthesis. It closely resembles Codex's star fan-out/fan-in, but Qoder wraps two things into the product:
-
-**An upfront planning stage.** Before execution, the Team Lead generates a structured implementation plan the user can review, edit, and confirm — only then does the expert team start. This effectively exposes the delegation-contract authoring process to the user: the Team Lead drafts the contract for you, you sign it, then it executes. Codex and Claude Code have no such explicit intermediate step — you either write the delegation instructions yourself or rely on description matching.
-
-**Real-time visualization.** The Expert Team Canvas lets the user watch every expert's progress, execution steps, and output in one panel. This solves a chronic pain point of multi-agent systems: observability. Earlier I called "no observation and no audit" an anti-pattern; Qoder built the fix straight into the product.
-
-Expert roles are predefined: frontend, backend, QA, code review, research, ops, UX design. Each expert has its own context and toolset. Similar to Codex's explorer / worker / default split, but Qoder maps role names directly onto software engineering's functional divisions, which lowers the user's comprehension cost.
-
-```text
-user request
-  -> Team Lead: understand requirements, generate plan, user confirms
-  -> frontend expert + backend expert + QA expert + code review expert (parallel)
-  <- outputs from each expert
-  -> Team Lead synthesizes, gates quality
-  -> deliver results
-```
-
-The trigger mode is more precisely auto-orchestration within a mode: the user switches to Experts mode first, then describes the need; within that mode the Team Lead generates the plan, splits tasks, and pulls in experts. Simple, well-defined file edits still fit plain agent mode better. Qoder's docs mention roughly a 67% quality improvement in internal testing, but the task set, scoring criteria, and baseline definition aren't published — treat with caution.
-
-Qoder also does several things worth noting:
-
-**Sandboxed terminals.** Per the [Terminal and Sandbox docs](https://docs.qoder.com/user-guide/quest/terminal-and-sandbox.md), commands are handled by risk tier: ordinary commands run directly, potentially dangerous ones go into a sandbox; only when the sandbox can't complete the job is a permission escalation requested. This directly reshapes the execution sandbox design — the user intervenes less often, while risk is caught jointly by sandboxing and escalation approval.
-
-**Extensible experts.** Users can append Skills and MCP to built-in experts, or create custom subagents to join the team. Close to Claude Code's subagent registry idea — the more experts, the clearer the dispatch rules need to be.
-
-**A self-evolving mechanism.** Two layers: Expert Skill (individual evolution, sharpening a specific capability with each task) and Team Skill (team evolution, recording squad experience and reusing past lineups for similar tasks). It's an interesting design — most multi-agent systems are stateless and start from zero each time. Qoder tries to persist its scheduling experience. How well it works has no public data yet.
-
-**Few human intervention points.** User confirmation is needed only when a terminal command hits the blacklist, tool calls hit their cap, or something abnormal happens. Qoder chooses to trust the Team Lead's judgment, at the cost of a weaker sense of user control. Codex leans toward explicit authorization and a stronger sense of control.
-
-Qoder's positioning is clear: developers who don't want to build multi-agent pipelines themselves and just want to state a need and get a result. It folds the trigger decisions, expert configuration, and result synthesis that Codex and Claude Code leave to the user into the Team Lead's job. The upside is a low barrier to entry; the downside is limited flexibility — you can hardly control each worker's permissions and ownership as precisely as in Codex.
-
-## Six Scenarios
-
-### PR review
-
-For a mid-sized PR, Codex or ordinary Claude Code subagents are both enough. Open one read-only worker each for security, tests, and performance, with the main agent synthesizing. No team mesh needed; workers don't need to talk much. What matters more is spelling out the review dimensions, the output format, and whether file changes are allowed.
-
-Codex:
-
-```text
-Use three read-only subagents: security, tests, and maintainability.
-Each should return findings with file paths and severity.
-Do not modify files. Main agent synthesizes one review.
-```
-
-Claude Code: write security-reviewer and test-reviewer as ordinary description-driven subagents that show up automatically after the relevant code changes.
-
-### Production login failure
-
-Suits a team or parallel exploration. The failure could be in frontend state, token issuance, session storage, cache, or deployment config. Codex explicitly spawns multiple explorers to check UI, API, DB, and cache separately, with the main agent merging. Claude Code Agent Teams is better when teammates should challenge each other's assumptions.
-
-Starting with multiple workers writing fixes is not recommended. Locate first with read-only parallelism, then have one worker write the patch, then a reviewer check it. A multi-agent first phase should widen observation, not rush to widen writes.
-
-### Multi-channel personal assistant
-
-Not Codex or Claude Code territory. WhatsApp, Telegram, Slack, and Discord need routing, entry-identity isolation, permission isolation, and a session store. OpenClaw fits this problem better. The concern isn't "several agents working together" but "which entry can trigger which agent, with which tools, where state lives, and how credentials and tool permissions are constrained."
-
-A sensible design: the Slack ops channel goes to the ops agent with log-read and low-risk deployment-query tools; private Telegram goes to the deep work agent holding personal project context; the household entry goes to a low-privilege assistant that can't touch the shell or company accounts. Multi-agent is first about isolation boundaries, not a collaboration performance.
-
-### A two-day research report
-
-One-shot subagents aren't enough. You need task decomposition, state tracking, material handoffs, human comments, and failure retries. A durable board like Hermes Kanban fits better. Set up the board first: gather material, clean material, analyze viewpoints, first draft, review. Each task has an assignee, dependencies, acceptance criteria, and a comment area.
-
-Inside a specific task (say, "check three official docs separately"), use delegate\_task for short-horizon parallelism. Kanban owns the lifecycle; delegate\_task owns local parallelism. Keep those two layers straight and the system won't end up both ponderous and lossy.
-
-### repo-wide migration
-
-Fits worktrees + batch. Split by directory or module, not by "let a few agents figure it out among themselves." Each worker owns a slice of the file space; run tests and review across everything at the end. Claude Code's worktrees / batch fits this scenario best; Codex can also assign workers file scopes, but ownership must be written out clearly.
-
-The common mistake is splitting by role — "one agent thinks, one agent implements, one agent tests." For a repo-wide migration, the better split is by file boundary: `packages/api`, `packages/web`, `packages/shared`. File boundaries reduce conflicts more than abstract roles do.
-
-### Full-stack feature development
-
-"Build a user management module with registration, login, and profile management" — for end-to-end full-stack asks like this, Qoder Experts' productized wrapper is the most direct. The Team Lead generates the plan automatically, frontend and backend experts develop in parallel, QA writes tests in sync, and code review gates quality. The user never designs a delegation contract, configures worker profiles, or worries about merge strategy.
-
-Do the same with Codex or Claude Code and the user writes the delegation instructions, configures explorer/worker/reviewer permission boundaries, and resolves result conflicts personally. Qoder wraps all of it into the Team Lead's duties, at the price of flexibility — you can hardly control "this worker only touches src/auth/" as precisely as in Codex.
-
-The other difference is visualization. Qoder's Expert Team Canvas shows you directly what each expert is doing and how far along it is. Running multi-agent parallelism with Codex or Claude Code, observability usually means logs and session lists — far lower information density.
-
-## Seven Anti-Patterns
-
-**Treating complexity as a trigger.** A complex task doesn't mean it should run in parallel. When subtasks depend tightly on each other (understand the business rules first, then decide the data model, then write the migration), that's a pipeline, not a fan-out.
-
-**No delegation contract.** Without paths, the error scene, acceptance criteria, and no-go items, workers can only guess. Guessing right is luck; guessing wrong is the norm.
-
-**Multiple workers writing the same code.** Multi-agent's worst case is parallel writes with no ownership. When parallel writes are unavoidable, draw boundaries first by directory, module, or test files; if you can't draw boundaries, don't write in parallel yet.
-
-**No reducer.** After multiple agents return results, someone must make trade-offs and merge, dedupe, order, and accept them. Multi-agent without a reducer is just a stack of opinions.
-
-**Queues for short tasks, RPC for long ones.** A durable board slows feedback on short tasks; one-shot subagents lose state on long ones. Hermes splitting this into delegate\_task and Kanban is a fine engineering reminder.
-
-**Permissions too broad.** A review agent shouldn't write files; a household agent shouldn't hold the company shell; a leaf worker doesn't necessarily need to spawn children. The wider the permissions, the less predictable the scheduling.
-
-**No observation or audit.** A multi-agent system needs to know who triggered whom, what context was passed, which tools were used, what summary came back, and where it failed. Otherwise, when something breaks, all you can do is pore over a pile of chat logs and guess.
-
-## An Order for Choosing
-
-When designing for multiple agents, ask in this order:
-
-1. **Can a single agent do it?** If yes, don't split yet. For small changes, strong sequencing, or vague requirements, a single agent is the most stable.
-2. **Will the main context get polluted?** Long logs, big searches, cross-directory reading, and multiple failure stacks muddy the main agent. Offloading to an explorer or read-only subagent makes sense.
-3. **Can the subtasks run independently?** Security review, test review, and performance review can parallelize; locating a bug before deciding how to fix it fits a pipeline better.
-4. **Must results return within this turn?** If yes, fork/join; if not, a background job; for spanning days, retrying, or waiting on humans, a durable queue or Kanban.
-5. **Do workers need to challenge each other?** If they only research separately, a star is enough; consider a team mesh only when they must question each other and share task state.
-6. **Will files be written in parallel?** When multiple workers write files, write down ownership first. Who edits which directory, who stays read-only, who merges last. Without those constraints, don't write in parallel.
-7. **Is entry-point isolation needed?** For systems with many channels, identities, and permissions, prefer gateway routing over dumping every message into one omnipotent agent.
-8. **How does it recover from failure?** Can it retry? Block? Preserve handoffs? Can you see the subtasks' evidence? These determine whether the system can run for the long haul.
-
-## A Delegation Contract Template
-
-If you take away only one practical template:
-
-```text
-Role:
-  read-only auth explorer / scoped implementation worker / security reviewer
-
-Goal:
-  what to answer or accomplish, and where the boundary lies
-
-Context:
-  project path, relevant files, error messages, user goals, existing conclusions
-
-Allowed actions:
-  which files can be read; whether commands, file writes, or network access are allowed
-
-Ownership:
-  if writing is allowed, which directories or files only
-
-Forbidden actions:
-  which files not to touch, which refactors not to attempt, do not ask the user, do not spawn further children
-
-Output format:
-  findings / patch summary / test result / confidence / open questions
-
-Stop condition:
-  what counts as done, and when to stop and report a blocker
-```
-
-This template addresses the basics of multi-agent work: context, permissions, boundaries, output, and the merge. Without them, even the fanciest topology degenerates into random parallelism.
-
-## Which System Fits Where
-
-Codex fits explicit, controllable star-shaped parallelism. Claude Code fits description-driven expert delegation and can handle more complex collaboration in team and batch scenarios. OpenClaw fits multi-entry, always-on agent networks with permission isolation. Hermes fits keeping short-horizon parallelism and long-horizon queues separate — delegate\_task for ad-hoc fork/join, Kanban for cross-turn workflows. Qoder fits full-stack development when you don't want to build the pipeline and just want to state a need and get a result — it wraps triggering, planning, scheduling, and merging into the product.
-
-A task that just needs four threads checked faster: star subagents. A question that needs multiple parties challenging each other: team mesh. Messages arriving from different channels and identities: gateway routing. Tasks that span days, retry, or wait on humans: a durable board. Multiple workers writing the same code: stop and write out ownership first. Full-stack development with minimum fuss: a productized option like Qoder.
-
-Design the boundaries first; add agents after.
+Multi-agent systems are not a magic bullet; they are distributed systems subjected to the chaotic realities of probabilistic inference. Abandon the hype of unconstrained collective intelligence. Return to first principles—constrain failure domains, lock down writes, bound context entropy, and anchor every merge in deterministic compiler verification. Only then can intelligent agents operate reliably in real-world production environments.
 

@@ -1,13 +1,11 @@
 # 一个 PPT Agent 的完整拆解：从需求调研到 SVG 出图
 
 
-先说结论：这不是又一个"输入主题 → 硬套模板 → 输出垃圾"的 AI PPT 工具。
-
-它跑完了一条完整的专家工作流——需求调研、资料检索、大纲策划、版面规划、视觉设计——每一步都可以人工介入精调，也可以全程自动跑通。效果上，用 Gemini 3 Flash 生成的页面，已经能到商业交付水准。
-
-{{< image src="/pictures/posts/ppt-agent-workflow-pipeline.svg" caption="PPT Agent 四阶段流水线" alt="PPT Agent 工作流" title="四阶段流水线" width="800" class="center" >}}
+市面上绝大多数所谓 AI PPT 工具，本质上只是“输入主题 → 套用死板模板 → 输出低质排版”的玩具。要真正达到商业交付水准，核心在于将生成链路解构为带确定性约束的多阶段流水线：从需求调研与资料检索，到大纲策划与版面规划，再到利用 SVG Bento Grid 结构化渲染。
 
 <!-- more -->
+
+{{< image src="/pictures/posts/ppt-agent-workflow-pipeline.svg" caption="PPT Agent 四阶段流水线" alt="PPT Agent 工作流" title="四阶段流水线" width="800" class="center" >}}
 
 整个思路来自三顿（sandun）在 Linux.do 上的分享，他做了 7 年 PPT 教学、3 年 AI 产品。下面按阶段拆解。
 

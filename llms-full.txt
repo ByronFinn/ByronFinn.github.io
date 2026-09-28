@@ -26,7 +26,7 @@
 - [RAG系统完全指南——从零搭建本地检索增强生成系统](https://blog.baifan.site/rag-system-complete-guide-langchain-ollama-pgvector/) (2025-08-27)
 - [CPU/GPU 与大模型训练](https://blog.baifan.site/gpu-accelerated-training-cuda-complete-guide/) (2025-08-20)
 - [Prompt Engineering完全指南：从提示工程到上下文工程的实战教程](https://blog.baifan.site/prompt-engineering-context-management-complete-guide/) (2025-08-13)
-- [Transformer架构深度解析：注意力机制与AI大模型的核心技术](https://blog.baifan.site/transformer-attention-mechanism-deep-dive/) (2025-08-05)
+- [Transformer架构深度解构：自注意力、几何缩放与显存IO约束](https://blog.baifan.site/transformer-attention-mechanism-deep-dive/) (2025-08-05)
 - [AI专业名词解释表：270+术语完全指南与AI技术体系词典](https://blog.baifan.site/ai-technical-glossary-complete-guide/) (2025-07-30)
 - [AI大模型完全指南：从零基础到Token与向量的深度解析](https://blog.baifan.site/ai-llm-tutorial-token-vector-basics/) (2025-07-22)
 ### Claude Code 源码拆解
@@ -122,11 +122,11 @@ Tags: Prompt工程, RAG, 大模型, AI应用
 
 全面掌握Prompt Engineering与Context Engineering核心技术：从基础提示词设计到高级上下文管理，包括RAG、上下文优化、持久化等技术。解决实际开发中的污染问题、注意力偏移等挑战，提升AI应用效果。
 
-### [Transformer架构深度解析：注意力机制与AI大模型的核心技术](https://blog.baifan.site/transformer-attention-mechanism-deep-dive/)
+### [Transformer架构深度解构：自注意力、几何缩放与显存IO约束](https://blog.baifan.site/transformer-attention-mechanism-deep-dive/)
 Date: 2025-08-05
 Tags: Transformer, 注意力机制, 大模型, 神经网络
 
-深入解析Transformer架构核心技术：自注意力机制、多头注意力、位置编码等核心组件。详细阐述Query/Key/Value原理，理解GPT、BERT等大模型的技术基础，掌握现代AI的核心架构。
+从第一性原理拆解 Transformer 自注意力机制：Q/K/V 投影几何本质、Softmax 缩放根源、多头注意力的正交子空间表征，以及 FlashAttention 破解 O(N^2) 显存墙的硬件 IO 约束。
 
 ### [AI专业名词解释表：270+术语完全指南与AI技术体系词典](https://blog.baifan.site/ai-technical-glossary-complete-guide/)
 Date: 2025-07-30
@@ -215,9 +215,9 @@ ZUSMS、eSIM Plus、httpSMS、Twilio 四个接码平台的实测对比，截止 
 
 ### [多智能体协作的工程问题：触发、拓扑和收口](https://blog.baifan.site/multi-agent-collaboration-engineering/)
 Date: 2026-03-03
-Tags: AI, Agent, 多智能体, Codex, Claude Code, OpenClaw, Hermes, Qoder
+Tags: AI, Agent, 分布式系统, 架构设计, Claude Code, 并发控制, 工程实践
 
-从 Codex、Claude Code、OpenClaw、Hermes、Qoder 的实际设计出发，拆解多智能体系统在触发、拓扑、上下文隔离和结果合并上的工程取舍。
+从分布式系统经典理论与 Codex、Claude Code、OpenClaw 等一线架构出发，拆解多智能体在非确定性状态机、脑裂、CAS 合并与故障域隔离上的工程真相。
 
 ### [Claude Science 逆向：从 54 张表到中药现代化](https://blog.baifan.site/ai-agent-platform-to-tcm-future/)
 Date: 2026-02-20
@@ -267,11 +267,11 @@ Tags: OCR, PaddleOCR, Ollama, 文档处理
 
 深入解析PDF2Markdown智能PDF处理工具，支持大型扫描件文档处理，结合PaddleOCR、Tesseract与Ollama AI大模型，实现精准文章内容提取。包含完整安装配置、性能优化、技术架构和实战应用指南。
 
-### [分布式系统中的心跳机制：原理、实现与最佳实践](https://blog.baifan.site/distributed-system-heartbeat-mechanism/)
+### [分布式心跳与故障检测：生产假死、租约竞争与确定性设计](https://blog.baifan.site/distributed-system-heartbeat-mechanism/)
 Date: 2025-09-27
 Tags: 分布式系统, 心跳机制, Kubernetes, 微服务
 
-详细介绍分布式系统中心跳机制的核心原理、实现方法和最佳实践，包括心跳间隔配置、故障检测算法、Gossip协议以及Kubernetes等实际应用场景。
+解构分布式系统心跳机制的真实生产陷阱：从 GC 假死、TCP 半开连接到网络分区脑裂，深入剖析 Phi Accrual 概率累积故障检测、时钟漂移下的租约防护与 Raft 活锁规避。
 
 ### [Docker安装PostgreSQL+pgvector完整教程：AI向量数据库快速部署指南](https://blog.baifan.site/postgresql-pgvector-docker-installation-guide/)
 Date: 2025-09-02
@@ -300,11 +300,11 @@ Tags: AI时代, 团队管理, 软件工程, 组织架构, AI编程, 团队协作
 AI让写代码变便宜，团队分工逻辑随之改变。本文提出按软件生命周期划分的五种角色——原型师、构建者、维护者、扩展者、收尾人。稀缺从'写'变成了'判断'，这五种判断恰好对应五个角色，AI不会替掉它们，只会放大它们。
 ## 政治
 
-### [信访新规：中央与地方的冲突加剧了](https://blog.baifan.site/petition-new-rules-central-local-cost-shift/)
-Date: 2025-12-19
-Tags: 信访新规, 央地关系, 基层治理, 经济下行
+### [信访新规背后的央地暗战：谁在充当体制的减震海绵](https://blog.baifan.site/petition-new-rules-central-local-cost-shift/)
+Date: 2026-07-03
+Tags: 信访新规, 央地关系, 基层治理, 地方债, 维稳成本
 
-7月1日新版信访规定不只是限制上访，而是央地关系的一次成本重新分配。权力上收、责任下压、成本地方化，地方成了中央的缓冲垫。
+新版信访规程以法治化之名收紧越级进京，核心是中央将无法消化的社会摩擦系统性压回基层。上级握有无限否决权，县乡政府在债务暴雷与维稳考评的双重夹击下，沦为消化应力的人肉减震海绵。
 ## 教程
 
 ### [苹果外区 ID 注册，四条路径和防送回国区的办法](https://blog.baifan.site/apple-us-id-registration/)
@@ -338,11 +338,11 @@ Tags: 短剧, 文化产业, 影视行业
 
 深度报道短剧行业现状：从西安、郑州的拍摄现场到行业生态，揭示短剧风口背后的城市疲倦与从业者生存现状。
 
-### [县城的暮光：一个被遮蔽的中国](https://blog.baifan.site/china-county-economy-twilight/)
+### [县城的暮光：人口抽水机与财政退潮后的无声落幕](https://blog.baifan.site/china-county-economy-twilight/)
 Date: 2025-11-11
-Tags: 县域经济, 城镇化, 房地产, 就业
+Tags: 县域经济, 城镇化, 地方财政, 人口流失, 体制内消费
 
-深度分析中国县城经济现状，探讨工厂倒闭、房地产低迷、电商冲击对县域经济的影响，以及县城权力结构和财政困境背后的社会变迁。
+中国绝大多数县城正经历不可逆的物理级收缩：乡村小学锁死铁门，临街商铺铁闸生锈，二手电动车在路牙落灰。在人口被高阶城市抽干、土地财政彻底熄火之后，仅剩体制内微薄俸禄维系的闭环消费，正注视着整个县域社会的无声退场。
 
 ### [巴菲特2025年致股东信：告别与传承](https://blog.baifan.site/berkshire-hathaway-shareholder-letter-2025/)
 Date: 2025-10-31
@@ -483,11 +483,11 @@ Tags: 哲学, 生命, 价值观, 科技伦理
 
 从中国长寿科技发展谈起，探讨人类对永生的执念与生命意义的本质。当科技让活到150岁成为可能，我们是否真的准备好面对永恒的孤独？死亡的边界才让生命有了意义。
 
-### [连命，都没人要了：机器时代人的价值困境](https://blog.baifan.site/when-even-death-is-out-of-work/)
+### [连命，都没人要了：机器时代底层人的筹码困境](https://blog.baifan.site/when-even-death-is-out-of-work/)
 Date: 2025-11-04
-Tags: 社会观察, 技术反思, 价值观
+Tags: 社会观察, 技术反思, 底层现实, 劳动与资本
 
-在机器人大规模应用的时代背景下，深入思考当机器取代人类劳动时，底层劳动者的'被需要感'消失所带来的存在主义困境。
+当自动化与机器人把高危、重体力岗位悉数接管，底层劳动者连出卖肉身和寿命作为筹码的资格都被剥夺。这不是劳动的解放，而是一场从被剥削滑向被冗余的残酷洗牌。
 
 ### [AI 不确定性与及时行乐：一个普通人的思考](https://blog.baifan.site/ai-uncertainty-and-carpe-diem/)
 Date: 2025-10-28

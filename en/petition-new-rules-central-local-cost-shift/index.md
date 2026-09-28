@@ -1,173 +1,92 @@
-# New Petition Rules: The Central-Local Conflict Intensifies
+# The Silent War in Central-Local Power: Who Serves as the System's Shock Absorber?
 
 
-![New petition rules screenshot](/images/2026/信访新规-图1.jpg)
+The foundational calculation behind China's revised petition regulations is a surgical quarantine of political risk. Beijing has sealed the gates to the capital at the provincial and county levels, driving all unresolved social friction squarely back to where it originated.
 
-## New Petition Rules: The Central-Local Conflict Intensifies
+<!-- more -->
 
-![New petition rules screenshot 2](/images/2026/信访新规-图2.jpg)
+While the central ministries erect procedural firewalls under the banners of "step-by-step appeals" and "local jurisdiction," county and township officials are trapped in an inescapable vise of dried-up revenues, exploding municipal debts, and zero-tolerance evaluation metrics, serving as the flesh-and-blood sponges that absorb the system's structural convulsions.
 
-The most notable thing about the new petition (xinfang) regulations is not that the petitioning process has become more complicated, nor that traveling to Beijing to petition has become harder. It is what they reveal about the deeper shift now underway in central-local relations inside China:
+## Sealing the Floodgates: Risk Quarantine Wrapped in Due Process
 
-**The center is institutionalizing the practice of pushing the social conflicts it cannot resolve back down onto local governments.**
+The new regulatory text is couched in impenetrable procedural phrasing: without initial handling at the county level, superior organs will not accept a petition; without going through designated review and re-examination channels, provincial and national authorities issue automated rejection notices.
 
-This is not merely a question of petition governance. It is a redistribution of costs within China's power structure, arriving after economic downturn, fiscal strain, and the pile-up of grassroots grievances.
+On paper, this bureaucratic architecture appears unimpeachable. It is praised as standardization, modernization, and governance under the rule of law.
 
-As I noted when analyzing the concert cancellations, a classic superior-subordinate conflict is taking shape inside the government system:
+In practice, it accomplishes exactly one imperative: the central state cuts off physical contact with the primary scenes of social conflict.
 
-**The higher level holds the veto; the lower level pays the execution costs. The higher level can slam the brakes at any moment, while the lower level absorbs the losses borne by markets, the public, businesses, and local credibility.**
+For three decades, China's petition apparatus sustained a delicate political illusion: even if venal local cadres hid the truth and abused their authority, an aggrieved citizen could always beat the gong for justice beneath the emperor's feet. That myth of the upright imperial magistrate was inefficient, yet it formed the indispensable psychological anchor for grassroots legitimacy.
 
-The logic behind the new petition rules is the same.
+That heavy iron door has now swung shut.
 
-**Power keeps concentrating upward, responsibility keeps being pressed downward, and the costs keep being swallowed by the localities.**
+The reception halls outside central ministries in Beijing no longer serve as spillways for regional discontent. The new procedural perimeter turns away thousands of petitioners carrying stamp-laden affidavits, broken court rulings, and desperate medical records, dumping them back at long-distance bus terminals two thousand kilometers away. The capital's boulevards preserve their pristine order, and national petition metrics report an artificial cliff-like plunge.
 
-## 1. The Petition System Was Always a Pressure Buffer
+The grievances have not evaporated. They have simply been stripped of their clearance to enter Beijing's political sightline.
 
-To discuss this properly, first be clear about one premise: **can the petition system actually solve problems?**
+## Unlimited Veto Power: Authority at Zero Marginal Cost
 
-Most of the time, no.
+In this central-local tug-of-war, the allocation of power is brutally asymmetrical.
 
-If a problem could be resolved through normal administrative, judicial, or grassroots governance channels, people would never need to petition for years on end. The cases that truly enter the petition system — especially those that keep escalating upward — are rarely simple personal disputes. They are deep structural problems involving local government debt, unfinished construction projects, demolition compensation, unpaid wages and social insurance, grassroots law enforcement, historical legacies, abuse of power, and broken policy promises.
+Higher-level authorities wield absolute adjudicative, supervisory, and disciplinary discretion. During the annual parliamentary sessions, major anniversaries, or routine political calendars, a single "irregular petition" showing up in Beijing—even if the person merely sits on a curb inside the Second Ring Road for five minutes—triggers an emergency reprimand fax landing on the county party secretary's desk within two hours.
 
-Behind these problems lie fiscal resources, networks of local interests, existing chains of responsibility, and accumulated historical debts. They are not things that a registration form, a written reply, or one reception interview can fix.
+The local comprehensive governance evaluation receives an immediate "one-vote veto," wiping out department bonuses and freezing cadre promotions across the board.
 
-From the very beginning, the petition system was never a real problem-solving system. It is a pressure buffer. Its function is not to resolve every grievance but to absorb, register, divert, delay, and wear down social discontent — to keep concentrated eruptions of conflict from happening wherever possible.
+The marginal cost for the center to exercise this veto is essentially zero: a barking phone call, an urgent classified directive, and a four-character handwritten instruction: "Properly resolve."
 
-Against that premise, the intent of the new regulations becomes clear.
+The directive says nothing about how to resolve the crisis, where the money will come from, or how historical arrears can be cleared. The center incurs no operational attrition, dispatches no emergency funds, and demands absolute political quiet.
 
-## 2. What "Resolution in Place" Really Means: Pinning Problems Down Locally
+Unlimited power sits at the top; unlimited accountability sits at the bottom. The decision-maker remains safely perched on the high ground of ideological purity, chalking up every eruption of unrest to "crude work methods among grassroots cadres."
 
-The core of the new regulations is to further restrict petitioners from skipping levels and going to Beijing, pushing large volumes of conflict back inside local and provincial procedures.
+## The Empty Ledgers: Municipal Insolvency Meets 800 Unfinished Homes
 
-On the surface, this reads as "lawful and orderly," "reflecting grievances level by level," "resolution in place."
+The dockets filling local petition bureaus are no longer civil spats over neighborhood boundaries.
 
-But if the localities were never able to solve these problems in the first place, is "resolution in place" actually resolving them — or just pinning them in place?
+Behind the stubborn petitioners boarding trains to Beijing lie massive, festering structural wounds:
+- Eight hundred half-built apartments abandoned for three years amidst waist-high weeds, their escrow accounts stripped bare by runaway developers;
+- Unpaid relocation compensations owed by broke local government financing vehicles (LGFVs), leaving hundreds of displaced farmers aging in temporary tin shacks;
+- Unpaid bonuses and delayed salaries for sanitation crews, transit staff, and rural teachers following the collapse of municipal land sales.
 
-My judgment: **this is not a resolution mechanism; it is a sink-down mechanism.**
+As documented in [the unraveling of China's county economies]({{< ref "2025-11-12-china-county-economy-twilight.en.md" >}}), local administrations have seen their operating cash flows run completely dry. They possess zero financial buffer to buy off public anger.
 
-Petitioning used to carry a kind of political illusion: if the locality won't act, appeal to the center; if the grassroots are unjust, take the grievance to Beijing; the lower levels may be rotten, but the top might still be good — somewhere in the system there is always an upright official who will deliver justice.
+Reviving a stalled housing project requires a cash injection of hundreds of millions of yuan; settling relocation arrears demands real treasury transfers. Yet the county finance director's safe holds only rolled-over debt plans and refinancing IOUs stretching years into the future.
 
-That illusion was itself part of maintaining legitimacy. It let some citizens believe that the problem was not the system but local implementation; not that the center didn't care, but that the levels below were deceiving their superiors and hiding the truth from above.
+The central task force demands strict case-by-case resolution within hard deadlines, but the local cadres confront a ledger of irredeemable insolvency.
 
-The new regulations are shrinking that space.
+The gears of state spin furiously against a brick wall of absolute poverty.
 
-The center is effectively telling petitioners: do not come straight to Beijing. Go back to the locality first; work through the procedures at your own level, then the level above, then the province. Without procedural documentation from the local and provincial levels, the center will not accept, register, or take on the case.
+## Flesh-and-Blood Shock Absorbers: The Shadow Interception Economy
 
-**It is not that the center doesn't know the localities cannot solve these problems. It is that it is no longer willing to underwrite them.**
+Because the root causes cannot be cured, local administrative energy and dwindled budgets warp into a single obsession: **personnel containment and visibility management**.
 
-## 3. The Center Saves Costs; the Localities Absorb the Attrition
+Grassroots administrations have transformed into vast pressure interceptors.
 
-The crux of this matter is what it reveals about cost-shifting in central-local relations.
+The county petition director, the subdistrict party chief, the police station deputy commander, and the neighborhood grid workers are welded into an inescapable net known as the "five-to-one" surveillance pact.
 
-A petitioner arriving in Beijing means, for the center: reception costs, registration costs, diversion costs, security costs, public-opinion costs, political pressure — and the risk of nationwide conflicts converging and being exposed in one place.
+Whenever a sensitive date approaches, the windowless basement hostels of Beijing's Fengtai, Daxing, and Fangshan districts fill with hollow-eyed provincial interception task forces. Local cadres stake out railway exits, underground passages, and government gates with printed target dossiers, their faces pale with exhaustion and dread.
 
-A petitioner sent back to the locality means, for local governments: assigned responsibility packages, persuasion to return, stability control, interviews, surveillance, interception at transit hubs, issuing documents, building case ledgers, repeated written replies, repeated paper trails.
+A grotesque underground industry thrives in the margins of public finance:
+- Purchasing real-time railway ticketing alert feeds;
+- Hiring private security guards for twenty-four-hour shadowing;
+- Leasing unmarked commercial vans for nonstop overnight highway repatriations;
+- Dispensing clandestine "emergency relief funds" to buy momentary silence.
 
-What the new regulations actually change is not the problem itself, but who owns the problem's costs.
+A single interception run easily costs tens of thousands of yuan. Local governments routinely spend millions annually hiring security guards, leasing rooms, and purchasing cell-tower tracking data, while unable to scrape together the funds to restart the housing projects that ruined those citizens in the first place.
 
-**What the center saves is political and administrative cost. What the localities bear is stability-maintenance cost and attrition cost.**
+Cadres spend their mornings getting shredded in teleconferences by provincial inspectors, and their evenings enduring fury and curses inside petitioners' living rooms. Bearing pay cuts and out-of-pocket travel expenses, they are the first parts to grind down in this massive machine.
 
-This is the most typical governance logic in China today:
+They cannot fix a single institutional disease. Their sole function is to use their own nerves and marrow to keep the shockwaves from reaching the imperial core.
 
-**The center keeps rule-making power; the localities bear the attrition of implementation. The center keeps supervision power; the localities bear the concrete conflicts. The center keeps accountability power; the localities bear the social pressure. The center keeps political safety; the localities bear the grassroots friction.**
+## The Stress Limit of the Load-Bearing Wall
 
-In one sentence: **power moves up, responsibility is pressed down, costs are localized.**
+This downward dumping of systemic costs remained viable during the boom years of runaway urbanization. Back then, local governments had land to auction, banks had credit to issue, and double-digit growth washed away the sparks thrown off by crude governance.
 
-That is more accurate than simply saying "restricting petitioning." Restricting petitioning is only the surface. What is really happening is a redrawing of the responsibility boundary between the center and the localities.
+When the real-estate myth broke and leverage shattered—echoing [the global unwinding of debt and credit expansion]({{< ref "2025-11-14-gold-business-trend-analysis.en.md" >}})—the bill inevitably landed back on the table.
 
-**Decision-making power sits above; execution pressure sits below. Veto power sits above; losses are absorbed below. Rules are written above; the bitter fruit is tasted below.**
+The new regulations seek to trap all friction inside remote mountain valleys and county alleys with sterile legal language.
 
-Superior-subordinate relations inside the system are changing: the higher levels increasingly act as rule-makers, risk-cutters, and accountability-enforcers, while the lower levels increasingly act as execution fuel, cost absorbers, and pressure bearers.
+Yet the laws of physics do not yield to bureaucratic notifications.
 
-This is not the governance system running more smoothly. It is the pressure inside the governance system sinking steadily downward.
+When the sponge is compressed into a rigid slab, and when local finance can no longer even cover the train tickets for interception squads, the tremors will cease to be absorbed. They will travel directly up the stiffened load-bearing pillars, hitting the central ceiling without dampening.
 
-## 4. After the Downturn, the Localities Became the Center's Shock Absorber
-
-In times of growth, central-local relations are relatively easy to maintain.
-
-Localities had land finance, project investment, investment attraction, debt expansion, and the dividends of growth. Many social conflicts could be smoothed over with money; many clashes of interest could be papered over by growth; many historical problems could be kept on ice with fresh resources.
-
-After the economic downturn, that logic broke.
-
-Local budgets are tight, land finance has receded, debt pressure is rising, grassroots salaries and benefits are under strain — and social conflicts have not decreased. Unfinished buildings, debt disputes, social-insurance pressure, wage arrears, grassroots law-enforcement clashes, and legacy problems are pouring toward local governments in growing volume.
-
-At this point, what does the center protect first?
-
-Not the comfort of the localities, and not public satisfaction, but the center's own political security, fiscal security, and order.
-
-The localities are becoming the center's shock absorber.
-
-**The dividends of growth flow up to the center; historical debts stay with the localities. Political power concentrates at the center; social costs sink to the localities. Stability responsibilities are pushed onto the localities, while their capacity to actually solve anything keeps shrinking.**
-
-This is the structure behind the new petition regulations. It is not an isolated document; it is a concentrated expression of China's central-local conflict in the era of economic downturn.
-
-## 5. Local Governments Will Look Less Like Governments, More Like Pressure Interceptors
-
-For the localities, the new regulations are not relief — they are added pressure.
-
-The center pushes petitioners back to the localities, but the localities receive no extra resources, no extra policy space, no stronger problem-solving capacity. Instead they face more complicated conflicts, tighter budgets, stricter evaluations, and harsher accountability.
-
-What can a local government do?
-
-Actually solving problems is hard — especially problems entangled with money, power, historical responsibility, and institutional debt. The most realistic option is to pour resources into "preventing problems from moving upward."
-
-**Not necessarily solving your problem, but keeping you out of Beijing. Not necessarily compensating you in substance, but giving you a procedural reply. Not necessarily admitting responsibility, but leaving a paper trail of handling. Not necessarily dissolving the conflict, but controlling its visibility.**
-
-Local governments increasingly resemble not governance institutions but pressure interceptors. The core work is no longer solving social problems but managing how visible they are; no longer responding to real grievances but reducing the risk that those grievances travel upward; no longer making conflicts disappear but keeping them contained within the locality, the level, the system.
-
-This is the alienation of grassroots governance.
-
-## 6. The Center Manages Rules; the Localities Manage Trouble
-
-The deepest logic of the new petition regulations is that the center is extracting itself from the front lines of social conflict.
-
-The center no longer wants to face the flood of concrete disputes arriving from every corner of the country. What it wants to do is set the rules, define the procedures, raise the thresholds, require the localities to handle the cases, and hold the localities accountable.
-
-**The center manages rules; the localities manage trouble. The center manages order; the localities manage attrition. The center manages accountability; the localities manage the petitioners.**
-
-Under growth, this arrangement could barely hold, because the localities had resources, expansion, and room to maneuver. In a downturn, it grows steadily more dangerous.
-
-The localities have no money, yet cannot let conflicts travel upward; they cannot solve the problems, yet must shoulder stability-control responsibilities; they are required to handle cases by the book, yet cannot actually deliver on interests and promises.
-
-The result is a deeply distorted grassroots condition:
-
-**Not enough money, but responsibilities cannot shrink. Problems cannot be solved, but petitioners cannot reach Beijing. Conflicts cannot be contained, but the numbers cannot look bad. The higher levels provide no backstop, yet accountability can descend at any moment.**
-
-This is not stronger governance capacity. It is governance pressure sinking downward.
-
-## 7. This Is Not a Stronger System — It Is a More Visibly Fragile One
-
-Many people, seeing the new petition regulations, call it new bureaucratic laziness: doubling down on stability maintenance, blocking petitioners, restricting travel to Beijing.
-
-Those readings are not wrong, but they do not go deep enough.
-
-**This is not about resolving petitioning; it is about redesigning where petitioning gets stuck. Not about making conflicts disappear, but about keeping them below, more procedurally.**
-
-The center knows perfectly well that many of these problems cannot be solved. Precisely because they cannot be solved, it erects stricter procedural thresholds — to keep the conflicts in the localities, push the costs onto the localities, and quarantine the political risk outside Beijing.
-
-This does not indicate greater governance capacity. It indicates a classic high-fragility state:
-
-**The upper levels emphasize order more; the lower levels absorb more pressure. The upper levels concentrate more power; the lower levels shoulder more responsibility. The upper levels fear concentrated conflict more; the lower levels have even less capacity to solve anything.**
-
-This is not strength; it is fragility. It shows that the system has begun reassigning its unsolvable problems to the levels that are weakest, poorest, and have the least room left.
-
-## Conclusion: With Beijing Off Limits, the Localities Start Swallowing the Grenades
-
-The real meaning of the new petition regulations is not that petitioning has become more orderly. It is that China is re-localizing its social conflicts.
-
-The center is no longer willing to catch every hot potato, and no longer willing to let nationwide conflicts converge on Beijing. It wants to push the conflicts back down, and let the localities spend their own resources suppressing petitioners and maintaining surface stability on their own.
-
-But the localities do not actually have the capacity to resolve these conflicts. This mechanism will not eliminate them; it will only manufacture greater grassroots attrition.
-
-**Keeping petitioners out of Beijing does not make the problems disappear. Pushing conflicts back to the localities does not mean the localities can solve them. The center saves its costs — and the localities start swallowing the grenades.**
-
-The essence behind the new petition regulations is this: **China's central-local relations are entering a new phase — the center keeps concentrating power while beginning to systematically offload costs; the localities keep bearing responsibility while holding ever fewer resources to solve anything.**
-
-This is not an optimization of the petition system. It is the old order's self-defense in an era of downturn. What it guards against is not the problem itself, but the problem moving upward. What it manages is not social pain, but who gets to see that pain. What it resolves is not the conflict, but how the center stops directly inheriting it.
-
-The most accurate reading of the new petition regulations is not "rule-of-law petitioning." It is:
-
-**The center no longer catches the pot; the localities swallow the bitter fruit.**
-
-Reposted from: https://x.com/CivicOrderism/status/2072718751410036896
+Welding the chimney shut has never put out the fire in the furnace.
 

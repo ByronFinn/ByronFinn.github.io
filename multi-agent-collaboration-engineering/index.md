@@ -1,86 +1,104 @@
 # 多智能体协作的工程问题：触发、拓扑和收口
 
 
-先说结论：多智能体协作不是"多开几个模型实例"。它要解决的是任务调度、上下文隔离、权限控制、状态管理和结果合并——每一个都是工程问题，不是 prompt 问题。
+把多个基于概率采样的大模型实例塞进同一个代码仓库或业务流程，本质上是在用不可靠网络和随机状态机搭建分布式系统。经典分布式系统成立的基础假设——确定性状态转移、可复现故障、拜占庭容错、原子提交——在当前的大语言模型中几乎全部失效。
 
 <!-- more -->
 
-抖音小红书上的多智能体故事通常是这样：一个 agent 查资料，一个 agent 写代码，一个 agent 跑测试，一个 agent 做 review，主 agent 像项目经理一样收结果。评论区："我去好牛逼。"
+业界演示里充斥着乌托邦式的脚本：一个 Agent 搜集资料，一个 Agent 编写业务逻辑，一个 Agent 补全测试，一个 Agent 审查代码，主控 Agent 如同项目经理般优雅收拢结果。然而只要将类似系统推入生产环境，面对一个 50 万行代码的单体仓库或高并发事务场景，这套设想会迅速退化成分布式灾难：并发修改产生的脑裂（Split-Brain）、无锁冲突导致的静默覆盖、非确定性状态发散、Token 预算的雪崩式坍塌，以及父子任务间的死锁与活锁。
 
-真正用过的人只会摇头。
+多智能体协作从来不是 Prompt 工程的延伸，它是严苛的分布式运行时问题。谁持有写锁？子 Agent 的故障域如何隔离？上下文衰减率如何约束？当两个 Worker 分别修改了调用方与被调用方的语义时，谁来执行确定性的 CAS（Compare-And-Swap）合并？
 
-换成工程语言：谁有权创建 worker？worker 拿到多少上下文？能不能写文件？多个 worker 写同一区域怎么办？worker 失败、超时、被中断时，父任务怎么恢复？结果回来以后，谁判断冲突，谁做 merge？这些都是运行时设计问题，跟模型能力关系不大。
+本文抛开营销术语，从分布式系统的经典理论（Actor 模型、状态机复制、CAS、崩溃一致性）与 Codex、Claude Code、OpenClaw、Hermes、Qoder 五个真实生产架构出发，解构多智能体系统的工程底座。
 
-下面从 Codex、Claude Code、OpenClaw、Hermes、Qoder 五个系统的实际设计出发，把多智能体的工程问题拆开看。
+---
 
-## 触发和拓扑是两个问题
+## 1. 理论根基崩溃：非确定性状态机与一致性幻觉
 
-很多讨论混在一起，是因为把两个问题当成一个。
+要理解多智能体系统的脆弱性，必须先回到分布式一致性理论的出发点。
 
-**触发**：系统什么时候从单 agent 变成多 agent？
+### 确定性状态机假设的破灭
 
-**拓扑**：变成多 agent 之后，它们怎么组织？是主 agent 派 worker 后统一收口，还是 worker 之间能互相通信？是当前 turn 里等结果回来，还是放进持久队列，明天再继续？
+自 Leslie Lamport 提出 Paxos 以及 Diego Ongaro 与 John Ousterhout（2014）提出 Raft 协议以来，状态机复制（State Machine Replication, SMR）的核心基石始终是一条数学公理：**确定性状态机（Deterministic State Machine, DSM）**。即对于任意节点，给定相同的初始状态 $S_0$ 和相同顺序的输入日志序列 $L = \langle e_1, e_2, \dots, e_n \rangle$，状态转移函数必须满足：
 
-### 四种触发方式
+$$
+\text{apply}(S_t, e_{t+1}) \to S_{t+1} \quad \text{恒成立且唯一}
+$$
 
-{{< image src="/pictures/posts/multi-agent-collaboration-topology.svg" caption="多智能体主要拓扑形态" width="100%">}}
+然而，以 Transformer 为代表的自回归语言模型本质上是一个高维概率采样器：
 
-**显式触发**。用户直接说 "use parallel subagents" 或 "spawn one agent per review category"。Codex 主要走这条路。它不会因为任务看起来复杂就擅自开 worker，把并行授权留给用户和主 agent。
+$$
+P(w_{t+1} \mid w_1, w_2, \dots, w_t; \theta, T)
+$$
 
-**语义触发**。主 agent 根据任务内容和 subagent description 判断是否调用某个专家。Claude Code 的普通 subagent 走这条路。description 写得越像触发条件，系统越容易在合适时机调用；写得越像愿望，越容易乱叫人。Qoder Experts 不是在普通 Agent 里自动切换出来的，用户先切到 Experts 模式，Team Lead 再按需求拆任务和拉专家。
+哪怕在推理时将温度（Temperature）设为 0，底层 GPU 并行计算中浮点数加法的非结合律（Floating-point non-associativity: $(a + b) + c \neq a + (b + c)$）、CUDA 动态调度抖动以及混合精度量化，依然会导致生成路径的微小漂移。
 
-**路由触发**。系统不看任务复杂度，先看消息从哪来。OpenClaw 按 channel、account、thread、peer、guild、role 选择 agent。Slack ops channel 进 ops agent，私人 Telegram 进 deep work agent，家庭入口进低权限 assistant。
+这意味着：**在多智能体系统中，不存在天然的确定性副本。** 
 
-**队列触发**。任务写进 board、queue、cron 或 background job，由 dispatcher 按状态和 assignee 拉起 worker。Hermes Kanban 走这条路。关键点不是本轮能不能返回，而是任务能不能跨 turn、跨天、跨重启、跨人类介入。
+当主控节点（Orchestrator）将任务 Fan-Out 到 3 个对等 Worker 实例时，系统并非创建了 3 个具有冗余备份意义的高可用副本，而是分裂出了 3 条随时可能产生认知发散的随机状态链。你无法用经典 Quorum（多数派选举）来验证结论的合法性——分布式系统中的多数派仲裁依赖于独立随机硬件故障假设，而大模型在面对复杂的边界条件或提示词陷阱时，表现出的是高度相关的共模失效（Common-Mode Failure）。盲目相信所谓的多数派表决，往往只是让系统以更高的置信度执行集体幻觉。
 
-### 六种拓扑
+### 上下文衰减率与 Token 预算的雪崩坍塌
 
-**单 agent**。默认形态。需求模糊、修改很小、步骤强依赖时，单 agent 往往最稳。很多任务不需要多智能体，只需要更好的上下文和更短的反馈循环。
+在传统分布式 RPC 调用中，消息载荷（Payload）与网络协议栈解耦，通信开销通常是线性的 $O(M)$。但在多智能体系统中，通信载荷即状态，状态即注意力上下文。
 
-**星型 fan-out/fan-in**。最常见的 subagent 形态。主 agent 派多个 worker，worker 之间不直接协商，结果回到主 agent 做 reduce。Codex subagents、Claude 普通 subagents、Hermes delegate\_task、Qoder Experts 都是这种结构。优点是责任中心清楚，缺点是 worker 之间不能互相纠错，所有冲突都压到主 agent 的 merge 阶段。
+根据 Nelson F. Liu 等人（2023）在论文《Lost in the Middle: How Language Models Use Long Contexts》中的实证研究，随着模型上下文长度的增加，大模型对上下文中间区域的信息检索与逻辑约束遵从能力呈现明显的 U 型衰减曲线（Primacy and Recency Effects）。当主 Agent 试图将包含数万 Token 的项目结构、历史调用栈与业务契约灌入子 Agent 时，信噪比（SNR）开始急剧恶化。
 
-**链式 pipeline**。适合强顺序任务。先定位 bug，再写修复，再补测试，再 review。硬把这种任务并行化，通常只会让后面的 worker 在错误假设上浪费时间。
+更严峻的是二次方注意力与 Token 成本的雪崩。假设主 Agent 调度 $K$ 个 Worker 并发探索，每个 Worker 在工具调用循环（Tool-Execution Loop）中消费 $T_{\text{in}}$ 的输入并产生 $T_{\text{out}}$ 的探索轨迹。当这 $K$ 个分支汇聚（Fan-In）回主 Agent 做 Reduce 时，主 Agent 需要吞吐的上下文直接跃升至：
 
-**树型**。适合大任务分层。main agent 派 orchestrator，orchestrator 再派 leaf worker。看起来强，但要严格限制 depth 和并发，否则 fan-out 指数膨胀。OpenClaw 和 Hermes 都把默认深度压得很低，就是在控制这个风险。
+$$
+T_{\text{reduce}} \approx T_{\text{base}} + \sum_{i=1}^{K} (T_{\text{in}}^{(i)} + T_{\text{out}}^{(i)})
+$$
 
-**网状 team**。适合多假设问题。生产登录故障可能来自前端状态、后端 token、数据库 session、缓存或部署配置，多个 teammate 分别验证假设并互相挑战。代价：消息更多、上下文更多、协调成本更高，文件冲突也更容易出现。
+如果不做极其激进的语义有损压缩，主 Agent 的 Context Window 会在短短两轮迭代内被打满，触发强行截断或上下文压缩机制（详见 [Claude Code 上下文压缩机制深度解析]({{< ref "2026-06-17-claude-code-context-compression.md" >}}))。此时，注意力分散导致决策质量劣化，决策劣化引发更多的重试与修补工具调用，系统瞬间陷入**Token 消耗正反馈雪崩**，任务未竟而预算已空。
 
-**Gateway routing**。适合常驻多入口系统。不是"一个任务拆给多个 agent"，而是"不同入口进入不同 agent"。OpenClaw 的多 agent 价值很大一部分在这里。
+### 拓扑死锁与慢节点困境（The Straggler Problem）
 
-## 调用链
+Jeffrey Dean 与 Sanjay Ghemawat 在 2004 年发表的 MapReduce 经典论文中指出了分布式批量计算的致命短板：**落后节点（Straggler）**。一个包含 $N$ 个并行任务的 Map 阶段，整体延迟并非取决于任务的平均执行时间，而是被长尾中的最大值 $P_{99}$ 锁死。
 
-{{< image src="/pictures/posts/multi-agent-delegation-chain.svg" caption="多智能体系统的调用链" width="100%">}}
+在大模型多智能体场景中，这一问题被随机生成的耗时方差成倍放大。一个负责“安全审计”的子 Agent 可能因为遭遇一个复杂的正则表达式匹配，在沙箱里陷入长达 180 秒的 ReDoS 分析或反复调用语法分析工具，而此时负责“接口实现”和“单元测试”的子 Agent 早已完成并阻塞在栅栏同步（Barrier Synchronization）点。
 
-把多智能体系统拆成一条调用链：
+更危险的是隐式依赖引发的拓扑死锁：
+- Worker A 负责修改认证模块，声明其在等待外部配置规范；
+- Worker B 负责配置系统，认为其输入依赖于认证模块产出的 Token 结构体定义；
+- 两者在未显式定义 Directed Acyclic Graph (DAG) 拓扑序的情况下被并行拉起，系统立即陷入认知级活锁（Livelock），在彼此试探与等待中耗尽执行步数上限。
+
+---
+
+## 2. 触发机制的工程边界：调用栈膨胀与权限渗透
+
+任何多智能体架构的第一道门禁是触发（Triggering）。系统在什么边界条件下允许从单线程控制流蜕变为并发控制流？这直接决定了故障域（Fault Domain）的半径。
 
 ```text
-input event
-  -> router / dispatcher
-  -> context builder
-  -> worker profile selection
-  -> execution sandbox
-  -> state store
-  -> merge / reduce
-  -> final output or next task
+               +----------------------------------+
+               |        Input Ingress Event       |
+               +-----------------+----------------+
+                                 |
+                     [ Authentication Gate ]
+                                 |
+              +------------------v------------------+
+              |   Entry Gateway Router (OpenClaw)   |
+              +------------------+------------------+
+                                 | (Resolved Identity & Policy)
+              +------------------v------------------+
+              |      Master Agent Loop (Claude)     |
+              +--------+--------------------+-------+
+                       |                    |
+       [Explicit Command / Contract]    [Semantic Match]
+                       |                    |
+        +--------------v---+            +---v--------------+
+        |  Codex Dispatch  |            | Ephemeral Worker |
+        |  (Scoped Worker) |            | (Read-Only Tools)|
+        +--------------+---+            +---+--------------+
+                       |                    |
+              +--------v--------------------v-------+
+              | Durable Execution Queue / Postgres   |
+              | Checkpointer (Hermes / LangGraph)   |
+              +-------------------------------------+
 ```
 
-**router / dispatcher** 决定是否拆任务、拆给谁。Codex 里这个判断来自用户显式授权；Claude Code 受 description 匹配影响；OpenClaw 很多时候由入口绑定决定；Hermes 里短任务可能由父 agent 调 delegate\_task，也可能由模型按复杂度自动选择；Qoder 在 Experts 模式里由 Team Lead 拆任务、选专家、收口。
+### 显式触发：把并发作为危险特权
 
-**context builder** 决定 worker 知道什么。子 agent 上下文不够，跑偏很正常。你不能把一个 worker 拉进来只说"修一下"，然后期待它理解项目路径、错误现场、相关文件、验收标准和禁止事项。对 subagent 来说，委派信息就是需求文档。
-
-**worker profile selection** 决定用什么角色。只读 explorer、能改代码的 worker、security reviewer、test reviewer、有长期 memory 的 profile、一次性 child——角色选错了，后面的权限和输出也会跟着错。
-
-**execution sandbox** 决定 worker 能做什么。能不能跑 shell？能不能联网？能不能写文件？能不能继续 spawn child？这些不只是安全配置，直接改变协作模式。只读 reviewer 和可写 implementer 是两种完全不同的 agent。
-
-**state store** 决定状态放在哪里。一次性 subagent 的状态通常只活在本轮任务里，最后返回 summary。OpenClaw 的 agent 有自己的 session store。Hermes Kanban 会把 task、comment、handoff、blocked/retry 状态写进数据库。状态放在哪里，决定了系统能不能跨 turn、跨天、跨重启。
-
-**merge / reduce** 负责收口。多个 worker 给出结果后，谁判断冲突，谁取舍，谁写最终 patch，谁对用户负责？很多多智能体 demo 看起来漂亮，是因为跳过了 merge 难题。真实工程里，merge 才是成败的地方。
-
-最后还有取消和失败传播。父任务被中断，子任务要不要一起停？worker 超时怎么办？两个 worker 给出相反结论怎么办？一个 worker 写了错误 patch，另一个 worker 的测试基于这个 patch 继续跑，怎么回滚？这些是运行时设计问题。
-
-## Codex：显式 fan-out
-
-Codex 的 subagent 策略很克制。它默认不会因为任务听起来复杂就自动开一组 agent。你需要明确给出并行授权：
+OpenAI Codex 的工程取舍最为保守。Codex 默认绝不因为用户任务听起来复杂（例如“请全面重构此模块并优化性能”）而擅自 Fork 子 Agent。它将并行执行视为一种等同于 `rm -rf` 的危险高权限操作，必须依赖用户的明确授信：
 
 ```text
 Use parallel subagents.
@@ -88,372 +106,347 @@ Spawn one agent per review category.
 Delegate this work in parallel and synthesize the results.
 ```
 
-如果你只说"深入分析一下""彻底 review 一下"，Codex 通常理解成质量要求，而不是多 agent 授权。这是一个产品取舍：Codex 把 fan-out 的控制权留给用户和主 agent，而不是把复杂度自动翻译成更多 worker。
+这种设计的核心是防御**未经授信的调用栈膨胀**。在缺少外部确定性编排约束时，一旦赋予主 Agent 自主 Fork 的权力，LLM 极易在面对模糊问题时滥用 Fan-Out 作为逃避直接决策的手段——创建 5 个子 Agent 去做泛化的网络检索，最终把无法消化的海量垃圾信息倾倒回自己的上下文。Codex 将触发决策权钉死在用户端，系统行为由此获得了最高等级的可预测性。
 
-这个设计背后有实际理由。多开 agent 增加 token、延迟、日志量和合并成本；worker 能写文件还会带来冲突风险；子 agent 返回大量解释，主 agent 的 reduce 成本变高。显式授权看起来少了一点"自动"，但系统行为可预测。
+### 语义路由与 Description 漂移的治理
 
-默认拓扑是星型：
+Anthropic 在 Claude Code 的普通 Subagent 机制中采用了语义触发路径（详见 [Claude Code 多智能体架构解析]({{< ref "2026-06-24-claude-code-multi-agent.md" >}}))。系统为每个注册专家分配独立的 System Prompt、工具集与 Description。主会话在每轮 `AgentLoop` 中，将当前的上下文意图与专家注册表进行语义匹配。
 
-```text
-main Codex agent
-  -> explorer A: read-only search
-  -> explorer B: trace call path
-  -> worker C: scoped patch
-  -> reviewer D: test and risk review
-  <- summaries / patch / findings
-main Codex agent reduces result
+这一机制的工程暗礁在于 **Description 的语义重叠与路由抖动（Route Thrashing）**。
+
+当架构师注册了以下两个专家：
+- `security-auditor`: "Use proactively to review authentication, encryption, and vulnerability concerns."
+- `code-reviewer`: "Use proactively to review code logic, design patterns, and potential defects."
+
+在遇到一个涉及 JWT 过期逻辑的 PR 时，路由判决处于临界向量空间。模型可能在第 1 轮唤起 `security-auditor`，第 2 轮唤起 `code-reviewer`，产生交叉重复审查；或者更糟，在两个子 Agent 之间反复横跳（Bounce）。
+
+**工业级 Description 必须写成刚性的前置断言（Preconditions），而非愿望清单：**
+
+```yaml
+name: auth-crypto-reviewer
+description: >
+  MANDATORY trigger condition: Invoke ONLY when files under src/auth/ or src/crypto/
+  have modifications in the git diff. Do NOT invoke for general styling, performance,
+  or UI component changes.
+tools: [Read, Grep, Glob]
+permissions: read-only
 ```
 
-主 agent 同时扮演 dispatcher 和 reducer。子 agent 的价值不只是"多一个脑子"，还有上下文隔离——代码库搜索、长日志、测试输出、调用链探索都可以放进子上下文，避免主上下文被噪声污染。
+### 入口隔离：安全网关与最小权限原则（Principle of Least Privilege）
 
-Codex 内置 agent 类型按责任划分：
+OpenClaw 展现了完全不同的触发范式：**网关前置路由**。
 
-- **explorer**：读代码、找路径、定位调用链、搜相关文件。保持只读，输出文件路径、函数名、关键证据、风险点和建议。价值在于减少主上下文探索成本，不是直接改代码。
-- **worker**：改代码、补测试、实现局部功能。必须有明确 ownership，比如只改 `src/auth/*` 或只负责 `tests/auth/*`。如果两个 worker 都能改同一块逻辑，省下的时间会在冲突解决里还回去。
-- **default**：通用兜底，适合边界还没完全清楚、但需要独立上下文处理的任务。越通用的 worker，越需要清楚的任务边界。
+作为一个直面 WhatsApp、Telegram、Discord、Slack 等多入口的消息中枢，OpenClaw 清醒地意识到：不同的交互入口对应着完全异构的信任域。来自企业 Slack `#dev-ops` 频道的调用请求，与来自私人 Telegram 或公网 Webhook 的事件，绝不可进入同一个执行上下文。
 
-如果一个 Codex 环境提供自定义 agent 或并发配置，适合把固定角色沉淀下来，比如 security-reviewer、migration-worker、docs-editor。但 agent 越多，调度规则越需要清楚，否则只是把 prompt 混乱从主上下文搬到了 agent 注册表。
+Saltzer 与 Schroeder 在 1975 年阐述的计算机系统信息保护基本原则中，“最小权限原则”（Least Privilege）居于首位。OpenClaw 的触发发生在接入层：
+1. 根据 `Channel ID`、`Account ID`、`Guild/Role` 判定初始安全策略；
+2. 绑定专属的 `Workspace`（包含独立的 `AGENTS.md`、`SOUL.md`）与 `AgentDir`（环境凭据隔离）；
+3. 实施工具集的物理屏蔽——家庭助理入口的 Agent 物理上不注入 Bash 或部署脚本执行工具。
 
-并发宽度和递归深度必须有上限。一次 PR review 开安全、测试、性能三个 worker 已经够用；每个 worker 又开三个，成本和行为很快不可控。具体配置名以所用 Codex 版本为准，这类开关在不同发行形态里不一定一致。
+在 OpenClaw 的世界观里，多 Agent 的第一价值是**故障域与安全边界的硬隔离**，其次才是所谓协同。
 
-Codex 不适合把所有复杂任务都拆开。小修小补不值得 fan-out；强顺序任务不适合并行；多个 worker 会写同一文件时，需要先串行设计再并行执行；需求还模糊时，多 agent 只会把模糊放大。
+---
 
-一个更稳健的委派示例：
+## 3. 拓扑演进与并发控制：从星型 Fan-Out 到网状 Mesh 的故障域
 
-```text
-Use parallel subagents.
+拓扑决定了信息流与状态变更的路径。不同拓扑结构的容错与并发控制成本存在数量级差异。
 
-Explorer A: trace the auth request path from UI to API. Read-only.
-Explorer B: inspect session persistence and cookie handling. Read-only.
-Worker C: patch only src/auth/session.ts after A and B report back.
-Reviewer D: review the final diff and test coverage. Read-only.
+| 拓扑结构 | 通信复杂度 | 状态一致性保证 | 并发写入风险 | 典型生产应用 |
+| :--- | :--- | :--- | :--- | :--- |
+| **单 Agent** | $O(1)$ | 强确定性（单线程事务） | 零冲突 | 局部代码修复、明确步骤调试 |
+| **星型 Fan-Out/In** | $O(K)$ | 弱一致（汇聚点集中收口） | 高（依赖 Reducer 裁决） | Codex Subagents, Qoder Experts |
+| **流水线 Pipeline** | $O(N)$ | 顺序一致（上游输出即下游输入） | 低（串行传递所有权） | 漏洞探测 $\to$ 修复 $\to$ 验证流水线 |
+| **树型分层 (Tree)** | $O(B^D)$ | 阶梯式一致（易发生层级信息衰减）| 中（严格按层隔离命名空间） | 大规模架构重构、子模块拆解 |
+| **网状 Mesh** | $O(N^2)$ | 极弱（极易产生脑裂与认知环路） | 极高（需分布式写锁或 CRDT） | 多假设故障排查、红蓝对抗推演 |
 
-Main agent must synthesize findings, resolve conflicts, and present one final plan.
-```
+### 星型 Fan-Out/Fan-In：MapReduce 的幽灵
 
-## Claude Code：description 驱动 + 三层结构
+星型是目前使用最广泛的 Subagent 形态。主 Agent 派生 $K$ 个 Worker，Worker 并行执行并向主 Agent 回传 Summary，由主 Agent 完成最后的 Merge。
 
-Claude Code 的普通 subagent 更像本地专家注册表。按 [Claude Code subagents 文档](https://docs.anthropic.com/en/docs/claude-code/sub-agents)，每个 subagent 有 name、description、system prompt、工具权限、模型和独立上下文。主 session 根据 description 判断什么时候调用，也可以被用户显式点名。
+这一架构的致命瓶颈在于**汇聚点的认知过载**。主 Agent 不仅要充当 Dispatcher，还要承担全量 Reducer 的职责。当 3 个 Worker 分别返回 200 行复杂的重构分析时，主 Agent 的上下文瞬间被这些非同构的见解填满。由于 Worker 之间缺乏水平通信渠道，Worker A 无法提醒 Worker B“你的底层数据结构假设已经被我的改动推翻”，所有的逻辑冲突被积压至最终回合由主 Agent 孤注一掷地裁决。
 
-一个安全 reviewer 可以这样写：
+### 网状 Mesh 与 Actor 模型的教训
 
-```text
-name: security-reviewer
-description: Use proactively after authentication or session code changes
-             to review token handling, cookie flags, expiry, and missing tests.
-tools: Read, Grep, Glob, Bash
-model: sonnet
-```
+Claude Code Agent Teams 允许 Leader 与多个 Teammate 组成对等网络，Teammate 之间可直接互通消息并共享任务看板。这在概念上极度接近 Carl Hewitt（1973）的 Actor 模型以及 Joe Armstrong 在 Erlang/OTP 中实现的并发进程通信架构。
 
-description 是路由规则，回答"什么时候应该叫我"。写得具体，Claude 容易在合适时机调用；写得太泛（比如 "review code quality"），可能频繁出现变成噪声。
+然而，Erlang 系统的成功建立在两个铁律之上：
+1. **轻量进程的状态完全私有**，绝无共享内存；
+2. **邮箱（Mailbox）具备严格的容量上限与背压机制**；
+3. **Supervisor 树定义了清晰的失败级联响应策略**（`one_for_one`, `one_for_all`, `rest_for_one`）。
 
-普通 subagent 生命周期短。主 session 调用它，独立上下文执行，返回摘要。不会天然变成长期角色，也不会默认和其他 subagent 协商。适合探索、审查、日志分析、局部 debug、代码库理解这类上下文噪声大的工作。
+当前的 LLM Agent Teams 恰恰缺失了背压与确定性监控。当 4 个 Teammate 围绕一个复杂的登录故障展开自由讨论时，消息传递呈现二次方膨胀：
 
-内置的 Explore、Plan、General-purpose 是三个默认 worker profile：Explore 偏只读，Plan 做研究（探索材料放子上下文避免主上下文膨胀），General-purpose 更宽可以处理多步任务。
+$$
+M = \frac{N(N - 1)}{2} \times \text{Turns}
+$$
 
-和 Codex 的差别在触发门槛。Codex 默认等用户显式授权；Claude Code 可以根据 description 自动委派。Codex 问"用户有没有授权并行"，Claude Code 问"有没有 description 匹配当前任务"。
+不仅迅速耗尽上下文，且模型具有高度的“迎合性偏差”（Sycophancy）与注意力漂移。Teammate A 抛出一个错误的假设，Teammate B 在该假设上进行过度推演，团队迅速达成群体共识并走向逻辑盲区，完全违背了设置多角色以互相质疑的初衷。
 
-普通 Claude subagent 仍然是星型：
+### 物理文件系统的脑裂与并发写入控制
 
-```text
-main Claude session
-  -> Explore
-  -> security-reviewer
-  -> test-reviewer
-  <- summaries
-main session decides next step
-```
+如果多 Agent 仅仅停留在只读分析层面，拓扑失控最多只浪费 API Token。然而，一旦赋予 Worker 写文件权限，灾难便降临到物理磁盘。
 
-### Agent Teams：网状协作
-
-[Agent Teams](https://docs.anthropic.com/en/docs/claude-code/agent-teams) 是另一套逻辑。一个 lead Claude 带多个 teammate，每个 teammate 有独立上下文，可以互相通信，共享任务列表。不再是星型 fan-out，接近 team mesh：
+假设 Worker 1 负责重构认证模块 `src/auth/token.ts`，Worker 2 负责给整个服务添加分布式追踪 `TraceID`。在无锁环境下并发运行：
+1. Worker 1 读取 `token.ts`，开始修改并写入新版代码；
+2. Worker 2 同时扫描到 `token.ts`，基于旧版本插入了追踪日志；
+3. Worker 2 稍晚一步保存文件，执行无条件覆写（Last-Write-Wins, LWW）。
+4. **Worker 1 的核心修复被静默抹杀，且在 AST 层面不产生任何语法错误。**
 
 ```text
-lead Claude
-  <-> frontend teammate
-  <-> backend teammate
-  <-> database teammate
-  <-> test teammate
-shared task list
-direct teammate messages
+       [Shared Repository Working Tree] (NO Concurrency Control)
+                     |
+       +-------------+-------------+
+       |                           |
+  Worker 1 reads              Worker 2 reads
+  src/auth/token.ts           src/auth/token.ts
+       |                           |
+  Modifies Auth Logic         Injects TraceID Logging
+       |                           |
+  Writes token.ts (t=1)            |
+       |                      Writes token.ts (t=2) -> SILENT OVERWRITE!
+       v                           v
+  [Changes Lost!]             [Corrupted State Committed]
 ```
 
-team 模式适合多假设问题。生产登录失败可能来自前端状态、后端 token、数据库 session、缓存或部署配置。一个 agent 顺着一条线查容易早早锚定；多个 teammate 分头验证再互相挑战，覆盖面更好。
+在分布式操作系统中，该问题通过分布式锁管理器（DLM）或 2-Phase Locking (2PL) 解决。但在 AI 编码助手中，我们无法指望概率模型正确遵循 `flock()` 协议。
 
-代价也直接：更多上下文、更多消息、更多中间判断。teammate 可能改同一文件，可能给出冲突建议，可能在共享任务列表里制造管理负担。lead 必须有明确收口责任。没有 ownership 的 team 很容易变成"多个 session 同时忙，但没人负责最终结果"。
+**业界目前唯一可行的工程解法是物理隔离工作区：Git Worktree。**
 
-### 三层结构
+正如 Claude Code 架构第三层所实践的那样，系统通过底层执行：
 
-Claude Code 可以分成三层：
+```bash
+git worktree add -b feat/worker-auth .worktrees/worker-auth HEAD
+git worktree add -b feat/worker-trace .worktrees/worker-trace HEAD
+```
 
-**Layer 1: 普通 subagent** — description 自动路由，独立上下文，返回摘要。
+将每个具备写入权限的 Worker 隔离在独立的物理文件系统副本中。Worker 之间互不感知磁盘变更，所有的写入冲突被强行推迟到最终的 Git 分支合并阶段，交由确定性的 3-Way Merge 算法处理。**用文件系统层面的乐观并发控制（OCC），取代对模型自觉性的虚妄假设。**
 
-**Layer 2: Agent Teams** — lead + teammates，共享任务列表，teammate 可互相通信。
+---
 
-**Layer 3: Agent View / worktrees / batch** — 人类调度多个 session，用 worktree 隔离写入，适合大规模机械改造。
+## 4. 状态收口与原子合并：谁来写最终的 Commit Log？
 
-Agent View 更像人类调度台。启动多个后台 session，观察状态，必要时插手、暂停或接管。人类参与度更高，系统不假装所有协调都由模型自动完成。
-
-worktrees 是文件隔离手段。多个 agent 并行写同一个 repo，都在同一个工作区冲突几乎不可避免。worktree 让每个 worker 在自己的副本里改，最后再合并。
-
-/batch 适合 repo-wide migration 或机械重构。按目录拆成多个 worktree-isolated subagents，每个 agent 负责一片区域，最后统一跑测试和 review。
-
-Claude Code 的常见失败点来自 description 和权限边界：description 太宽会乱触发；工具权限太大会越界；team 没有 ownership 会冲突；batch 没有验收标准会产生一堆看起来完成、风格却不一致的 patch。
-
-一个好的 description 应该像触发条件：
+很多多智能体 Demo 看起来无懈可击，是因为它们巧妙地停留在各抒己见的“分析阶段”。真正的软件工程始于状态收口：当代码必须被编译、打包、测试并通过回归时，谁来提交唯一的事务？
 
 ```text
-Use after auth/session/cookie code changes.
-Check token handling, cookie flags, expiry, replay risk, and missing tests.
-Return findings with file paths and severity.
-Do not modify files.
+       [Worker Worktree 1]       [Worker Worktree 2]
+                |                         |
+                +------------+------------+
+                             |
+                   [ Git 3-Way Merge ]
+                             |
+             +---------------+---------------+
+             | (Clean Merge)                 | (Conflict / Invariant Broken)
+             v                               v
+    [ Deterministic Verification ]    [ Automatic Rollback / Abort ]
+    - tsc / ast-grep / lint                  |
+    - unit tests / integration tests         v
+             |                        [ Log Failure Snapshot ]
+    +--------+--------+               [ Erlang-style Restart ]
+    | (Pass)          | (Fail)
+    v                 v
+[ Atomic Commit ]  [ Reject Patch ]
 ```
 
-Claude Code 的主动性来自 description，可控性也取决于 description。
+### 语义冲突击穿语法级 3-Way Merge
 
-## OpenClaw：多入口 Gateway
-
-OpenClaw 和 Codex、Claude Code 的出发点不同。后两者多半发生在一个 coding session 里；OpenClaw 先面对的是多渠道事件流，更像一个 self-hosted Gateway，把 WhatsApp、Telegram、Discord、Slack 等 channel 接到 agent runtime。
-
-在 OpenClaw 里，用户发来的不一定是一个统一的"任务"。它可能来自公司 Slack 的 ops channel、私人 Telegram、Discord thread。不同入口意味着不同身份、不同权限、不同上下文和不同风险。所以 OpenClaw 的第一层不是 subagent，而是 routing：
+在经典版本控制体系（RFC 2822 / Git Merge Engine）中，`merge-base` 算法依赖文本行级差异：
 
 ```text
-incoming message
-  -> channel/account/thread/peer matching
-  -> selected agent
-  -> agent workspace + session store
-  -> response or background task
+<<<<<<< HEAD
+export async function authenticate(token: string, timeoutMs: number): Promise<Session> {
+=======
+export async function authenticate(token: string, options: AuthOptions): Promise<Session> {
+>>>>>>> feat/worker-auth
 ```
 
-可以按 peer、thread inheritance、Discord guild/role、Slack team、accountId、channel-level fallback 等规则选择 agent。消息从 Slack ops channel 来进 ops agent；从私人 Telegram 来进 deep work agent；从家庭入口来进低权限 assistant。
+如果两个 Worker 修改了同一个文件的不同函数，或者分别修改了两个相关联的文件，文本级合并工具会顺利判定为“自动合并成功”（Clean Merge）。
 
-触发器不是用户说"开 subagent"，也不是模型看 description 自动匹配，而是事件入口绑定。OpenClaw 先回答"这条消息属于哪个 agent"，然后才谈这个 agent 要不要拆任务。
+但软件系统的状态一致性是**语义不变性（Semantic Invariant）**：
+- Worker A 将 `UserService.getUserById(id: string)` 重命名为 `getUser(id: UserId)`；
+- Worker B 在另一个微服务目录里新增了对 `getUserById(id)` 的 5 处调用；
+- Git 3-Way Merge 毫无阻碍地通过，甚至没有触发任何 Git Conflict。
 
-OpenClaw 里的 agent 更像隔离运行单元。一个 agent 有自己的 workspace（AGENTS.md、SOUL.md、USER.md、notes、persona rules）、自己的 agentDir（认证信息、模型 registry、per-agent config）、自己的 session store。注意边界：sub-agent auth 按 agent id 解析，但 main profiles 会作为 fallback 合并进来，所以不是"每个 agent 的认证完全硬隔离"，更准确的说法是 agent 级配置、workspace、session 和工具策略隔离。
+此时，如果直接交卷，生产环境就会遭遇 `NoSuchMethodError` 或运行时白屏。**多智能体的收口核心，绝不能依赖 LLM 撰写一段客套的总结，而必须建立确定性的机械验证拦截网（Verification Oracle）：**
 
-多 agent 价值很大一部分来自隔离——入口身份隔离、上下文隔离、权限隔离、工具隔离。ops agent 可以有日志和部署工具，家庭助手不该有危险 shell 权限；deep work agent 可以记长期项目上下文，临时聊天 agent 不该共享这些状态。
+1. **AST 语义验证**：利用 `tree-sitter` 或编程语言编译器（如 `tsc --noEmit`、`cargo check`）进行全工程静态符号解析；
+2. **运行时断言测试**：自动化执行受影响受控子集的回归测试套件；
+3. **原子回滚（Atomic Abort）**：一旦验证未通过，立刻执行事务回滚，丢弃整个 Worktree 的 Diff，绝不保留半污染状态。
 
-第二层是 background subagent。已有 agent 可以通过 `/subagents` spawn 或 `sessions_spawn` 拉起后台 agent run。返回 run id，主对话不阻塞。子 agent 在自己的 session 里跑，完成后 announce 结果。
+### 检查点持久化：LangGraph 的 Checkpointer 架构
 
-和 Codex 的 fan-out 相似但生命周期不同。Codex 的子 agent 更像当前任务里的并行 worker，主 agent 等结果再收口；OpenClaw 的 background subagent 更像异步 job，适合常驻聊天场景。你让它查日志、跑研究、等慢工具，主对话可以继续，不必卡在同一个 turn 里。
+在 Python 生态中，LangGraph 提供了状态机持久化的高分样板。其核心组件 `Checkpointer`（如 `PostgresSaver`）将多智能体的状态流转彻底解耦为事件溯源（Event Sourcing）模型：
 
-嵌套也允许，但默认限制很强。`maxSpawnDepth` 默认 1。提高到 2 后可以出现 orchestrator 再派 worker 的树型结构，但 child 数和并发数会被限制，depth-2 worker 不能继续 spawn。
+```python
+# LangGraph Checkpointer 核心元组定义
+CheckpointTuple(
+    config={"configurable": {"thread_id": "tx_20260929", "checkpoint_ns": "subagent_auth"}},
+    checkpoint={
+        "v": 1,
+        "ts": "2026-09-29T00:40:00Z",
+        "channel_values": {"files_modified": ["src/auth.ts"], "tests_passing": False},
+        "channel_versions": {"files_modified": 3, "tests_passing": 3},
+        "versions_seen": {"worker_1": 2}
+    },
+    metadata={"source": "loop", "step": 4, "writes": {"worker_1": {"status": "retry"}}},
+    parent_config={"configurable": {"checkpoint_id": "019e59ca-7536-753a-bf78"}}
+)
+```
 
-第三层是 ACP Agents。OpenClaw 可以把外部 coding harness 接进来（Codex、Claude Code、Cursor、Gemini CLI）。用户说 "run this in Codex"，OpenClaw 可以路由到 Codex runtime。它不需要用 native subagent 覆盖所有执行场景，而是把自己变成统一入口。
+通过将状态版本化保存进 PostgreSQL，LangGraph 实现了两个至关重要的系统特性：
+1. **时间旅行与状态回滚（Time Travel）**：当子 Agent 尝试的修复路径导致测试大面积失败时，系统无需顺着污染的历史继续纠偏，而是通过回退指针到 `checkpoint_id`，无损恢复干净状态并换用其他策略重试；
+2. **人机协同（Human-in-the-loop）的异步中断**：长事务可以在任意节点将状态持久化落盘，挂起进程，释放计算资源，等待人工审计授权后再行唤醒。
 
-三层结构：
+### 崩溃一致性与 Crash-Only Software
+
+George Candea 与 Armando Fox 在 2001 年的普适系统论文《Crash-Only Software》中指出：最健壮的分布式系统应当只有两种状态转换——启动和崩溃。系统不应依赖复杂的正常关机或清理逻辑，而是随时准备好应对异常掉电并迅速自愈。
+
+多智能体系统的父子任务管理必须严格贯彻这一思想：
+- **父任务中断联动**：当主任务遭遇网络断连或用户发出 `SIGINT` 时，底层运行时必须通过进程组（Process Group）或容器 cgroups 发送 `SIGKILL`，瞬间掐灭所有孤儿 Worker。Hermes 在设计中明确限定：父会话中断，活跃 Child 必须级联销毁，严防子进程在后台无序空转消耗 Token；
+- **失败隔离（Fail-Stop）**：Worker 崩溃不应导致父节点崩溃。父节点将子 Agent 的崩溃记录为一个标准的错误事件（Error Event），降级为单 Agent 兜底执行或重新调度。
+
+---
+
+## 5. 五大生产架构的工程解构与生产折衷
+
+理论的落脚点是生产实体的工程取舍。下表系统比对了五个前沿智能体系统的底层实现机制：
 
 ```text
-Routing layer:
-  channel/account/thread/peer -> agent
-
-Agent isolation layer:
-  workspace / agentDir / session store / sandbox / tool policy
-
-Execution layer:
-  native background subagent
-  or external ACP harness
+  +-----------------------------------------------------------------------------------+
+  |                           Five Real-World Architectures                           |
+  +-----------------------------------------------------------------------------------+
+  | Codex      | Explicit Fan-out  | Star (Isolated)   | Ephemeral    | Strict Sandbox|
+  | Claude Code| Description / Team| Star / Mesh / Tree| Session / WT | Git Worktree  |
+  | OpenClaw   | Gateway Ingress   | Multi-tenant Gate | Persistent   | Per-Agent Dir |
+  | Hermes     | RPC / Kanban Board| RPC / Durable DAG | SQLite / WAL | Capped Workers|
+  | Qoder      | Upfront Plan Gate | Star (Specialized)| Transactional| Tiered Sandbox|
+  +-----------------------------------------------------------------------------------+
 ```
 
-OpenClaw 的工程重点不是"怎么让几个 agent 一起思考"，而是"怎么让不同入口、不同身份、不同权限的 agent 网络长期稳定运行"。它更像 agent 操作系统或消息网关，不是单次 coding task 的并行器。
+### Codex：确定性优先的沙箱隔离
 
-## Hermes：短任务 RPC，长任务 durable queue
+Codex 展现出极高的一线基础设施工程师审美。它几乎完全放弃了花哨的多智能体自发协作噱头，将重心放在执行沙箱的稳固性上：
+- **无自主衍生特权**：子 Agent 不具备继续创建下级 Agent 的权限，深度（Depth）死锁在 1；
+- **角色清晰分工**：`explorer` 默认只读，禁止写入，其输出是结构化的证据链路（文件名、行号、代码摘录）；`worker` 具备受限写权限，但必须在 Prompt 契约中明确绑定单目录或单文件 Ownership；
+- **汇聚归因**：所有修改在呈现给人类前，由主 Agent 生成统一的 Git Patch，将 AI 的每一次并发行为锚定在 Git 事务内。
 
-Hermes 把短程并行和长期协作拆成两个原语：delegate\_task 和 Kanban。
+### Claude Code：三层渐进结构与物理工作区
 
-### delegate\_task：短程并行
+Claude Code 的演进脉络清晰地勾勒出从简单到复杂工程场景的应对之策：
+1. **第一层（普通 Subagent）**：解决单会话内的上下文污染问题。长文本日志、大型代码扫描放进临时子上下文，阅后即焚，仅回传精要结论；
+2. **第二层（Agent Teams）**：针对多假设定位场景。Leader 维护共享任务列表（Shared Task List），各 Teammate 独立推进，适用于互不锁定的并行调研；
+3. **第三层（Worktree & Batch 重构）**：面对全仓库级（Repo-wide）迁移或机械化重构时，彻底放弃模型间协商，通过物理拆分 `git worktree`，按目录范围硬切并发面，最终统一由测试套件验证。
 
-父 agent 发起调用，child agent 执行，返回 summary。像 RPC。Hermes 文档说明 agent 会根据任务复杂度自动选择 delegation，但运行机制仍然是通过 delegate\_task 生成 child agent：
+### OpenClaw：消息网关与多租户隔离
+
+OpenClaw 从根本上不是一个代码生成工具，而是一个企业级 Agent 操作系统：
+- **入口多路复用**：以协议适配器承接多元消息总线，通过路由规则将流量引导至不同的 Agent 运行容器；
+- **凭据与状态沙箱**：每个 Agent 拥有独立的存储根目录与会话数据库，避免不同权限级别的 Agent 互相嗅探敏感上下文；
+- **ACP 适配层**：将外部成熟的 Coding Harness（如 Codex、Claude Code CLI）作为下游工具进行编排，保持自身作为轻量级智能网关的架构纯粹性。
+
+### Hermes：RPC 与持久化状态机的清晰分界
+
+Hermes 解决了一个长期困扰开发者的混淆：短程任务与长程任务的区别。
+- **短程 RPC（`delegate_task`）**：父会话阻塞等待，子任务在隔离终端中跑完并回传 Summary，生命周期局限在数十秒至几分钟内；
+- **长程持久队列（Kanban）**：任务持久化写入 SQLite 数据库（WAL 模式保证并发），具备状态机转移标签（`TODO -> IN_PROGRESS -> BLOCKED -> COMPLETED`）。任务可以跨越数天、经历系统重启、等待人工审核回复，由 Dispatcher 根据可用 Worker Profile 动态接力认领。
+
+### Qoder：前置规划契约与分级沙箱
+
+Qoder 在用户体验与系统可控性之间找到了精巧的平衡点：
+- **前置合同审查（Upfront Planning）**：在 Experts 模式下，Team Lead 在派发任务前必须先生成结构化实施计划并阻断等待人类确认。这相当于由 AI 拟定并发协作契约，人类完成审计盖章，彻底解决了不可见并发带来的惊悚感；
+- **分级沙箱终端（Tiered Sandbox）**：低危只读命令直接放行；高危破坏性命令进入容器沙箱；逃逸或提权操作触发强制人工审批，在执行力与系统安全性之间划出红线。
+
+---
+
+## 6. 架构决策准则：给分布式工程师的选型清单
+
+在把一个多智能体系统推向生产之前，系统架构师应当像审查分布式事务一样，逐项核对以下工程约束：
 
 ```text
-parent agent
-  -> delegate_task(goal, context)
-    -> child A
-    -> child B
-    -> child C
-  <- ordered summaries
-parent continues
+                     [ New Task Arrives ]
+                              |
+                +-------------v-------------+
+                | Can a single agent loop   |
+                | handle it deterministically?
+                +-------------+-------------+
+                              |
+                     [Yes]    |    [No]
+             +----------------+----------------+
+             |                                 |
+     (Run Single Agent)          +-------------v-------------+
+     Keep context lean;          | Is context pollution or   |
+     Short feedback loop.        | long-tail search the issue?
+                                 +-------------+-------------+
+                                               |
+                                      [Yes]    |    [No]
+                              +----------------+----------------+
+                              |                                 |
+                      (Star Fan-Out)              +-------------v-------------+
+                      Spawn Read-Only             | Do tasks have strict sequential
+                      Explorer Workers            | data dependencies?
+                                                  +-------------+-------------+
+                                                                |
+                                                       [Yes]    |    [No]
+                                               +----------------+----------------+
+                                               |                                 |
+                                       (Serial Pipeline)          +-------------v-------------+
+                                       Pass context downstream;   | Will workers write to disk
+                                       Topological order execution| simultaneously?
+                                                                  +-------------+-------------+
+                                                                                |
+                                                                       [Yes]    |    [No]
+                                                               +----------------+----------------+
+                                                               |                                 |
+                                                       (Git Worktree OCC)         (Actor Mesh Team)
+                                                       Physical isolation;        Read-only hypothesis
+                                                       Compiler verification.     testing; bounded turns.
 ```
 
-child agent 有 fresh conversation、受限工具、独立 terminal session。不知道父 agent 的全部上下文，只知道 goal 和 context 里写了什么。
+### 生产选型五戒
 
-文档里那句 "subagents know nothing" 很关键。子 agent 不会自动知道背景。父 agent 必须把项目路径、错误信息、相关文件、任务目标、验收标准、禁止事项和输出格式写进去。只写 "fix the error"，相当于把不完整需求丢给一个新同事。
+1. **单线程优先法则**：凡是上下文未达上限、步骤强依赖、逻辑边界模糊的问题，坚决使用单 Agent 顺序迭代。多智能体带来的协同熵增往往数倍于其所谓的并行收益；
+2. **读写分离与写入隔离法则**：Fan-Out 的子 Agent 默认必须为纯只读节点。一旦涉及代码或数据写入，必须建立物理隔离区（Worktree 或独立临时容器），严禁在同一物理工作目录内执行无锁并发写；
+3. **确定性验收门禁（Verification Oracle）**：任何多智能体汇聚收口节点，必须接入编译检查、静态代码分析与单元测试套件。不能通过机械验证的代码合并，必须立刻触发自动回滚；
+4. **长短生命周期解耦法则**：生命周期超过单次会话轮次（Turn）的长任务，必须采用状态机持久化存储（如 SQLite/PostgreSQL），严禁试图通过维持常驻 Agent 会话来逃避状态落盘；
+5. **熔断与级联销毁法则**：必须强制配置最大并发宽度（Concurrency Width $\le 4$）与最大递归深度（Max Spawn Depth $\le 2$）。父任务接收到取消信号时，必须向所有子节点广播物理中断。
 
-限制明确：默认最多 3 个并发 child，超过报错不静默截断；batch 结果按输入顺序返回；父 turn 被 interrupt 时活跃 child 一起中断；默认 leaf subagent 不能再 delegate；要嵌套必须把 child 设成 orchestrator 并提高 max spawn depth。3 层深度、每层 3 并发，很快就是 27 个 leaf agents。
+### 工业级委派契约规范（Delegation Contract Specification）
 
-leaf worker 还被限制：不能再调用 delegate\_task，不能 clarify 问用户，不能写 shared persistent memory，不能跨平台发消息，不能用某些危险执行工具。短任务可以并行，但并行宽度、递归深度、工具权限和中断传播都要受控。
+在实际工程落地中，主 Agent 向子 Agent 发起任务委派时，绝不可传递模糊的口头指令，而应生成严格的符合 RFC 规范的机器可读契约：
 
-### Kanban：持久队列
-
-Kanban 不是 subagent，是 durable queue 加 state machine。任务、handoff、comment 写进 SQLite task board。worker 有 profile、有名字、有 memory。dispatcher 按 assignee 拉起 worker。任务可以 block、unblock、retry，也可以等待人类输入。
-
-两类任务的差别从生命周期看：
-
-```text
-delegate_task:
-  临时 child，父 agent 等结果
-  状态主要在本轮调用里
-  适合几十秒到几分钟的并行研究、检查、局部修复
-
-Kanban:
-  持久 task，worker profile 接力
-  状态在 board 里
-  适合跨 turn、跨天、等待人类、失败重试、审计
+```yaml
+Contract:
+  Version: "1.0-RFC"
+  TaskID: "task_auth_audit_0929"
+  Timestamp: "2026-09-29T00:40:00Z"
+  Identity:
+    Role: "Read-Only Security Explorer"
+    Profile: "security-auditor-v2"
+  Scope:
+    TargetPaths:
+      - "src/auth/**"
+      - "src/middleware/session.ts"
+    ForbiddenPaths:
+      - "src/database/**"
+      - "config/secrets/**"
+  Capabilities:
+    FileRead: true
+    FileWrite: false
+    NetworkAccess: false
+    TerminalCommandLevel: "read-only-inspect"
+    SubagentSpawnAllowed: false
+  Invariants:
+    - "Do NOT alter any existing business interfaces."
+    - "Do NOT attempt to format or refactor unrelated files."
+  VerificationOracle:
+    Format: "JSON"
+    Schema:
+      type: "object"
+      required: ["findings", "risk_level", "suggested_patch_boundaries"]
+  TimeoutSeconds: 120
+  OnFailure: "Fail-Stop and emit snapshot"
 ```
 
-三个 researcher 分别查三个资料源然后汇总，用 delegate\_task。两天的调研报告，先抓资料再分析再写稿再审校，中间可能等人类补充方向，进 Kanban。
+---
 
-两类任务混用是常见失败点。短任务上 Kanban 显得笨重；长任务用 delegate\_task 会丢状态、难重试、难交接。另一个失败点是 context 写得太少——Hermes 已经把风险写在文档里：child 不知道父上下文，不给足够信息就只能猜。
-
-## Qoder：产品化的星型专家团
-
-按 [Qoder Experts 文档](https://docs.qoder.com/user-guide/quest/experts-mode.md) 的说法，它走的是另一条路：把多智能体协作做成一个产品级体验，而不是让用户自己搭积木。用户在 Experts 模式里提需求，Team Lead 自动拆解任务、组建专家团队、并行执行、最终交付。
-
-它的拓扑是带规划的星型。Team Lead 是唯一的 dispatcher 和 reducer，专家之间并行执行、互不等待，结果回到 Team Lead 做整合。这和 Codex 的星型 fan-out/fan-in 很像，但 Qoder 在两个地方做了产品化封装：
-
-**前置规划阶段。** Team Lead 在执行前先生成结构化的实施计划，用户可以审阅、修改、确认，然后专家团队才开始工作。这等于把 delegation contract 的生成过程暴露给了用户——Team Lead 帮你写 contract，你签字，然后才执行。Codex 和 Claude Code 没有这个明确的中间步骤，要么靠用户自己写委派指令，要么靠 description 自动匹配。
-
-**实时可视化。** 专家团全景图（Expert Team Canvas）让用户在同一个面板里看所有专家的进度、执行步骤和产出。这解决了多智能体系统的一个老大难问题：观测性。前面说 "没有观测和审计" 是反模式，Qoder 直接把这个做进了产品里。
-
-专家角色是预定义的：前端、后端、QA、代码评审、调研、运维、UX 设计。每个专家有独立的上下文和工具集。和 Codex 的 explorer / worker / default 划分类似，但 Qoder 把角色名直接对应到软件工程的功能分工，用户理解成本更低。
-
-```text
-user request
-  -> Team Lead: 理解需求、生成计划、用户确认
-  -> 前端专家 + 后端专家 + QA 专家 + 代码评审专家 (并行)
-  <- 各专家产出
-  -> Team Lead 整合、质量把关
-  -> 交付结果
-```
-
-触发方式更准确地说是模式内自动编排：用户先切到 Experts 模式，再描述需求；Team Lead 在这个模式里生成计划、拆任务、拉专家。简单、明确的文件修改仍然更适合 Agent 模式。Qoder 文档里写到内部测试质量提升约 67%，但没有公开任务集、评分标准和基线定义，谨慎参考。
-
-Qoder 还做了几件值得注意的事：
-
-**终端沙箱化。** 按 [Terminal and Sandbox 文档](https://docs.qoder.com/user-guide/quest/terminal-and-sandbox.md)，命令按风险分层处理：普通命令直接执行，潜在危险命令进入沙箱；沙箱无法完成时才请求权限升级。这直接改变了 execution sandbox 的设计——用户干预频率降低，但安全风险靠沙箱和升级审批一起兜底。
-
-**专家可扩展。** 用户可以为内置专家追加 Skills 和 MCP，也可以创建自定义 subagent 加入团队。这和 Claude Code 的 subagent 注册表思路接近——专家越多，调度规则越需要清楚。
-
-**自演进机制。** 分两层：Expert Skill（个体进化，每次任务优化专项能力）和 Team Skill（团队进化，记录组队经验，相似任务直接复用历史阵容）。这是一个有意思的设计——大多数多智能体系统是无状态的，每次从零开始。Qoder 试图把调度经验沉淀下来。效果如何，目前没有公开数据。
-
-**人类介入点很少。** 只有终端命令命中黑名单、工具调用次数达上限、或异常情况才需要用户确认。Qoder 选择信任 Team Lead 的判断，代价是用户控制感更弱。Codex 更偏显式授权，用户控制感更强。
-
-Qoder 的定位很清楚：面向不想自己搭多智能体管线、只想提需求拿结果的开发者。它把 Codex 和 Claude Code 里需要用户自己操心的触发判断、专家配置、结果整合全部包进了 Team Lead 的职责里。好处是上手成本低，坏处是灵活性受限——你很难像 Codex 那样精确控制每个 worker 的权限和 ownership。
-
-## 六个场景
-
-### PR review
-
-中等 PR，Codex 或 Claude Code 普通 subagent 都够。安全、测试、性能各开一个只读 worker，主 agent 汇总。不需要 team mesh，worker 之间不需要大量对话。更应该写清楚检查维度、输出格式和是否允许改文件。
-
-Codex：
-
-```text
-Use three read-only subagents: security, tests, and maintainability.
-Each should return findings with file paths and severity.
-Do not modify files. Main agent synthesizes one review.
-```
-
-Claude Code：把 security-reviewer、test-reviewer 写成 description 驱动的普通 subagent，让它在相关代码变化后自动出现。
-
-### 生产登录故障
-
-适合 team 或并行探索。故障可能在前端状态、token 签发、session 存储、缓存、部署配置。Codex 显式 spawn 多个 explorer 分别查 UI、API、DB、cache，主 agent 收口。Claude Code Agent Teams 更适合让 teammate 互相挑战假设。
-
-不建议一开始就让多个 worker 写修复。先只读并行定位，再由一个 worker 写 patch，再让 reviewer 检查。多 agent 的第一阶段应该扩大观察面，不该急着扩大写入面。
-
-### 多渠道个人助理
-
-不是 Codex 或 Claude Code 的主场。WhatsApp、Telegram、Slack、Discord 需要路由、入口身份隔离、权限隔离和 session store。OpenClaw 更贴这个问题。关心的不是"几个 agent 一起工作"，而是"哪个入口能触发哪个 agent、有哪些工具、状态存在哪里、凭据和工具权限怎么约束"。
-
-合理设计：Slack ops channel 进 ops agent，拥有日志读取和低风险部署查询工具；私人 Telegram 进 deep work agent，拥有个人项目上下文；家庭入口进 low-privilege assistant，不能访问 shell 和公司账号。多 agent 首先是隔离边界，不是协作表演。
-
-### 两天的调研报告
-
-一次性 subagent 不够。需要任务拆分、状态记录、资料交接、人工评论、失败重试。Hermes Kanban 这类 durable board 更合适。先建 board：资料抓取、资料清洗、观点分析、初稿、审校。每个任务有 assignee、依赖、验收标准和评论区。
-
-在某个具体任务里（比如"分别查三份官方文档"）再用 delegate\_task 开短程并行。Kanban 管生命周期，delegate\_task 管局部并行。把这两层分清，系统才不会又笨重又丢状态。
-
-### repo-wide migration
-
-适合 worktree + batch。按目录或模块拆，不要按“让几个 agent 自己商量”拆。每个 worker 拥有一片文件范围，最后统一跑测试和 review。Claude Code 的 worktrees / batch 更贴这个场景；Codex 也可以用 worker 分文件范围，但 ownership 必须写清楚。
-
-常见错误是按角色拆——"一个 agent 思考，一个 agent 实现，一个 agent 测试"。对 repo-wide migration 来说，更好的拆法是按文件边界：`packages/api`、`packages/web`、`packages/shared`。文件边界比抽象角色更能减少冲突。
-
-### 全栈功能开发
-
-"开发一个用户管理模块，包含注册、登录、信息管理"——这类端到端的全栈需求，Qoder Experts 的产品化封装最直接。Team Lead 自动生成计划，前后端专家并行开发，QA 同步写测试，代码评审把关质量。用户不需要自己设计 delegation contract、配置 worker profile 或操心 merge 策略。
-
-如果用 Codex 或 Claude Code 做同样的事，用户需要自己写委派指令、配置 explorer/worker/reviewer 的权限边界、处理结果冲突。Qoder 把这些全包进了 Team Lead 的职责里，代价是灵活性——你很难像 Codex 那样精确控制"这个 worker 只能改 src/auth/ 目录"。
-
-另一个差别是可视化。Qoder 的专家团全景图让你直接看到每个专家在干什么、进展到哪步。用 Codex 或 Claude Code 做多 agent 并行时，观测性通常要靠日志和 session 列表，信息密度低得多。
-
-## 七个反模式
-
-**把复杂度当触发器。** 任务复杂不等于应该并行。子任务强依赖时（先理解业务规则，再决定数据模型，再写迁移），那是 pipeline，不是 fan-out。
-
-**不给 delegation contract。** worker 拿不到路径、错误现场、验收标准和禁止事项，只能猜。猜得准是运气，猜错是常态。
-
-**让多个 worker 写同一片代码。** 多 agent 最怕并行写入但没有 ownership。必须并行写时，先按目录、模块、测试文件分边界；边界分不出来，就先不要并行写。
-
-**没有 reducer。** 多个 agent 返回结果之后，需要有人做取舍、合并、去重、排序、验收。没有 reducer 的多 agent 只是多份意见。
-
-**短任务做队列，长任务做 RPC。** 短任务上 durable board 会拖慢反馈；长任务用一次性 subagent 会丢状态。Hermes 把这件事分成 delegate\_task 和 Kanban，是很好的工程提醒。
-
-**权限过宽。** review agent 不该有写文件权限；家庭入口 agent 不该有公司 shell；leaf worker 不一定需要继续 spawn child。权限越宽，调度越难预测。
-
-**没有观测和审计。** 多 agent 系统需要知道谁触发了谁，传了什么 context，用了什么工具，返回了什么 summary，失败在哪里。否则出了问题只能看一堆聊天记录猜。
-
-## 选择顺序
-
-做多智能体设计时，按这个顺序问：
-
-1. **单 agent 能不能做。** 能做就先别拆。小改动、强顺序、需求模糊时，单 agent 最稳。
-2. **主上下文会不会被污染。** 长日志、大搜索、跨目录阅读、多个失败栈会让主 agent 变浑。丢给 explorer 或只读 subagent 很合理。
-3. **子任务能不能独立。** 安全 review、测试 review、性能 review 可以并行；先定位 bug 再决定怎么修，更适合 pipeline。
-4. **结果是否必须在本轮返回。** 必须本轮返回用 fork/join；不必本轮返回用 background job；需要跨天、重试、等待人类用 durable queue 或 Kanban。
-5. **worker 是否需要互相挑战。** 只需要分头查资料，星型足够；需要互相质疑和共享任务状态，再考虑 team mesh。
-6. **是否会并行写文件。** 多个 worker 会写文件时，先写 ownership。谁改哪个目录，谁只读，谁最后合并。没有这些约束就不要并行写。
-7. **是否需要入口隔离。** 多渠道、多身份、多权限的系统，优先考虑 Gateway routing，而不是把所有消息丢给一个万能 agent。
-8. **失败后如何恢复。** 能不能 retry？能不能 block？能不能保留 handoff？能不能看见子任务的证据？这些决定系统能不能长期运行。
-
-## Delegation contract 模板
-
-如果只想拿走一个实践模板：
-
-```text
-Role:
-  read-only auth explorer / scoped implementation worker / security reviewer
-
-Goal:
-  要回答或完成什么，边界是什么
-
-Context:
-  项目路径、相关文件、错误信息、用户目标、已有判断
-
-Allowed actions:
-  能读哪些文件，能不能跑命令、写文件、联网
-
-Ownership:
-  如果能写，只能写哪些目录或文件
-
-Forbidden actions:
-  不要改哪些文件，不要做哪些重构，不要问用户，不要继续 spawn child
-
-Output format:
-  findings / patch summary / test result / confidence / open questions
-
-Stop condition:
-  什么情况下算完成，什么情况下停止并报告阻塞
-```
-
-这个模板解决的是多 agent 的基本问题：上下文、权限、边界、输出和收口。没有这些，再高级的拓扑都会变成随机并行。
-
-## 各系统适用场景
-
-Codex 适合显式、可控的星型并行。Claude Code 适合 description 驱动的专家委派，也能在 team 和 batch 场景里做更复杂的协作。OpenClaw 适合多入口、常驻、带权限隔离的 agent 网络。Hermes 适合把短程并行和长期队列分开，用 delegate\_task 管临时 fork/join，用 Kanban 管跨 turn 的工作流。Qoder 适合不想自己搭管线、只想提需求拿结果的全栈开发场景——它把触发、规划、调度、收口全部包进了产品里。
-
-一个任务只需要更快地查四条线，用星型 subagents。一个问题需要多方互相挑战，用 team mesh。消息来自不同渠道和身份，用 Gateway routing。任务要跨天、重试、等待人类，用 durable board。多个 worker 会写同一片代码，先停下来把 ownership 写清楚。想省心做全栈开发，用 Qoder 这类产品化方案。
-
-先设计边界，再增加 agent 数量。
+多智能体系统的本质，是分布式软硬件协同约束在大模型时代的一次极端投影。抛弃对“自主群体智能”的狂热盲信，回到分布式系统的第一性原理——厘清故障域、收紧写锁、约束上下文熵增、以确定性编译与测试守住底线——工程系统才能在概率波动的浪潮中真正站稳脚跟。
 

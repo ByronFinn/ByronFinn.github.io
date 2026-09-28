@@ -1,87 +1,53 @@
 # The Economist, November 2025: Global Trends and Geopolitics
 
 
-# TE 202511
+The November 2025 issue of *The Economist* sketches a fractured global architecture: an escalating tech war between Washington and Beijing on one side, and defensive contraction alongside balance-sheet recession risks across major economies on the other.
+
+<!-- more -->
 
 {{< image src="/pictures/te/te-202511.jpg" caption="The Economist November 2025 cover - a deep dive into global economic trends" alt="Economist Magazine November 2025 Cover" title="The Economist, November 2025 issue" width="800" class="center" >}}
 
-<!-- Lead-in: one sentence stating the article's key point -->
+## Politics and Diplomacy: Strategic Decoupling Without Departure
 
-`The whole world is getting smarter; I just want to live wisely`
+- US-China rivalry in semiconductors and infrastructure continues to escalate: new export controls meet supply-chain rerouting and localized component substitution.
+- Beijing deepens bilateral ties across the Middle East and the Global South through energy and industrial infrastructure pacts.
+- Domestic governance doubles down on preserving baseline stability amidst external containment.
 
-## Main Text
+> US-China "decoupling" is like a separation where nobody moves out: they shout about breaking up, but deep down they are still calculating chip allocations.
 
-<!-- Continue writing in your usual style... -->
+## Economy and Finance: Balance-Sheet Contraction
 
-### Politics and Diplomacy
+- GDP expansion moderates as domestic consumer confidence tilts defensively toward excess savings.
+- The property sector grinds along the bottom, with public policy pivoting to subsidized social housing absorption.
+- Central bank currency intervention intensifies to counter capital outflow pressures.
+- Equity market stabilization funds provide liquidity floors, but overall risk appetite remains fragile.
 
-- The issue details how US-China rivalry in trade and technology keeps escalating: Washington rolled out a new round of chip controls, and Beijing answered with supply-chain resilience and domestic substitution.
+> Market stabilization measures act like slow-acting herbal medicine: bitter and protracted, yet the only remedy left during de-leveraging.
 
-- China is deepening cooperation with Middle Eastern and African countries, signing a string of strategic agreements in energy and infrastructure.
+## Technology and Industry: Import Substitution and Global Barriers
 
-- On domestic governance, the issue stresses the three policy pillars of "steady growth, better livelihoods, stronger technology."
+- State capital remains tightly focused on advanced semiconductors, AI compute stacks, and renewable energy.
+- AI foundational model players transition from research hype to enterprise monetization, prompting industry consolidation.
+- Electric vehicle exports hit record volumes while running straight into European countervailing tariffs and regulatory firewalls.
+- Silicon fabrication yields and toolchain independence face critical production milestones.
 
-> US-China "decoupling" is like a separation where nobody moves out: they shout about breaking up, but deep down they are still thinking about chips.
+## Society and Livelihoods: Heightened Uncertainty and Precautionary Savings
 
-### Economy and Finance
+- Structural youth employment friction persists as technical training lags changing market demands.
+- Household savings rates reflect widespread defensive posture and reduced discretionary spending.
+- Demographic aging places accelerating fiscal pressure on pension and healthcare solvency.
 
-- GDP growth eased slightly but held steady, while domestic demand recovered feebly and consumer confidence stayed weak.
+## Global Order: Buffer Zones Along the Fault Lines
 
-- The property market kept grinding along the bottom, with policymakers pushing more subsidized housing into the pipeline.
+- The war in Ukraine has turned into an entrenched war of attrition, imposing structural energy premiums across Europe.
+- Middle Eastern turbulence keeps risk premiums volatile in energy markets.
+- Southeast Asian trade hubs benefit as primary transshipment intermediaries, though dual geopolitical pressure continues to mount.
 
-- The yuan visibly fluctuated, the central bank intervened frequently, stressing "stabilize the exchange rate, protect confidence."
+## Outlook and Takeaway
 
-- Stocks rebounded modestly under policy care, but liquidity stayed tight.
+While official forecasts designate 2026 as the hinge year for demand revival, geopolitical friction and liquidity contractions operate on stubborn physical laws. The prudent path for institutions and individuals alike is simple: deleverage, cut superfluous overhead, and prepare for extended cycles.
 
-> Policy support for the markets is like traditional Chinese medicine: slow to work and bitter going down, but better than no medicine at all.
-
-### Technology and Industry
-
-- Artificial intelligence, semiconductors and new-energy vehicles remain policy priorities.
-
-- China's large AI models are shifting into the "industrial deployment stage," and competition among companies is intensifying.
-
-- EV exports hit yet another record high, but face pressure from Europe's anti-subsidy investigations.
-
-- Domestic chip yields and computing platforms have improved markedly, a sign that indigenous innovation is accelerating.
-
-> Domestic substitution is like switching cars: a late start, but big potential.
-
-### Society and Livelihoods
-
-- Employment pressure persists; youth unemployment has come down, but structural contradictions remain sharp.
-
-- Government is investing more in digitalizing healthcare, elder care and education, under the banner of "smart livelihoods."
-
-- Household savings are rising and the appetite to spend is falling, reflecting a pervasive sense of uncertainty.
-
-> Ordinary people can't make money, don't dare spend it, and feel broadly pessimistic about the future — at odds with the official narrative
-
-### The Global Order and Geopolitics
-
-- The Russia-Ukraine war has settled into a long grind, and Europe's energy security concerns persist.
-
-- The Middle East is growing more complicated, with oil prices oscillating upward in the short term.
-
-- Southeast Asian economies are clear beneficiaries of supply-chain relocation, becoming the "buffer zone" between the US and China.
-
-> The rougher the seas, the pricier the fish.
-
-### Future Trends and Outlook
-
-<!-- Write a brief summary or call to action -->
-
-- The report predicts that 2026 will be "the year of domestic-demand repair and the technology showdown."
-
-- It calls for stronger institutional resilience, policy continuity, and the rebuilding of social confidence.
-
-- The external environment remains complicated, but the view is "opportunity hides in danger; stability brings hope."
-
-> Forecasts are always full of hope; reality keeps making you more clear-eyed.
-
-## Download Links
-
-<!-- Add a local download link in markdown format -->
+## Publication Download
 
 {{< admonition type=info title="EPUB format" open=false >}}
 [TE-2025-11.epub](/files/te/TE-2025-11.change)

@@ -3,21 +3,15 @@
 
 
 
-# China's Official 2026 Holiday Schedule
+The General Office of the State Council has officially released the schedule for public holidays and swapped workdays in 2026, covering New Year's Day, Spring Festival, Qingming, Labor Day, Dragon Boat Festival, Mid-Autumn Festival, and National Day.
 
-{{< image src="/pictures/note/2026-holidays-schedule.svg" alt="2026 holiday schedule" caption="Illustration of the 2026 holiday arrangements - officially released by the State Council General Office" >}}
+<!-- more -->
 
-<!-- Lead-in: one sentence stating the article's key point -->
-
----
-
-# Notice of the General Office of the State Council on the Arrangements for Certain Holidays in 2026
-
-State Council Telegram [2025] No. 7
+## Notice of the General Office of the State Council on Certain Holidays in 2026 (Telegram [2025] No. 7)
 
 To the people's governments of provinces, autonomous regions and municipalities directly under the Central Government, and to the ministries and commissions and agencies directly under the State Council:
 
-With the approval of the State Council, the specific arrangements for the holidays and swapped workdays for New Year's Day, the Spring Festival, the Qingming Festival, Labor Day, the Dragon Boat Festival, the Mid-Autumn Festival and the National Day in 2026 are hereby notified as follows:
+With the approval of the State Council, the specific arrangements for holidays and swapped workdays in 2026 are hereby notified as follows:
 
 ---
 

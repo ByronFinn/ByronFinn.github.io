@@ -26,7 +26,7 @@ Built with Hugo and the DoIt theme, hosted on GitHub Pages.
 - [RAG Complete Guide: Build a Local RAG System from Scratch](https://blog.baifan.site/en/rag-system-complete-guide-langchain-ollama-pgvector/) (2025-08-27)
 - [CPU, GPU, and Training Large Language Models](https://blog.baifan.site/en/gpu-accelerated-training-cuda-complete-guide/) (2025-08-20)
 - [Prompt Engineering: From Prompts to Context Engineering](https://blog.baifan.site/en/prompt-engineering-context-management-complete-guide/) (2025-08-13)
-- [Transformer Architecture Deep Dive: The Attention Mechanism](https://blog.baifan.site/en/transformer-attention-mechanism-deep-dive/) (2025-08-05)
+- [Transformer Architecture Deconstructed: Attention, Geometric Scaling, and Memory IO](https://blog.baifan.site/en/transformer-attention-mechanism-deep-dive/) (2025-08-05)
 - [AI Technical Glossary: A Complete Guide to 270+ Terms](https://blog.baifan.site/en/ai-technical-glossary-complete-guide/) (2025-07-30)
 - [A Complete Guide to LLMs: Tokens and Vectors in Depth](https://blog.baifan.site/en/ai-llm-tutorial-token-vector-basics/) (2025-07-22)
 ### Claude Code Source Code Deconstruction
@@ -122,11 +122,11 @@ Tags: Prompt Engineering, RAG, LLM, AI Applications
 
 Master prompt and context engineering: from basic prompt design to advanced context management with RAG, optimization, and persistence, plus fixes for poisoning and attention drift in real AI applications.
 
-### [Transformer Architecture Deep Dive: The Attention Mechanism](https://blog.baifan.site/en/transformer-attention-mechanism-deep-dive/)
+### [Transformer Architecture Deconstructed: Attention, Geometric Scaling, and Memory IO](https://blog.baifan.site/en/transformer-attention-mechanism-deep-dive/)
 Date: 2025-08-05
 Tags: Transformer, Attention Mechanism, LLM, Neural Networks
 
-A deep dive into the Transformer architecture: self-attention, multi-head attention, positional encoding, and how Query, Key, and Value work — the technical foundation behind GPT, BERT, and modern AI.
+A first-principles deconstruction of Transformer self-attention: Q/K/V inner-product geometry, Softmax scaling, multi-head subspace dynamics, and FlashAttention tiling against the O(N^2) memory wall.
 
 ### [AI Technical Glossary: A Complete Guide to 270+ Terms](https://blog.baifan.site/en/ai-technical-glossary-complete-guide/)
 Date: 2025-07-30
@@ -165,11 +165,11 @@ Tags: Short Dramas, Cultural Industry, Film and TV Industry
 
 A close-up report on China's short drama industry, from rain-soaked sets in Xi'an and Zhengzhou to the economics beneath the boom — two exhausted cities and the people who keep shooting.
 
-### [Twilight of the County Towns: A Veiled China](https://blog.baifan.site/en/china-county-economy-twilight/)
+### [Twilight of the County Towns: The Silent Curtain on Demographic Drain and Fiscal Retreat](https://blog.baifan.site/en/china-county-economy-twilight/)
 Date: 2025-11-11
-Tags: county economy, urbanization, real estate, employment
+Tags: county economy, urbanization, local finance, depopulation, public-sector consumption
 
-A deep dive into China's county economy: factory closures, a housing slump, and e-commerce draining local money — and the power structure and fiscal crisis behind the decline.
+Over two thousand Chinese counties are facing irreversible structural decay: shuttered schools, rusted storefronts, and dust-blanketed electric scooters. As demographic siphon pumps drain youth and land finance collapses, a fragile closed loop of public-sector salaries watches the silent end of county life.
 
 ### [Buffett's 2025 Shareholder Letter: Farewell and Legacy](https://blog.baifan.site/en/berkshire-hathaway-shareholder-letter-2025/)
 Date: 2025-10-31
@@ -310,11 +310,11 @@ Tags: Philosophy, Life, Values, Tech Ethics
 
 From China's booming longevity science to the essence of a meaningful life: when living to 150 becomes possible, are we ready for eternal loneliness? Death's boundary is what gives life meaning.
 
-### [Not Even Your Life Is Wanted: Human Worth in the Machine Age](https://blog.baifan.site/en/when-even-death-is-out-of-work/)
+### [Not Even Your Life Is Wanted: The Lost Bargaining Chip in the Machine Age](https://blog.baifan.site/en/when-even-death-is-out-of-work/)
 Date: 2025-11-04
-Tags: Social Commentary, Tech Reflections, Values
+Tags: Social Commentary, Tech Reflections, Working Class, Labor and Capital
 
-As robots roll out at scale, a meditation on the existential crisis of those at the bottom when machines take over human labor and the sense of being needed disappears.
+When automation takes over hazardous toil, manual laborers lose their final bargaining chip: trading flesh and lifespan for survival. This is not liberation, but a slide into absolute redundancy.
 
 ### [AI Uncertainty and Carpe Diem: An Ordinary Person's Thoughts](https://blog.baifan.site/en/ai-uncertainty-and-carpe-diem/)
 Date: 2025-10-28
@@ -395,11 +395,11 @@ Tags: SMS verification, temporary numbers, SMS, Twilio, httpSMS, ZUSMS, eSIM Plu
 
 A hands-on comparison of four SMS verification platforms — ZUSMS, eSIM Plus, httpSMS, and Twilio — with availability status and usage advice as of May 2026.
 
-### [Multi-Agent Collaboration: Triggers, Topology, and Merging](https://blog.baifan.site/en/multi-agent-collaboration-engineering/)
+### [The Engineering Reality of Multi-Agent Collaboration: Triggers, Topologies, and Deterministic Merging](https://blog.baifan.site/en/multi-agent-collaboration-engineering/)
 Date: 2026-03-03
-Tags: AI, Agent, multi-agent, Codex, Claude Code, OpenClaw, Hermes, Qoder
+Tags: AI, Agent, distributed systems, system architecture, Claude Code, concurrency control, engineering practice
 
-From the actual designs of Codex, Claude Code, OpenClaw, Hermes, and Qoder: the engineering trade-offs multi-agent systems make in triggering, topology, context isolation, and result merging.
+Deconstructing multi-agent systems from classical distributed systems theory: non-deterministic state machines, split-brain hazards, CAS merges, and fault domain isolation.
 
 ### [Reverse Engineering Claude Science: From 54 Tables to Modern TCM](https://blog.baifan.site/en/ai-agent-platform-to-tcm-future/)
 Date: 2026-02-20
@@ -449,11 +449,11 @@ Tags: OCR, PaddleOCR, Ollama, Document Processing
 
 A deep dive into PDF2Markdown: intelligent processing of large scanned PDFs with PaddleOCR, Tesseract, and Ollama LLMs for precise article extraction — installation, tuning, architecture, and practice.
 
-### [Heartbeats in Distributed Systems: Principles and Practice](https://blog.baifan.site/en/distributed-system-heartbeat-mechanism/)
+### [Distributed Heartbeats and Failure Detection: Partitions, Leases, and Deterministic Design](https://blog.baifan.site/en/distributed-system-heartbeat-mechanism/)
 Date: 2025-09-27
 Tags: Distributed Systems, Heartbeat Mechanism, Kubernetes, Microservices
 
-A guide to heartbeat mechanisms in distributed systems: principles, implementation, and best practices — interval tuning, failure detection algorithms, Gossip protocol, and Kubernetes in practice.
+A deep dive into distributed heartbeat failures: GC pauses, TCP half-open sockets, split-brain risks, Phi Accrual failure detectors, lease mechanisms under clock drift, and Raft livelock prevention.
 
 ### [PostgreSQL + pgvector in Docker: A Complete Setup Guide](https://blog.baifan.site/en/postgresql-pgvector-docker-installation-guide/)
 Date: 2025-09-02
@@ -475,11 +475,11 @@ Tags: about, profile
 ByF — a geologist's timescale applied to AI-era tech and business. Backend engineer, long-cycle thinker, plain-spoken writer.
 ## Politics
 
-### [New Petition Rules: The Central-Local Conflict Intensifies](https://blog.baifan.site/en/petition-new-rules-central-local-cost-shift/)
-Date: 2025-12-19
-Tags: Petition System, Central-Local Relations, Grassroots Governance, Economic Downturn
+### [The Silent War in Central-Local Power: Who Serves as the System's Shock Absorber?](https://blog.baifan.site/en/petition-new-rules-central-local-cost-shift/)
+Date: 2026-07-03
+Tags: Petition System, Central-Local Relations, Grassroots Governance, Local Debt, Stability Maintenance
 
-The July 1 petition rules do more than restrict petitioning — they redistribute costs between the center and the provinces. Power moves up, responsibility is pushed down, costs are localized, and local governments become the center's shock absorber.
+Beneath the veneer of legal standardization, China's revised petition rules execute a surgical cutoff of political risk. Beijing seals off direct appeals to the capital, leaving bankrupt county governments to absorb systemic friction as flesh-and-blood shock absorbers.
 ## Tech Management
 
 ### [Rethinking Team Division of Labor](https://blog.baifan.site/en/team-roles-evolution-ai-era/)
