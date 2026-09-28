@@ -1,134 +1,138 @@
-# Plan Mode and Design-First: Making AI Think Before It Acts
+# The Discrete State Machine of Plan Mode: Decision Tree Pruning, Backtracking Costs, and Diminishing Returns
 
+
+Autoregressive large language models operating in unconstrained environments suffer from an inherent tendency toward myopic mutation and runaway divergence. Claude Code's Plan Mode attaches an external discrete Finite State Machine (FSM) that projects the action space onto a strictly side-effect-free subset, using an interactive human barrier to prune catastrophic physical backtracking branches from the decision tree.
 
 <!-- more -->
 
+In disciplined software engineering, experienced developers instinctively value structural planning: mapping dependency graphs, deriving type signatures, and scoping blast radiuses before modifying a single line of code. Large language models possess no such innate restraint. Shaped by reinforcement learning to generate immediate answers, an agent granted unrestrained write permissions will instinctively mutate files without global context, precipitating an architectural cascade across complex repositories.
 
-Hand an architect a plot of land and he won't start laying bricks immediately. He draws first, calculates load, considers daylight, plans the plumbing. Only when the blueprints are confirmed does the construction crew move in.
+## Action Myopia and the Divergence of Markov Decision Trees
 
-Hand an AI coding assistant a requirement and by default it starts editing code immediately. Not because it doesn't understand "design first", but because **its loop mechanism rewards action** — in the Think-Act-Observe loop, "Act" is the core capability. The model is trained to be "helpful", and "helpful" in a coding context usually means "start changing things".
+When an agent tackles a coding assignment formulated as a Markov Decision Process (MDP), each autoregressive tool dispatch traverses a branching trajectory. The cumulative probability of the system maintaining global alignment through step $T$ degrades according to cascading error probabilities:
 
-Plan Mode exists to interrupt that impulse.
+$$P(\text{Success}_T) = \prod_{t=1}^T (1 - \epsilon_t)$$
 
-## What Plan Mode Is
+Even if the individual error rate $\epsilon_t$ of a single tool execution is kept down to a modest $5\%$, after 15 consecutive autonomous mutations the cumulative probability of avoiding an off-target trajectory drops sharply:
 
-Plan Mode is a permission mode in Claude Code. When enabled, the agent can read but not write — it can view files, search code, and run read-only commands, but it cannot modify files or perform operations with side effects.
+$$P(\text{Success}_{15}) = (1 - 0.05)^{15} \approx 46.3\%$$
 
-On the surface it's just another permission level (we covered the 5-level permission model in post 4). But Plan Mode is more than permission control — it's an **enforced separation of workflow phases**.
+In an unconstrained read-write workspace, language models routinely fall into **Action Myopia**:
+1. Observing a broken test, the model immediately calls `edit` to alter function parameters.
+2. The change breaks upstream call sites; the model blindly issues `write_file` to override caller files.
+3. Transitive dependencies trigger secondary compilation errors, and the model scrambles outward across the codebase.
 
-Plan Mode answers an overlooked question: **an AI coding assistant needs a clear boundary between "understanding the problem" and "solving the problem".**
+```
+                   [Root Goal: Refactor Auth Service]
+                           /         \
+                 (Disciplined Plan)   (Action Myopic Branch)
+                      |                         |
+             [Trace Dependency Graph]   [Instantly Edit Auth.ts]
+                      |                         |
+             [Establish API Contract]   [Break Token.ts Signature]
+                      |                         |
+             [Human Barrier Check]      [Mutate 8 Upstream Files]
+                      |                         |
+             (Zero-Cost Pruning)        (Physical Backtracking Disaster)
+```
 
-## Why "Think Before Acting" Matters So Much for AI
+In real-world engineering, the penalty for this divergence is the **Physical Backtracking Penalty**. Once an agent scatters flawed edits across a dozen files, rolling back requires complicated Git resets, dirty working tree cleanups, and thousands of contrite, token-heavy recovery turns. As analyzed in [The Physical Cost of Context Compression]({{< ref "posts/2026-06-17-claude-code-context-compression.md" >}}), this churn burns context budgets while polluting short-term reasoning memory.
 
-Human programmers instinctively think before acting — experienced ones, at least. Given a requirement, you run it through your head first: which files are involved, how wide the change is, what edge cases exist, how the tests should be written.
+## Formalizing Plan Mode: A Finite State Machine with Barrier Synchronization
 
-AI has no such habit. Not because it can't think, but because it feels no impulse to separate "thinking" from "doing". To the model, thinking is text and acting is text — at the output level there's no essential difference between them. Without an external constraint (Plan Mode), the model tends to jump from "thinking" to "acting" as fast as possible, because "acting" (generating code) is its core training objective.
+The architectural mechanism of Plan Mode is an **external two-state Finite State Machine (FSM)** wrapped around the agent loop:
 
-Plan Mode enforces a cognitive separation by technical means:
+$$\mathcal{S} \in \{\text{PLAN}, \text{EXECUTE}\}$$
 
-**Plan phase (read-only)**:
-- Read existing code, understand the architecture
-- Identify files that need changes
-- Analyze dependencies and potential impact
-- Draft a change plan
-- Present the plan to the user and wait for confirmation
+```
++------------------------------------------------------------+
+|                Finite State Machine (FSM)                  |
+|                                                            |
+|       +----------------+            /plan command          |
+|       |                | <--------------------------+      |
+|       |   PLAN State   |                            |      |
+|       | (Safe Read-Only|                            |      |
+|       +-------+--------+                            |      |
+|               |                                     |      |
+|               | User Approves Plan (Barrier Sync)   |      |
+|               v                                     |      |
+|       +----------------+                            |      |
+|       |  EXECUTE State | ---------------------------+      |
+|       |  (Read/Write)  |                                   |
+|       +----------------+                                   |
++------------------------------------------------------------+
+```
 
-**Execute phase (read-write)**:
-- Execute changes per the confirmed plan
-- Write or update tests
-- Run verification
+### 1. Asymmetric Projection of Action Space
 
-Between the two phases sits an explicit **human confirmation point**. The user sees the AI's plan and can suggest changes, adjust direction, or throw it out entirely. This checkpoint is a gate between "thinking" and "doing".
+Let $\mathcal{A}$ denote the complete universe of dispatchable tools, encompassing all file writes, edits, and terminal execution vectors. Under the `PLAN` state, the runtime dispatch router forcibly projects the action space onto an immutable subset:
 
-## Separating Read, Think, and Write
+$$\mathcal{A}_{\text{plan}} = \mathcal{A} \cap \{\text{read\_file}, \text{glob}, \text{grep}, \text{ls}, \text{read\_only\_bash}\}$$
 
-Plan Mode at its core is a **three-phase separation of read, think, and write**:
+As detailed in [Permissions and Real Security Boundaries]({{< ref "posts/2026-06-14-claude-code-permissions-security.md" >}}), access control must intervene before operating system calls execute. In `PLAN` mode, any attempt by the model to dispatch a `write_file` or mutating shell command is trapped by the local dispatcher and returned as an error. This barrier originates from hard application-level routing.
 
-**Read** — the agent scans the project and gathers information: read files, inspect dependencies, check tests, analyze structure. This phase produces "facts".
+### 2. Human Barrier Synchronization
 
-**Think** — the agent plans based on the gathered facts: analyze impact scope, design the change, assess risk. This phase produces "decisions".
+The transition from `PLAN` to `EXECUTE` is non-autonomous; it introduces a mandatory human-in-the-loop synchronization barrier:
+- The agent conducts repository exploration under strict read-only constraints.
+- It consolidates findings into a structured Markdown document enumerating affected files, dependency shifts, and operational sequences.
+- The engine halts execution, suspending the loop until a human approves the proposal.
 
-**Write** — the agent executes the plan and modifies code. This phase produces "changes".
+This barrier radically alters backtracking economics: rejecting an erroneous approach during Plan Mode costs only a single prompt ("Wrong approach; do not touch the database layer") and a few discarded lines of text. Rejecting an approach during unconstrained execution requires reverting dirty files and reconciling corrupted repository states.
 
-Each phase has different inputs and outputs:
-- Read takes the filesystem as input and outputs facts
-- Think takes facts as input and outputs decisions
-- Write takes decisions as input and outputs changes
+**Plan Mode replaces expensive physical state rollback with low-cost textual pruning.**
 
-The benefit of separation: **each phase can be reviewed and optimized independently**. You can check whether "read" was thorough (any missed key files), whether "think" was sound (is the plan right), whether "write" was accurate (does the code match the plan). Mix the three together and review gets hard — reverse-engineering the AI's reasoning from a pile of code changes is nearly impossible.
+## The Collapse of Static Planning: Fragility Against Dynamic Compilers
 
-## Plan Mode's Quality Gains
+Treating Plan Mode as a panacea is dogmatic. Static upfront planning exhibits a severe defect when applied to real software: **software systems are non-linear dynamic feedback environments, and static language models are fundamentally blind to compilers.**
 
-Why does Plan Mode improve code quality? Because it intercepts the three most common classes of AI coding errors:
+{{< admonition type="caution" title="The Law of First-Step Plan Disintegration" open=true >}}
+In strictly typed languages like Rust or TypeScript, an elaborate ten-step architectural plan drafted in read-only isolation frequently disintegrates upon executing step one. An unexpected borrow checker violation or an esoteric generic constraint generates a fatal compiler diagnostic that the model could never foresee without running a build. The moment step one fails, the subsequent nine steps—crafted at great token expense—instantly become invalid noise cluttering the prompt context.
+{{< /admonition >}}
 
-**Misunderstanding.** The AI starts editing before grasping the existing code's logic and breaks implicit dependencies. Plan Mode forces read-then-think, so misunderstandings surface in the "think" phase.
+Language models cannot simulate full compiler semantics in their weights. Forcing an agent to draft comprehensive plans in an empirical vacuum slows down development velocity while generating an illusion of control.
 
-**Wrong scope.** The AI changes only the obviously related files and misses indirectly dependent ones. Plan Mode's analysis phase requires listing all affected files, and the user can check for omissions.
+## Diminishing Returns: Why BYF Eliminated Plan Mode in ADR 0008
 
-**Wrong direction.** The AI's understanding diverges from the user's intent, and it discovers this only after half the code is changed. Plan Mode gets the direction confirmed before any change, so divergence is corrected at zero cost.
+In the early architectural iterations of the open-source [BYF](https://github.com/ByronFinn/byf) engine, the team implemented a faithful replica of Claude Code's Plan Mode. By ADR 0008, however, the team took a calculated decision: **rip Plan Mode completely out of the core state machine.**
 
-All three share one property: **the earlier they're caught, the cheaper they are.** Correcting a wrong direction in the Plan phase costs nearly nothing (a few tokens burned); in the Write phase it means rolling back changes; found in production, it can be an incident.
+The rationale was anchored in compounding runtime complexity and sharply diminishing returns:
 
-## Plan Mode and Multi-Agent
+### 1. Chronic Context Token Bleed
 
-Plan Mode and the multi-agent architecture (post 8) complement each other subtly.
+Sustaining Plan Mode imposed a persistent tax on every single conversational turn:
+- Schema definitions for `EnterPlanMode` and `ExitPlanMode` consumed roughly 1,425 tokens per turn, serialized into the prompt on every iteration.
+- A periodic `PlanModeInjector` injected repetitive system reminders ("You are currently in Plan Mode; do not modify files") into history buffers.
+- The generated plan artifacts themselves occupied 2k to 5k tokens of high-priority context window.
 
-The multi-agent architecture has a dedicated Plan role — it takes Explore's findings and produces an execution plan. Plan Mode is a permission state — it restricts the agent to read-only.
+### 2. Architectural Sprawl and State Contamination
 
-The two compose: launch a Plan-role subagent under Plan Mode for deep analysis. Plan Mode provides the safety boundary (no accidental modifications); the Plan role provides the professional methodology (structured analysis).
+Plan Mode was never a cleanly isolated feature; it invaded every layer of the system:
+- The CLI/TUI layer required dedicated `/plan` handlers, keybinding monitors, plan-card widgets, and status-bar badges.
+- The core orchestrator had to manage dual-state migrations, reentrancy guards, and complex transition rollbacks.
+- The implementation touched over 70 source files, driving up test maintenance overhead.
 
-But they also stand alone: Plan Mode doesn't need multi-agent (a single agent can plan in read-only mode), and multi-agent doesn't need Plan Mode (the Explore role is already read-only; no extra restriction required).
+### 3. Degradation of the Barrier into Rubber-Stamping
 
-## When You Don't Need Plan Mode
+Much like approval fatigue in security checkpoints, when an agent presents a 100-line markdown plan full of abstract prose, human developers rarely audit every line. They scan the headers and hit Enter. The rigorous barrier quickly degrades into empty ritual.
 
-Plan Mode isn't a silver bullet; it has costs — extra tokens, extra waiting, extra interaction steps. Not every task deserves a plan.
+BYF concluded that **an agent should interleave exploration and mutation in a continuous workflow, avoiding artificial lock-in to synthetic binary states.** Developers can express "inspect the code and tell me your thoughts before writing" through plain language, achieving the same planning benefits without carrying the weight of an embedded state machine.
 
-Scenarios fine without Plan Mode:
-- **Simple changes** — "rename this function from foo to bar"
-- **Local fixes** — "this test is failing, fix it"
-- **Incremental additions** — "add a loading state to this component"
+## Practical Scoping: When to Plan and When to Act
 
-Scenarios that need Plan Mode:
-- **Architectural changes** — "migrate Redux to Zustand"
-- **Cross-module changes** — "refactor the error-handling mechanism"
-- **Vague requirements** — "help me think through adding a user permission system"
+Critiquing dogma does not mean rejecting planning. In production engineering, applying hard state boundaries is a question of task uncertainty versus blast radius:
 
-The criterion is **change scope and uncertainty**. Small scope with high certainty doesn't need planning; large scope with high uncertainty must have it.
+| Task Profile | Collaboration Stance | Enforcement Mechanism | Trade-Off Analysis |
+| :--- | :--- | :--- | :--- |
+| **Deterministic Local Fixes**<br>(Single unit test fix, field addition, rename) | Continuous Interleaving (No Plan Mode) | Direct execution with rapid test feedback | Avoids token waste and transition friction |
+| **Cross-Module Refactoring**<br>(State management migration, ORM refactor) | Hard Barrier Planning (Plan Mode) | Restrict write tools; mandate boundary blueprint | Maximizes tree pruning; prevents dirty state spread |
+| **Unfamiliar Codebase Discovery**<br>(Investigating foreign repos, auditing dependencies) | Exploratory Read-Only | Mount read-only toolset exclusively | Prevents accidental modification during reconnaissance |
 
-## The Philosophy of Plan Mode
+## Conclusion: Mechanical Splints on Stochastic Engines
 
-One design philosophy sits behind Plan Mode:
+Plan Mode is a **mechanical splint** bolted onto a stochastic system to curb its volatility.
 
-**The biggest risk of an AI coding assistant isn't failing to produce code — it's producing code pointed in the wrong direction.**
+By constricting degrees of freedom, it suppresses impulsive mutations driven by action myopia. Through an external FSM and human barrier synchronization, it truncates disastrous decision branches at trivial textual costs.
 
-If it can't write the code, the user writes it. If it writes code in the wrong direction, the user spends far more time discovering it, rolling it back, and re-steering. Wrong direction costs far more than inaction.
-
-With one simple design decision — a forced read-only planning phase before action — Plan Mode drops the cost of a wrong direction from "code level" to "text level". A plan is text; a wrong direction just needs replanning. Action is code; a wrong direction means rolling back changes.
-
-**Making failures happen where they're cheap — that's Plan Mode's core value.**
-
-## Further Reading: Why BYF Removed Plan Mode
-
-[BYF](https://github.com/ByronFinn/byf) made the opposite choice from Claude Code: **in ADR 0008, BYF deliberately removed Plan Mode.**
-
-Not because Plan Mode lacks value, but because BYF's context-minimization review judged it "premature abstraction":
-
-- **Token cost**: the EnterPlanMode (~572t) + ExitPlanMode (~853t) tool descriptions consume about 1425 tokens every time. Add the PlanModeInjector's periodic reminders (300-800 characters each), and the overhead accumulates noticeably across long sessions.
-- **TUI complexity**: the CLI/TUI layer carries 30+ references (the `/plan` slash command, shortcuts, plan card rendering, the approval panel, footer badge).
-- **Architectural spread**: Plan Mode touches agent-core (state machine, permission policy, injection system), the SDK (RPC passthrough), the CLI (TUI state), vis (wire record rendering), and wire records (`plan_mode.*` event types).
-- **Usage**: users can get the same effect by simply saying "make a plan first" in natural language — no special mode needed.
-
-BYF's conclusion: **Plan Mode enforces a binary state (planning vs. executing), while an agent should interleave exploration and action fluidly.** After removal, BYF saved roughly 73 code files and ~1425 tokens of tool-definition overhead, and simplified the user's mental model — no need to learn "when to enter the mode".
-
-This doesn't negate Plan Mode's value. Claude Code keeping it and BYF removing it are both defensible — it depends on your users and your design philosophy. Claude Code gives users an explicit "plan button" as a safety net; BYF trusts users to naturally say "think it through first" in their own words. Both choices involve trade-offs; what matters is **making the trade-offs consciously**.
-
-## Next Up
-
-That wraps Phase 2. From context compaction through memory, Skills, multi-agent, MCP, and Plan Mode, we've seen how an AI agent's advanced capabilities are built.
-
-Phase 3 zooms out. Next up, a bold comparison: **3,000 lines vs. 500K lines** — what exactly separates claude-code-from-scratch's minimal implementation from Claude Code's real source? From toy to product, how many engineering details hide in the architectural abyss?
-
----
-
-> This series analyzes the architecture of the [official Claude Code source](https://github.com/anthropics/claude-code), focusing on design ideas rather than code implementation.
+Yet sound engineering demands seeing the boundary: a splint immobilizes a fracture, but it cannot impart strength to the underlying bone. The moment a static plan loses contact with dynamic compiler diagnostics, it encounters the hard ceiling of diminishing returns. Knowing where to impose hard friction and where to enable fluid verification remains the true dividing line in building dependable AI developer tooling.
 

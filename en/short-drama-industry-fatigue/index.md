@@ -3,234 +3,78 @@
 
 {{< figure src="/pictures/note/shortmovie.png" alt="Light and Fatigue in the Short Drama Factory" caption="Light and Fatigue in the Short Drama Factory" >}}
 
-# Light and Fatigue in the Short Drama Factory
+The yellow earth of the Bailu Plain in Xi'an had been beaten into sticky mud by relentless, cold rain. Thirty-odd crew members huddled under a draughty, faux-antique colonnade, squatting on their heels while shoveling down souring thirteen-yuan boxed meals of stewed cabbage and fat pork. Before the downpour had fully slackened, director Wang Jing ground her cheap cigarette stub into the mud and rasped an order across the courtyard: the call sheet demanded twenty-two scenes wrapped before dawn; miss one, and not a single soul on set would close their eyes tonight.
 
-It was raining in Xi'an that day.
+<!-- more -->
 
-Autumn had just arrived. The wind on the Bailu Plain location was cold, and the rain refused to stop.
-A crew of nearly forty was stuck inside a faux-antique courtyard. The slate said it plainly: twenty-two scenes had to be finished that day.
+## Polyester Robes in the Mud and Bloodshot Eyes
 
-Lunch took less than twenty minutes. Halfway through the boxed meals, the rain suddenly quit.
-Nobody said a word. Everyone charged outside as if by reflex.
-Director Wang Jing sprang up from beside the monitor and mimed the moves for the actors — striking opponents from across the room, projecting internal force outward. The VFX team would figure something out in post.
-Every minute of clear sky was money.
+Late-autumn winds across the Loess Plateau cut straight down open collars. Beneath the dripping eaves of the faux-Ming courtyard, temporary yellow power cables lay coiled like disemboweled intestines in the mire. Two pairs of two-kilowatt tungsten lamps, rigged beside a tarp lean-to, washed the sheets of rain in a sterile, chalky glare.
 
-She had already taken a long loop through this industry: web movies, production coordinating, color grading, assistant directing, and now, at last, "a real director."
-Her partner Li Qiang came from advertising. During the pandemic, clients cut budgets and projects got axed, and they were forced to find another way to survive.
-The first short drama they shot was in 2022. Night scenes were filmed on the roadside — as long as the faces were lit, it passed. Two cameras pointed at two actors, every scene shot twice. The lead actress got 1,000 yuan a day, the lead actor 800, and the whole thing wrapped for 80,000 yuan.
+The twenty-two-year-old male lead wore a synthetic dragon robe bought wholesale from Taobao. The scarlet polyester was paper-thin; its hem had soaked up gallons of yellow silt water, clinging heavy and sodden against his thermal long johns, reeking of industrial chemical dyes mixed with rainwater. His eyes were mapped with a spiderweb of raw, blood-red veins, both eyelids swollen like overripe purple plums—the biological toll of working twenty-two hours without sleep. A makeup assistant clutched a fraying, shed-hair brush, grinding cakey foundation onto the peeling skin around his lips. Sweat and rainwater curdled the makeup into chalky ravines along his nasolabial folds.
 
-Nobody back then thought of this as "the content business of a new era."
-The only thought was: still being able to roll camera at all already counted as luck.
+"All departments ready! Scene two, take one!"
 
-Then came a male-oriented rebirth drama that used a helicopter. On launch day, top-ups broke ten million yuan.
-The partner called and said: "Brother Qiang, the helicopter money is earned back."
-Like a gambler looking up from the card table and discovering that, of all people, he's the one who's winning.
+Director Wang Jing sat on an overturned plastic milk crate wrapped in a grimy black down parka, throat raspy with dry coughs. The monitor beside her had been replaced with a dedicated vertical display showing three squashed camera feeds. There was no blocking, no rehearsal, not even an explanation of the plot. Wang Jing gestured frantically into the rain: "Patriarch strikes from across the void! Move faster! Raise the right arm, put steel in your eyes, grit your teeth and scream! Post will drop in the lightning bolts later. When that slap lands, the supporting actress drops immediately—do not drag it out, make the fall sharp!"
 
-In the end, that drama's cumulative top-ups passed fifty million.
-One short drama fed whole batches of people who had no particular picture of the future.
+The actress opposite him balanced a collapsing plastic hair bun, its adhesive dissolving in the rain, stinging her eyes until tears cut clean tracks through her rouge. The clapperboard snapped. Her face instantly twisted into a vicious sneer; right on cue, she absorbed the invisible blow, hurling herself flat into the yellow slush. Freezing wastewater soaked straight through her thin silk qipao.
 
-The new drama she is shooting now is called *While Girls Train in Martial Arts, I Cultivate Immortality*, and it is headed for Hongguo.
-Its female lead dares to look her own desires in the eye — not "dares" in some educational sense; she simply, quite naturally, regards herself as a person who has desires.
-In the world of short drama, that already counts as progress.
-Characters are slowly ceasing to be stock types. The formulas are still right there, but the emotions have begun to bend, just slightly, toward something more complicated.
+Two minutes later, the safety take was in the can. Before the actor could wipe the grime from his cheekbones, a production runner yanked him into a drafty canvas tent. Within three minutes, he was stripped of the wet robe, shoved into a pill-covered polyester suit, handed a clip-on silk tie, and propelled into an adjacent partitioned room dubbed the "Billionaire Patriarch's Corner Office" to bellow out another round of vengeance and humiliation.
 
-At seven that morning, as soon as the crew arrived on set, Wang Jing began stressing the action choreography.
-An actor in period costume plays "Patriarch Huangfu," and has to project the aura of a man striking people down from a distance.
-The rain kept getting heavier, and the crew had no choice but to rig rain covers; the lights flickered beneath the plastic sheeting, and water dripped off the edges one drop at a time, like a scene from some other film.
+This city pumps out thousands of such productions every month. One hundred episodes shot in seven days, cut in twenty-four hours, pushed onto live ad feeds the following morning. Across the loess bluffs of Xi'an and the barren river flats of Zhengzhou, tens of thousands of young bodies churn under tarps and mud, rotating like cattle on an industrial slaughter line.
 
-This new drama took seven days from first slate to wrap.
-In Xi'an, that doesn't count as fast.
-Some crews shoot sixty episodes in five days, cut them in a single day, and can go online the very next.
-The dramas this city turns out each year are said to account for forty to sixty percent of the national total.
+## Algorithmic Leeches and the Ninety-Percent Ledger
 
-Five hundred kilometers away, Zhengzhou is sprinting along the same track.
-A newly built short-drama base by the Yellow River stays lit all night, crews rotating in and out.
-The government's numbers read: more than 3,800 micro-dramas launched in the first three quarters, over 800 companies, nearly 40,000 people working in the trade.
-Four hundred new dramas a month, around and around.
+Industry press releases and venture-capital decks brim with vulgar tales of instant fortune: "Ten million yuan in billings within twenty-four hours," "Helicopter production costs recouped in eight days," "Financial freedom off a single two-hundred-thousand-yuan wager."
 
-And that is just the surface.
-Industry-wide, the output is three to four thousand dramas a month; Xi'an and Zhengzhou together contribute nearly thirty percent of it.
-More than 600 million users have scrolled through these dramas, and most of them have no idea that the stories they watch were squeezed out of this place — out of its rainy nights, its corridors, its rented apartments, and its editing bays running on overtime.
+None of these myths survive a five-minute inspection of an actual general ledger. When a breakout hit touts single-day top-ups surpassing ten million yuan, the platform dashboard flashes green, but the production boss feels cold sweat on his palms.
 
-——
+In the fraction of a second when a scrolling user is hooked by a manufactured cliffhanger and taps the paywall prompt, between eighty-five and ninety-two percent of that payment is immediately routed via programmatic interfaces directly into the ad-bidding accounts of ByteDance and Tencent. The platforms are algorithmic leeches clamped tight against the windpipe of the business. Media-buying teams in southern high-rises stare at trading terminals like pit bosses at a baccarat table: pump one yuan into user acquisition, and if top-ups yield one yuan and three cents, the ROI curve is positive; automated bidding scripts scale the leverage instantly, burning through tens of thousands of dollars an hour. The moment conversion rates stumble—returning ninety-eight cents on the dollar—the media buyer pulls the plug within thirty seconds, leaving the production to rot silently in the dead zones of the recommendation feed.
 
-The real origin story isn't romantic.
+What trickles down to the shooting crews in Xi'an and Zhengzhou is a mere five to eight percent production service fee.
 
-Around 2019, the web-novel platforms were fighting their user-acquisition wars, and they used the bluntest instrument there is:
-shoot the novels as short scripted segments and run them as feed ads, aimed at an endless supply of users.
+An eighty-thousand-yuan total budget must cover soundstages, lighting rentals, forty boxed meals a day, wardrobe wear-and-tear, and the wages of every soul on set. Leads take home several hundred to a thousand yuan a day in hard cash; gaffers wear through two pairs of canvas shoes lugging iron stands across mud; rough-cut editors splicing together eighty episodes of screaming and slapping walk away with royalties that barely cover a packet of cheap cigarettes. As detailed in our examination of [the realities of bottom-tier labor and expendable human collateral]({{< ref "2025-11-11-when-even-death-is-out-of-work.md" >}}), the moment physiological stamina is treated as bulk industrial feedstock, the irreversible depreciation of the human frame is accounted for as a zero-cost marginal consumable.
 
-Melodramatic enough, and the clicks went up.
-It worked so well that the ad agencies realized:
-if people were willing to watch an "ad," then make the ad a little longer — might they be willing to pay to see what happens next?
+It is a blood sport: tens of thousands of cases of chronic gastritis, corneal ulcers, and spinal degeneration fed into the furnace to keep the cash flow of tech monopolies humming.
 
-Short drama was never "a new form for literary ambition" — it was the byproduct of a traffic-buying experiment.
-Later, the byproduct grew into an industry, one that even came back to support the very clients who had once paid for those ads.
+## Vertical Assembly Lines in Shell Buildings
 
-Geography played a part here.
-Xi'an and Zhengzhou each hold more than thirteen million permanent residents, with a hundred-plus universities between them — young people in abundance, at wages lower than the eastern coast.
-The area around Xuchang had long been a famous hub for film lighting and set power; when Hengdian cooled off, many lighting technicians drifted back inland. Short drama settled its bills fast — not exactly dignified, but more dependable than pining after a big production.
+Five hundred kilometers to the east, Zhengzhou has refined this vertical assembly line into an even more ruthlessly mechanized template.
 
-The moment short-drama demand arrived, the people who had always drifted from crew to crew — lighting, camera, makeup, extras, post-production — naturally gathered together again.
-Only now the frame had gone vertical, the running time shorter, the pacing choked tighter than ever.
+In abandoned industrial parks across the southern and western suburbs, tens of thousands of square meters of unfinished shell towers and shuttered hardware mills have been carved up with cheap drywall. An entire floor is partitioned into a micro-universe of cardboard grandeur: to the left, an engagement ballroom draped in stained red satin; to the right, an intensive care ward patched together with two secondhand hospital beds and decommissioned heart monitors; around the corridor, an executive suite assembled from veneer laminate desks.
 
-Even the monitors changed shape.
-In the old days of shooting vertical, crews could only stand a horizontal monitor on end and make do; now they use vertical monitors that display three camera feeds at once.
-There are always rough edges visible in each round of technical iteration — and that is the industry's true point of origin, a good deal more honest than the press kits.
+Along the narrow, unlit hallway running between them, twenty crews shoot simultaneously throughout the night. The stagnant air is thick with stale cigarette tar, damp gypsum dust, synthetic hairspray fumes, and the sour reek of leftover instant noodle broth decomposing in garbage bins.
 
-——
+From the east end comes a frantic shout: "Three years of exile have ended—kneel to greet the Dragon King!" From the west end rings the shatter of dropped porcelain: "Sign these divorce papers and get out of our family!" Gaffers trade curses over jury-rigged breaker boxes to keep their lights from tripping the mains.
 
-Short-drama costs have been squeezed so low that the arithmetic reads like a cold joke.
-Two thousand yuan can get one shot.
-Revenue sharing can clear ten thousand.
-A small team can shoot thirty to fifty a day.
+There is no room here for dramatic pacing, let alone aesthetic stillness. The assembly line operates according to strict anatomical metrics:
+- Every drama is dissected into eighty to one hundred episodes, each timed between eighty and one hundred seconds.
+- The first three seconds must present torn clothing, a pointed pistol, or an open-handed slap to pin down the thumb;
+- By the thirtieth second, the protagonist must suffer total humiliation, with boots planted firmly on their neck;
+- At the sixtieth second, the counterattack begins to surface;
+- At the ninetieth second, the episode snaps shut at peak tension, dead-center on a prompt demanding sixty cents to unlock the next ninety seconds.
 
-In Xi'an there is a company called Zhuoyuan, with nearly eighty editors sitting in its machine room.
-Keyboards and mice clatter in an unbroken stream. Outside the windows it is raining; inside, it is raining too — just another kind, a soundless one.
-The screens flash with the usual short-drama settings: palaces, mansions, banquets, hospitals, CEO offices.
-Every emotion gets compressed into clips of under two minutes.
+This is targeted electroconvulsive therapy for the human neurotransmitter system. It does not produce stories; it mines dopamine at maximum velocity.
 
-Who shot the first short drama?
-The story that circulates in the trade: in March 2022, the bosses of several Xi'an companies teamed up to shoot one in Fuping — a crew of fewer than ten with a single cameraman, a cost of 37,500 yuan, and a profit of 8,000.
-No myth, no legend — just a small deal that didn't earn much but didn't lose money either.
+In crowded editing suites across Zhengzhou, hundreds of twenty-somethings sit packed in front of blue monitors. The clatter of their keyboards matches the cadence of industrial sewing machines. Junior editors must chew through two thousand minutes of raw footage a day; cinematic theory learned in vocational school is useless dead weight. They need remember only three mechanical laws: heavy beats demand metal impact sound effects, narrative turns require crash zooms, and emotional peaks require wall-to-wall sub-bass rumbles.
 
-The "golden age" was something people recalled into existence only afterward.
-Mini-program dramas inherited the traffic-buying logic of feed ads; the business simply went from "selling goods" to "selling storylines."
-Spend one yuan on traffic and take in 1.1 back, and you had a positive loop — keep raising the stakes until the curve starts to bend downward.
+When inland manufacturing fails to provide viable work, as chronicled in our report on [the contraction of county economies and youth migration]({{< ref "2025-11-12-china-county-economy-twilight.md" >}}), this vertical workshop born of ad-traffic arbitrage becomes the sole refuge for vocational graduates and cast-off extras from the dying studios of Hengdian.
 
-Some dramas, made for a hundred-thousand-something yuan, took in more than thirty million in top-ups on a single day.
-Profits in the millions.
-Those who moved early were suddenly struck by the illusion that this was how the world made money.
+## The Wrap Order in the Mud
 
-Xi'an's short-drama companies spontaneously formed a "hit alliance."
-Anyone whose launch-day top-ups failed to break ten million had to drink a penalty toast at the dinner table.
-Behind these jokes with their boyish bravado lies a brutal reality:
-hits are getting harder and harder to replicate, while the number of dramas that are not hits keeps growing exponentially.
+The collapse of the bubble came not as a slow leak, but with the sudden finality of a guillotine blade.
 
-——
+Regulatory orders dropped at midnight, purging vulgar mini-program portals overnight. Major tech platforms seized the opening to force a free, ad-supported revenue-share model, using proprietary distribution algorithms to swallow the outsized margins once claimed by pay-per-episode producers. Top-up revenue pools collapsed from tens of millions to mere hundreds of thousands; the net split left to independent studios became paper-thin.
 
-Regulation came quickly.
+Around the night-market skewers in southern Xi'an, the bombastic "Hit Alliance" fell silent. No one boasted of penalty toasts for failing to break ten million on day one. Conversations sank into hushed reckonings: which outfit sank six hundred thousand yuan into an original series only to claw back six hundred yuan in net splits, whose gear had been seized by predatory microlenders, and which editor had passed out coughing blood at their desk after seventy straight hours of crunch.
 
-At the end of 2023, the National Radio and Television Administration began purging vulgar dramas and mini-program portals, and a great deal of content vanished overnight.
-By mid-2024, Hongguo's free model had lured away most of the users. Top-ups for paid dramas shrank to the million-yuan level, and the revenue share on a drama was down to the thinnest sliver of skin.
+At four-thirty in the morning, the wind howling across the bluffs of the Bailu Plain sounded like a cracked bellows. The temperature had plunged near freezing.
 
-Production companies started redoing the math.
-Under the for-hire production model, gross margins run between 5% and 15% — handsome revenue volume, middling profit.
-The platforms cluster in Beijing and Hangzhou, the traffic buyers in southern China, the users inside their phones.
-Xi'an and Zhengzhou are in charge of one thing: getting the story shot in the shortest time possible.
+The rain continued without pause, filling muddy hollows with black diesel scum. Behind a dripping tarp, a generator sputtered, belching plumes of choking bluish exhaust.
 
-Some accepted their fate; others would not.
-They chose to hold their own copyrights, developing scripts themselves and selling the finished films to the platforms.
-One success, and the revenue share could reach tens of millions; one failure — a drama that cost 600,000 yuan earning 600 yuan, or even 6, after launch — is not unheard of either.
-The risk that matters is not the kind written into contracts. It is finishing everything and then discovering:
-the audience never even had time to click on you.
+The twenty-two-year-old actor, wrapped in a threadbare army coat emptied of down feathers, squatted by a mud hole, coughing violently as his narrow shoulders shook in the biting draft. He had just spent forty straight minutes kneeling in ice water; his joints were stiff and unresponsive. Ten yards away, an assistant director lifted an electric megaphone, his voice hoarse: "Positions! One more for safety, and we wrap!"
 
-——
+The actor did not hesitate. He flicked his cigarette butt into the puddle, wiped a muddy hand across his face, stumbled upright, and dropped back down into the freezing slush.
 
-The subject matter is slowly changing too.
-
-Dramas built on characters turning stupid and on pure emotional brawls are getting fewer — not because taste suddenly improved, but because viewers have scrolled through so much that they have every formula memorized.
-Open any melodramatic short drama, and the "plot continuations" written in the comments are sometimes better than the writers' version.
-The supply of information has turned back on creation and started to suppress it. Creators and viewers now stand on the same timeline — you can't fool people for long.
-
-Some note that suspense shorts were long considered "impossible" — the running time too short to lay any foreshadowing.
-But the platforms have already started betting on the genre.
-Not because it is more elevated, only because pure "brawl-style" emotion has been squeezed nearly dry.
-
-——
-
-Actors' incomes are rising faster than the scripts.
-
-Within a year, the second male lead's day rate went from 1,000 yuan to 20,000; the lead actress's, from 2,000 to 30,000.
-Hit actors are bound to the platforms, and the quoted price is a notional number — "priced but unbookable." Schedule slots are the true scarcity.
-
-Crews shooting short dramas for overseas markets have moved in as well.
-One company shoots dramas in Zhengzhou for platforms abroad:
-Western leads fly to China; the extras are international students, foreign spouses of locals, and a small number of foreign models eking out a living in the country.
-The leads get 20,000 yuan a day, and the fees are still climbing.
-
-Shooting "export dramas" on domestic soil was once judged "unworkable."
-Wrong settings, wrong actors, wrong details — flaws a domestic audience would never notice get magnified to a blinding glare in overseas comment sections.
-ReelShort tried it in Xi'an before; the results were mediocre, and it ended up going to the United States to shoot American productions instead.
-
-But in the end, the logic circles back to cost.
-Abroad, one drama runs close to two million; domestically it can be squeezed under 1.2 million.
-The platforms are still burning money on user acquisition, and the content has to keep flowing without interruption.
-And so the road once declared "unworkable" got walked all over again.
-
-One director said Zhengzhou can actually deliver the big set pieces that cannot be shot overseas.
-Sealed compounds, aviation bases, car-flip stunts, helicopters... The things that cost a fortune and a long permitting process in North America can be arranged here — as long as you can pay.
-A small irony of industrial civilization:
-in some places, fantasy comes far cheaper than reality.
-
-——
-
-The problem of studio bases has surfaced too.
-
-Early short-drama crews shot at scattered locations, hunting everywhere for villas, office towers, sales-office show suites, empty storefronts.
-Once capacity ramped up, some people simply converted entire floors of office buildings into hospitals, mansions, and private clubs, renting them out exclusively to crews.
-Tourist sites reinvented themselves as period locations, the same faux Ming-Qing architecture cycling through dozens of dramas with only the lighting angles changed.
-
-Horses and carriages are the hardest to source.
-One Republican-era scene needed a vintage car. None was to be found in Zhengzhou, so it had to be trucked in from Hengdian — freight included, several times pricier than using one locally in Hengdian.
-Wire-rig cranes, finely categorized costume warehouses, "ancient city" sets at scale — Hengdian has these; Xi'an and Zhengzhou do not yet.
-
-Some hope for a comprehensive industrial park like Hengdian, one that would gather the crews scattered across the city into a single place, so that moving between locations stops taking such a toll.
-Others feel that this scattered, improvised, patched-together state is precisely the industry's true color.
-
-——
-
-A short-drama company in Zhengzhou recently pushed its monthly output from a few dozen dramas to two hundred.
-Its 3,000-plus post-production staff still cannot keep up, so the work keeps getting outsourced.
-Per-episode editing rates have been squeezed down to four or five hundred yuan.
-First- and second-string editors have to cut at least one episode a day; what they learned in school is of little use, and they end up relearning "short-drama grammar" from scratch inside the company.
-
-Meanwhile, Zhengzhou Normal University ran a "short-drama screenwriting boot camp" over the summer.
-More than 140 students, 53 days, over a hundred scripts written — dozens of them already streamed online.
-Dubbing classes got pulled in too, with students doing voice work on fourteen short dramas.
-
-The young need portfolios, need résumés; the companies need hands.
-Nobody paused to wonder whether this was all "too fast."
-The times hand out multiple-choice questions, not essay questions.
-
-——
-
-A pervasive weariness hangs over this industry.
-"Ten hours of sleep in six days" is not news on a crew.
-Word is that a short-drama actor in Hengdian fell critically ill from overwork; the story comes up again and again on Zhengzhou nights, with little shock in anyone's voice — more a tone of "it was only a matter of time."
-
-At two in the morning, with the temperature at ten degrees in the city's southern outskirts, a crew is still shooting a night scene outdoors.
-An actor from Shandong, eating takeout, recounts his schedule to whoever will listen:
-two or three hours of sleep a day. Hengdian is worse — location shoots in period costume through thirty-plus-degree summers.
-Then he laughs a little, as if he were describing someone else's life.
-
-Every so often, a flash of humanity appears on set.
-Someone lets out a giant sneeze, and the whole set dissolves into laughter.
-For that moment, they briefly stop being "part of the production capacity" — just ordinary people, who catch colds, get drowsy, and make mistakes.
-
-——
-
-Seen from higher up, Xi'an and Zhengzhou are called "the capitals of micro-drama."
-But they are really more like "micro-drama workshops."
-
-The platforms sit in other cities; money flows in from farther away, then flows back out along its set paths.
-With vast quantities of labor, the two cities get these stories shot, then hand the copyrights and the data outward.
-Those who hold real, long-term leverage are not here.
-
-And yet, at least for now, the lights are still on.
-Countless monitors glow faintly at once; the editing software stutters; lines are flubbed take after take; makeup cracks slightly in the pre-dawn wind.
-Between these details, people hold up one two-minute story after another, offering the phone-scrollers a little emotion, a little relief, a little anesthetic.
-
-Whether short drama is a good industry has no standard answer.
-
-It just makes one thing unmistakably clear:
-in this era, a great many people are spending strength beyond their health's threshold to sustain a life that "looks like it's on the rise."
-As for where this road leads, most of them already know in their hearts — they would just rather not discuss it yet.
-
-There are still scenes to shoot, another episode that won't finish cutting itself, and a hit-dream with one more lap left to run.
-
-When the rain stops, you hurry to roll camera.
-When it starts again, you prop the rain cover a little higher.
-No one is truly optimistic, but neither does anyone have the slack to be pessimistic enough to stop.
-
-All there is to do is keep shooting.
+Inside this rattling factory, no one harbors any remaining illusions about the trade, but neither does anyone possess the capital to step away. Rain flecks the camera lens; someone wipes it with a dirty rag, and the shutter rolls. Dawn is approaching, and the call sheet for the next eighty-episode order has already landed in the group chat. The world has foreclosed every exit, leaving behind only this vertical machine that never sleeps.
 

@@ -32,13 +32,13 @@ Built with Hugo and the DoIt theme, hosted on GitHub Pages.
 ### Claude Code Source Code Deconstruction
 - [The Future of AI Coding Tools: From Copilot to Autonomous Agent](https://blog.baifan.site/en/ai-coding-tools-future-copilot-to-autonomous-agent/) (2026-07-06)
 - [3,000 vs 500K Lines: The Architectural Abyss From Toy to Product](https://blog.baifan.site/en/claude-code-3000-vs-500k-lines/) (2026-07-02)
-- [Plan Mode and Design-First: Making AI Think Before It Acts](https://blog.baifan.site/en/claude-code-plan-mode/) (2026-06-16)
+- [The Discrete State Machine of Plan Mode: Decision Tree Pruning, Backtracking Costs, and Diminishing Returns](https://blog.baifan.site/en/claude-code-plan-mode/) (2026-06-16)
 - [The MCP Protocol: USB-C for AI Tool Interconnection](https://blog.baifan.site/en/claude-code-mcp-protocol/) (2026-06-12)
 - [Multi-Agent Architecture: The Art of Fork-Join Collaboration](https://blog.baifan.site/en/claude-code-multi-agent-architecture/) (2026-06-09)
 - [The Nature of Skills: Reusable Encapsulated Expertise](https://blog.baifan.site/en/claude-code-skills-system/) (2026-06-05)
 - [AI Memory Systems: Four Memory Types and Semantic Recall](https://blog.baifan.site/en/claude-code-memory-system/) (2026-06-02)
-- [Context Compaction: Four Ways to Give AI 'Infinite Memory'](https://blog.baifan.site/en/claude-code-context-compression/) (2026-05-23)
-- [Permissions and Security: Destructive Power, Under Control](https://blog.baifan.site/en/claude-code-permissions-security/) (2026-05-20)
+- [The Physical Cost of Context Compression: KV Cache Pressure, Attention Decay, and Lossy Summarization](https://blog.baifan.site/en/claude-code-context-compression/) (2026-05-23)
+- [Permissions and Real Security Boundaries: Sandboxes, System Calls, and Approval Escape](https://blog.baifan.site/en/claude-code-permissions-security/) (2026-05-20)
 - [System Prompt Engineering: Decisions Behind 800 Lines](https://blog.baifan.site/en/claude-code-system-prompt-engineering/) (2026-05-16)
 - [Tools Are Capability: AI Agent Tool System Design Philosophy](https://blog.baifan.site/en/claude-code-tool-system-design/) (2026-05-12)
 - [The Soul of an AI Coding Assistant: The Think-Act-Observe Loop](https://blog.baifan.site/en/claude-code-think-act-observe-loop/) (2026-05-07)
@@ -163,7 +163,7 @@ An in-depth analysis of gold market trends: how global economic uncertainty, inf
 Date: 2025-11-18
 Tags: Short Dramas, Cultural Industry, Film and TV Industry
 
-A close-up report on China's short drama industry, from rain-soaked sets in Xi'an and Zhengzhou to the economics beneath the boom — two exhausted cities and the people who keep shooting.
+From the muddy outdoor sets of Xi'an to converted factory floors in Zhengzhou, cheap synthetic costumes and sour boxed meals sustain the short-drama myth. Behind the illusion, algorithms siphon 90% of revenues while workers churn around the clock.
 
 ### [Twilight of the County Towns: The Silent Curtain on Demographic Drain and Fiscal Retreat](https://blog.baifan.site/en/china-county-economy-twilight/)
 Date: 2025-11-11
@@ -181,7 +181,7 @@ Warren Buffett's 2025 shareholder letter: he will no longer write the annual rep
 Date: 2025-10-21
 Tags: The Economist, geopolitics, economic outlook
 
-This issue of The Economist says the world is rebalancing, but it feels more like a card game nobody knows the rules of. America, China, Europe — and that overhyped AI — are each drawing their own hand.
+The Economist masks order collapse as rebalancing. Behind tariffs, subsidy races, and zero-sum games, free trade's dirge plays across Washington and Brussels.
 
 ### [Trump vs the New NYC Mayor: Prelude to a Political Storm](https://blog.baifan.site/en/trump-vs-mamdani-nyc-showdown/)
 Date: 2025-10-14
@@ -199,7 +199,7 @@ A deep dive into the global rare earths industry and China's resource sovereignt
 Date: 2025-09-23
 Tags: geopolitics, social media, US-China relations, tech industry
 
-How TikTok survived the Trump era: internal power struggles, management misjudgments and geopolitical brinkmanship, based on Emily Baker-White's Every Screen on the Planet — a study in how tech companies survive superpower rivalry.
+Stripping away sanctimony to expose K-Street lobbying, Silicon Valley ambushes, and populist deals: an autopsy of TikTok's survival under raw power.
 
 ### [WSJ Deep Dive: Nvidia Chip Ban, Holiday Travel, Economic Signals](https://blog.baifan.site/en/wsj-nvidia-chip-ban-economic-analysis/)
 Date: 2025-09-16
@@ -232,11 +232,11 @@ Tags: Claude Code, BYF, AI Agent, software engineering, architecture design, ope
 
 Comparing claude-code-from-scratch's 3,000-line minimal implementation with the 500K-line engineering beast of Claude Code's official source: from toy to product, how many engineering details hide in the architectural abyss? BYF sits in between as a real-world case of engineering decisions and design-debt cleanup.
 
-### [Plan Mode and Design-First: Making AI Think Before It Acts](https://blog.baifan.site/en/claude-code-plan-mode/)
+### [The Discrete State Machine of Plan Mode: Decision Tree Pruning, Backtracking Costs, and Diminishing Returns](https://blog.baifan.site/en/claude-code-plan-mode/)
 Date: 2026-06-16
-Tags: Claude Code, BYF, AI Agent, development workflow, design-first, open source, source code analysis
+Tags: Claude Code, BYF, AI Agent, architecture design, state machine, decision trees, source code analysis
 
-Deconstructing Claude Code's Plan Mode: why does a read-only planning mode markedly improve code quality, and why is separating read, think, and write the key watershed in AI programming? BYF deliberately removed Plan Mode in ADR 0008 in favor of natural language plus tools — a counterexample worth pondering.
+Deconstructing Claude Code's Plan Mode: modeling it as a Finite State Machine (FSM), analyzing decision tree divergence, human barrier synchronization, physical backtracking costs, compiler-blind fragility, and ADR 0008.
 
 ### [The MCP Protocol: USB-C for AI Tool Interconnection](https://blog.baifan.site/en/claude-code-mcp-protocol/)
 Date: 2026-06-12
@@ -262,17 +262,17 @@ Tags: Claude Code, BYF, AI Agent, memory system, semantic recall, open source, s
 
 Deconstructing Claude Code's memory system: user memory, feedback memory, project memory, reference memory — how four memory types work together so AI remembers your preferences and project conventions across sessions. Plus BYF's Wire Records event sourcing, session persistence, and the vis debugging tool.
 
-### [Context Compaction: Four Ways to Give AI 'Infinite Memory'](https://blog.baifan.site/en/claude-code-context-compression/)
+### [The Physical Cost of Context Compression: KV Cache Pressure, Attention Decay, and Lossy Summarization](https://blog.baifan.site/en/claude-code-context-compression/)
 Date: 2026-05-23
-Tags: Claude Code, BYF, AI Agent, context management, compaction strategy, open source, source code analysis
+Tags: Claude Code, BYF, AI Agent, context management, KV Cache, compression strategy, source code analysis
 
-Deconstructing Claude Code's context compaction strategy: how a four-layer pipeline packs as much useful information as possible into a finite context window. Message trimming, conversation compaction, window management — the AI's 'infinite memory' is a carefully engineered illusion. BYF's Observation Masking and CacheStakingStrategy validate these strategies in practice.
+Deconstructing Claude Code's context compression pipeline: from Transformer KV Cache VRAM scaling and attention dilution to dynamic summarization entropy, Lost-in-the-Middle traps, and prompt caching invalidation.
 
-### [Permissions and Security: Destructive Power, Under Control](https://blog.baifan.site/en/claude-code-permissions-security/)
+### [Permissions and Real Security Boundaries: Sandboxes, System Calls, and Approval Escape](https://blog.baifan.site/en/claude-code-permissions-security/)
 Date: 2026-05-20
-Tags: Claude Code, BYF, AI Agent, security design, permission management, open source, source code analysis
+Tags: Claude Code, BYF, AI Agent, security design, permission management, system security, source code analysis
 
-Deconstructing Claude Code's permission system: how a 5-level permission model balances AI autonomy against the user's sense of safety. Read, write, execute — not all operations are equally dangerous. With BYF's Approval system and lifecycle hooks as a look at how real projects calibrate trust.
+Deconstructing Claude Code's permission architecture: from OS capabilities and POSIX syscall interception to application-level reference monitor limits, indirect prompt injection, and parser differentials.
 
 ### [System Prompt Engineering: Decisions Behind 800 Lines](https://blog.baifan.site/en/claude-code-system-prompt-engineering/)
 Date: 2026-05-16

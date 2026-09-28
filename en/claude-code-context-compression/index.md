@@ -1,122 +1,142 @@
-# Context Compaction: Four Ways to Give AI 'Infinite Memory'
+# The Physical Cost of Context Compression: KV Cache Pressure, Attention Decay, and Lossy Summarization
 
+
+Large language models possess no biological memory at the hardware tier; they operate entirely on Key-Value Caches that scale linearly in GPU High-Bandwidth Memory (HBM) alongside attention weight distributions that mathematically dilute as sequence length grows. The notion of long-horizon conversations presented by Claude Code is, at its engineering core, an eviction and compaction pipeline operating within the tight margins of memory capacity and numerical precision, trading away information entropy and prefix caching efficiency.
 
 <!-- more -->
 
+During extended programming sessions, developers frequently find themselves confounded by an AI assistant's sudden amnesia: an API contract painstakingly agreed upon in turn 5 is completely ignored by turn 25; a type definition resolved earlier is silently reverted back to a buggy state immediately following a `/compact` command. This is the direct consequence of physical memory boundaries colliding with the mathematics of self-attention.
 
-The Think-Act-Observe loop has a natural enemy: **the context window is finite.**
+## Physical Constraints of the Hardware Substrate: KV Cache and Memory Scaling
 
-Every loop iteration burns tokens — the model's thinking, the tool-call requests, the tool results. Reading one large file can cost thousands of tokens; a single test run's output can cost tens of thousands. A dozen rounds in, the context window is stuffed full.
+In the autoregressive decode phase of Transformer models, computing attention over historical tokens without redundant matrix projections requires caching every layer's generated Key and Value tensors directly in GPU VRAM—the Key-Value (KV) Cache.
 
-What happens when the window fills? The model says "sorry, this conversation exceeds my context limit". For casual chat, who cares — open a new window. For a coding assistant, it means **amnesia** — it forgets the project structure, the changes already made, the user's preferences.
+The physical VRAM footprint of a single inference session during generation can be derived rigorously. Let the model depth be $L$ layers, hidden dimension $D$, and total attention heads $H$. Under modern Grouped Query Attention (GQA) architectures, let $H_{kv}$ denote the count of Key/Value heads, with each head carrying dimension $D_h = D / H$. For a context length of $S$ tokens under FP16 precision (2 bytes per scalar), the memory footprint of the KV Cache is:
 
-Claude Code's answer is a four-layer context compaction pipeline. The goal isn't to "cram in more" but to **keep what matters most and drop what doesn't**.
+$$\text{KV Cache Size} = 2 \times 2 \times L \times H_{kv} \times D_h \times S \text{ bytes} = 4 \times L \times H_{kv} \times D_h \times S \text{ bytes}$$
 
-## Layer 1: Message Trimming
+Consider a representative 70B-parameter foundation model ($L=80$, $H_{kv}=8$, $D_h=128$). Each additional token added to the context requires approximately $320 \text{ KB}$ of dedicated GPU memory. As the sequence extends toward 200,000 tokens:
 
-The crudest layer, and the most effective. When conversation history approaches the window limit, trim the **oldest messages**.
+$$\text{Memory} \approx 4 \times 80 \times 8 \times 128 \times 200,000 \approx 65.5 \text{ GB}$$
 
-Sounds simple, but one detail matters: not all early messages are equally trimmable. The system prompt is always kept, because it defines the agent's rules of behavior. The user's first message (the initial request) is kept with priority, because it defines the task goal. What gets trimmed is the "process chatter" in the middle — tool calls and results already executed.
+This astronomical memory footprint belongs to a **single concurrent request**. In production multi-tenant environments, no cloud infrastructure provider can allow an arbitrary session's unpruned conversation history to monopolize scarce HBM without aggressive eviction policies.
 
-The assumption underneath: **the details of completed tool calls matter more than the description of a not-yet-finished task.** You've already read the files, changed the code, run the tests — the "results" of those operations live in the current project state; there's no need to keep full records in the conversation history.
+Equally brutal is the wall of Time to First Token (TTFT). Without hitting a prefill cache, recomputing the attention matrix across a 150k token context carries quadratic computational complexity $O(S^2)$. Unmitigated long-context passes cause prompt-processing latency to climb past dozens of seconds, destroying the sub-second interactivity required by interactive terminal tooling.
 
-The cost of trimming is that the model "forgets details". It remembers "I edited src/main.ts" but not exactly what changed. If it later needs to review that edit, it may have to re-read the file. Acceptable — the file is still there; the copy in the conversation history is redundant.
+## Mathematical and Cognitive Degradation: Attention Dilution and the Lost-in-the-Middle Trap
 
-## Layer 2: Conversation Compaction
+Beyond hardware VRAM saturation, extended context windows suffer severe numerical degradation via attention dilution. Recall the canonical self-attention formulation:
 
-Trimming deletes; compaction **summarizes**.
+$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V$$
 
-The core idea: when conversation history grows too long, have the model produce a **summary** of the first half of its own conversation, then replace the original with the summary.
+In the softmax layer, the attention weight vector for any given query token must normalize to unity across all historical positions:
 
-The rough flow:
-1. Detect that conversation history exceeds a threshold (say, 70% of window capacity)
-2. Split the history into a "stabilized first half" and an "active second half"
-3. Have the model generate a structured summary of the first half: what was done, what was found, what was decided, what remains
-4. Replace the first half's original messages with the summary
-5. Keep the second half untouched
+$$\alpha_{i,j} = \frac{\exp\left(\frac{q_i k_j^T}{\sqrt{d_k}}\right)}{\sum_{m=1}^S \exp\left(\frac{q_i k_m^T}{\sqrt{d_k}}\right)}$$
 
-In Claude Code this corresponds to the `/compact` command — the user can trigger it manually, or the system runs it automatically when necessary.
+When sequence length $S$ expands from 2,000 to 150,000, the summation terms in the denominator increase by nearly two orders of magnitude. Even with Rotary Position Embedding (RoPE) context extension techniques, background tokens inevitably bleed away finite probability mass.
 
-The cost of compaction is **information loss**. A summary can't preserve every detail; subtle context can vanish in the abstraction. But unlike trimming, compaction preserves **semantics**, not just an "operation log". After trimming, the model forgets what was done; after compaction, it remembers what was done and why.
+Liu et al. (2023) in *Lost in the Middle: How Language Models Use Long Contexts* mapped this fundamental structural decay:
 
-At bottom this trades **time for space** — spending the model's reasoning capacity (generating the summary) to buy context space (the summary is far shorter than the original conversation).
+```
+Retrieval & Reasoning Accuracy
+100% |  \                                            /
+     |   \                                          /
+ 75% |    \                                        /
+     |     \                                      /
+ 50% |      \           U-Shaped Attention Trough /
+     |       \__________________________________/
+  0% +------------------------------------------------->
+     Context Beginning (System Prompt)   Middle History (Tool Logs)   Context End (Recent Observation)
+```
 
-## Layer 3: Context Window Management
+The model exhibits peak recall sensitivity for tokens positioned at the very front of the context (system identity instructions and tool definitions) and at the very tail (the immediate user command and most recent execution output). Intermediate logs, earlier file snapshots, and historical architectural decisions sink into an attention trough. Trusting an LLM to accurately recall a transient function signature buried 40 turns deep in historical terminal output ignores the statistical reality of attention weights.
 
-This layer doesn't compress; it **plans**. Before every model call it estimates token usage to make sure the window limit isn't exceeded.
+## The Claude Code Compaction Pipeline and Lossy Propagation
 
-Concretely:
-1. Count the current conversation history's tokens
-2. Add the system prompt's tokens
-3. Reserve token space for the model's output (usually 4K-8K)
-4. If the total exceeds the window limit, trigger trimming or compaction
-5. Ensure the final request sent to the model stays within safe bounds
+To reconcile memory constraints with cognitive degradation, Claude Code implements a four-stage tiered compaction pipeline. While it preserves the outward illusion of uninterrupted memory, each stage exacts an explicit entropy cost.
 
-This mirrors OS memory management — check whether there's room before allocating, and reclaim if not. The difference: OS memory is uniform (every byte alike), while context tokens are not (some carry far more information than others).
+### 1. Observation Trimming
 
-Window management has one more trick: **dynamic reservation**. Different tasks need different output space. Generating code? Reserve more. Answering a question? Reserve less. Claude Code adjusts the reservation dynamically based on the current loop phase (tool call vs. text reply).
+Within the [Think-Act-Observe Loop]({{< ref "posts/2026-06-07-claude-code-think-act-observe-loop.md" >}}), the primary driver of context inflation originates from tool execution logs: commands like `npm test` or `cargo build` routinely dump thousands of lines of compiler traces into the feed.
 
-## Layer 4: Smart Injection
+Claude Code's first line of defense is deterministic output truncation on completed turns. Because source code and test files persist on disk, command output is treated as ephemeral. The pipeline strips historical tool output bodies, retaining only exit codes and terminal head/tail lines. This represents the lowest semantic loss in the entire pipeline.
 
-The most refined layer. It doesn't compress existing content; it **controls how much new content gets injected**.
+### 2. Conversation Compaction (`/compact`)
 
-We've covered the system prompt's layered architecture — core identity, tool definitions, project context, session state. Every layer costs tokens. Smart injection's strategy:
+When the total sequence approaches safety watermarks (typically 75% of context capacity), the system initiates automated or manual conversation compaction. A dedicated background invocation prompts the model to summarize its own preceding history:
+- Cataloging verified code changes and completed deliverables;
+- Listing pending tasks and unresolved architectural roadblocks;
+- Replacing thousands of raw multi-turn tokens with an abstracted markdown synopsis.
 
-- **Core identity**: always fully injected (a few hundred tokens — worth it)
-- **Tool definitions**: inject only tools likely needed now (progressive disclosure)
-- **Project context**: inject only the CLAUDE.md fragments relevant to the current task
-- **Memory**: inject only the most relevant entries (semantic matching)
-- **Skills**: inject only activated Skills
+{{< admonition type="warning" title="Information Entropy and Semantic Drift" open=true >}}
+Shannon's entropy theorem $H(X) = -\sum p(x) \log p(x)$ establishes that natural language summarization is an inherently lossy projection from high-entropy technical detail to low-entropy narrative abstractions. When an agent summarizes its own conversation, it inevitably discards compiler edge cases and transient invariants. In a 50-turn refactoring session that undergoes two rounds of `/compact`, the model ends up reasoning over "a summary of a summary". Through this recursive xerox effect, semantic drift accumulates, and the model starts hallucinating constraints derived from syntactic ambiguities in its own earlier notes.
+{{< /admonition >}}
 
-Every layer makes the same trade-off: **between "information completeness" and "token savings".** The trade-off isn't fixed; it depends on the task at hand. Writing code needs full tool definitions; answering a question may need only the core identity.
+### 3. Context Window Management
 
-## The Effect of Four Layers Stacked
+The pipeline requires active token budgeting. Prior to dispatching an API call to Anthropic endpoints, the orchestrator reserves a static generation budget of 4k to 8k tokens for the model's completion payload.
 
-Stack the four layers and here's the effect: a model with a nominal 200K context window can handle conversations equivalent to 500K or even 1000K tokens — through constant trimming, compacting, and re-injection.
+If the prompt tokens plus this output reservation exceed the maximum context window, earlier message turns are forcibly purged from the active array. This represents unadorned LRU page eviction.
 
-The cost is **progressive information loss**. As the conversation stretches, the model knows less and less. It degrades from "knowing every line of every file" to "knowing the project's rough shape and the current task". Given enough complexity and enough length, it eventually decays to nearly "meeting for the first time".
+### 4. Dynamic Hierarchical Injection
 
-At that point, the most effective move isn't compaction but **starting a new session**. Not because of technical limits, but because information loss has accumulated to the point where it degrades decision quality.
+The onion-layer prompt architecture examined in [System Prompt Engineering]({{< ref "posts/2026-06-12-claude-code-system-prompt-engineering.md" >}}) serves as a dynamic throttling valve here. Core system identities remain resident, while dynamic skills, auxiliary tool schemas, and workspace-wide rules (such as `CLAUDE.md`) are gated behind intent-detection heuristics, keeping baseline token overhead at minimal thresholds.
 
-## The Essence of Context Compaction
+## The Economic Reality of Scale: Prompt Caching vs. Prefix Invalidation
 
-At its core, context compaction isn't a technical problem; it's a **cognitive science problem**.
+Context management in modern frontier models is deeply intertwined with the pricing and latency mechanics of **Prompt Caching**.
 
-Human memory does the same thing. You don't remember every detail of yesterday's breakfast, but you remember "ate breakfast yesterday". You don't remember a transcript of every meeting, but you remember "last week's meeting decided to refactor to TypeScript". Through summarization, forgetting, and extraction, the brain maintains an effective model of the world on limited neural resources.
+Anthropic's API pricing structure grants a 90% discount on input tokens that achieve exact prefix cache hits, allowing prefill computation to be bypassed entirely via resident VRAM KV Cache states. This cuts costs by an order of magnitude and brings TTFT down to hundred-millisecond bounds.
 
-Claude Code's compaction pipeline is a rough simulation of human memory:
-- Message trimming ≈ forgetting
-- Conversation compaction ≈ summary memory
-- Window management ≈ attention allocation
-- Smart injection ≈ selective recall
+```
+Standard Request (Cache Hit):
+[System Prompt] -> [Tool Defs] -> [Turn 1..N-1] | -> [New User Input]
+<---------------- Warm Prefix (90% Off, Sub-sec) ->|  (Cold Prefill)
 
-Imprecise, but directionally right.
+Post-Compaction Request (Cache Miss):
+[System Prompt] -> [Tool Defs] -> [Compacted Summary] | -> [New Input]
+<--- Warm --->  (Prefix Invalidated) <----- Cold Prefill (Full Cost) ->
+```
 
-## An Unsolved Problem
+Here lies an unavoidable engineering contradiction:
+- **Avoiding Compaction**: Context expands linearly. Every turn continues hitting the warm prefix cache, but total token volume swells steadily toward physical limits, steadily eroding model reasoning capability via Lost-in-the-Middle dilution.
+- **Executing Compaction**: `/compact` rewrites historical turns into a compressed digest, which **destroys exact prefix byte-level consistency**. Tens of thousands of warm tokens in the remote KV Cache are wiped instantly. In the subsequent turn, the client must pay full price and suffer high TTFT to execute an uncached cold prefill over the newly generated summary.
 
-Context compaction has a problem Claude Code hasn't fully solved: **the subjectivity of timing.**
+Balancing memory window preservation against prompt caching efficiency presents a classic systems trade-off where zero-cost abstractions do not exist.
 
-When should you trim? When should you compact? When should you start a new session? The current implementation relies on hard-coded thresholds (say, "compact above 70%"), but these thresholds aren't universal. One 200K-window model and another 200K-window model can have completely different information densities — it depends on project size, task complexity, and the volume of data tools return.
+## Deterministic Engineering Solutions: BYF's Observation Masking and Cache Staking
 
-The ideal is probably **adaptive thresholds** — compaction strategy tuned dynamically to the conversation's information density. Dense conversations (heavy tool calls, big file contents) trigger compaction earlier; sparse ones (mostly text exchange) later.
+To eliminate the destructive cache misses and semantic drift inherent in blunt compaction, the open-source [BYF](https://github.com/ByronFinn/byf) engine introduced a structured methodology in ADR 0011:
 
-But that requires evaluating "information density" in real time — itself an open research problem.
+### 1. Watermark-Based Observation Masking
 
-## Further Reading: BYF's Observation Masking and CacheStakingStrategy
+BYF replaces periodic full-history rewrites with stepped capacity thresholds:
+- **Low Watermark (60% context utilization)**: Masks ephemeral perceptual output (e.g., voluminous file trees from `glob` or `grep`), collapsing them into single-line metadata markers: `[Glob: 42 files matched]`.
+- **High Watermark (80% context utilization)**: Masks non-critical `bash` execution output, preserving solely the trailing 5 lines and exit codes.
+- **Contract Immunity**: Code diffs generated by `write_file` and `edit` are granted strict preservation priority, protected against eviction until hitting the 85% emergency boundary.
 
-[BYF](https://github.com/ByronFinn/byf) goes finer than Claude Code on context compaction, elevating "context minimization" to a first-class engineering concern.
+### 2. Output Offloading to Disk
 
-**1. Importance-based observation masking.** Rather than waiting until the context is nearly full, BYF sets a **threshold band** (60-85% token pressure) and triggers masks of different granularity at different pressure levels. At low pressure (60%), `Glob`/`Grep` results are masked first (low durable value); as pressure climbs to 80%, `Bash` output gets masked; `Write`/`Edit` results are kept longest. The replacement format is a compact structured summary — `[Bash: 'npm test', exit=0, 127 lines, stderr: none]` — preserving metadata plus head and tail fragments, so the model can decide whether to re-read the full output.
+When any single tool output exceeds 8,000 tokens (such as complete integration test logs or binary dumps), BYF refuses to inject the raw text into context memory. It dumps the payload to a local temporary sandbox file (e.g., `/tmp/byf-output/turn-12.log`), inserting a brief descriptor:
+```
+[Output truncated. Full content (145KB) written to /tmp/byf-output/turn-12.log.
+Showing first 500 chars: ... ]
+```
+If the agent subsequently requires specific log slices, it must call `read_file` with explicit line offsets. This pattern converts volatile context memory pressure into structured disk I/O.
 
-**2. Output offloading.** Full tool outputs beyond ~8000 tokens are written to temporary files; the tool result keeps only a 1000-character preview plus a file reference. BYF caps temp files by size and count (50MB per session, at most 100 files, FIFO eviction) to prevent unbounded growth.
+### 3. Turn-Boundary Cache Staking (`CacheStakingStrategy`)
 
-**3. Turn-boundary cache staking (CacheStakingStrategy).** ADR 0011 defines a "3+1" cache-stake model — beyond the cache boundaries of the system prompt and the tool array, it adds a cache stake on "the last assistant message of the previous turn", freezing the entire preceding conversation into cache. In a typical CLI session this cuts input token cost by 50-80%. More elegantly, BYF abstracts the strategy into a provider-agnostic logical label (`CacheHint`): the Anthropic adapter translates it into explicit `cache_control` breakpoints, and the OpenAI adapter auto-matches prefix caching. **One strategy, different translations** — "separate policy from implementation" applied to caching.
+To ensure steady prefix cache hits against Anthropic endpoints, BYF enforces a "3+1" staking protocol:
+- Static stakes: System prompts and tool specifications;
+- Dynamic stake: Anchored strictly at the **final token of the preceding turn's Assistant message**.
 
-## Next Up
+Throughout a session's lifecycle, the orchestrator refuses to mutate historical assistant turns once emitted. All observation masking operations are applied lazily to historical observations without altering established assistant prefixes, keeping remote cache stakes alive across long command sequences.
 
-Context compaction solves "short-term memory" — managing information within the current session. But a coding assistant also needs **long-term memory** — remembering user preferences, project conventions, and past feedback across sessions. Next up: Claude Code's **memory system** — four memory types, semantic recall, persistent storage — how AI "remembers you".
+## Conclusion: Curing the Illusion of Infinite Memory
 
----
+Industry evangelism around million-token context windows and lifelong agent memories is largely marketing rhetoric that obscures underlying architectural friction.
 
-> This series analyzes the architecture of the [official Claude Code source](https://github.com/anthropics/claude-code), focusing on design ideas rather than code implementation.
+A disciplined systems engineer recognizes that a Transformer's attention layer is an expensive, volatile, distance-sensitive physical cache. Relying on recursive lossy summaries to maintain the facade of unbounded context inevitably degrades under the weight of semantic entropy.
+
+In real-world software engineering, when a session exceeds 30 iterative turns and undergoes multiple compactions, the professional move is to commit verified changes via `git commit`, wipe the runtime state, and issue `/clear`. Starting a clean session with unambiguous architectural boundaries is far more dependable than wading through the cognitive sludge of a degraded cache.
 

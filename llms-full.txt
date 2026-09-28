@@ -32,13 +32,13 @@
 ### Claude Code 源码拆解
 - [AI 编程工具的未来：从 Copilot 到 Autonomous Agent](https://blog.baifan.site/ai-coding-tools-future-copilot-to-autonomous-agent/) (2026-07-06)
 - [3000 行 vs 50 万行：从玩具到产品的架构深渊](https://blog.baifan.site/claude-code-3000-vs-500k-lines/) (2026-07-02)
-- [Plan Mode 与设计先行：让 AI 先想再做](https://blog.baifan.site/claude-code-plan-mode/) (2026-06-16)
+- [Plan 模式的离散状态机：决策树剪枝、回溯代价与边际收益递减](https://blog.baifan.site/claude-code-plan-mode/) (2026-06-16)
 - [MCP 协议：AI 工具互联的 USB-C](https://blog.baifan.site/claude-code-mcp-protocol/) (2026-06-12)
 - [多代理架构：分叉-汇聚模式的协作艺术](https://blog.baifan.site/claude-code-multi-agent-architecture/) (2026-06-09)
 - [Skill 的本质：可复用的专业知识封装](https://blog.baifan.site/claude-code-skills-system/) (2026-06-05)
 - [AI 的记忆系统：四种记忆类型与语义召回](https://blog.baifan.site/claude-code-memory-system/) (2026-06-02)
-- [上下文压缩：让 AI 拥有"无限记忆"的四种手段](https://blog.baifan.site/claude-code-context-compression/) (2026-05-23)
-- [权限与安全：让 AI 有破坏力但不失控](https://blog.baifan.site/claude-code-permissions-security/) (2026-05-20)
+- [上下文压缩的物理代价：KV Cache 压力、注意力衰减与有损摘要](https://blog.baifan.site/claude-code-context-compression/) (2026-05-23)
+- [权限系统与真实安全边界：沙箱、系统调用与审批逃逸](https://blog.baifan.site/claude-code-permissions-security/) (2026-05-20)
 - [System Prompt 工程：800 行提示词背后的设计决策](https://blog.baifan.site/claude-code-system-prompt-engineering/) (2026-05-16)
 - [工具即能力：AI Agent 的工具系统设计哲学](https://blog.baifan.site/claude-code-tool-system-design/) (2026-05-12)
 - [AI 编程助手的灵魂：Think-Act-Observe 循环](https://blog.baifan.site/claude-code-think-act-observe-loop/) (2026-05-07)
@@ -336,7 +336,7 @@ Tags: 黄金, 投资, 经济分析, 避险资产
 Date: 2025-11-18
 Tags: 短剧, 文化产业, 影视行业
 
-深度报道短剧行业现状：从西安、郑州的拍摄现场到行业生态，揭示短剧风口背后的城市疲倦与从业者生存现状。
+从西安白鹿原的泥泞外景到郑州废弃厂房的竖屏片场，劣质化纤戏服与发馊盒饭撑起了短剧的神话。暴利账本背后，九成流水被算法买量抽干，数十万人连轴运转，在耗竭中维持着虚妄的上升感。
 
 ### [县城的暮光：人口抽水机与财政退潮后的无声落幕](https://blog.baifan.site/china-county-economy-twilight/)
 Date: 2025-11-11
@@ -354,7 +354,7 @@ Tags: 巴菲特, 价值投资, 投资哲学, 商业分析
 Date: 2025-10-21
 Tags: 经济学人, 地缘政治, 经济观察
 
-《经济学人》这期说世界在再平衡，但更像是场没人知道规则的牌局。美国、中国、欧洲，还有那个被吹上天的AI，都在各自摸牌。
+《经济学人》以世界再平衡粉饰战后秩序的坍塌。从关税壁垒、产业补贴内卷到地缘零和博弈，旧日自由贸易的挽歌在华盛顿与布鲁塞尔的焦躁中已然奏响。
 
 ### [特朗普与纽约新市长的对决：一场政治风暴的序幕](https://blog.baifan.site/trump-vs-mamdani-nyc-showdown/)
 Date: 2025-10-14
@@ -372,7 +372,7 @@ Tags: 地缘政治, 国际关系, 战略资源
 Date: 2025-09-23
 Tags: 地缘政治, 社交媒体, 中美关系, 科技行业
 
-深度解析TikTok在特朗普政府时期的生存策略、内部管理危机和地缘政治博弈。基于Emily Baker-White新书《Every Screen on the Planet》的调查报道，揭示TikTok内部权斗和管理层误判如何影响其在美发展，探讨科技公司在大国博弈中的生存之道。
+剥离地缘博弈的温情面纱，直击华盛顿K街游说、硅谷巨头暗算与民粹政客交易的底层权力机制。一部关于TikTok在内部倾轧与强权意志夹缝中苟活的权力解剖录。
 
 ### [华尔街日报深度分析：英伟达芯片禁令与假期出行危机背后的经济信号](https://blog.baifan.site/wsj-nvidia-chip-ban-economic-analysis/)
 Date: 2025-09-16
@@ -405,11 +405,11 @@ Tags: Claude Code, BYF, AI Agent, 软件工程, 架构设计, 开源, 源码分�
 
 对比 claude-code-from-scratch 的 3000 行极简实现和 Claude Code 官方源码的 50 万行工程巨兽：从玩具到产品，架构深渊里藏着多少工程细节？BYF 作为中间的实战案例——一个真实项目的工程化决策和设计债清理经验。
 
-### [Plan Mode 与设计先行：让 AI 先想再做](https://blog.baifan.site/claude-code-plan-mode/)
+### [Plan 模式的离散状态机：决策树剪枝、回溯代价与边际收益递减](https://blog.baifan.site/claude-code-plan-mode/)
 Date: 2026-06-16
-Tags: Claude Code, BYF, AI Agent, 开发流程, 设计先行, 开源, 源码分析
+Tags: Claude Code, BYF, AI Agent, 架构设计, 状态机, 决策树, 源码分析
 
-拆解 Claude Code 的 Plan Mode：为什么“只读规划"模式能显著提高代码质量？读-想-写的分离为什么是 AI 编程的关键分水岭。BYF 在 ADR 0008 中主动移除了 Plan Mode，用自然语言 + 工具方案替代——这个反向案例同样值得深思。
+解构 Claude Code 的 Plan 模式：从有限状态机（FSM）建模、决策树发散约束与交互式确认屏障，剖析只读规划如何降低物理回溯成本，并直面预先规划在遇到动态编译反馈时的工程脆弱性与边际递减法则。
 
 ### [MCP 协议：AI 工具互联的 USB-C](https://blog.baifan.site/claude-code-mcp-protocol/)
 Date: 2026-06-12
@@ -435,17 +435,17 @@ Tags: Claude Code, BYF, AI Agent, 记忆系统, 语义召回, 开源, 源码分�
 
 拆解 Claude Code 的记忆系统：用户记忆、反馈记忆、项目记忆、引用记忆——四种记忆类型如何协同工作，让 AI 跨会话记住你的偏好和项目约定。结合 BYF 的 Wire Records 事件溯源机制，看会话持久化和 vis 调试工具的设计。
 
-### [上下文压缩：让 AI 拥有"无限记忆"的四种手段](https://blog.baifan.site/claude-code-context-compression/)
+### [上下文压缩的物理代价：KV Cache 压力、注意力衰减与有损摘要](https://blog.baifan.site/claude-code-context-compression/)
 Date: 2026-05-23
-Tags: Claude Code, BYF, AI Agent, 上下文管理, 压缩策略, 开源, 源码分析
+Tags: Claude Code, BYF, AI Agent, 上下文管理, KV Cache, 压缩策略, 源码分析
 
-拆解 Claude Code 的上下文压缩策略：四层管道如何在有限的上下文窗口里塞进尽可能多的有效信息。消息裁剪、对话压缩、窗口管理——AI 的“无限记忆"是精心设计的幻觉。BYF 的 Observation Masking 和 CacheStakingStrategy 在实践中验证了这些策略。
+解构 Claude Code 的上下文压缩策略：从 Transformer 物理注意力稀释、KV Cache 显存开销到动态摘要重写带来的信息熵增与 Lost-in-the-Middle 困境，解析工业级 Agent 在无限记忆假象背后的工程妥协与缓存桩设计。
 
-### [权限与安全：让 AI 有破坏力但不失控](https://blog.baifan.site/claude-code-permissions-security/)
+### [权限系统与真实安全边界：沙箱、系统调用与审批逃逸](https://blog.baifan.site/claude-code-permissions-security/)
 Date: 2026-05-20
-Tags: Claude Code, BYF, AI Agent, 安全设计, 权限管理, 开源, 源码分析
+Tags: Claude Code, BYF, AI Agent, 安全设计, 权限管理, 系统安全, 源码分析
 
-拆解 Claude Code 的权限系统设计：5 级权限模型如何平衡 AI 的自主性和用户的安全感。读、写、执行——不是所有操作都同等危险。结合 BYF 的 Approval 系统和生命周期 hooks，看真实项目如何校准信任刻度。
+解构 Claude Code 的权限体系与安全模型：从操作系统 Capability、POSIX 系统调用截获到应用层参考监视器的天然脆弱性，剖析动态审批机制在面对提示词注入与解析差异时的安全边界与工程妥协。
 
 ### [System Prompt 工程：800 行提示词背后的设计决策](https://blog.baifan.site/claude-code-system-prompt-engineering/)
 Date: 2026-05-16

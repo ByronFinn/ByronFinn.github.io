@@ -1,129 +1,61 @@
 # TikTok Meets Trump: All the Wrong Moves, Somehow Still Alive
 
 
-# TikTok Meets Trump: All the Wrong Moves, Somehow Still Alive
+Along the marble corridors of Washington there are no innocent victims—only priced lobbying invoices and bargaining chips laid out on the cutting block. TikTok's miraculous survival between Capitol Hill and the White House was never a triumph of cross-border corporate virtue; it was an absurd theater of raw power choreographed by Silicon Valley ambushes, K-Street black money, internal corporate purges, and extortion by populist strongmen.
 
-> Driven to the edge, TikTok found its way to survive: hand the stage, the applause and the glory to Trump, as lavishly as possible
+<!-- more -->
 
-TikTok: the most watched piece on the geopolitical chessboard.
+## Silicon Valley's Hidden Daggers and the K-Street Ledger
 
-In Washington it is seen as a Trojan horse from the East, poised to gather intelligence for China and lay the groundwork for manipulating public opinion; in other eyes it is a pitiful sacrificial pawn, trembling under the crush of the superpowers, waiting for judgment at the negotiating table.
+Behind the endless congressional hearings, the fingers actually pulling the triggers were rival executives lurking in the shadows.
 
-But is the piece truly without a will of its own?
+When Meta's Instagram Reels and Google's YouTube Shorts found themselves outmatched across every metric of screen time and algorithmic engagement, Silicon Valley's monopolists abandoned iterative code improvements. The most cost-effective and immediate defensive countermeasure was to borrow the iron fist of the federal state and physically dismantle their rival under the cover of national security.
 
-Quite the opposite. TikTok's near-total collapse in the face of the Biden administration and Congress came not just from the external campaign to strangle it, but from one act of self-harm after another. Many of the "self-rescue" choices made voluntarily by the team behind it — including senior leadership at parent group ByteDance — turned into self-defeating death warrants that made the geopolitical challenge all the more lethal. And the ease with which they set themselves on fire traces back to something deep-rooted in TikTok's internal constitution.
+Reporting revealed that Meta secretly retained Targeted Victory, a premier Republican public affairs consultancy in Washington, to mount a coordinated smear campaign across dozens of regional newspapers, broadcast outlets, and digital wire services. Carefully fabricated panic pieces flooded the airwaves, blaming TikTok for viral teen delinquencies ranging from vehicle thefts to classroom pranks. Commercial defeat was rebranded into a righteous crusade to defend Western civilization and the mental hygiene of American youth.
 
-That is the most gripping thread of Every Screen on the Planet: The War Over TikTok, the new book published last month by investigative journalist Emily Baker-White. Baker-White (a Forbes tech reporter, Harvard Law trained) works like a forensic pathologist, dissecting the behemoth that is TikTok. Her story runs from its wild growth and its march into America all the way to its eerie resurrection at Trump's hands.
+Meanwhile, K-Street lobbyists padded silently across dark-red carpets into congressional suites. To avert immediate regulatory execution, ByteDance shelled out tens of millions of dollars in annual lobbying retainers, recruiting former lawmakers, ex-Pentagon advisers, and senior bipartisan chiefs of staff.
 
-What the book exposes is not just the two governments' long-public pressure campaigns; more chilling is the sinking of TikTok's own management: **blundering leadership, tangled infighting, fatal misjudgments and permanent discord** piling crisis upon crisis, until the company lost everything at the card table of the White House, Congress and the courts.
+Money lubricated every joint of the political machine. Lobbyists pocketed exorbitant retainers from ByteDance while slipping lethal, razor-sharp questions to congressional committee staffers before closed hearings. The bipartisan lobbying network institutionalized security anxiety into a perpetual rent-seeking enterprise. As observed in our ledger on [the economic blowback of technological blockades]({{< ref "2025-11-04-wsj-nvidia-chip-ban-economic-analysis.md" >}}), the moment national security becomes an instrument of commercial predation, regulatory compliance offers zero defense against slaughter.
 
-And yet, perversely, it was this team — masters of the internal fight, amateurs at the external one — that found, in Trump's shadow, the dark law of survival against all odds.
+## The Internal Purge: Beijing's Commissar and Twenty-Nine Thousand Emails
 
----
+If external siege provided the pressure, the internal breakdown of TikTok's own governance provided the poison that drove it toward the abyss. The reporting by investigative journalist Emily Baker-White in *Every Screen on the Planet* reveals a grotesque anatomy of corporate decay.
 
-### Fire in the Rear: The Power Strangle That Killed the "Self-Rescue"
+In 2020, seeking to placate Washington's demands for independence, TikTok hired Roland Cloutier—a cybersecurity heavyweight with an Air Force background—as its Global Chief Security Officer. On paper, Cloutier was the immaculate "American face" designed to reassure the Pentagon and CFIUS of the platform's neutrality.
 
-TikTok's "self-rescue" strategies tended to die not at the hands of enemies but strangled in the cradle by its own people. A senior-level feud between ByteDance and TikTok US is the classic tragedy.
+Yet within a corporate architecture characterized by centralized control in Beijing, Western compliance frameworks were little more than cardboard facades. Long before Cloutier arrived, Chris Lepitak, a founding veteran reporting straight to the parent company's executive suite, had established total control over internal audits. Lepitak bypassed nominal subsidiary CEO Shou Zi Chew entirely. Whenever Cloutier attempted to map out sensitive data flows under US legal protocols, he ran headlong into information blockades erected by Beijing.
 
-To launder its image and win American trust, TikTok paid handsomely in 2020 to recruit an industry heavyweight as global security chief: Roland Cloutier, a veteran of the US Air Force and of police work. This should have been the perfect "American face," a superb PR move — at minimum, it would have let TikTok look, on the surface, more like a "normal American company."
+By late 2021, bureaucratic friction erupted into an outright political purge. Bypassing legal oversight, Lepitak retained private investigators to rifle through all 29,293 of Cloutier's corporate emails across a grueling nine-month investigation. While this witch hunt uncovered zero graft, it succeeded in humiliating and neutralizing the Chief Security Officer, forcing his eventual resignation. At the exact juncture when congressional scrutiny reached fever pitch, TikTok's leadership had torn away its own most expensive compliance facade from the inside.
 
-But TikTok's "original sin" — its shadowy ties to parent company ByteDance — had seeded the minefield long before.
+Project Texas—a multi-billion-dollar initiative to isolate US data on Oracle's cloud—collapsed into a monumental engineering boondoggle. The server racks were purchased, but the codebase inherited from thousands of engineers in China remained an impenetrable labyrinth. Critical administrative tools, revenue engines, and content-moderation backends were riddled with untranslated Chinese comments and tangled permission hierarchies. American engineers tasked with auditing the infrastructure were baffled by the systems they were paid to defend. What was conceived as a showcase of algorithmic isolation became, in the eyes of Washington hawks, an indefensible black box of self-incrimination.
 
-A year before Cloutier came aboard, a founding-era veteran named Chris Lepitak was already entrenched there. Lepitak's peculiarity: his direct boss sat in Beijing, and that boss's direct boss was the parent company's CEO. That hotline-to-the-throne status made Lepitak's loyalty point one way only — toward Beijing. Multiple employees confirmed that Lepitak "would do anything to please his superiors," and that he was skilled at exploiting his position: merely hinting at commands from "China" leadership was enough to direct the American team.
+## Self-Mutilation: The Populist Nuclear Gamble
 
-So when the "outside monk" Cloutier was handed an equally internal-oversight mandate, a turf war between the "security chief" and "Beijing's commissar" became inevitable.
+Under the Biden administration, as federal legislative machinery ground forward, TikTok's legal moderates were pushed aside. Hardline chief lobbyist Michael Beckerman assumed operational command, staking the company's survival on a self-destructive political gamble.
 
-Cloutier's direct superior was Shou Zi Chew, the Singaporean CEO of TikTok the subsidiary. Standing before a Lepitak who held the imperial sword, the global security chief's authority was pitifully small. If his team wanted to know which data the China side could access, the request had to be relayed through Lepitak's team. And according to former employees, information obtained via these internal so-called "green channels" was often incomplete — sometimes plainly wrong.
+Beckerman sought to replicate Uber's early municipal playbook: bypassing institutional diplomacy to unleash users directly against federal lawmakers.
 
-At the end of 2021, the storm arrived. Lepitak directed his subordinates to launch a brazen "audit" of Cloutier's team, claiming he was merely executing orders from "China." They even hired private investigators to read, one by one, all 29,293 of Cloutier's emails — an attempted political vetting.
+The platform pushed an unclosable full-screen alert to 170 million American users, stripping away "skip" and "dismiss" buttons. Bold red type screamed that Congress was preparing to steal their beloved platform, paired with a single-tap gateway auto-dialing local congressional switchboards.
 
-The nine-month investigation failed to pin down any major graft. But for Cloutier, the humiliation was already more than enough. Disillusioned, he went progressively silent from 2022 and announced his departure mid-year.
+Within hours, Capitol Hill's telephone exchanges melted down. Thousands of frantic teenagers and children overwhelmed switchboard operators with tearful tirades and death threats against elected representatives.
 
-**The timing of his abandonment of ship was perfect irony**: at that very moment, scrutiny of TikTok by the Biden administration and both parties in Congress was entering its harshest phase, and TikTok's security chief — the most important "American face" of all — no longer cared to dress the shopfront.
+This populist stunt struck the raw nerve of the Washington establishment. Lawmakers realized with dread that a foreign-controlled platform possessed the switchboard capability to mobilize tens of millions of domestic citizens within minutes, weaponizing their outrage directly against the seats of constitutional governance.
 
-Office politics, in that moment, amplified geopolitical risk. The overlapping power of parent and subsidiary curdled into a power struggle between the old guard and the new, and the "self-rescue" plan miscarried entirely. The author's summary is surgical: the feud was "the physical embodiment of the tensions between TikTok and ByteDance." And by the outcome, the parent, ByteDance, was clearly the winner.
+Terror catalyzed swift retaliation. The House Energy and Commerce Committee, typically paralyzed by partisan rancor, voted unanimously 50-0 within days to advance the divest-or-ban statute. As detailed in our breakdown of [the NYC populist showdown and the establishment counter-strike]({{< ref "2025-11-07-trump-vs-mamdani-nyc-showdown.md" >}}), any populist agitation lacking institutional coercive force that openly threatens the sovereign security of a ruling class will inevitably face total systemic annihilation.
 
-"True independence for TikTok remains a long, long way off."
+## The Loyalty Pageant: An Inaugural Sacrificial Rite
 
----
+When legal appeals, public relations spin, and user mobilizations lay in smoking ruins, TikTok's executives discarded the polite fiction of corporate governance. They retreated to the oldest, crudest instinct in the history of power: groveling before the personal authority of a strongman.
 
-### Project Texas: A Technical Nightmare Lost in the Code Labyrinth
+Constitutional homilies and First Amendment briefs were tossed aside. Every remaining chip was shoved toward Donald Trump. Oracle founder and major political donor Larry Ellison served as the backchannel broker. Trump casually tossed out demands on the campaign trail for billions of dollars in extortion money to establish a "patriotic history education fund." In response, TikTok fired its legal team, retained Trump's personal counsel, and inserted into court briefs a statement defying constitutional separation of powers: that the incoming president alone holds the supreme authority to determine TikTok's fate.
 
-If the power struggle was a man-made calamity, the failure of Project Texas was a pure technical disaster — one detonated by internal chaos.
+The crowning performance occurred on the eve of the presidential inauguration.
 
-TikTok knew early on that data security would be its Achilles' heel. So it hurled more than a billion dollars at the problem, promising to store US user data on Oracle servers in Texas.
+Without any court order taking effect, TikTok voluntarily pulled the plug, plunging millions of American users into darkness. The blackout screen broadcast a clear political message: "We are fortunate that President Trump is working to bring TikTok back online."
 
-**It was meant to be its Normandy landing in America; it ended as the Dunkirk evacuation.**
+Hours later, the moment the new president concluded the oath of office, the application "miraculously" revived. A notification blanketed every American handset, expressing humble gratitude to Trump for personally saving the platform.
 
-The project not only failed to become a solution — it never even qualified as a starting point for negotiations. Its failure is the index case of TikTok's internal problems.
+It was an impeccably staged, groveling imperial tribute. The brief outage involved zero technical failures and zero legal developments—only a multinational tech monopoly offering its absolute surrender before a ruler on live television.
 
-The concept was simple: sensitive data such as passwords, direct messages and drafts would be placed beyond China's reach; public videos and the like would stay unprotected. The reality was a dead knot nobody could untie.
-
-Through TikTok's years of breakneck expansion, the vast Chinese engineering teams had left behind code like a tangled skein. Which software could access which data? Who held the permissions? Even people inside the company could not say. The pipes carrying sensitive information toward China were more than anyone could count, let alone inventory.
-
-Rob, a former employee tasked with the inventory, showed the author the "technical nightmare" up close: he faced content-moderation software, creator-monetization software, system-administration software, at least three data-analytics tools, at least four distinct databases... and several pieces of software **"not yet fully translated from Chinese into English"** — he did not even know what they were for.
-
-When Rob asked American staff, the answers he got were: "the features we use have no user privacy, but there are features here even we can't identify," or "probably not, but you'd have to ask the engineers in China about the specifics" — engineers who had either long since left or spoke no English.
-
-After burning more than a billion dollars, TikTok had bought the hardware but could never deliver a credible finished plan. It did not die of Washington's distrust; it died of its own technical incompetence.
-
----
-
-### Survival Against All Odds: Trump's Chaos and TikTok's Luck
-
-Beset by troubles inside and out, TikTok nonetheless stumbled into a stroke of accidental luck during Trump's first term.
-
-Facing Trump's "sell or be banned" threats, TikTok's strategy was to "keep its options open": cooperate as far as possible while seeking court intervention. The strategy worked — but the way it worked was farcically dramatic.
-
-Zhang Yiming, ByteDance's founder, with the help of a senior Microsoft lawyer, made the right call: among the many buyers, Oracle was the only lifeline — its boss was a Trump donor with tight ties to the hawkish aides.
-
-Yet TikTok's luck ran deeper than imagined: **what saved it, in the end, was precisely Trump's own volatility and unreliability.**
-
-Just as the deal seemed sealed, Trump, improvising at a campaign event, suddenly demanded that TikTok and Oracle put up $5 billion to teach "real history." A demand embarrassing beyond measure, both politically and financially, froze the deal on the spot.
-
-Meanwhile, TikTok's lawsuit prevailed because Trump's team had acted so arbitrarily that the judge found the process riddled with defects. After one delay too many, Trump was diagnosed with Covid-19, and then plunged into the frenzy of overturning the election result.
-
-The scorching potato that was TikTok was, miraculously, "forgotten."
-
-"That things unfolded the way they did," the author notes, dripping irony, "shows just how lucky Zhang Yiming was that the man sitting across the table happened to be Trump."
-
----
-
-### The Final Bet: From Reckless Mobilization to Fealty to the Leader
-
-Luck does not last forever. Under Biden, facing a far more methodical campaign of total encirclement, TikTok found itself on a road to nowhere.
-
-The moderate lawyers lost ground, and the hardline lobbyist Michael Beckerman took the stage. Beckerman decided to copy Uber with the most foolish of political gambles: **mobilize the users, intimidate Congress.**
-
-He overlooked one fatal distinction: lawmakers' doubts about Uber concerned labor rights, while their doubts about TikTok **were precisely its political influence.**
-
-TikTok force-pushed a notification to all American users — "call your member of Congress and protest" — and deliberately left out a "close" button. Overnight, Capitol Hill's phone lines melted down; several lawmakers even received death threats.
-
-**In that moment, TikTok confirmed, with its own hands, Washington's deepest fear about it.**
-
-The result was catastrophic: in the committee vote that followed, a House that could scarcely agree on anything managed a rare unanimous **50-0** tally. Beckerman's "nuclear deterrent" ended up blowing itself up.
-
-At the end of the road, Trump's comeback became TikTok's only way out. And this time, TikTok's management finally saw the light. It pushed every chip onto one man: Trump.
-
-It swapped generals mid-battle and hired Trump's favored lawyers; it filled its legal filings with political signals, asserting that "the incoming president alone truly has the authority to decide TikTok's fate" — legally baseless, but politically, this was a **declaration of fealty**.
-
-The most theatrical scene came on the eve of the inauguration. TikTok abruptly went dark in an act of "self-termination," pushing out a preview: "We are lucky that President Trump... will find a way to bring TikTok back online."
-
-A few hours later, on inauguration morning, TikTok was "miraculously resurrected." A new notification appeared on every American user's screen, thanking President Trump personally for keeping TikTok running.
-
-In those few short hours, not one legal fact had changed. This was never an "outage" — it was a meticulously staged "political tribute," a grand performance of thanks-to-the-sovereign-for-his-grace.
-
-Beckerman, representing TikTok, had finally found the correct use of the forced notification: **not to mobilize users to demonstrate against lawmakers, but to turn a hundred million users into the audience of a grand show designed for Trump, letting the new savor bask in their gaze.**
-
----
-
-The story told in Every Screen on the Planet proves, at every turn, that TikTok was never a purely helpless, innocent chess piece. Its fate lay half in the storm out of Washington — and the other half was clenched in the hands of its own self-defeating executives.
-
-From the early corner-cutting to the later palace-intrigue attrition, TikTok's constitutional weaknesses once drove it to the edge of the cliff.
-
-But the ending delivers a brutal truth: companies of the ByteDance kind are, at bottom, products of an environment of concentrated power. They cannot understand the rules of the game in a democratic society — they know neither how to win popular support nor any reverence for the spirit of the rule of law — yet they have mastered the survival art of pledging loyalty to the strong.
-
-This dependent mode of survival, whatever surname its object of loyalty bears, is in essence submission to the logic of power. **When a technology company finally gives up the independence of its technological ideals and chooses to scrape by in the shadow of raw power, what it loses is not merely market position, but the moral courage to push society forward.**
-
-That may be the deepest lesson of TikTok's predicament: on the geopolitical chessboard, more important than winning or losing is what kind of piece you choose to be.
+Faced with naked sovereign will, the myth of algorithmic neutrality is exposed as vapor. The collective attention of hundreds of millions of citizens was reduced to a private transactional offering. This is the final terminus for tech capital in the geopolitical meat grinder: once the masks of institutional order fall away, the summit of corporate wisdom is simply knowing which strongman to kneel before, and ensuring you hit the floor harder than anyone else.
 
