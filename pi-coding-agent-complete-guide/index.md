@@ -181,7 +181,7 @@ pi
 
 详见[官方文档](https://pi.dev/docs)
 
-![Pi TUI](/pictures/note/pi-tui.png)
+![Pi TUI](/pictures/posts/pi-tui.png)
 
 感受一下 TUI 界面。你可以编写主题和扩展进行自定义，甚至让 Pi 看起来完全不同。
 

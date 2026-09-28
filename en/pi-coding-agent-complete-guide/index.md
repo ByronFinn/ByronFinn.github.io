@@ -181,7 +181,7 @@ The file is reloaded every time you type `/model` in Pi, so editing `models.json
 
 See the [official documentation](https://pi.dev/docs)
 
-![Pi TUI](/pictures/note/pi-tui.png)
+![Pi TUI](/pictures/posts/pi-tui.png)
 
 Get a feel for the TUI. You can write themes and extensions to customize it — you can even make Pi look completely different.
 
