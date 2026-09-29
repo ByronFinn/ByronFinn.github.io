@@ -1,5 +1,12 @@
 # All the Tmux You'll Ever Use: Sessions, Panes, Detach
 
+- Date: 2026-04-21
+- Author: ByF
+- URL: https://blog.baifan.site/en/tmux-practical-guide/
+- Description: The tmux you actually use: detaching and attaching sessions, splitting panes, managing windows — just the daily operations, with a cheat sheet.
+
+---
+
 
 You SSH into a server to run a long task, the network drops, and the task is gone. Tmux exists to solve exactly this — it decouples the terminal session from the window, so the process keeps running after you close the terminal.
 

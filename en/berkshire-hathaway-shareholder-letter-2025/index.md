@@ -1,5 +1,12 @@
 # Buffett's 2025 Shareholder Letter: Farewell and Legacy
 
+- Date: 2025-10-31
+- Author: ByF
+- URL: https://blog.baifan.site/en/berkshire-hathaway-shareholder-letter-2025/
+- Description: Warren Buffett's 2025 shareholder letter: he will no longer write the annual report, looks back on his life, discusses his wealth succession plan, and shares his outlook on Berkshire's future.
+
+---
+
 
 {{< figure src="/pictures/note/berkshire-shareholder-letter-featured.jpg" alt="Berkshire shareholder letter cover" caption="Selected cover of the Berkshire shareholder letter" >}}
 

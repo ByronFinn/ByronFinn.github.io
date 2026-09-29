@@ -1,5 +1,12 @@
 # Linux Out of Memory? ZRAM Compression and Practical Config
 
+- Date: 2026-01-31
+- Author: ByF
+- URL: https://blog.baifan.site/en/zram-memory-optimization-linux/
+- Description: How SWAP and ZRAM differ under the hood, where ZRAM fits on low-memory Linux devices, how to configure it, and hybrid strategies — so you can pick the best memory expansion approach.
+
+---
+
 
 <!-- more -->
 

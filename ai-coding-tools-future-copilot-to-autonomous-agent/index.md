@@ -1,5 +1,12 @@
 # AI 编程工具的未来：从 Copilot 到 Autonomous Agent
 
+- Date: 2026-07-06
+- Author: ByF
+- URL: https://blog.baifan.site/ai-coding-tools-future-copilot-to-autonomous-agent/
+- Description: Claude Code 源码拆解系列收官之作：回顾 AI 编程工具从代码补全到自主代理的演进路径。探讨 CLAUDE.md “项目宪法" 带来的开发范式变革，以及 BYF 的 AGENTS.md 工程、ByfHarness SDK、vis 可视化调试对未来 Agent 开发的启示。
+
+---
+
 
 <!-- more -->
 

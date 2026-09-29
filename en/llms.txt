@@ -26,7 +26,7 @@ Daily Deep Think is a technology blog run by ByF, focused on three areas:
 
 **Deep Thinking**: Essays on the philosophy of engineering, team management, the meaning of life, and the uncertainty of AI.
 
-Built with Hugo and the DoIt theme, hosted on GitHub Pages.
+Built with Hugo and the Blowfish theme, hosted on GitHub Pages.
 
 ## Author
 

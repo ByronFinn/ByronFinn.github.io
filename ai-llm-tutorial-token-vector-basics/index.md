@@ -1,5 +1,12 @@
 # AI大模型完全指南：从零基础到Token与向量的深度解析
 
+- Date: 2025-07-22
+- Author: ByF
+- URL: https://blog.baifan.site/ai-llm-tutorial-token-vector-basics/
+- Description: AI大模型完全指南：从零基础到Token与向量的深度解析。系统学习AI核心技术原理，包括Token机制、向量表示、Transformer架构等关键概念。深入理解LLM工作机制，掌握人工智能基础理论，通过实例和图表详细阐述AI应用开发的核心要点，为深度学习和AI实践奠定扎实基础。
+
+---
+
 
 # AI 教程：从基础到深入的 AI 大模型指南
 

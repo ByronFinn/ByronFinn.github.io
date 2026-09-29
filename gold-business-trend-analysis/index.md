@@ -1,5 +1,12 @@
 # 黄金商业趋势分析：全球经济不确定性下的贵金属市场
 
+- Date: 2025-11-28
+- Author: ByF
+- URL: https://blog.baifan.site/gold-business-trend-analysis/
+- Description: 深度分析当前黄金市场的商业趋势，探讨全球经济不确定性、通胀预期、央行政策等因素对贵金属价格的影响，以及投资者和企业的应对策略。
+
+---
+
 
 "黄金牛"喘息还是终结？
 

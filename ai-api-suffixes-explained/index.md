@@ -1,5 +1,12 @@
 # AI API 的后缀是什么，为什么要这样设计
 
+- Date: 2026-04-14
+- Author: ByF
+- URL: https://blog.baifan.site/ai-api-suffixes-explained/
+- Description: 从 /v1/completions 到 /v1/responses，AI API 的后缀规定了请求和响应的数据结构，这篇文章把这条链路讲清楚。
+
+---
+
 
 我们经常看到这种 URL：
 

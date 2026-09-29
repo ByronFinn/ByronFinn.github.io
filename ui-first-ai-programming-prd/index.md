@@ -1,5 +1,12 @@
 # AI 编程新思路：从 UI 倒推 PRD，让需求可视化
 
+- Date: 2026-02-17
+- Author: ByF
+- URL: https://blog.baifan.site/ui-first-ai-programming-prd/
+- Description: 探讨一种 AI 编程的逆向工作流：先构建 UI 原型，再从视觉材料反向推导 PRD，用可视化手段消除需求理解偏差，减少返工并提高交付质量。
+
+---
+
 
 <!-- more -->
 

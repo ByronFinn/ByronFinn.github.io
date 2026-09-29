@@ -1,5 +1,12 @@
 # 稀土战争：在地缘政治重构中中国的战略自信与资源主权
 
+- Date: 2025-10-07
+- Author: ByF
+- URL: https://blog.baifan.site/rare-earth-war-china-strategic-confidence/
+- Description: 深度分析全球稀土产业格局，探讨中国在地缘政治博弈中的资源主权优势与战略定力。从产业链完整性、技术自立到国际合作，全面解读稀土作为战略资源的重要意义。
+
+---
+
 
 {{< image src="/pictures/note/20251107-xituzhanzheng.png" caption="稀土战争" src_s="/pictures/note/20251107-xituzhanzheng.png" src_l="/pictures/note/20251107-xituzhanzheng.png" >}}
 

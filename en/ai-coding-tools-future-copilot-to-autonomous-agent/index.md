@@ -1,5 +1,12 @@
 # The Future of AI Coding Tools: From Copilot to Autonomous Agent
 
+- Date: 2026-07-06
+- Author: ByF
+- URL: https://blog.baifan.site/en/ai-coding-tools-future-copilot-to-autonomous-agent/
+- Description: The finale of the Claude Code source deconstruction series: how AI coding tools evolved from code completion to autonomous agents, the paradigm shift of CLAUDE.md as a project constitution, and what BYF's AGENTS.md engineering, ByfHarness SDK, and vis visual debugging suggest for future agent development.
+
+---
+
 
 <!-- more -->
 

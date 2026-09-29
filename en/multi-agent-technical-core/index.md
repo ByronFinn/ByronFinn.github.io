@@ -1,5 +1,12 @@
 # Multi-Agent Collaboration: Value From Structure, Not Concurrency
 
+- Date: 2026-08-12
+- Author: ByF
+- URL: https://blog.baifan.site/en/multi-agent-technical-core/
+- Description: The technical core of multi-agent collaboration: adversarial separation of production and verification, explicit context isolation, externalized state and memory consolidation — plus why structureless multi-agent is just costlier concurrency, and six questions this approach itself leaves open.
+
+---
+
 
 Conclusion first: the value of multi-agent doesn't come from more models; it comes from the right structure. Multi-agent without structure is just more expensive concurrency — burn 2 to 3 times the tokens to watch a group of models nod at each other. Multi-agent with structure is an execution system that can delegate, parallelize, and verify.
 

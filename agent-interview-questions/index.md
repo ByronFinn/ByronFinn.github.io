@@ -1,5 +1,12 @@
 # Agent 面试题：哪些问题能筛出真干活的人
 
+- Date: 2026-07-13
+- Author: ByF
+- URL: https://blog.baifan.site/agent-interview-questions/
+- Description: 面了十几个 Agent 方向的候选人之后，一个感觉越来越强烈。五个面试问题，回答的细节决定了是真干过还是背概念。多 Agent 架构、通信、错误处理、状态管理、tool calling，每个都有明显的信号。
+
+---
+
 
 <!-- more -->
 

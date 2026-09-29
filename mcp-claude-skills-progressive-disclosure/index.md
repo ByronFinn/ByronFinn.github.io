@@ -1,5 +1,12 @@
 # MCP 实现 Claude Skills 渐进式披露：Skill in Anywhere
 
+- Date: 2025-12-26
+- Author: ByF
+- URL: https://blog.baifan.site/mcp-claude-skills-progressive-disclosure/
+- Description: 详细介绍如何利用 MCP 协议实现类似 Claude Skills 的动态能力加载机制，包括技术架构设计、工程验证和完整实现方案。涵盖渐进式披露、上下文优化、跨 Agent 兼容性等关键技术要点。
+
+---
+
 
 {{< figure src="/pictures/note/claudecodeskills.png" alt="Claude Code Skill in Anywhere" caption="Claude Code Skill in Anywhere" >}}
 

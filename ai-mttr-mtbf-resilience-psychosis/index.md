@@ -1,5 +1,12 @@
 # AI 时代的精神病：当 MTTR 狂热撞上系统韧性
 
+- Date: 2026-02-24
+- Author: ByF
+- URL: https://blog.baifan.site/ai-mttr-mtbf-resilience-psychosis/
+- Description: 从基础设施 MTBF vs MTTR 的老争论出发，看当前 AI 编程狂热中一个被忽略的问题：当局部指标全绿灯的时候，系统的全局风险可能正在积累，而没人注意到。
+
+---
+
 
 <!-- more -->
 

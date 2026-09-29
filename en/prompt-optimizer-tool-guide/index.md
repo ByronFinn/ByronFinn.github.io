@@ -1,5 +1,12 @@
 # Prompt Optimizer: An Open-Source Tool for Better Prompts
 
+- Date: 2026-01-20
+- Author: ByF
+- URL: https://blog.baifan.site/en/prompt-optimizer-tool-guide/
+- Description: Prompt Optimizer is an open-source prompt optimization tool with one-click optimization, iterative refinement, comparative evaluation, and multi-model support for systematically better prompts.
+
+---
+
 
 <!-- more -->
 

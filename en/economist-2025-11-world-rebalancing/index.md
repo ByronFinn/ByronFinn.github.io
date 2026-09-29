@@ -1,5 +1,12 @@
 # When the World Reshuffles: The Economist, Nov 8, 2025
 
+- Date: 2025-10-21
+- Author: ByF
+- URL: https://blog.baifan.site/en/economist-2025-11-world-rebalancing/
+- Description: The Economist masks order collapse as rebalancing. Behind tariffs, subsidy races, and zero-sum games, free trade's dirge plays across Washington and Brussels.
+
+---
+
 
 {{< image src="/pictures/te/economist-2025-11-08-cover.png" caption="The Economist cover, November 8, 2025: Rebalancing the World" alt="The Economist cover, November 8, 2025" title="Rebalancing the World" width="00" class="center" >}}
 

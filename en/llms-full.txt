@@ -9,7 +9,7 @@
 
 **Deep Thinking**: Essays on the philosophy of engineering, team management, the meaning of life, and the uncertainty of AI.
 
-Built with Hugo and the DoIt theme, hosted on GitHub Pages.
+Built with Hugo and the Blowfish theme, hosted on GitHub Pages.
 >
 > This file is a complete site index for AI systems, listing the title, summary and link of every article.
 
@@ -212,6 +212,13 @@ Date: 2025-09-09
 Tags: The Economist, geopolitics, economic analysis, international relations
 
 A close read of The Economist, November 2025: US-China tech rivalry, global economic trends and geopolitical shifts across politics, finance, tech and society, with professional insight on international relations and economics.
+## Deep Thinking
+
+### [About Me](https://blog.baifan.site/en/profile/)
+Date: 2024-01-01
+Tags: About, Profile
+
+ByF — a geologist's timescale applied to AI-era tech and business. Backend engineer, long-cycle thinker, plain-spoken writer.
 ## Deep Thoughts
 
 ### [Rethinking Team Division of Labor](https://blog.baifan.site/en/team-roles-evolution-ai-era/)
@@ -466,13 +473,6 @@ Date: 2025-07-14
 Tags: Go, System Architecture, SQLite, Design, API Design, Technical Docs, SvelteKit
 
 Detailed PRD and technical architecture design for a timeline recorder app: user stories, domain model, API design, stack selection (Go, SvelteKit, SQLite), and deployment strategy — a local-first, data-sovereign personal journaling tool, from MVP to scalable.
-## Personal
-
-### [About Me](https://blog.baifan.site/en/profile/)
-Date: 2024-01-01
-Tags: about, profile
-
-ByF — a geologist's timescale applied to AI-era tech and business. Backend engineer, long-cycle thinker, plain-spoken writer.
 ## Politics
 
 ### [The Silent War in Central-Local Power: Who Serves as the System's Shock Absorber?](https://blog.baifan.site/en/petition-new-rules-central-local-cost-shift/)
@@ -512,6 +512,6 @@ Four tested ways to register a foreign Apple ID (US, Turkey, Japan, and more), p
 ## Tech Stack
 
 - Static Site Generator: Hugo
-- Theme: DoIt v0.4.2
+- Theme: Blowfish v3
 - Hosting: GitHub Pages
 - Domain: https://blog.baifan.site

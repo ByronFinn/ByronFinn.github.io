@@ -1,5 +1,12 @@
 # Cursor Local (Private Inference 版）全平台下载地址
 
+- Date: 2026-08-18
+- Author: ByF
+- URL: https://blog.baifan.site/cursor-local-download/
+- Description: Cursor Local（Private Inference 版）全平台最新构建直链汇总：Windows、macOS、Linux 各架构下载地址，链接永远指向 local 版最新版本。
+
+---
+
 
 以下直链永远指向 local 版最新构建：
 

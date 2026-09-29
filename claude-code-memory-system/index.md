@@ -1,5 +1,12 @@
 # AI 的记忆系统：四种记忆类型与语义召回
 
+- Date: 2026-06-02
+- Author: ByF
+- URL: https://blog.baifan.site/claude-code-memory-system/
+- Description: 拆解 Claude Code 的记忆系统：用户记忆、反馈记忆、项目记忆、引用记忆——四种记忆类型如何协同工作，让 AI 跨会话记住你的偏好和项目约定。结合 BYF 的 Wire Records 事件溯源机制，看会话持久化和 vis 调试工具的设计。
+
+---
+
 
 <!-- more -->
 

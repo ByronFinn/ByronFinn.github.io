@@ -1,5 +1,12 @@
 # The Rare-Earth War: China's Confidence and Resource Sovereignty
 
+- Date: 2025-10-07
+- Author: ByF
+- URL: https://blog.baifan.site/en/rare-earth-war-china-strategic-confidence/
+- Description: A deep dive into the global rare earths industry and China's resource sovereignty and strategic composure amid geopolitical rivalry, from supply-chain completeness to technological self-reliance and international cooperation.
+
+---
+
 
 {{< image src="/pictures/note/20251107-xituzhanzheng.png" caption="The Rare-Earth War" src_s="/pictures/note/20251107-xituzhanzheng.png" src_l="/pictures/note/20251107-xituzhanzheng.png" >}}
 

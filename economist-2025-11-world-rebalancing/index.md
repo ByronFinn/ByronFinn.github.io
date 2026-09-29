@@ -1,5 +1,12 @@
 # 当世界开始重新洗牌：读《经济学人》2025年11月8日刊
 
+- Date: 2025-10-21
+- Author: ByF
+- URL: https://blog.baifan.site/economist-2025-11-world-rebalancing/
+- Description: 《经济学人》以世界再平衡粉饰战后秩序的坍塌。从关税壁垒、产业补贴内卷到地缘零和博弈，旧日自由贸易的挽歌在华盛顿与布鲁塞尔的焦躁中已然奏响。
+
+---
+
 
 {{< image src="/pictures/te/economist-2025-11-08-cover.png" caption="《经济学人》2025年11月8日刊封面：Rebalancing the World" alt="经济学人2025年11月8日刊封面" title="世界再平衡" width="00" class="center" >}}
 

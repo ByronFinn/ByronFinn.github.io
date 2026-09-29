@@ -1,5 +1,12 @@
 # AI API Suffixes: What They Mean and Why They Exist
 
+- Date: 2026-04-14
+- Author: ByF
+- URL: https://blog.baifan.site/en/ai-api-suffixes-explained/
+- Description: From /v1/completions to /v1/responses, AI API suffixes define the request and response data structures. This article walks through the whole chain.
+
+---
+
 
 We often see URLs like these:
 

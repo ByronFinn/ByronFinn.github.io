@@ -1,5 +1,12 @@
 # The Engineering Reality of Multi-Agent Collaboration: Triggers, Topologies, and Deterministic Merging
 
+- Date: 2026-03-03
+- Author: ByF
+- URL: https://blog.baifan.site/en/multi-agent-collaboration-engineering/
+- Description: Deconstructing multi-agent systems from classical distributed systems theory: non-deterministic state machines, split-brain hazards, CAS merges, and fault domain isolation.
+
+---
+
 
 Packing multiple probabilistically sampled large language model instances into a single codebase or production pipeline is, fundamentally, constructing a distributed system over an unreliable network using stochastic state machines. The axiomatic foundations of classical distributed computing—deterministic state transitions, reproducible failure modes, Byzantine fault tolerance, and atomic commits—collapse almost entirely when applied to modern generative models.
 

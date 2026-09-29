@@ -1,5 +1,12 @@
 # Timeline Recorder: Technical Architecture from MVP to Scale
 
+- Date: 2025-07-14
+- Author: ByF
+- URL: https://blog.baifan.site/en/time-line-editor-architecture-design/
+- Description: Detailed PRD and technical architecture design for a timeline recorder app: user stories, domain model, API design, stack selection (Go, SvelteKit, SQLite), and deployment strategy — a local-first, data-sovereign personal journaling tool, from MVP to scalable.
+
+---
+
 
 # Timeline Recorder: Requirements & Technical Architecture (MVP → Scalable)
 

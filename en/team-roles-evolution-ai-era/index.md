@@ -1,5 +1,12 @@
 # Rethinking Team Division of Labor
 
+- Date: 2026-08-03
+- Author: ByF
+- URL: https://blog.baifan.site/en/team-roles-evolution-ai-era/
+- Description: AI makes writing code cheap, and the logic of team division changes with it. Five roles by software lifecycle stage: prototyper, builder, maintainer, scaler, finisher. Scarcity shifts from writing to judgment — AI will not replace these five roles, only amplify them.
+
+---
+
 
 > **The conclusion first, so you don't waste your read**
 >

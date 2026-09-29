@@ -1,5 +1,12 @@
 # Trump vs the New NYC Mayor: Prelude to a Political Storm
 
+- Date: 2025-10-14
+- Author: ByF
+- URL: https://blog.baifan.site/en/trump-vs-mamdani-nyc-showdown/
+- Description: President Trump vs New York City mayor-elect Zohran Mamdani: public attacks, private respect, and a fight over federal funds and city autonomy that became a national weathervane for American politics.
+
+---
+
 
 ### The President's Contradictory Posture
 

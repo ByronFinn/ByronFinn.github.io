@@ -1,5 +1,12 @@
 # AI Uncertainty and Carpe Diem: An Ordinary Person's Thoughts
 
+- Date: 2025-10-28
+- Author: ByF
+- URL: https://blog.baifan.site/en/ai-uncertainty-and-carpe-diem/
+- Description: Two possible paths for AI: relentless breakthroughs that replace human jobs, or stagnation that bursts the bubble. Why ordinary people should choose carpe diem amid vast uncertainty about the future.
+
+---
+
 
 After reading the recent magazines and reports, my honest advice is this: while these next couple of years are still livable, seize the day and go enjoy yourself.
 

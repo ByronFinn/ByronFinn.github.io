@@ -1,5 +1,12 @@
 # Light and Fatigue in the Short Drama Factory
 
+- Date: 2025-11-18
+- Author: ByF
+- URL: https://blog.baifan.site/en/short-drama-industry-fatigue/
+- Description: From the muddy outdoor sets of Xi'an to converted factory floors in Zhengzhou, cheap synthetic costumes and sour boxed meals sustain the short-drama myth. Behind the illusion, algorithms siphon 90% of revenues while workers churn around the clock.
+
+---
+
 
 {{< figure src="/pictures/note/shortmovie.png" alt="Light and Fatigue in the Short Drama Factory" caption="Light and Fatigue in the Short Drama Factory" >}}
 

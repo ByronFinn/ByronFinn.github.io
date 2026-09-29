@@ -1,5 +1,12 @@
 # AI Technical Glossary: A Complete Guide to 270+ Terms
 
+- Date: 2025-07-30
+- Author: ByF
+- URL: https://blog.baifan.site/en/ai-technical-glossary-complete-guide/
+- Description: The most complete AI glossary: 270+ terms from Token and Transformer to RAG and prompt engineering, with 12 categories and an A-Z quick reference — an essential dictionary for AI learners.
+
+---
+
 
 # AI Technical Glossary
 

@@ -1,5 +1,12 @@
 # AI Agent 运行时动态干预的思考
 
+- Date: 2026-07-27
+- Author: ByF
+- URL: https://blog.baifan.site/ai-agent-runtime-dynamic-intervention/
+- Description: AI Agent 一旦开始执行就无法中途干预，这是当前架构的致命盲区。分析 LangGraph interrupt()、OpenClaw /steer、SWE-PRM 等五种方案，提出异步消息队列、分层回滚、PRM 自动纠偏等五层干预架构。
+
+---
+
 
 # AI Agent 运行时动态干预的思考
 

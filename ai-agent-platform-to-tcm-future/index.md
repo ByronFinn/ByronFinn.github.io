@@ -1,5 +1,12 @@
 # Claude Science 逆向：从 54 张表到中药现代化
 
+- Date: 2026-02-20
+- Author: ByF
+- URL: https://blog.baifan.site/ai-agent-platform-to-tcm-future/
+- Description: 逆向拆解 Claude Science 的架构设计，思考这些思路与 TCMSP AI-native 中药平台的交汇点。
+
+---
+
 
 67 MB 的 DMG 安装包，解压后 164 MB，里面藏着 Anthropic 的 Claude Science（内部代号 Operon）。逆向之后，我看到了 54 张 SQLite 表、9 层安全模型、30 多个生物信息学 Skill，以及一个面向计算生物学的完整 AI Agent 平台。
 

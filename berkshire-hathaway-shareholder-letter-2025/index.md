@@ -1,5 +1,12 @@
 # 巴菲特2025年致股东信：告别与传承
 
+- Date: 2025-10-31
+- Author: ByF
+- URL: https://blog.baifan.site/berkshire-hathaway-shareholder-letter-2025/
+- Description: 沃伦·巴菲特2025年致股东信，宣布将不再撰写年度报告，回顾人生经历，讨论财富传承计划，并对伯克希尔未来前景进行展望。
+
+---
+
 
 {{< figure src="/pictures/note/berkshire-shareholder-letter-featured.jpg" alt="伯克希尔股东信封面" caption="伯克希尔股东信精选封面" >}}
 

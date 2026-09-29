@@ -1,5 +1,12 @@
 # 短剧工厂里的光与疲惫
 
+- Date: 2025-11-18
+- Author: ByF
+- URL: https://blog.baifan.site/short-drama-industry-fatigue/
+- Description: 从西安白鹿原的泥泞外景到郑州废弃厂房的竖屏片场，劣质化纤戏服与发馊盒饭撑起了短剧的神话。暴利账本背后，九成流水被算法买量抽干，数十万人连轴运转，在耗竭中维持着虚妄的上升感。
+
+---
+
 
 {{< figure src="/pictures/note/shortmovie.png" alt="短剧工厂里的光与疲惫" caption="短剧工厂里的光与疲惫" >}}
 

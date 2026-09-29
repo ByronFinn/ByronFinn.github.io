@@ -1,5 +1,12 @@
 # Twilight of the County Towns: The Silent Curtain on Demographic Drain and Fiscal Retreat
 
+- Date: 2025-11-11
+- Author: ByF
+- URL: https://blog.baifan.site/en/china-county-economy-twilight/
+- Description: Over two thousand Chinese counties are facing irreversible structural decay: shuttered schools, rusted storefronts, and dust-blanketed electric scooters. As demographic siphon pumps drain youth and land finance collapses, a fragile closed loop of public-sector salaries watches the silent end of county life.
+
+---
+
 
 Across more than two thousand Chinese county towns, an irreversible systemic hemorrhaging is underway. This is no cyclical economic dip, but a physical contraction engineered by the dual forces of demographic siphon pumps and the receding tide of land finance.
 

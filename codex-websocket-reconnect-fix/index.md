@@ -1,5 +1,12 @@
 # Codex 一直 Reconnecting，四种解法
 
+- Date: 2026-03-31
+- Author: ByF
+- URL: https://blog.baifan.site/codex-websocket-reconnect-fix/
+- Description: Codex App 频繁出现 Reconnecting 1/5 的原因和四种解决方案：关 WebSocket、自定义 provider、TUN 模式、env 代理。
+
+---
+
 
 <!-- more -->
 

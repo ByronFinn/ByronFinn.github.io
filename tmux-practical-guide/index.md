@@ -1,5 +1,12 @@
 # Tmux 用到的就这些：会话、分屏、 detach
 
+- Date: 2026-04-21
+- Author: ByF
+- URL: https://blog.baifan.site/tmux-practical-guide/
+- Description: Tmux 终端复用器的实际用法：会话 detach/attach、窗格分屏、窗口管理，只记日常用到的操作，附速查图。
+
+---
+
 
 SSH 到服务器上跑个长任务，网络断了，任务没了。Tmux 就是解决这个问题的——把终端会话和窗口解绑，关了终端进程还在跑。
 

@@ -1,5 +1,12 @@
 # VPS Scene 101: The Complete Dictionary of Hosting Slang
 
+- Date: 2026-01-27
+- Author: ByF
+- URL: https://blog.baifan.site/en/vps-glossary-jargon-guide/
+- Description: A comprehensive glossary of VPS and cloud hosting jargon — from MJJ and little chickens to routes and provider nicknames — your entry encyclopedia to the hosting scene.
+
+---
+
 
 <!-- more -->
 

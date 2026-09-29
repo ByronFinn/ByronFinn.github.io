@@ -1,5 +1,12 @@
 # Permissions and Real Security Boundaries: Sandboxes, System Calls, and Approval Escape
 
+- Date: 2026-05-20
+- Author: ByF
+- URL: https://blog.baifan.site/en/claude-code-permissions-security/
+- Description: Deconstructing Claude Code's permission architecture: from OS capabilities and POSIX syscall interception to application-level reference monitor limits, indirect prompt injection, and parser differentials.
+
+---
+
 
 Any AI agent permission system running in userspace that relies on model self-discipline and application-level regex filtering does not constitute an enforceable security boundary from the perspective of the operating system kernel. Claude Code's 5-level permission model and interactive approval workflow operate as flow-control protocols to mitigate developer mistakes, lacking sandbox containment against adversarial attacks.
 

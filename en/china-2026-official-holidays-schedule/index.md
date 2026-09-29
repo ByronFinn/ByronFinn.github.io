@@ -1,5 +1,12 @@
 # China's Official 2026 Holiday Schedule
 
+- Date: 2025-12-12
+- Author: ByF
+- URL: https://blog.baifan.site/en/china-2026-official-holidays-schedule/
+- Description: China's State Council General Office releases the official 2026 holiday notice: exact dates and workday swaps for the seven statutory holidays, including a 9-day Spring Festival break and a 7-day National Day holiday.
+
+---
+
 
 
 

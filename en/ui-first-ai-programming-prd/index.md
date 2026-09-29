@@ -1,5 +1,12 @@
 # A New Playbook for AI Programming: UI First, Then the PRD
 
+- Date: 2026-02-17
+- Author: ByF
+- URL: https://blog.baifan.site/en/ui-first-ai-programming-prd/
+- Description: A reverse workflow for AI programming: build UI prototypes first, then derive the PRD from visual artifacts — eliminating requirement drift, cutting rework, and improving delivery quality.
+
+---
+
 
 <!-- more -->
 

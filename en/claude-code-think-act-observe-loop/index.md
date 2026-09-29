@@ -1,5 +1,12 @@
 # The Soul of an AI Coding Assistant: The Think-Act-Observe Loop
 
+- Date: 2026-05-07
+- Author: ByF
+- URL: https://blog.baifan.site/en/claude-code-think-act-observe-loop/
+- Description: Deconstructing the core architecture idea in the Claude Code source: how the Think-Act-Observe loop turns AI from a chatbot into a real coding assistant. From the ReAct pattern to a production implementation, with lessons from the open-source BYF (Be Your Friend) project — one simple loop carries an entire Agent.
+
+---
+
 
 <!-- more -->
 

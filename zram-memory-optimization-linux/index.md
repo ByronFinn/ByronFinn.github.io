@@ -1,5 +1,12 @@
 # Linux 内存不足？ZRAM 压缩方案详解与实战配置
 
+- Date: 2026-01-31
+- Author: ByF
+- URL: https://blog.baifan.site/zram-memory-optimization-linux/
+- Description: 对比 SWAP 与 ZRAM 的原理差异，详解 ZRAM 在低内存 Linux 设备上的适用场景、配置方法与混合策略，帮助你选择最优内存扩展方案。
+
+---
+
 
 <!-- more -->
 

@@ -1,5 +1,12 @@
 # 第三方 Telegram 客户端大合集：谁在维护，谁该避坑
 
+- Date: 2026-03-24
+- Author: ByF
+- URL: https://blog.baifan.site/third-party-telegram-clients/
+- Description: 按平台整理的第三方 Telegram 客户端清单，涵盖 Android、iOS、桌面端，标注开源/闭源状态、维护活跃度和安全风险等级，附选型建议和避坑指南。
+
+---
+
 
 第三方 Telegram 客户端生态鱼龙混杂，核心原则只有一条：闭源客户端绝不要碰。2021 年起 Telegram 限制首次注册必须通过官方移动端接收验证码，桌面端与第三方客户端直接被拒——官方收拢控制权的意图早已明晰。
 

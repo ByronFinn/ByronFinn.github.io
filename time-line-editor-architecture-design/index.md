@@ -1,5 +1,12 @@
 # 时间线记录器：从MVP到可扩展的技术架构设计
 
+- Date: 2025-07-14
+- Author: ByF
+- URL: https://blog.baifan.site/time-line-editor-architecture-design/
+- Description: 一份关于“时间线记录器”应用的详细产品需求与技术架构设计文档。涵盖从MVP到可扩展功能规划，包括用户故事、领域模型、API设计、技术栈选型（Go, SvelteKit, SQLite）、以及部署策略，旨在构建一款本地优先、数据主权可控的个人记录工具。
+
+---
+
 
 # 时间线记录器：需求清单 & 技术架构（MVP→ 可扩展）
 

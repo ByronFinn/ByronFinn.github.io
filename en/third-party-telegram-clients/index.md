@@ -1,5 +1,12 @@
 # Third-Party Telegram Clients: What to Use and What to Avoid
 
+- Date: 2026-03-24
+- Author: ByF
+- URL: https://blog.baifan.site/en/third-party-telegram-clients/
+- Description: A platform-by-platform list of third-party Telegram clients for Android, iOS, and desktop, marked open or closed source, with maintenance activity and risk levels, plus picking advice.
+
+---
+
 
 Conclusion first: there are a lot of third-party Telegram clients, quality varies wildly, and you should avoid the closed-source ones as a rule. Since 2021, Telegram has required first-time registration to receive its verification code on the official mobile client — desktop and third-party clients can't register directly. That's already a signal.
 

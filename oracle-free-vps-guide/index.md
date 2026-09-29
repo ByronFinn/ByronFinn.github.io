@@ -1,5 +1,12 @@
 # Oracle 白送 4 核 24G 服务器，注册到跑起来一次讲清
 
+- Date: 2026-04-07
+- Author: ByF
+- URL: https://blog.baifan.site/oracle-free-vps-guide/
+- Description: Oracle Always Free 计划提供 4 核 24GB ARM 服务器，不限期不扣钱。从注册避坑、区域选择、ARM 实例创建到保活策略，一篇搞定。
+
+---
+
 
 Oracle 的 Always Free 计划每个月给一台 4 核 CPU、24 GB 内存的 ARM 服务器，不限期，不扣钱。同样配置在 AWS 上月费 $80–100。这篇把注册、避坑、创建实例和保活串一遍。
 

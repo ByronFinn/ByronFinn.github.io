@@ -1,5 +1,12 @@
 # Gold Market Trends: Precious Metals Amid Global Uncertainty
 
+- Date: 2025-11-28
+- Author: ByF
+- URL: https://blog.baifan.site/en/gold-business-trend-analysis/
+- Description: An in-depth analysis of gold market trends: how global economic uncertainty, inflation expectations, and central bank policy shape precious metal prices, and how investors and companies respond.
+
+---
+
 
 Is the gold bull catching its breath, or is it over?
 

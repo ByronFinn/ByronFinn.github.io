@@ -1,5 +1,12 @@
 # 接码平台体验分享-无广告纯享版
 
+- Date: 2026-03-10
+- Author: ByF
+- URL: https://blog.baifan.site/sms-verification-platforms/
+- Description: ZUSMS、eSIM Plus、httpSMS、Twilio 四个接码平台的实测对比，截止 2026 年 5 月可用状态和使用建议。
+
+---
+
 
 注册各种服务如GPT/CLAUDE/TG等需要一个能收验证码的号，但又不想拿自己手机号填。这类需求催生了一批接码平台，有的免费、有的付费、有的面向开发者。以下是我实际用过的四个，截止 2026 年 5 月 20 日都还能正常访问。平台状态随时可能变化，建议用之前自己先打开看看。
 

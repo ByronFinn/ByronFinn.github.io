@@ -1,5 +1,12 @@
 # 多智能体协作的工程问题：触发、拓扑和收口
 
+- Date: 2026-03-03
+- Author: ByF
+- URL: https://blog.baifan.site/multi-agent-collaboration-engineering/
+- Description: 从分布式系统经典理论与 Codex、Claude Code、OpenClaw 等一线架构出发，拆解多智能体在非确定性状态机、脑裂、CAS 合并与故障域隔离上的工程真相。
+
+---
+
 
 把多个基于概率采样的大模型实例塞进同一个代码仓库或业务流程，本质上是在用不可靠网络和随机状态机搭建分布式系统。经典分布式系统成立的基础假设——确定性状态转移、可复现故障、拜占庭容错、原子提交——在当前的大语言模型中几乎全部失效。
 

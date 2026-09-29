@@ -1,5 +1,12 @@
 # Self-Hosted AI API Pipeline: From Domain Email to Sub2API
 
+- Date: 2026-01-06
+- Author: ByF
+- URL: https://blog.baifan.site/en/self-hosted-ai-api-pipeline/
+- Description: Build a self-hosted AI API pipeline from scratch — a complete deployment tutorial covering domain email, Cloudflare Workers, SMS-code platforms, registration bots, and Sub2API.
+
+---
+
 
 I originally wrote this post for a friend; I'm just cleaning it up a bit and publishing it.
 

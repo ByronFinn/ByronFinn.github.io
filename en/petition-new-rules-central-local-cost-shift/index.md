@@ -1,5 +1,12 @@
 # The Silent War in Central-Local Power: Who Serves as the System's Shock Absorber?
 
+- Date: 2026-07-03
+- Author: ByF
+- URL: https://blog.baifan.site/en/petition-new-rules-central-local-cost-shift/
+- Description: Beneath the veneer of legal standardization, China's revised petition rules execute a surgical cutoff of political risk. Beijing seals off direct appeals to the capital, leaving bankrupt county governments to absorb systemic friction as flesh-and-blood shock absorbers.
+
+---
+
 
 The foundational calculation behind China's revised petition regulations is a surgical quarantine of political risk. Beijing has sealed the gates to the capital at the provincial and county levels, driving all unresolved social friction squarely back to where it originated.
 

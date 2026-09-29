@@ -1,5 +1,12 @@
 # TikTok Meets Trump: All the Wrong Moves, Somehow Still Alive
 
+- Date: 2025-09-23
+- Author: ByF
+- URL: https://blog.baifan.site/en/tiktok-trump-geopolitical-analysis/
+- Description: Stripping away sanctimony to expose K-Street lobbying, Silicon Valley ambushes, and populist deals: an autopsy of TikTok's survival under raw power.
+
+---
+
 
 Along the marble corridors of Washington there are no innocent victims—only priced lobbying invoices and bargaining chips laid out on the cutting block. TikTok's miraculous survival between Capitol Hill and the White House was never a triumph of cross-border corporate virtue; it was an absurd theater of raw power choreographed by Silicon Valley ambushes, K-Street black money, internal corporate purges, and extortion by populist strongmen.
 

@@ -1,5 +1,12 @@
 # SMS Verification Platforms: My Honest, Ad-Free Rundown
 
+- Date: 2026-03-10
+- Author: ByF
+- URL: https://blog.baifan.site/en/sms-verification-platforms/
+- Description: A hands-on comparison of four SMS verification platforms — ZUSMS, eSIM Plus, httpSMS, and Twilio — with availability status and usage advice as of May 2026.
+
+---
+
 
 Signing up for services like GPT, Claude, or Telegram needs a number that can receive verification codes — but you may not want to hand over your own phone number. That demand spawned a batch of SMS verification platforms: some free, some paid, some aimed at developers. Here are four I've actually used; as of May 20, 2026, all were still accessible. Platform status changes at any time, so open the site and check yourself before using one.
 

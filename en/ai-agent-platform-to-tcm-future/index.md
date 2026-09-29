@@ -1,5 +1,12 @@
 # Reverse Engineering Claude Science: From 54 Tables to Modern TCM
 
+- Date: 2026-02-20
+- Author: ByF
+- URL: https://blog.baifan.site/en/ai-agent-platform-to-tcm-future/
+- Description: Reverse engineering the architecture of Claude Science, and reflecting on where these design ideas intersect with TCMSP, an AI-native Traditional Chinese Medicine platform.
+
+---
+
 
 A 67 MB DMG installer, 164 MB unpacked, hiding Anthropic's Claude Science (internal codename Operon). After reverse engineering it, I found 54 SQLite tables, a 9-layer security model, 30+ bioinformatics skills, and a complete AI agent platform for computational biology.
 

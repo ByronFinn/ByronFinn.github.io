@@ -1,5 +1,12 @@
 # Claude Skills Progressive Disclosure via MCP: Skill in Anywhere
 
+- Date: 2025-12-26
+- Author: ByF
+- URL: https://blog.baifan.site/en/mcp-claude-skills-progressive-disclosure/
+- Description: A detailed guide to implementing a Claude Skills-style dynamic capability-loading mechanism on top of the MCP protocol: technical architecture, engineering verification, and a complete implementation. Covers progressive disclosure, context optimization, and cross-agent compatibility.
+
+---
+
 
 {{< figure src="/pictures/note/claudecodeskills.png" alt="Claude Code Skill in Anywhere" caption="Claude Code Skill in Anywhere" >}}
 

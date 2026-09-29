@@ -1,5 +1,12 @@
 # AI Memory Systems: Four Memory Types and Semantic Recall
 
+- Date: 2026-06-02
+- Author: ByF
+- URL: https://blog.baifan.site/en/claude-code-memory-system/
+- Description: Deconstructing Claude Code's memory system: user memory, feedback memory, project memory, reference memory — how four memory types work together so AI remembers your preferences and project conventions across sessions. Plus BYF's Wire Records event sourcing, session persistence, and the vis debugging tool.
+
+---
+
 
 <!-- more -->
 

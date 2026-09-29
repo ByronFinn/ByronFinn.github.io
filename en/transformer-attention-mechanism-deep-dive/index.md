@@ -1,5 +1,12 @@
 # Transformer Architecture Deconstructed: Attention, Geometric Scaling, and Memory IO
 
+- Date: 2025-08-05
+- Author: ByF
+- URL: https://blog.baifan.site/en/transformer-attention-mechanism-deep-dive/
+- Description: A first-principles deconstruction of Transformer self-attention: Q/K/V inner-product geometry, Softmax scaling, multi-head subspace dynamics, and FlashAttention tiling against the O(N^2) memory wall.
+
+---
+
 
 The physical barrier modern large language models confront when scaling context length is rarely raw floating-point throughput (FLOPs). It is the memory-access wall between high-bandwidth memory (HBM) and on-chip static random-access memory (SRAM). The standard Scaled Dot-Product Attention operator established by Vaswani et al. (2017) incurs an $O(N^2)$ memory-traffic overhead as sequence length $N$ grows, reducing self-attention primarily to a memory-bound workload.
 

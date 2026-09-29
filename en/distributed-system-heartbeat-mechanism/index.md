@@ -1,5 +1,12 @@
 # Distributed Heartbeats and Failure Detection: Partitions, Leases, and Deterministic Design
 
+- Date: 2025-09-27
+- Author: ByF
+- URL: https://blog.baifan.site/en/distributed-system-heartbeat-mechanism/
+- Description: A deep dive into distributed heartbeat failures: GC pauses, TCP half-open sockets, split-brain risks, Phi Accrual failure detectors, lease mechanisms under clock drift, and Raft livelock prevention.
+
+---
+
 
 Anyone who has debugged an early-morning production outage knows that the most dangerous failure in a distributed system is rarely a clean crash (Fail-Stop). It is the gray failure: transient unresponsiveness caused by Stop-the-World garbage collection, virtual machine CPU steal time, packet drops in network switches, or TCP half-open sockets. In an asynchronous network, physical wall-clock time offers no causal order guarantees. Handing a periodic ping packet the unilateral authority to decide node mortality turns that probe into a hair-trigger for cascading failovers and split-brain states.
 

@@ -1,5 +1,12 @@
 # Thoughts on Dynamic Intervention in AI Agent Runtimes
 
+- Date: 2026-07-27
+- Author: ByF
+- URL: https://blog.baifan.site/en/ai-agent-runtime-dynamic-intervention/
+- Description: Once an AI agent starts running you cannot intervene mid-flight — a fatal blind spot in current architectures. Five approaches analyzed (LangGraph interrupt(), OpenClaw /steer, SWE-PRM) and a five-layer intervention architecture proposed: async queues, layered rollback, PRM auto-correction.
+
+---
+
 
 # Thoughts on Dynamic Intervention in AI Agent Runtimes
 

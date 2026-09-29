@@ -1,5 +1,12 @@
 # 上下文压缩的物理代价：KV Cache 压力、注意力衰减与有损摘要
 
+- Date: 2026-05-23
+- Author: ByF
+- URL: https://blog.baifan.site/claude-code-context-compression/
+- Description: 解构 Claude Code 的上下文压缩策略：从 Transformer 物理注意力稀释、KV Cache 显存开销到动态摘要重写带来的信息熵增与 Lost-in-the-Middle 困境，解析工业级 Agent 在无限记忆假象背后的工程妥协与缓存桩设计。
+
+---
+
 
 大模型在物理底层不存在真正意义上的生物记忆，只有在显卡高带宽内存（HBM）中随序列长度线性堆叠的 Key-Value Cache，以及在数学上随序列拉长而被急剧稀释的注意力权重分布。Claude Code 呈现给开发者的所谓长程对话能力，本质上是一套在硬件显存与精度边界夹缝中运行的缓存逐出流水线，伴随着不可逆的信息失真与前缀失效代价。
 

@@ -1,5 +1,12 @@
 # 3,000 vs 500K Lines: The Architectural Abyss From Toy to Product
 
+- Date: 2026-07-02
+- Author: ByF
+- URL: https://blog.baifan.site/en/claude-code-3000-vs-500k-lines/
+- Description: Comparing claude-code-from-scratch's 3,000-line minimal implementation with the 500K-line engineering beast of Claude Code's official source: from toy to product, how many engineering details hide in the architectural abyss? BYF sits in between as a real-world case of engineering decisions and design-debt cleanup.
+
+---
+
 
 <!-- more -->
 

@@ -1,5 +1,12 @@
 # Transformer架构深度解构：自注意力、几何缩放与显存IO约束
 
+- Date: 2025-08-05
+- Author: ByF
+- URL: https://blog.baifan.site/transformer-attention-mechanism-deep-dive/
+- Description: 从第一性原理拆解 Transformer 自注意力机制：Q/K/V 投影几何本质、Softmax 缩放根源、多头注意力的正交子空间表征，以及 FlashAttention 破解 O(N^2) 显存墙的硬件 IO 约束。
+
+---
+
 
 现代大语言模型在长上下文扩展中遭遇的物理瓶颈，从来不是浮点计算吞吐量（FLOPs），而是高带宽显存（HBM）与片上静态随机存取存储器（SRAM）之间的访存墙。Vaswani et al. (2017) 确立的标准缩放点积注意力算子（Scaled Dot-Product Attention），在序列长度 $N$ 膨胀时，其中间注意力矩阵产生 $O(N^2)$ 的显存搬运开销，使得自注意力算子本质上沦为内存带宽受限（Memory-Bound）任务。
 

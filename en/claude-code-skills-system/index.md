@@ -1,5 +1,12 @@
 # The Nature of Skills: Reusable Encapsulated Expertise
 
+- Date: 2026-06-05
+- Author: ByF
+- URL: https://blog.baifan.site/en/claude-code-skills-system/
+- Description: Deconstructing Claude Code's Skill system: reusable encapsulated expertise. Why a Skill is a prompt module rather than a plugin, the trade-off between on-demand loading and full injection, and BYF's engineering practice with progressive skill disclosure (ADR 0009) and update-config as a built-in Skill.
+
+---
+
 
 <!-- more -->
 

@@ -1,5 +1,12 @@
 # Prompt Engineering完全指南：从提示工程到上下文工程的实战教程
 
+- Date: 2025-08-13
+- Author: ByF
+- URL: https://blog.baifan.site/prompt-engineering-context-management-complete-guide/
+- Description: 全面掌握Prompt Engineering与Context Engineering核心技术：从基础提示词设计到高级上下文管理，包括RAG、上下文优化、持久化等技术。解决实际开发中的污染问题、注意力偏移等挑战，提升AI应用效果。
+
+---
+
 
 # AI 教程：Prompt Engineering
 

@@ -1,5 +1,12 @@
 # Tools Are Capability: AI Agent Tool System Design Philosophy
 
+- Date: 2026-05-12
+- Author: ByF
+- URL: https://blog.baifan.site/en/claude-code-tool-system-design/
+- Description: The design philosophy behind Claude Code's tool system: how 30+ tools are organized, described, and dispatched. Why tool-description quality directly determines what AI can and cannot do, and how progressive disclosure prevents context explosion. With BYF (Be Your Friend)'s Kaos execution-environment abstraction and TaskEntry design-debt cleanup as real-world examples.
+
+---
+
 
 <!-- more -->
 

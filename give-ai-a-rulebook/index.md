@@ -1,5 +1,12 @@
 # 给 AI 写一本法典——从“向它许愿”到“让它守规矩”
 
+- Date: 2026-08-05
+- Author: ByF
+- URL: https://blog.baifan.site/give-ai-a-rulebook/
+- Description: 同一个需求，直接让 AI 写和先对齐再动手，用的是同一个模型，差距在于有没有一套可执行的规矩。dev-skills 把流程阶段变成 12 个技能，加载后 AI 就知道规矩。
+
+---
+
 
 先讲一件真实发生的事。
 

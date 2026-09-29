@@ -1,5 +1,12 @@
 # OpenAI 送了我半年 ChatGPT Pro，理由是我在维护开源
 
+- Date: 2026-09-19
+- Author: ByF
+- URL: https://blog.baifan.site/codex-for-open-source/
+- Description: 申请 OpenAI 的 Codex for Open Source 居然过了，白嫖半年 Pro。记一下，很爽。
+
+---
+
 
 今天邮箱里跳出来一封信，标题是："You can just build things, enjoy 6 months on us"。
 

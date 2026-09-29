@@ -1,5 +1,12 @@
 # Agent Interview Questions: Who Has Actually Done the Work
 
+- Date: 2026-07-13
+- Author: ByF
+- URL: https://blog.baifan.site/en/agent-interview-questions/
+- Description: After a dozen-plus agent-track interviews, one feeling keeps growing: five questions whose answers reveal who has actually done the work. Multi-agent architecture, communication, failure handling, state management, and tool calling each carry clear signals.
+
+---
+
 
 <!-- more -->
 

@@ -1,5 +1,12 @@
 # Cursor Local (Private Inference) Downloads for All Platforms
 
+- Date: 2026-08-18
+- Author: ByF
+- URL: https://blog.baifan.site/en/cursor-local-download/
+- Description: Direct links to the latest Cursor Local (Private Inference) builds for every platform: Windows, macOS, and Linux across architectures. Links always point to the newest local build.
+
+---
+
 
 The direct links below always point to the latest local build:
 

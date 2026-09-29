@@ -1,5 +1,12 @@
 # AI Psychosis: When MTTR Fanaticism Meets Resilience
 
+- Date: 2026-02-24
+- Author: ByF
+- URL: https://blog.baifan.site/en/ai-mttr-mtbf-resilience-psychosis/
+- Description: From the old MTBF vs MTTR debate in infrastructure to an ignored problem in today's AI coding frenzy: while every local metric is green, global system risk may be accumulating unnoticed.
+
+---
+
 
 <!-- more -->
 

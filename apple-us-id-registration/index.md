@@ -1,5 +1,12 @@
 # 苹果外区 ID 注册，四条路径和防送回国区的办法
 
+- Date: 2026-03-17
+- Author: ByF
+- URL: https://blog.baifan.site/apple-us-id-registration/
+- Description: 四种苹果外区 Apple ID 注册方法实测对比（美区/土区/日区通用），加上防止首次登录被送回国区的完整方案。
+
+---
+
 
 注册一个外区 Apple ID 本来不是什么难事，但苹果的流程改来改去，网上教程大多只记录了一条路径，评论区经常有人说"不行了"。更烦的是注册完首次登录 App Store，有概率被直接送回国区。
 

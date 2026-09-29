@@ -1,5 +1,12 @@
 # MCP 协议：AI 工具互联的 USB-C
 
+- Date: 2026-06-12
+- Author: ByF
+- URL: https://blog.baifan.site/claude-code-mcp-protocol/
+- Description: 拆解 Claude Code 的 MCP 协议集成：Model Context Protocol 为什么被称为“AI 工具互联的 USB-C"？JSON-RPC over stdio 的设计取舍。BYF 的 McpConnectionManager 和 /mcp-config 对话式配置如何让 MCP 更易用。
+
+---
+
 
 <!-- more -->
 

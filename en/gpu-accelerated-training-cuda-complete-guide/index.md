@@ -1,5 +1,12 @@
 # CPU, GPU, and Training Large Language Models
 
+- Date: 2025-08-20
+- Author: ByF
+- URL: https://blog.baifan.site/en/gpu-accelerated-training-cuda-complete-guide/
+- Description: A hands-on guide to GPU-accelerated deep learning: CPU vs GPU, tensors and quantization, CUDA with PyTorch, hardware selection and VRAM optimization, plus interview Q&A and a debugging checklist.
+
+---
+
 
 # AI Tutorial: CPU/GPU and Large Model Training
 

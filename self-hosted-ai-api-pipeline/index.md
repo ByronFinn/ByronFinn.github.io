@@ -1,5 +1,12 @@
 # 自建 AI API 全链路：从域名邮箱到 Sub2API
 
+- Date: 2026-01-06
+- Author: ByF
+- URL: https://blog.baifan.site/self-hosted-ai-api-pipeline/
+- Description: 从零开始搭建自建 AI API 全链路，涵盖域名邮箱、Cloudflare Workers、接码平台、注册机到 Sub2API 的完整部署教程。
+
+---
+
 
 这篇文章本来是写给朋友看的，顺手整理一下发出来。
 

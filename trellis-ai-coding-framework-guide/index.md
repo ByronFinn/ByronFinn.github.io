@@ -1,5 +1,12 @@
 # Trellis 做了什么，能不能解决 AI 编码的规范问题
 
+- Date: 2026-04-30
+- Author: ByF
+- URL: https://blog.baifan.site/trellis-ai-coding-framework-guide/
+- Description: 实测 Trellis AI 编码框架：通过 Spec 驱动 + 跨会话记忆 + 自动工作流，让 AI 按项目规范写代码，而不是每次随机发挥。
+
+---
+
 
 用 AI 写代码，最烦的不是它写错，而是它每次都用不同的方式写错。同一个需求，对话三次，三种写法。规范在你脑子里，AI 不知道。
 

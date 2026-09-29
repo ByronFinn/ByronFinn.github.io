@@ -1,5 +1,12 @@
 # Give AI a Rulebook: From Wishing Upon It to Making It Behave
 
+- Date: 2026-08-05
+- Author: ByF
+- URL: https://blog.baifan.site/en/give-ai-a-rulebook/
+- Description: Same requirement, same model: whether you let AI write immediately or align first decides the outcome. The gap is having an executable set of rules. dev-skills turns process stages into 12 skills — once loaded, AI knows the rules.
+
+---
+
 
 Let me start with something that actually happened.
 

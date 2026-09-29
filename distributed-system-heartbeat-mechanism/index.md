@@ -1,5 +1,12 @@
 # 分布式心跳与故障检测：生产假死、租约竞争与确定性设计
 
+- Date: 2025-09-27
+- Author: ByF
+- URL: https://blog.baifan.site/distributed-system-heartbeat-mechanism/
+- Description: 解构分布式系统心跳机制的真实生产陷阱：从 GC 假死、TCP 半开连接到网络分区脑裂，深入剖析 Phi Accrual 概率累积故障检测、时钟漂移下的租约防护与 Raft 活锁规避。
+
+---
+
 
 任何经历过生产集群凌晨雪崩的工程师都知道，分布式系统中最致命的往往不是节点干净利落地死机（Fail-Stop），而是“半死不活”的灰度失效——由 JVM 垃圾回收（Stop-the-World GC）停顿、内核网卡丢包抖动、TCP 半开连接（Half-Open Socket）或虚拟化环境 CPU 窃取（Steal Time）引发的短暂失联。在异步网络模型中，物理时间无法提供因果顺序保证，简单的周期性探测包一旦被赋予决策集群成员生死的权力，就会演变成触发雪崩式故障转移与脑裂（Split-Brain）的自杀开关。
 

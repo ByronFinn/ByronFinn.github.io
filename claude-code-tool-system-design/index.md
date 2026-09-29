@@ -1,5 +1,12 @@
 # 工具即能力：AI Agent 的工具系统设计哲学
 
+- Date: 2026-05-12
+- Author: ByF
+- URL: https://blog.baifan.site/claude-code-tool-system-design/
+- Description: 拆解 Claude Code 的工具系统设计哲学：30 多个工具如何被组织、描述、调度。为什么工具描述的质量直接决定了 AI 能干什么、不能干什么，以及渐进式披露如何避免上下文爆炸。结合 BYF（Be Your Friend）的 Kaos 执行环境抽象与 TaskEntry 设计债清理，看真实项目如何落地这些思想。
+
+---
+
 
 <!-- more -->
 

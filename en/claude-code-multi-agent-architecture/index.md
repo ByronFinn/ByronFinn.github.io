@@ -1,5 +1,12 @@
 # Multi-Agent Architecture: The Art of Fork-Join Collaboration
 
+- Date: 2026-06-09
+- Author: ByF
+- URL: https://blog.baifan.site/en/claude-code-multi-agent-architecture/
+- Description: Deconstructing Claude Code's multi-agent architecture: why one AI loses to three AIs, the division of labor among the explore, plan, and general roles, and how the fork-join collaboration pattern works. Plus BYF's foreground subagents, the /agent live viewer, and the TaskEntry discriminated union in practice.
+
+---
+
 
 <!-- more -->
 

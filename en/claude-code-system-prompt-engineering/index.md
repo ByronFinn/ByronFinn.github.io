@@ -1,5 +1,12 @@
 # System Prompt Engineering: Decisions Behind 800 Lines
 
+- Date: 2026-05-16
+- Author: ByF
+- URL: https://blog.baifan.site/en/claude-code-system-prompt-engineering/
+- Description: Deconstructing Claude Code's system prompt engineering: a production agent's prompt is a thousand-line precision architecture, not a couple of sentences. Covers layered architecture, placeholder injection, behavioral constraints, and dynamic context design, plus BYF's PromptPlan and ephemeral injection practices.
+
+---
+
 
 <!-- more -->
 

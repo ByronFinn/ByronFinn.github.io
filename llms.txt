@@ -26,7 +26,7 @@
 
 **深度思考**：关于团队管理、软件工程、生命意义、科技伦理、AI 不确定性等哲学与思辨类文章。
 
-博客使用 Hugo + DoIt 主题构建，托管在 GitHub Pages。
+博客使用 Hugo + Blowfish 主题构建，托管在 GitHub Pages。
 
 ## Author
 

@@ -1,5 +1,12 @@
 # WSJ Deep Dive: Nvidia Chip Ban, Holiday Travel, Economic Signals
 
+- Date: 2025-09-16
+- Author: ByF
+- URL: https://blog.baifan.site/en/wsj-nvidia-chip-ban-economic-analysis/
+- Description: A close read of the WSJ front page, Nov 4, 2025: the Nvidia chip ban, a holiday travel crunch and surging power bills — what US-China tech rivalry, budget trouble and trade protectionism actually deliver.
+
+---
+
 
 ## 📰 WSJ20251104
 

@@ -1,5 +1,12 @@
 # 权限系统与真实安全边界：沙箱、系统调用与审批逃逸
 
+- Date: 2026-05-20
+- Author: ByF
+- URL: https://blog.baifan.site/claude-code-permissions-security/
+- Description: 解构 Claude Code 的权限体系与安全模型：从操作系统 Capability、POSIX 系统调用截获到应用层参考监视器的天然脆弱性，剖析动态审批机制在面对提示词注入与解析差异时的安全边界与工程妥协。
+
+---
+
 
 任何运行在宿主机用户态、依赖模型自律与应用层正则拦截的 AI Agent 权限系统，在操作系统内核视角下都不构成强制安全边界。Claude Code 设计的五级权限模型与交互式审批机制，是一套降低开发误操作概率的人机协作流控协议，在恶意对抗场景下缺乏沙箱约束力。
 

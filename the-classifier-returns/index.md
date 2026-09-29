@@ -1,5 +1,12 @@
 # 分类器又成了救世主
 
+- Date: 2026-09-20
+- Author: ByF
+- URL: https://blog.baifan.site/the-classifier-returns/
+- Description: 企业评估流水线里最贵的图腾是 LLM-as-a-Judge。LangChain 实测 TypeSafe 的 Jev：二元判定准确率 100%、单次 0.00035 美元、比 Claude 便宜 80 倍——原来救世主是个 BERT 时代的分类器。
+
+---
+
 
 在任何一家号称“全面接入 AI”的企业技术团队里，最不能细看的账单通常不是生产环境的推理开销，而是那一堆为了自欺欺人而跑出来的**评估流水线（Eval Pipelines）**。
 

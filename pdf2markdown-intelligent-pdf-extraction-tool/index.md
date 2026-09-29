@@ -1,5 +1,12 @@
 # PDF2Markdown - 大型PDF文档智能文章提取工具完全指南
 
+- Date: 2025-11-25
+- Author: ByF
+- URL: https://blog.baifan.site/pdf2markdown-intelligent-pdf-extraction-tool/
+- Description: 深入解析PDF2Markdown智能PDF处理工具，支持大型扫描件文档处理，结合PaddleOCR、Tesseract与Ollama AI大模型，实现精准文章内容提取。包含完整安装配置、性能优化、技术架构和实战应用指南。
+
+---
+
 
 # PDF2Markdown - 大型 PDF 文档智能文章提取工具
 

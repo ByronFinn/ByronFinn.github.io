@@ -1,5 +1,12 @@
 # 一个 PPT Agent 的完整拆解：从需求调研到 SVG 出图
 
+- Date: 2026-04-28
+- Author: ByF
+- URL: https://blog.baifan.site/ppt-agent-workflow-deep-dive/
+- Description: 拆解一个商业级 PPT Agent 的四阶段工作流：需求调研、资料检索、策划稿、SVG 设计，附可复现的提示词和工程思路。
+
+---
+
 
 市面上绝大多数所谓 AI PPT 工具，本质上只是“输入主题 → 套用死板模板 → 输出低质排版”的玩具。要真正达到商业交付水准，核心在于将生成链路解构为带确定性约束的多阶段流水线：从需求调研与资料检索，到大纲策划与版面规划，再到利用 SVG Bento Grid 结构化渲染。
 

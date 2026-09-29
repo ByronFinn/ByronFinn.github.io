@@ -1,5 +1,12 @@
 # 《经济学人》2025年11月15日刊
 
+- Date: 2025-12-22
+- Author: ByF
+- URL: https://blog.baifan.site/economist-20251115-taiwan-boom/
+- Description: 《经济学人》2025年11月15日刊深度解读：台湾经济崛起背后的半导体优势与地缘风险，全球贸易格局重塑下的供应链脆弱性，以及AI驱动的生产力变革对劳动力市场的冲击。
+
+---
+
 
 {{< image src="/pictures/te/economist-2025-11-15-cover.png" caption="《经济学人》2025年11月15日刊封面" alt="经济学人2025年11月15日刊封面" title="TAIWAN BOOM" width="500" class="center" >}}
 

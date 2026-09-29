@@ -1,5 +1,12 @@
 # Prompt Engineering: From Prompts to Context Engineering
 
+- Date: 2025-08-13
+- Author: ByF
+- URL: https://blog.baifan.site/en/prompt-engineering-context-management-complete-guide/
+- Description: Master prompt and context engineering: from basic prompt design to advanced context management with RAG, optimization, and persistence, plus fixes for poisoning and attention drift in real AI applications.
+
+---
+
 
 # AI Tutorial: Prompt Engineering
 

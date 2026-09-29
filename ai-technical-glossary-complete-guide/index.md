@@ -1,5 +1,12 @@
 # AI专业名词解释表：270+术语完全指南与AI技术体系词典
 
+- Date: 2025-07-30
+- Author: ByF
+- URL: https://blog.baifan.site/ai-technical-glossary-complete-guide/
+- Description: 最全面的AI专业名词解释表，涵盖270+个AI术语：从Token、Transformer到RAG、Prompt工程。系统学习AI大模型技术体系，包含12大分类和A-Z速查表，是AI学习者的必备词典。
+
+---
+
 
 # AI专业名词解释表
 

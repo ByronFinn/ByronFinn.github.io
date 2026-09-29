@@ -1,5 +1,12 @@
 # The Classifier Is the Savior Again
 
+- Date: 2026-09-20
+- Author: ByF
+- URL: https://blog.baifan.site/en/the-classifier-returns/
+- Description: LangChain benchmarked Jev: 100.0% judge accuracy at $0.00035 per call vs Claude Sonnet 4.6. The savior behind LLM-as-a-judge is a BERT-era classifier.
+
+---
+
 
 In any enterprise tech team that claims to be “fully AI-powered,” the bill nobody wants to look at closely is usually not production inference — it’s the **evaluation pipelines** we run to deceive ourselves.
 

@@ -1,5 +1,12 @@
 # 永生，只是永久的孤独
 
+- Date: 2025-12-05
+- Author: ByF
+- URL: https://blog.baifan.site/immortality-eternal-loneliness/
+- Description: 从中国长寿科技发展谈起，探讨人类对永生的执念与生命意义的本质。当科技让活到150岁成为可能，我们是否真的准备好面对永恒的孤独？死亡的边界才让生命有了意义。
+
+---
+
 
 # 永生，只是永久的孤独
 

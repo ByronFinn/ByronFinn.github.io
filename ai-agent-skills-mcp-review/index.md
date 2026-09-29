@@ -1,5 +1,12 @@
 # AI Agent 的 Skill 和 MCP，哪些值得装
 
+- Date: 2026-07-20
+- Author: ByF
+- URL: https://blog.baifan.site/ai-agent-skills-mcp-review/
+- Description: 个人用了大半年的 AI Agent Skill 和 MCP 工具盘点，从思考推理到工程 DevOps 按场景分类，附真实使用评价和安装说明
+
+---
+
 
 开源社区每天都在涌现海量 Agent 扩展与 MCP 服务，但超过九成的扩展在装上之后便永久吃灰。工具链的价值在于其调用契约与上下文开销是否可控。以下从长期实测的高频工具中按真实场景分类梳理。
 

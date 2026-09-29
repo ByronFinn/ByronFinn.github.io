@@ -1,5 +1,12 @@
 # Pi Coding Agent: The Complete Guide to Minimalist Coding
 
+- Date: 2026-01-13
+- Author: ByF
+- URL: https://blog.baifan.site/en/pi-coding-agent-complete-guide/
+- Description: Pi Coding Agent is a minimalist, highly extensible terminal coding agent. This guide covers everything from installation to advanced customization with extensions, skills, and packages.
+
+---
+
 
 <!-- more -->
 

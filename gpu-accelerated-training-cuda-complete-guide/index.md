@@ -1,5 +1,12 @@
 # CPU/GPU 与大模型训练
 
+- Date: 2025-08-20
+- Author: ByF
+- URL: https://blog.baifan.site/gpu-accelerated-training-cuda-complete-guide/
+- Description: AI教程第四篇：深度学习GPU加速实战指南。涵盖CPU/GPU架构对比、张量与精度量化、CUDA编程实战、PyTorch训练工作流、硬件选型与显存优化，包含面试问答与排错清单，助你掌握AI模型训练的核心工程技能。
+
+---
+
 
 # AI 教程: CPU/GPU 与大模型训练
 

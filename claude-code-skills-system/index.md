@@ -1,5 +1,12 @@
 # Skill 的本质：可复用的专业知识封装
 
+- Date: 2026-06-05
+- Author: ByF
+- URL: https://blog.baifan.site/claude-code-skills-system/
+- Description: 拆解 Claude Code 的 Skill 系统：可复用的专业知识封装。为什么 Skill 不是插件而是“提示词模块"？按需加载与全量注入的取舍。BYF 的 Skill 渐进式披露（ADR 0009）和 update-config 作为内置 Skill 的工程实践。
+
+---
+
 
 <!-- more -->
 

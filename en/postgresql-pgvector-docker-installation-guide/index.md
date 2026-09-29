@@ -1,5 +1,12 @@
 # PostgreSQL + pgvector in Docker: A Complete Setup Guide
 
+- Date: 2025-09-02
+- Author: ByF
+- URL: https://blog.baifan.site/en/postgresql-pgvector-docker-installation-guide/
+- Description: Deploy PostgreSQL with pgvector in Docker: environment setup, compose configuration, initialization scripts, and verification tests — vector storage ready for AI apps and RAG systems.
+
+---
+
 
 # 🐘 Installing and Deploying PostgreSQL + pgvector in Docker
 

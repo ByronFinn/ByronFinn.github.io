@@ -1,5 +1,12 @@
 # Foreign Apple ID Registration: Four Paths That Work
 
+- Date: 2026-03-17
+- Author: ByF
+- URL: https://blog.baifan.site/en/apple-us-id-registration/
+- Description: Four tested ways to register a foreign Apple ID (US, Turkey, Japan, and more), plus a complete plan to keep your first App Store login from being bumped back to the China store.
+
+---
+
 
 Registering an Apple ID for another region shouldn't be hard, but Apple keeps changing the flow. Most tutorials online record only a single path, and the comments are full of people saying it no longer works. More annoying: after registering, your first App Store login has a chance of being bumped straight back to the China store.
 

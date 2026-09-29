@@ -1,5 +1,12 @@
 # 深度解读 TencentDB Agent Memory：让 AI Agent 真正拥有分层记忆
 
+- Date: 2026-02-03
+- Author: ByF
+- URL: https://blog.baifan.site/tencentdb-agent-memory-deep-dive/
+- Description: TencentDB Agent Memory 是腾讯开源的 Agent 长期记忆框架，通过 L0-L3 语义金字塔和符号化 Mermaid 画布，实现最高 61.38% 的 Token 节省和 51.52% 的成功率提升。
+
+---
+
 
 <!-- more -->
 

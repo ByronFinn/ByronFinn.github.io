@@ -1,5 +1,12 @@
 # OpenAI Gave Me Six Months of ChatGPT Pro for Maintaining Open Source
 
+- Date: 2026-09-19
+- Author: ByF
+- URL: https://blog.baifan.site/en/codex-for-open-source/
+- Description: Applied to OpenAI's Codex for Open Source on a whim and got in — six months of Pro for free. Noting it down: feels great.
+
+---
+
 
 An email popped up in my inbox today: "You can just build things, enjoy 6 months on us."
 

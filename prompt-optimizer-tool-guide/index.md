@@ -1,5 +1,12 @@
 # Prompt Optimizer：一个让你写出更好 Prompt 的开源利器
 
+- Date: 2026-01-20
+- Author: ByF
+- URL: https://blog.baifan.site/prompt-optimizer-tool-guide/
+- Description: Prompt Optimizer 是一款开源的 AI 提示词优化工具，支持一键优化、多轮迭代、对比评估和多模型接入，帮你系统性地提升 Prompt 质量。
+
+---
+
 
 <!-- more -->
 

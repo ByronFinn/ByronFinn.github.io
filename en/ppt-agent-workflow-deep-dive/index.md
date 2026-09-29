@@ -1,5 +1,12 @@
 # Dissecting a PPT Agent: From Research to SVG Output
 
+- Date: 2026-04-28
+- Author: ByF
+- URL: https://blog.baifan.site/en/ppt-agent-workflow-deep-dive/
+- Description: A dissection of a commercial-grade PPT agent's four-stage workflow — requirement research, material retrieval, layout planning, and SVG design — with reproducible prompts and engineering thinking.
+
+---
+
 
 Conclusion first: this is not another "type a topic → force it into a template → output garbage" AI PPT tool.
 

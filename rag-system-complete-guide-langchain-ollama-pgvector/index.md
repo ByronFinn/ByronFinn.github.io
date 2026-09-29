@@ -1,5 +1,12 @@
 # RAG系统完全指南——从零搭建本地检索增强生成系统
 
+- Date: 2025-08-27
+- Author: ByF
+- URL: https://blog.baifan.site/rag-system-complete-guide-langchain-ollama-pgvector/
+- Description: AI教程第五篇：RAG系统完全指南。深入讲解LangChain+Ollama+pgvector搭建本地RAG系统，涵盖文档切分、向量化、检索优化、提示工程等核心技术。包含完整实战代码、面试指南和排错清单，助你掌握企业级RAG应用开发。
+
+---
+
 
 # 用 LangChain + Ollama + pgvector 搭建本地 RAG：从 0 到 1 的完整实战（含 uv 依赖管理 & 面试指南）
 

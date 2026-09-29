@@ -1,5 +1,12 @@
 # AI 编程助手的灵魂：Think-Act-Observe 循环
 
+- Date: 2026-05-07
+- Author: ByF
+- URL: https://blog.baifan.site/claude-code-think-act-observe-loop/
+- Description: 拆解 Claude Code 源码的核心架构思想：Think-Act-Observe 循环如何让 AI 从聊天机器人变成真正的编程助手。从 ReAct 模式到生产级实现，结合 BYF（Be Your Friend）开源项目的实战经验，看一个简单循环如何撑起整个 Agent 的能力。
+
+---
+
 
 <!-- more -->
 

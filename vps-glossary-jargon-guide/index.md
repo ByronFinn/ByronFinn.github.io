@@ -1,5 +1,12 @@
 # VPS圈知识扫盲：机圈黑话大全
 
+- Date: 2026-01-27
+- Author: ByF
+- URL: https://blog.baifan.site/vps-glossary-jargon-guide/
+- Description: 全面整理VPS与云服务器圈子中的黑话术语，从MJJ、小鸡、母鸡到线路、商家缩写，一份读懂机圈生态的入门百科。
+
+---
+
 
 <!-- more -->
 

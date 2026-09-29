@@ -1,5 +1,12 @@
 # PDF2Markdown: Complete Guide to Smart PDF Article Extraction
 
+- Date: 2025-11-25
+- Author: ByF
+- URL: https://blog.baifan.site/en/pdf2markdown-intelligent-pdf-extraction-tool/
+- Description: A deep dive into PDF2Markdown: intelligent processing of large scanned PDFs with PaddleOCR, Tesseract, and Ollama LLMs for precise article extraction — installation, tuning, architecture, and practice.
+
+---
+
 
 # PDF2Markdown - An Intelligent Article Extraction Tool for Large PDF Documents
 

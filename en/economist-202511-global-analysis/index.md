@@ -1,5 +1,12 @@
 # The Economist, November 2025: Global Trends and Geopolitics
 
+- Date: 2025-09-09
+- Author: ByF
+- URL: https://blog.baifan.site/en/economist-202511-global-analysis/
+- Description: A close read of The Economist, November 2025: US-China tech rivalry, global economic trends and geopolitical shifts across politics, finance, tech and society, with professional insight on international relations and economics.
+
+---
+
 
 The November 2025 issue of *The Economist* sketches a fractured global architecture: an escalating tech war between Washington and Beijing on one side, and defensive contraction alongside balance-sheet recession risks across major economies on the other.
 

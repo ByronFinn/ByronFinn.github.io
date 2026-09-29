@@ -1,5 +1,12 @@
 # 3000 行 vs 50 万行：从玩具到产品的架构深渊
 
+- Date: 2026-07-02
+- Author: ByF
+- URL: https://blog.baifan.site/claude-code-3000-vs-500k-lines/
+- Description: 对比 claude-code-from-scratch 的 3000 行极简实现和 Claude Code 官方源码的 50 万行工程巨兽：从玩具到产品，架构深渊里藏着多少工程细节？BYF 作为中间的实战案例——一个真实项目的工程化决策和设计债清理经验。
+
+---
+
 
 <!-- more -->
 

@@ -1,5 +1,12 @@
 # The MCP Protocol: USB-C for AI Tool Interconnection
 
+- Date: 2026-06-12
+- Author: ByF
+- URL: https://blog.baifan.site/en/claude-code-mcp-protocol/
+- Description: Deconstructing Claude Code's MCP integration: why the Model Context Protocol is called the USB-C of AI tool interconnection, the trade-offs of JSON-RPC over stdio, and how BYF's McpConnectionManager and conversational /mcp-config make MCP easier to adopt.
+
+---
+
 
 <!-- more -->
 

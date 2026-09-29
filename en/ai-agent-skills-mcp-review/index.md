@@ -1,5 +1,12 @@
 # AI Agent Skills and MCP: Which Ones Are Worth Installing
 
+- Date: 2026-07-20
+- Author: ByF
+- URL: https://blog.baifan.site/en/ai-agent-skills-mcp-review/
+- Description: A rundown of the AI agent skills and MCP tools I have personally used for most of a year, grouped by scenario from thinking and reasoning to engineering DevOps, with honest usage assessments and install instructions.
+
+---
+
 
 Conclusion first: plenty of tools out there can be installed, but most of them sit there gathering dust after installation. Below is what I filtered out of the things I actually use, sorted into five scenario categories, with a few genuinely used picks in each.
 

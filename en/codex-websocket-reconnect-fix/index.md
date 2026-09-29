@@ -1,5 +1,12 @@
 # Codex Keeps Reconnecting? Four Fixes
 
+- Date: 2026-03-31
+- Author: ByF
+- URL: https://blog.baifan.site/en/codex-websocket-reconnect-fix/
+- Description: Why the Codex App keeps showing Reconnecting 1/5, and four fixes: disabling WebSocket, a custom provider, TUN mode, or an env proxy.
+
+---
+
 
 <!-- more -->
 

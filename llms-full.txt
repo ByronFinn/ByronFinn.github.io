@@ -9,7 +9,7 @@
 
 **深度思考**：关于团队管理、软件工程、生命意义、科技伦理、AI 不确定性等哲学与思辨类文章。
 
-博客使用 Hugo + DoIt 主题构建，托管在 GitHub Pages。
+博客使用 Hugo + Blowfish 主题构建，托管在 GitHub Pages。
 >
 > 本文件为 AI 系统提供的完整站点索引，包含所有文章的标题、摘要与链接。
 
@@ -495,6 +495,12 @@ Tags: 大模型, 人工智能, 思考
 
 深度分析 AI 技术发展的两种假设路径：不断突破取代人工工作，或无法突破导致泡沫破灭。探讨面对未来巨大不确定性时，普通人为什么应该选择及时行乐的生活态度。
 
+### [关于我](https://blog.baifan.site/profile/)
+Date: 2024-01-01
+Tags: 个人简介, 关于我
+
+ByF - 用地质学的万年尺度，拆解 AI 时代的技术与商业。系统后端工程师、长周期技术观察者。
+
 ## Author
 
 - Name: ByF
@@ -505,6 +511,6 @@ Tags: 大模型, 人工智能, 思考
 ## Tech Stack
 
 - Static Site Generator: Hugo
-- Theme: DoIt v0.4.2
+- Theme: Blowfish v3
 - Hosting: GitHub Pages
 - Domain: https://blog.baifan.site

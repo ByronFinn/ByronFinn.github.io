@@ -1,5 +1,12 @@
 # The Physical Cost of Context Compression: KV Cache Pressure, Attention Decay, and Lossy Summarization
 
+- Date: 2026-05-23
+- Author: ByF
+- URL: https://blog.baifan.site/en/claude-code-context-compression/
+- Description: Deconstructing Claude Code's context compression pipeline: from Transformer KV Cache VRAM scaling and attention dilution to dynamic summarization entropy, Lost-in-the-Middle traps, and prompt caching invalidation.
+
+---
+
 
 Large language models possess no biological memory at the hardware tier; they operate entirely on Key-Value Caches that scale linearly in GPU High-Bandwidth Memory (HBM) alongside attention weight distributions that mathematically dilute as sequence length grows. The notion of long-horizon conversations presented by Claude Code is, at its engineering core, an eviction and compaction pipeline operating within the tight margins of memory capacity and numerical precision, trading away information entropy and prefix caching efficiency.
 

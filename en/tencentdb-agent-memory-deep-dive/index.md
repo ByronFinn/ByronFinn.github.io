@@ -1,5 +1,12 @@
 # TencentDB Agent Memory: Real Layered Memory for AI Agents
 
+- Date: 2026-02-03
+- Author: ByF
+- URL: https://blog.baifan.site/en/tencentdb-agent-memory-deep-dive/
+- Description: TencentDB Agent Memory is Tencent's open-source agent memory framework: an L0-L3 semantic pyramid plus a symbolic Mermaid canvas, delivering up to 61.38% token savings and 51.52% higher success rates.
+
+---
+
 
 <!-- more -->
 

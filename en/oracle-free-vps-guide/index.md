@@ -1,5 +1,12 @@
 # Oracle's Free 4-Core 24GB Server: From Signup to Running
 
+- Date: 2026-04-07
+- Author: ByF
+- URL: https://blog.baifan.site/en/oracle-free-vps-guide/
+- Description: The Oracle Always Free plan gives you a 4-core 24GB ARM server, indefinitely, at no cost. One post covers signup pitfalls, region choice, creating the ARM instance, and keep-alive strategy.
+
+---
+
 
 Oracle's Always Free plan gives you a 4-core, 24 GB ARM server every month — no expiry, no charge. The same specs cost $80–100/month on AWS. This post strings together signup, pitfalls, instance creation, and keep-alive.
 

@@ -1,5 +1,12 @@
 # What Trellis Does, and Whether It Fixes AI Coding Standards
 
+- Date: 2026-04-30
+- Author: ByF
+- URL: https://blog.baifan.site/en/trellis-ai-coding-framework-guide/
+- Description: Hands-on with the Trellis AI coding framework: spec-driven development plus cross-session memory plus automated workflows, so AI writes code to your project standards instead of improvising every time.
+
+---
+
 
 The most annoying thing about coding with AI isn't that it writes bugs — it's that it writes them differently every time. Same requirement, three conversations, three implementations. The standards live in your head; the AI doesn't know them.
 

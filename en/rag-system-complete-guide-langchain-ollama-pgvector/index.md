@@ -1,5 +1,12 @@
 # RAG Complete Guide: Build a Local RAG System from Scratch
 
+- Date: 2025-08-27
+- Author: ByF
+- URL: https://blog.baifan.site/en/rag-system-complete-guide-langchain-ollama-pgvector/
+- Description: Build a local RAG system with LangChain, Ollama, and pgvector — document splitting, embeddings, retrieval tuning, and prompts, with complete code, interview prep, and troubleshooting tips.
+
+---
+
 
 # Building a Local RAG with LangChain + Ollama + pgvector: A Complete Hands-On Walkthrough from 0 to 1 (with uv Dependency Management and an Interview Guide)
 

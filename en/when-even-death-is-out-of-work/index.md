@@ -1,5 +1,12 @@
 # Not Even Your Life Is Wanted: The Lost Bargaining Chip in the Machine Age
 
+- Date: 2025-11-04
+- Author: ByF
+- URL: https://blog.baifan.site/en/when-even-death-is-out-of-work/
+- Description: When automation takes over hazardous toil, manual laborers lose their final bargaining chip: trading flesh and lifespan for survival. This is not liberation, but a slide into absolute redundancy.
+
+---
+
 
 The presentation slides at tech keynotes are always immaculate. Bathed in cool hues of cyan and clean white, tailored executives gesture smoothly beneath the spotlights, unveiling high-frame-rate b-roll of six-axis robotic arms dancing across cleanrooms and unmanned shearers cleaving coal seams in the bowels of the earth. The official press releases are draped in immaculate corporate dignity: *“Zero-Harm Production,” “Automated Hazard Mitigation,” “Upgrading the Workforce Through Intelligent Infrastructure.”*
 

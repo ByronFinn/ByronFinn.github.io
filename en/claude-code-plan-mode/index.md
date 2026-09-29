@@ -1,5 +1,12 @@
 # The Discrete State Machine of Plan Mode: Decision Tree Pruning, Backtracking Costs, and Diminishing Returns
 
+- Date: 2026-06-16
+- Author: ByF
+- URL: https://blog.baifan.site/en/claude-code-plan-mode/
+- Description: Deconstructing Claude Code's Plan Mode: modeling it as a Finite State Machine (FSM), analyzing decision tree divergence, human barrier synchronization, physical backtracking costs, compiler-blind fragility, and ADR 0008.
+
+---
+
 
 Autoregressive large language models operating in unconstrained environments suffer from an inherent tendency toward myopic mutation and runaway divergence. Claude Code's Plan Mode attaches an external discrete Finite State Machine (FSM) that projects the action space onto a strictly side-effect-free subset, using an interactive human barrier to prune catastrophic physical backtracking branches from the decision tree.
 

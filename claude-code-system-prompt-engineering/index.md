@@ -1,5 +1,12 @@
 # System Prompt 工程：800 行提示词背后的设计决策
 
+- Date: 2026-05-16
+- Author: ByF
+- URL: https://blog.baifan.site/claude-code-system-prompt-engineering/
+- Description: 拆解 Claude Code 的 system prompt 工程：生产级 Agent 的提示词是上千行的精密架构，不是几句话。分析分层架构、占位符注入、行为约束、动态上下文设计，结合 BYF 的 PromptPlan 和 ephemeral injection 实践。
+
+---
+
 
 <!-- more -->
 

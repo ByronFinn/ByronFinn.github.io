@@ -1,5 +1,12 @@
 # Pi Coding Agent 完全指南：极简主义 Coding Agent 的终极玩法
 
+- Date: 2026-01-13
+- Author: ByF
+- URL: https://blog.baifan.site/pi-coding-agent-complete-guide/
+- Description: Pi Coding Agent 是一个极简且高度可扩展的终端 Coding Agent，通过 extensions、skills 和 packages 实现无限可能。本文从安装到高阶自定义，全面覆盖其核心功能与最佳实践。
+
+---
+
 
 <!-- more -->
 

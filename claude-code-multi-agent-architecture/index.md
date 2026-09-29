@@ -1,5 +1,12 @@
 # 多代理架构：分叉-汇聚模式的协作艺术
 
+- Date: 2026-06-09
+- Author: ByF
+- URL: https://blog.baifan.site/claude-code-multi-agent-architecture/
+- Description: 拆解 Claude Code 的多代理架构：为什么一个 AI 干不过三个 AI？explore、plan、general 三种角色的分工逻辑，分叉-汇聚模式的协作机制。BYF 的前台子代理系统、/agent 实时查看器和 TaskEntry 判别联合的实践。
+
+---
+
 
 <!-- more -->
 

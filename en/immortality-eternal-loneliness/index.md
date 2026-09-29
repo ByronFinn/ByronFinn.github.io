@@ -1,5 +1,12 @@
 # Immortality Is Just Eternal Loneliness
 
+- Date: 2025-12-05
+- Author: ByF
+- URL: https://blog.baifan.site/en/immortality-eternal-loneliness/
+- Description: From China's booming longevity science to the essence of a meaningful life: when living to 150 becomes possible, are we ready for eternal loneliness? Death's boundary is what gives life meaning.
+
+---
+
 
 # Immortality Is Just Eternal Loneliness
 

@@ -1,5 +1,12 @@
 # A Guide to SSH Remote Development in the Codex App
 
+- Date: 2026-02-10
+- Author: ByF
+- URL: https://blog.baifan.site/en/codex-ssh-remote-development-guide/
+- Description: A detailed walkthrough of connecting to remote servers over SSH for development with the Codex App, covering configuration steps, SSH host setup, remote environment preparation, and troubleshooting.
+
+---
+
 
 <!-- more -->
 

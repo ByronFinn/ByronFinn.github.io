@@ -1,5 +1,12 @@
 # A Complete Guide to LLMs: Tokens and Vectors in Depth
 
+- Date: 2025-07-22
+- Author: ByF
+- URL: https://blog.baifan.site/en/ai-llm-tutorial-token-vector-basics/
+- Description: A complete guide to large language models: core principles from tokens and token vectors to Transformer architecture, how LLMs actually work, and the key practices for building AI applications.
+
+---
+
 
 # AI Tutorial: A Guide to AI LLMs, from Basics to Depth
 

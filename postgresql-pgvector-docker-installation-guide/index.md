@@ -1,5 +1,12 @@
 # Docker安装PostgreSQL+pgvector完整教程：AI向量数据库快速部署指南
 
+- Date: 2025-09-02
+- Author: ByF
+- URL: https://blog.baifan.site/postgresql-pgvector-docker-installation-guide/
+- Description: 详细介绍在Docker容器中部署PostgreSQL+pgvector向量数据库的完整流程，包括环境准备、配置文件编写、初始化脚本和功能测试，为AI应用和RAG系统提供高效的向量存储解决方案。
+
+---
+
 
 # 🐘 在 Docker 中安装部署 PostgreSQL + pgvector
 
