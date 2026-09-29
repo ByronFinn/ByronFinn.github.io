@@ -118,6 +118,37 @@ const DEFAULT_CONTENT_SIGNAL = "ai-train=yes, search=yes, ai-input=yes";
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    // 0. Cloudflare R2 media proxy
+    // Intercept media assets (/pictures/, /files/, /images/) when MEDIA_BUCKET is bound.
+    if (
+      env.MEDIA_BUCKET &&
+      (url.pathname.startsWith("/pictures/") ||
+        url.pathname.startsWith("/files/") ||
+        url.pathname.startsWith("/images/"))
+    ) {
+      try {
+        const key = decodeURIComponent(url.pathname.slice(1));
+        const object = await env.MEDIA_BUCKET.get(key, {
+          onlyIf: request.headers,
+        });
+        if (object) {
+          const headers = new Headers();
+          object.writeHttpMetadata(headers);
+          headers.set("etag", object.httpEtag);
+          // Immutable media assets: cache at edge & browser for 1 year
+          headers.set("cache-control", "public, max-age=31536000, immutable");
+
+          if (!object.body) {
+            return new Response(null, { status: 304, headers });
+          }
+          return new Response(object.body, { status: 200, headers });
+        }
+      } catch (err) {
+        // Fall through to ASSETS on any decoding or R2 lookup error
+      }
+    }
+
     const wantsMarkdown = acceptsMarkdown(request.headers.get("accept"));
 
     // Default path: serve the original static assets (HTML, images, css...).
