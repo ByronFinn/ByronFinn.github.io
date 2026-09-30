@@ -1,7 +1,7 @@
 
-# 每日深度思考
+# ByF (BaiFan) · 每日深度思考
 
-> ByF 的个人博客，专注于 AI 技术、经济时事与深度思考，提供专业的技术洞察和商业分析。
+> ByF（BaiFan / 白帆）的个人博客，专注于 AI 技术、经济时事与深度思考，提供专业的技术洞察和商业分析。
 
 ## Links
 
@@ -18,7 +18,7 @@
 
 ## About
 
-每日深度思考是一个技术博客，由 ByF 运营，聚焦三大方向：
+每日深度思考是 ByF（BaiFan / 白帆）的个人技术博客，聚焦三大方向：
 
 **AI 技术**：覆盖大模型原理（Token、向量、Transformer）、Prompt Engineering、GPU 训练、RAG 系统搭建、AI Agent 架构、MCP 协议等，从理论到实战的系统性教程和源码拆解。
 
@@ -26,11 +26,13 @@
 
 **深度思考**：关于团队管理、软件工程、生命意义、科技伦理、AI 不确定性等哲学与思辨类文章。
 
-博客使用 Hugo + Blowfish 主题构建，托管在 GitHub Pages。
+博客使用 Hugo + Blowfish 主题构建，托管在 Cloudflare Pages。作者主站：https://baifan.site
 
 ## Author
 
-- Name: ByF
+- Name: ByF (BaiFan / 白帆)
+- Home: https://baifan.site
 - Blog: https://blog.baifan.site/
 - GitHub: https://github.com/ByronFinn
+- X: https://x.com/ByFanX
 - Email: blog@baifan.site

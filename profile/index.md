@@ -3,7 +3,7 @@
 - Date: 2024-01-01
 - Author: ByF
 - URL: https://blog.baifan.site/profile/
-- Description: ByF - 用地质学的万年尺度，拆解 AI 时代的技术与商业。系统后端工程师、长周期技术观察者。
+- Description: ByF（BaiFan / 白帆）—— 系统后端工程师、长周期技术观察者，byf 终端 AI 编码代理与 dev-skills 作者。用地质学的万年尺度，拆解 AI 时代的技术与商业。
 
 ---
 
@@ -38,6 +38,8 @@
 
 ## 关于 ByF
 
+**ByF** 与 **BaiFan（白帆）**是同一个名字的两种写法。系统后端工程师，[byf 终端 AI 编码代理](https://www.npmjs.com/package/@byfriends/cli)与 [dev-skills 工程技能集](https://github.com/ByronFinn/dev-skills)的作者。数字身份的根节点是主站 [baifan.site](https://baifan.site)，技术写作发布在本博客 [blog.baifan.site](https://blog.baifan.site)。
+
 曾是地球演化历史的阅读者，现是数字计算生态的构建者。
 
 - **万年尺度的冷峻**：地质学的专业背景塑造了习惯用长周期审视系统演化的视角——在技术狂飙突进与概念膨胀的浪潮中，保持清醒、克制与穿透力。
@@ -48,7 +50,9 @@
 
 ## 找到我
 
+- **主站**: [baifan.site](https://baifan.site)
 - **Email**: [blog@baifan.site](mailto:blog@baifan.site)
 - **GitHub**: [@ByronFinn](https://github.com/ByronFinn)
+- **X**: [@ByFanX](https://x.com/ByFanX)
 - **RSS 订阅**: [/index.xml](https://blog.baifan.site/index.xml)
 

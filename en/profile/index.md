@@ -3,7 +3,7 @@
 - Date: 2024-01-01
 - Author: ByF
 - URL: https://blog.baifan.site/en/profile/
-- Description: ByF — a geologist's timescale applied to AI-era tech and business. Backend engineer, long-cycle thinker, plain-spoken writer.
+- Description: ByF (BaiFan / 白帆) — backend engineer and long-cycle thinker, author of the byf terminal AI coding agent and dev-skills. Applies a geologist's timescale to AI-era tech and business.
 
 ---
 
@@ -38,6 +38,8 @@ This blog focuses on rigorous deep thinking and software engineering, rejecting 
 
 ## About ByF
 
+**ByF** and **BaiFan (白帆)** are two spellings of the same name. Backend & AI systems engineer, author of the [byf terminal AI coding agent](https://www.npmjs.com/package/@byfriends/cli) and the [dev-skills engineering skill set](https://github.com/ByronFinn/dev-skills). The canonical home of this digital identity is [baifan.site](https://baifan.site); technical writing lives at [blog.baifan.site](https://blog.baifan.site).
+
 Once a reader of Earth's deep history, now a builder of digital systems.
 
 - **The Deep-Time Perspective**: Geology taught me to evaluate evolution in large epochs — maintaining restraint and clarity amid technological frenzy.
@@ -48,6 +50,8 @@ Once a reader of Earth's deep history, now a builder of digital systems.
 
 ## Connect
 
+- **Home**: [baifan.site](https://baifan.site)
 - **Email**: [blog@baifan.site](mailto:blog@baifan.site)
 - **GitHub**: [@ByronFinn](https://github.com/ByronFinn)
+- **X**: [@ByFanX](https://x.com/ByFanX)
 - **RSS Feed**: [/en/index.xml](https://blog.baifan.site/en/index.xml)

@@ -1,7 +1,7 @@
 
-# 每日深度思考 — 完整内容索引
+# ByF (BaiFan) · 每日深度思考 — 完整内容索引
 
-> 每日深度思考是一个技术博客，由 ByF 运营，聚焦三大方向：
+> 每日深度思考是 ByF（BaiFan / 白帆）的个人技术博客，聚焦三大方向：
 
 **AI 技术**：覆盖大模型原理（Token、向量、Transformer）、Prompt Engineering、GPU 训练、RAG 系统搭建、AI Agent 架构、MCP 协议等，从理论到实战的系统性教程和源码拆解。
 
@@ -9,7 +9,7 @@
 
 **深度思考**：关于团队管理、软件工程、生命意义、科技伦理、AI 不确定性等哲学与思辨类文章。
 
-博客使用 Hugo + Blowfish 主题构建，托管在 GitHub Pages。
+博客使用 Hugo + Blowfish 主题构建，托管在 Cloudflare Pages。作者主站：https://baifan.site
 >
 > 本文件为 AI 系统提供的完整站点索引，包含所有文章的标题、摘要与链接。
 
@@ -499,18 +499,20 @@ Tags: 大模型, 人工智能, 思考
 Date: 2024-01-01
 Tags: 个人简介, 关于我
 
-ByF - 用地质学的万年尺度，拆解 AI 时代的技术与商业。系统后端工程师、长周期技术观察者。
+ByF（BaiFan / 白帆）—— 系统后端工程师、长周期技术观察者，byf 终端 AI 编码代理与 dev-skills 作者。用地质学的万年尺度，拆解 AI 时代的技术与商业。
 
 ## Author
 
-- Name: ByF
+- Name: ByF (BaiFan / 白帆)
+- Home: https://baifan.site
 - Blog: https://blog.baifan.site/
 - GitHub: https://github.com/ByronFinn
+- X: https://x.com/ByFanX
 - Email: blog@baifan.site
 
 ## Tech Stack
 
 - Static Site Generator: Hugo
 - Theme: Blowfish v3
-- Hosting: GitHub Pages
+- Hosting: Cloudflare Pages
 - Domain: https://blog.baifan.site

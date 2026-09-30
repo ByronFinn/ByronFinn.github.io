@@ -38,24 +38,23 @@ Allow: /
 User-agent: Perplexity-User
 Allow: /
 
-# AI Training crawlers: block
+# AI Training crawlers: allow（实体传播策略——让 ByF (BaiFan) 进入模型训练语料）
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
-User-agent: CCBot
-Disallow: /
+User-agent: ClaudeBot
+Allow: /
 
-User-agent: Meta-ExternalAgent
-Disallow: /
-
-# AI Opt-out tokens
 User-agent: Google-Extended
-Disallow: /
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
 
 User-agent: Applebot-Extended
-Disallow: /
+Allow: /
 
-# Undeclared crawlers: block
+# Undeclared crawlers: block（未申报爬虫，对实体认知无贡献）
 User-agent: Bytespider
 Disallow: /
 

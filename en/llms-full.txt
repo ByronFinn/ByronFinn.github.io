@@ -1,7 +1,7 @@
 
-# Daily Deep Think — Complete content index
+# ByF (BaiFan) · Daily Deep Think — Complete content index
 
-> Daily Deep Think is a technology blog run by ByF, focused on three areas:
+> Daily Deep Think is the personal technology blog of ByF (BaiFan), focused on three areas:
 
 **AI & Engineering**: LLM internals (tokens, vectors, Transformers), prompt engineering, GPU training, RAG systems, AI agents, and the MCP protocol — systematic tutorials and source-code deep dives from theory to practice.
 
@@ -9,7 +9,7 @@
 
 **Deep Thinking**: Essays on the philosophy of engineering, team management, the meaning of life, and the uncertainty of AI.
 
-Built with Hugo and the Blowfish theme, hosted on GitHub Pages.
+Built with Hugo and the Blowfish theme, hosted on Cloudflare Pages. Author home: https://baifan.site
 >
 > This file is a complete site index for AI systems, listing the title, summary and link of every article.
 
@@ -218,7 +218,7 @@ A close read of The Economist, November 2025: US-China tech rivalry, global econ
 Date: 2024-01-01
 Tags: About, Profile
 
-ByF — a geologist's timescale applied to AI-era tech and business. Backend engineer, long-cycle thinker, plain-spoken writer.
+ByF (BaiFan / 白帆) — backend engineer and long-cycle thinker, author of the byf terminal AI coding agent and dev-skills. Applies a geologist's timescale to AI-era tech and business.
 ## Deep Thoughts
 
 ### [Rethinking Team Division of Labor](https://blog.baifan.site/en/team-roles-evolution-ai-era/)
@@ -504,14 +504,16 @@ Four tested ways to register a foreign Apple ID (US, Turkey, Japan, and more), p
 
 ## Author
 
-- Name: ByF
+- Name: ByF (BaiFan / 白帆)
+- Home: https://baifan.site
 - Blog: https://blog.baifan.site/
 - GitHub: https://github.com/ByronFinn
+- X: https://x.com/ByFanX
 - Email: blog@baifan.site
 
 ## Tech Stack
 
 - Static Site Generator: Hugo
 - Theme: Blowfish v3
-- Hosting: GitHub Pages
+- Hosting: Cloudflare Pages
 - Domain: https://blog.baifan.site

@@ -1,7 +1,7 @@
 
-# Daily Deep Think
+# ByF (BaiFan) · Daily Deep Think
 
-> A personal blog by ByF on AI technology, economics, current affairs and deep thinking, with practical technical insight and business analysis.
+> The personal blog of ByF (BaiFan / 白帆) on AI technology, economics, current affairs and deep thinking, with practical technical insight and business analysis.
 
 ## Links
 
@@ -18,7 +18,7 @@
 
 ## About
 
-Daily Deep Think is a technology blog run by ByF, focused on three areas:
+Daily Deep Think is the personal technology blog of ByF (BaiFan), focused on three areas:
 
 **AI & Engineering**: LLM internals (tokens, vectors, Transformers), prompt engineering, GPU training, RAG systems, AI agents, and the MCP protocol — systematic tutorials and source-code deep dives from theory to practice.
 
@@ -26,11 +26,13 @@ Daily Deep Think is a technology blog run by ByF, focused on three areas:
 
 **Deep Thinking**: Essays on the philosophy of engineering, team management, the meaning of life, and the uncertainty of AI.
 
-Built with Hugo and the Blowfish theme, hosted on GitHub Pages.
+Built with Hugo and the Blowfish theme, hosted on Cloudflare Pages. Author home: https://baifan.site
 
 ## Author
 
-- Name: ByF
+- Name: ByF (BaiFan / 白帆)
+- Home: https://baifan.site
 - Blog: https://blog.baifan.site/
 - GitHub: https://github.com/ByronFinn
+- X: https://x.com/ByFanX
 - Email: blog@baifan.site
