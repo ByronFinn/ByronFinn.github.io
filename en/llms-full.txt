@@ -50,6 +50,12 @@ Built with Hugo and the Blowfish theme, hosted on Cloudflare Pages. Author home:
 - [The Economist, November 2025: Global Trends and Geopolitics](https://blog.baifan.site/en/economist-202511-global-analysis/) (2025-09-09)
 ## AI Technology
 
+### [Pi's CodeMode vs. DeepSeek Harness PTC Mode](https://blog.baifan.site/en/pi-codemode-vs-deepseek-harness-ptc/)
+Date: 2026-10-04
+Tags: Pi Coding Agent, DeepSeek, Harness, CodeMode, PTC, Agent Architecture, Tool Scheduling
+
+A deep comparison between Pi Coding Agent's CodeMode and DeepSeek Harness's Programmatic Tool Calling (PTC) mode. Analyzing runtime abstractions, TypeScript ambient declarations, Prompt Cache hit rates, observability boundaries, and IPC overheads.
+
 ### [The Classifier Is the Savior Again](https://blog.baifan.site/en/the-classifier-returns/)
 Date: 2026-09-20
 Tags: LLM-as-a-Judge, Jev, LangChain, RAG, GraphRAG, LLM Evaluation
@@ -487,6 +493,13 @@ Date: 2026-08-03
 Tags: AI Era, Team Management, Software Engineering, Org Structure, AI Coding, Team Collaboration, Deep Thoughts
 
 AI makes writing code cheap, and the logic of team division changes with it. Five roles by software lifecycle stage: prototyper, builder, maintainer, scaler, finisher. Scarcity shifts from writing to judgment — AI will not replace these five roles, only amplify them.
+## Technical Practice
+
+### [Pi's CodeMode vs. DeepSeek Harness PTC Mode](https://blog.baifan.site/en/pi-codemode-vs-deepseek-harness-ptc/)
+Date: 2026-10-04
+Tags: Pi Coding Agent, DeepSeek, Harness, CodeMode, PTC, Agent Architecture, Tool Scheduling
+
+A deep comparison between Pi Coding Agent's CodeMode and DeepSeek Harness's Programmatic Tool Calling (PTC) mode. Analyzing runtime abstractions, TypeScript ambient declarations, Prompt Cache hit rates, observability boundaries, and IPC overheads.
 ## Technical Thinking
 
 ### [Thoughts on Dynamic Intervention in AI Agent Runtimes](https://blog.baifan.site/en/ai-agent-runtime-dynamic-intervention/)

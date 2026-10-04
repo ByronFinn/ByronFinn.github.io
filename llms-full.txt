@@ -50,6 +50,12 @@
 - [时间线记录器：从MVP到可扩展的技术架构设计](https://blog.baifan.site/time-line-editor-architecture-design/) (2025-07-14)
 ## AI技术
 
+### [Pi 的 CodeMode 对比 DeepSeek Harness 的 PTC 模式](https://blog.baifan.site/pi-codemode-vs-deepseek-harness-ptc/)
+Date: 2026-10-04
+Tags: Pi Coding Agent, DeepSeek, Harness, CodeMode, PTC, Agent 架构, 工具调度
+
+对比 Pi Coding Agent 的 CodeMode 与 DeepSeek Harness 的 PTC（编程式工具调用）模式。从运行时抽象、类型系统、Prompt Cache 命中率、可观测性拦截与 IPC 开销等维度，解构现代代码智能体从单步 JSON 调度走向代码执行的工程权衡。
+
 ### [分类器又成了救世主](https://blog.baifan.site/the-classifier-returns/)
 Date: 2026-09-20
 Tags: LLM-as-a-Judge, Jev, LangChain, RAG, GraphRAG, 模型评估
@@ -140,6 +146,12 @@ Tags: 大模型, Token, 向量, Transformer
 
 AI大模型完全指南：从零基础到Token与向量的深度解析。系统学习AI核心技术原理，包括Token机制、向量表示、Transformer架构等关键概念。深入理解LLM工作机制，掌握人工智能基础理论，通过实例和图表详细阐述AI应用开发的核心要点，为深度学习和AI实践奠定扎实基础。
 ## 技术实践
+
+### [Pi 的 CodeMode 对比 DeepSeek Harness 的 PTC 模式](https://blog.baifan.site/pi-codemode-vs-deepseek-harness-ptc/)
+Date: 2026-10-04
+Tags: Pi Coding Agent, DeepSeek, Harness, CodeMode, PTC, Agent 架构, 工具调度
+
+对比 Pi Coding Agent 的 CodeMode 与 DeepSeek Harness 的 PTC（编程式工具调用）模式。从运行时抽象、类型系统、Prompt Cache 命中率、可观测性拦截与 IPC 开销等维度，解构现代代码智能体从单步 JSON 调度走向代码执行的工程权衡。
 
 ### [OpenAI 送了我半年 ChatGPT Pro，理由是我在维护开源](https://blog.baifan.site/codex-for-open-source/)
 Date: 2026-09-19
