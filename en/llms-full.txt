@@ -50,6 +50,12 @@ Built with Hugo and the Blowfish theme, hosted on Cloudflare Pages. Author home:
 - [The Economist, November 2025: Global Trends and Geopolitics](https://blog.baifan.site/en/economist-202511-global-analysis/) (2025-09-09)
 ## AI Technology
 
+### [Beyond 'Impressive Output': Scientifically Evaluating Agent Skills](https://blog.baifan.site/en/evaluating-agent-skills-first-principles/)
+Date: 2026-10-08
+Tags: Agent Skill, Evaluation Benchmark, Causal Inference, AB Testing, dev-skills, Coding Agent, Prompt Engineering
+
+Reject showcase bias and ungrounded praise. Using causal inference and first principles, this article unpacks the attribution chain of Agent Skills, paired A/B testing, three-tier evidence hierarchies, and anti-contamination guardrails.
+
 ### [Pi's CodeMode vs. DeepSeek Harness PTC Mode](https://blog.baifan.site/en/pi-codemode-vs-deepseek-harness-ptc/)
 Date: 2026-10-04
 Tags: Pi Coding Agent, DeepSeek, Harness, CodeMode, PTC, Agent Architecture, Tool Scheduling
@@ -494,6 +500,12 @@ Tags: AI Era, Team Management, Software Engineering, Org Structure, AI Coding, T
 
 AI makes writing code cheap, and the logic of team division changes with it. Five roles by software lifecycle stage: prototyper, builder, maintainer, scaler, finisher. Scarcity shifts from writing to judgment — AI will not replace these five roles, only amplify them.
 ## Technical Practice
+
+### [Beyond 'Impressive Output': Scientifically Evaluating Agent Skills](https://blog.baifan.site/en/evaluating-agent-skills-first-principles/)
+Date: 2026-10-08
+Tags: Agent Skill, Evaluation Benchmark, Causal Inference, AB Testing, dev-skills, Coding Agent, Prompt Engineering
+
+Reject showcase bias and ungrounded praise. Using causal inference and first principles, this article unpacks the attribution chain of Agent Skills, paired A/B testing, three-tier evidence hierarchies, and anti-contamination guardrails.
 
 ### [Pi's CodeMode vs. DeepSeek Harness PTC Mode](https://blog.baifan.site/en/pi-codemode-vs-deepseek-harness-ptc/)
 Date: 2026-10-04

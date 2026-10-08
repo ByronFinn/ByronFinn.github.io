@@ -50,6 +50,12 @@
 - [时间线记录器：从MVP到可扩展的技术架构设计](https://blog.baifan.site/time-line-editor-architecture-design/) (2025-07-14)
 ## AI技术
 
+### [别再看“输出很惊艳”了：如何从第一性原理科学度量一个 Agent Skill 的好坏](https://blog.baifan.site/evaluating-agent-skills-first-principles/)
+Date: 2026-10-08
+Tags: Agent Skill, 评测基准, 因果推断, A/B测试, dev-skills, Coding Agent, 提示词工程
+
+拒绝展示性偏见与无对照吹捧。从因果推断与第一性原理出发，拆解 Agent Skill 评测的归因链条、配对 A/B 实验设计、三层证据阶梯与防污染护栏，算清质量与 Token 成本的独立分账。
+
 ### [Pi 的 CodeMode 对比 DeepSeek Harness 的 PTC 模式](https://blog.baifan.site/pi-codemode-vs-deepseek-harness-ptc/)
 Date: 2026-10-04
 Tags: Pi Coding Agent, DeepSeek, Harness, CodeMode, PTC, Agent 架构, 工具调度
@@ -146,6 +152,12 @@ Tags: 大模型, Token, 向量, Transformer
 
 AI大模型完全指南：从零基础到Token与向量的深度解析。系统学习AI核心技术原理，包括Token机制、向量表示、Transformer架构等关键概念。深入理解LLM工作机制，掌握人工智能基础理论，通过实例和图表详细阐述AI应用开发的核心要点，为深度学习和AI实践奠定扎实基础。
 ## 技术实践
+
+### [别再看“输出很惊艳”了：如何从第一性原理科学度量一个 Agent Skill 的好坏](https://blog.baifan.site/evaluating-agent-skills-first-principles/)
+Date: 2026-10-08
+Tags: Agent Skill, 评测基准, 因果推断, A/B测试, dev-skills, Coding Agent, 提示词工程
+
+拒绝展示性偏见与无对照吹捧。从因果推断与第一性原理出发，拆解 Agent Skill 评测的归因链条、配对 A/B 实验设计、三层证据阶梯与防污染护栏，算清质量与 Token 成本的独立分账。
 
 ### [Pi 的 CodeMode 对比 DeepSeek Harness 的 PTC 模式](https://blog.baifan.site/pi-codemode-vs-deepseek-harness-ptc/)
 Date: 2026-10-04
