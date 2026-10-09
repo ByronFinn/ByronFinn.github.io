@@ -3,20 +3,20 @@
 - Date: 2026-10-09
 - Author: ByF
 - URL: https://blog.baifan.site/en/git-add-silent-failure-stat-cache-plumbing/
-- Description: A modified file in the working tree, diffs clearly visible, yet git add exits 0 without updating any index entries. Digging into Git's read-cache.c stat-cache optimizations, Racy Git races, and how low-level update-index plumbing punctures porcelain illusions.
+- Description: A modified file in the working tree, diffs clearly visible, yet git add exits 0 without updating any index entries. Digging into Git's read-cache.c stat-cache optimizations, Racy Git races, and how low-level update-index commands bypass high-level caching.
 
 ---
 
 
-When operating Git inside automated pipelines or sandboxed terminal environments, engineers take a tacit premise for granted: if `git add <file>` exits with code 0, the modification has safely transitioned into the staging area. But today, while updating author metadata on the blog, I hit an elusive silent failure: real file changes in the working tree, `git diff` plainly displaying the hunk, `git add` returning 0, and yet `git status` stubbornly insisting the file was untracked, with `git diff --cached` remaining dead empty.
+When writing automation scripts or working in the terminal, developers assume a simple rule: as long as `git add <file>` exits with code 0, the change is staged. Today, while updating author metadata on the blog, I hit an elusive silent failure: real file modifications on disk, `git diff` clearly printing the hunk, `git add` returning 0, yet `git status` stubbornly insisting the file was untracked, with `git diff --cached` remaining completely empty.
 
 <!-- more -->
 
-## The Scene: Tangible Diffs, Paralyzed Staging
+## The Symptom: Real Changes on Disk, but Nothing Gets Staged
 
 The breakdown surfaced while committing configuration adjustments accompanying 《{{< ref "posts/2026-10-08-evaluating-agent-skills-first-principles" >}}》. I edited `data/authors/ByF.toml` in the working directory to update an inline comment.
 
-The state was unmistakable:
+The state was straightforward:
 
 ```bash
 $ git status
@@ -57,7 +57,7 @@ $ git diff --cached
 # No output at all
 ```
 
-Escalating with forceful options changed nothing:
+Trying forceful options changed nothing:
 
 ```bash
 $ git add -u
@@ -69,11 +69,11 @@ Changes not staged for commit:
 no changes added to commit
 ```
 
-Every standard porcelain command misfired. No matter what flags were passed, the staging index refused to ingest the file change, emitting zero warnings or errors.
+Every routine high-level command failed silently. No matter what flags were passed, the staging index refused to ingest the file change, emitting zero warnings or errors.
 
-## Drilling Down: Divergence Between Object Store and Index
+## Inspecting the Low Level: Divergence Between Object Store and Index
 
-To isolate the fault, porcelain wrappers had to be stripped away in favor of Git's plumbing layer:
+To isolate the fault, we have to drop down from high-level user commands and inspect Git's raw plumbing data:
 
 ```bash
 # Calculate the blob SHA of the file currently on disk
@@ -89,7 +89,7 @@ $ git ls-tree HEAD data/authors/ByF.toml
 100644 blob 881fa632c8de2f5b24386e405dbf80f41583f435	data/authors/ByF.toml
 ```
 
-The telemetry confirmed an outright disconnection:
+The telemetry confirmed an outright contradiction:
 1. The working tree held new content hashing to `de32019...`.
 2. The index `.git/index` clung to the old blob `881fa63...`.
 3. `git add` returned 0, yet **it neither wrote the new blob into the object database nor updated the hash pointer in the index entry**.
@@ -108,11 +108,11 @@ H data/authors/ByF.toml
 
 The output letter was uppercase `H`, signifying a normal, unmerged tracked entry (as opposed to lowercase `h` for assume-unchanged or `S` for skip-worktree). The path was neither ignored nor locked.
 
-## The Root Cause: Stat Cache and Short-Circuiting
+## The Root Cause: Git's Stat Cache Took a Shortcut
 
-The root cause lies in Git's performance bedrock: **the Stat Cache**.
+The root cause lies in Git's performance optimization: **the Stat Cache**.
 
-In repositories containing hundreds of thousands of files, reading every working tree file byte-by-byte to compute SHA hashes during a simple `git status` or `git add` would destroy disk I/O and CPU throughput. Consequently, Git caches raw operating system metadata inside each `cache_entry` in `.git/index`.
+In repositories containing thousands of files, reading every working tree file byte-by-byte to compute SHA hashes during a simple `git status` or `git add` would destroy disk I/O and CPU throughput. Consequently, Git caches raw operating system metadata inside each `cache_entry` in `.git/index`.
 
 As declared in Git's source tree (`read-cache.c`):
 
@@ -146,16 +146,16 @@ Only when these stat metrics diverge does Git classify the file as "dirty," prom
 
 ### Why Did `git diff` See It While `git add` Bypassed It?
 
-- `git diff` relies on `diff-lib.c`. When evaluating text diffs or encountering anomalous timestamps, it reads file buffers directly.
-- `git add` follows `builtin/add.c` -> `add_files_to_cache()` -> `refresh_cache()`.
-- Prior to this run, an execution inside a restricted sandbox attempted to touch `.git/index.lock` and failed with `Operation not permitted`. The subsequent hand-off created a timestamp collision between the host OS filesystem buffer and Git's cached index metadata.
-- Under sub-second granularity or filesystem writeback delays (the classic **Racy Git** problem), `ie_match_stat()` took the fast path: **Git falsely concluded that the filesystem metadata matched the index record, deducing that the file was clean**.
+- `git diff` follows the diff inspection path. When generating hunks, it reads working tree content directly.
+- `git add` follows `builtin/add.c` -> `refresh_cache()`.
+- Prior to this run, an execution inside a restricted sandbox attempted to touch `.git/index.lock` and failed with `Operation not permitted`. The subsequent hand-off created a timestamp collision between the host filesystem buffer and Git's cached index metadata.
+- Under sub-second granularity or filesystem writeback delays (the classic **Racy Git** problem), `ie_match_stat()` short-circuited: **Git falsely concluded that the filesystem metadata matched the index record, deducing that the file was clean**.
 
 Because Git deemed that no changes existed to begin with, `git add` considered its job done and exited with status 0.
 
 ## Breaking Out: Low-Level Plumbing Overrides the Cache
 
-When high-level porcelain commands are blinded by the Stat Cache, the resolution is to bypass heuristic shortcuts and issue explicit plumbing instructions.
+When high-level commands get stuck on the Stat Cache, the resolution is to bypass heuristic shortcuts and issue explicit plumbing instructions.
 
 ### Step 1: Forcing a Raw-Byte Verification
 
@@ -168,14 +168,14 @@ data/authors/ByF.toml: needs update
 
 The terminal instantly responded with `data/authors/ByF.toml: needs update`.
 
-The explicit purpose of `--really-refresh` is to instruct Git to **bypass all lstat() metadata shortcuts**, reading disk content directly to hash and compare against the index SHA. This punctured the illusory balance, forcing Git's state machine to acknowledge the path as dirty.
+The explicit purpose of `--really-refresh` is to instruct Git to **bypass all lstat() metadata shortcuts**, reading disk content directly to hash and compare against the index SHA. This punctured the stale cache, forcing Git's state machine to acknowledge the path as dirty.
 
 ### Step 2: Direct Plumbing Ingestion
 
 To prevent any lingering tree-cache filters from interfering, update the entry via plumbing:
 
 ```bash
-# Bypass Porcelain filters; hash the file into objects and rewrite the index entry
+# Bypass high-level filters; hash the file into objects and rewrite the index entry
 $ git update-index --add data/authors/ByF.toml
 
 # Verify the index SHA
@@ -202,9 +202,9 @@ The blockage evaporated, and the commit was pushed upstream without friction.
 
 ## Engineering Takeaways
 
-When orchestrating automation pipelines, continuous delivery agents, or terminal coding harnesses like those dissected in 《{{< ref "posts/2026-06-22-claude-code-skills-system" >}}》, reliance on high-level command abstractions creates unexamined blind spots.
+When orchestrating automation pipelines, continuous delivery agents, or terminal coding harnesses like those dissected in 《{{< ref "posts/2026-06-22-claude-code-skills-system" >}}》, keep these lessons in mind:
 
 1. **Exit code 0 guarantees no side effects**: `git add` means "stage designated modifications." If its internal optimizer concludes that zero modifications exist, the operation naturally succeeds with nothing done. Returning 0 is mathematically consistent to the command, but represents a fatal silent failure to the caller.
 2. **Assert index hashes in mission-critical scripts**: In automated workflows where file staging must be verified, checking the command exit code is insufficient. Verify that `git diff --cached --quiet` fails (confirming staged changes) or query `git ls-files --stage` directly.
-3. **Plumbing is the ultimate antidote to porcelain magic**: When high-level commands get tangled in cached state heuristics, don't waste time retrying flag variations. Dropping down to `update-index`, `hash-object`, and `cat-file` operates directly on Git's object graph and index tree, cutting through the confusion cleanly.
+3. **Low-level plumbing is the fastest way out when standard commands misbehave**: When standard commands get tangled in cached state heuristics, don't waste time retrying flag variations. Dropping down to `update-index`, `hash-object`, and `cat-file` operates directly on Git's object graph and index tree, cutting through the confusion cleanly.
 

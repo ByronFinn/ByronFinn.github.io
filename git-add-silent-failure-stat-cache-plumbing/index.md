@@ -3,16 +3,16 @@
 - Date: 2026-10-09
 - Author: ByF
 - URL: https://blog.baifan.site/git-add-silent-failure-stat-cache-plumbing/
-- Description: 工作区修改确凿，git add 退出码为 0 却未更新任何索引条目。深入 Git 源码 read-cache.c 剖析 stat-cache 优化短路与 Racy Git 竞态，演示底层管道命令 update-index 如何穿透瓷器层缓存伪象。
+- Description: 工作区修改确凿，git add 退出码为 0 却未更新任何索引条目。深入 Git 源码 read-cache.c 剖析 stat-cache 优化短路与 Racy Git 竞态，演示底层 update-index 命令如何绕过常规命令的缓存判定，强制刷新索引。
 
 ---
 
 
-在自动化流水线或沙盒环境中操作 Git，开发者通常默认一个前提：只要 `git add <file>` 的退出码为 0，工作区变更就已经稳妥写入了暂存区。但今天在维护博客并提交作者元数据时，撞上了一个罕见的静默失效：工作区内容变更确凿，`git diff` 清楚打印出差异，执行 `git add` 返回 0，随后的 `git status` 依然顽固显示文件未暂存，`git diff --cached` 空无一物。
+在写自动化脚本或终端操作 Git 时，大家习惯认为：只要 `git add` 没报错、退出码是 0，改动就一定进暂存区了。但今天在提交博客作者配置时，碰到了一个非常诡异的静默失败：文件改动清清楚楚，`git diff` 能正常输出改动内容，执行 `git add` 也正常返回 0，但紧接着跑 `git status`，文件依然显示未暂存，`git diff --cached` 什么都没有。
 
 <!-- more -->
 
-## 故障现场：确凿的差异与瘫痪的暂存
+## 故障现场：改动真实存在，但就是暂存不进去
 
 故障发生在提交《{{< ref "posts/2026-10-08-evaluating-agent-skills-first-principles" >}}》的配套配置修改时。我在工作区编辑了 `data/authors/ByF.toml`，修改了首行注释。
 
@@ -36,7 +36,7 @@ index 881fa63..de32019 100644
 +
 ```
 
-变更真实存在。于是执行常规的暂存命令：
+改动就在那里。于是执行常规暂存：
 
 ```bash
 $ git add data/authors/ByF.toml
@@ -44,7 +44,7 @@ $ echo $?
 0
 ```
 
-退出码为 0。但紧接着检查状态：
+退出码是 0。但紧接着检查状态：
 
 ```bash
 $ git status
@@ -54,10 +54,10 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 
 $ git diff --cached
-# 无任何输出
+# 没有任何输出
 ```
 
-尝试使用强制选项与全量更新：
+换用其他常见的参数强推：
 
 ```bash
 $ git add -u
@@ -69,13 +69,13 @@ Changes not staged for commit:
 no changes added to commit
 ```
 
-常规的瓷器层（Porcelain）操作全部失效。无论如何添加，暂存区都拒绝吸纳这一修改，且整个过程不报任何警告。
+平时常用的常规命令全部失效。无论怎么加，暂存区都当它不存在，而且整个过程不报任何错误。
 
-## 探针深入：对象库与索引树的断裂
+## 直接查底层：索引和对象库到底存了什么
 
-为查明原因，必须剥离日常使用的瓷器命令，下潜到 Git 的管道（Plumbing）层查看底层数据结构。
+既然常规的高阶命令看不出问题，只能用 Git 底层命令（Plumbing）直接查看内部的数据结构。
 
-首先检查工作区文件计算出的哈希，与索引中记录的哈希：
+先看工作区文件的实际哈希，和索引里记录的哈希：
 
 ```bash
 # 计算工作区文件当前的 blob 哈希
@@ -91,32 +91,32 @@ $ git ls-tree HEAD data/authors/ByF.toml
 100644 blob 881fa632c8de2f5b24386e405dbf80f41583f435	data/authors/ByF.toml
 ```
 
-数据呈现出清晰的断裂：
+数据呈现出直接的矛盾：
 1. 工作区的最新内容哈希是 `de32019...`。
 2. 暂存区 `.git/index` 里记录的依然是旧哈希 `881fa63...`。
-3. `git add` 返回 0，但**既没有在对象库中写入新对象，也没有改写索引条目的哈希指向**。
+3. `git add` 返回了 0，但**既没有把新内容写入对象库，也没有更新索引里的条目**。
 
-排查是否是文件系统锁残留或索引标记问题：
+再排查是否是文件系统锁残留，或者文件被设置了特殊忽略标记：
 
 ```bash
 # 检查是否存在锁文件
 $ ls -la .git/index.lock
 ls: .git/index.lock: No such file or directory
 
-# 检查文件是否被设置了 skip-worktree 或 assume-unchanged 标记
+# 检查文件在索引里的状态标记
 $ git ls-files -v data/authors/ByF.toml
 H data/authors/ByF.toml
 ```
 
-输出字母 `H`，表示文件处于正常被追踪状态（unmerged 对应 `M`，assume-unchanged 对应小写 `h`，skip-worktree 对应 `S`）。文件没有被标记忽略，也没有锁文件卡死。
+输出大写字母 `H`，说明文件处于正常的受追踪状态（不是小写 `h` 的 assume-unchanged，也不是 `S` 的 skip-worktree）。没有忽略标记，也没有锁文件卡住。
 
-## 根因推导：Stat Cache 机制与判断短路
+## 为什么会这样：Git 的 Stat 缓存偷懒了
 
-问题出在 Git 的性能优化核心：**Stat 缓存（Stat Cache）**。
+问题出在 Git 的性能优化机制：**Stat 缓存（Stat Cache）**。
 
-在拥有数万甚至数十万文件的大型代码库中，如果每次执行 `git status` 或 `git add` 都去逐字节读取工作区文件并计算 SHA 哈希，磁盘 I/O 和 CPU 将难以承受。因此，Git 在二进制索引文件 `.git/index` 中维护了一个 `cache_entry` 结构。
+在有成千上万个文件的大仓库里，如果每次跑 `git status` 或 `git add` 都要逐字读取磁盘文件去算 SHA 哈希，磁盘 I/O 很快就会撑不住。因此，Git 在二进制索引文件 `.git/index` 里维护了一个 `cache_entry` 结构。
 
-参考 Git 源码（`read-cache.c`）中的定义：
+在 Git 源码（`read-cache.c`）中是这样定义的：
 
 ```c
 struct cache_time {
@@ -138,46 +138,46 @@ struct cache_entry {
 };
 ```
 
-每次 Git 检查文件是否改变时，调用的并非哈希函数，而是系统调用 `lstat()`。函数 `ie_match_stat()` 会逐一比对以下字段：
-1. 修改时间（`mtime` 的秒与纳秒）
+Git 在检查文件有没有被修改时，第一步调用的不是哈希计算，而是系统调用 `lstat()`。内部函数 `ie_match_stat()` 会优先比对以下元数据：
+1. 文件修改时间（`mtime` 的秒和纳秒）
 2. 状态改变时间（`ctime`）
-3. 设备号（`dev`）与 Inode 节点号（`ino`）
+3. 设备号（`dev`）和 Inode 节点号（`ino`）
 4. 文件体积（`size`）
 
-只有在上述元数据发生变动时，Git 才会认为文件“可能被修改”，进而打开文件读取内容。
+只有当这些元数据有变动时，Git 才会认为文件“可能被改动了”，进而打开文件读取实际内容。
 
-### 为什么 `git diff` 能感知，而 `git add` 却跳过？
+### 为什么 `git diff` 看得到，而 `git add` 却跳过了？
 
-- `git diff` 内部走的是 `diff-lib.c` 的文件比对逻辑。当它检测到任何微弱的外部扰动，或者强制启用文本差异比对时，会深入读取文件缓冲区。
-- `git add` 走的是 `builtin/add.c` -> `add_files_to_cache()` -> `refresh_cache()`。
-- 在此之前，由于沙盒权限曾尝试操作 `.git/index.lock` 并触发了 `Operation not permitted`，导致后续宿主环境与文件系统的 mtime 发生短暂时间窗口内的冲突。
-- 当高精度的纳秒时间戳由于系统截断、文件系统缓存回写延迟，或者文件被快速触碰后 mtime 恰好落入 Git 索引已记录的时间窗口（即著名的 **Racy Git 竞态**）时，`ie_match_stat()` 发生判断短路：**Git 错误地认定工作区文件元数据与索引中记录的一致，进而判定该文件无需暂存**。
+- `git diff` 走的是差异比对路径。当它需要生成文本差异时，会直接去读工作区内容。
+- `git add` 走的是常规的索引刷新流程（`builtin/add.c` -> `refresh_cache()`）。
+- 在这次操作前，沙盒环境曾因为权限问题尝试写入 `.git/index.lock` 并报错失败（`Operation not permitted`），随后切换环境重新执行，导致宿主文件系统的时间戳与索引内部记录产生短暂错位。
+- 在时间戳精度截断或文件系统缓存延迟的特定窗口下（经典的 **Racy Git 竞态**），`ie_match_stat()` 发生了短路判断：**Git 误以为磁盘文件的元数据和索引记录是一致的，从而推断出“这文件没有改动过”**。
 
-因为 Git 认为文件“本来就没有变更”，所以 `git add` 认为自己圆满完成了任务，返回退出码 0。
+因为 Git 认为文件“根本不需要更新”，所以 `git add` 认为自己正常执行完毕，顺理成章地返回了退出码 0。
 
-## 破局：底层管道命令穿透缓存伪象
+## 解决办法：用底层命令强制刷新与写入
 
-既然瓷器命令被表层的 Stat Cache 蒙蔽，解决方案就是绕过它，直接向底层管道命令下达强制刷新与写入指令。
+既然常规命令被表层的 Stat 缓存卡住了，解决思路就是跳过它的启发式判断，直接用底层命令强制检查并写入。
 
-### 第一步：强制穿透 Stat 缓存验证
+### 第一步：强制跳过元数据比对
 
-使用管道命令 `git update-index` 携带 `--really-refresh` 参数：
+使用底层管道命令 `git update-index` 加上 `--really-refresh` 参数：
 
 ```bash
 $ git update-index --really-refresh
 data/authors/ByF.toml: needs update
 ```
 
-终端立即输出 `data/authors/ByF.toml: needs update`。
+终端立刻打印出 `data/authors/ByF.toml: needs update`。
 
-`--really-refresh` 的核心作用，正是命令 Git **忽略所有基于 lstat() 元数据的快速比对短路**，强行读取磁盘文件的实际内容与索引记录的 SHA 哈希进行比对。这一步终于戳破了 Stat 缓存的虚假平衡，让 Git 内部状态机确认该文件确实处于脏状态。
+`--really-refresh` 的作用，就是让 Git **忽略所有基于 lstat() 元数据的快速短路检查**，强制读取磁盘文件的实际内容和索引哈希对比。这一步直接打破了 Stat 缓存的误判，让 Git 内部确认该文件确实变脏了。
 
-### 第二步：底层管道命令直接写盘
+### 第二步：底层命令直接入库
 
-即便此时 `add` 仍可能受制于旧的索引树缓存，我们可以直接使用底层管道写入：
+此时即便常规 `add` 仍然可能受缓存干扰，可以直接用底层命令把文件强行压入索引：
 
 ```bash
-# 绕过 Porcelain 的过滤逻辑，强制将文件内容写入对象库并更新 index entry
+# 强制读取文件内容计算哈希、写入对象库，并直接更新索引条目
 $ git update-index --add data/authors/ByF.toml
 
 # 验证索引中的哈希值
@@ -185,9 +185,9 @@ $ git ls-files --stage data/authors/ByF.toml
 100644 de320197c11de72a4b1a648d67cbba9a5ba60a39 0	data/authors/ByF.toml
 ```
 
-索引条目瞬间被更新为工作区的真实哈希 `de32019...`。
+索引里的哈希立即变成了工作区的真实哈希 `de32019...`。
 
-随后检查状态并提交：
+随后检查状态并提交，恢复正常：
 
 ```bash
 $ git status
@@ -200,13 +200,13 @@ $ git commit -m "chore: update ByF.toml comment wording"
  1 file changed, 2 insertions(+), 1 deletion(-)
 ```
 
-阻塞彻底解除，提交顺利推送到远端仓库。
+阻塞解除，提交顺利推送。
 
-## 工程反思与避坑实践
+## 排查后的几点经验
 
-在构建自动化构建脚本、CI/CD 流水线，或类似《{{< ref "posts/2026-06-22-claude-code-skills-system" >}}》中讨论的终端智能体系统时，过度依赖高阶封装命令往往隐藏着认知盲区。
+在编写自动化构建脚本、CI 流程，或者类似《{{< ref "posts/2026-06-22-claude-code-skills-system" >}}》中提到的终端自动化工具时，有几点值得注意：
 
-1. **退出码 0 不代表副作用生效**：`git add` 的语义是“将指定的变更加入暂存”。如果它的内部优化器误判“不存在变更”，那么“加入暂存”的操作目标自然为 0，返回退出状态码 0 在逻辑上对它自己是自洽的，但在调用方视角却是致命的静默失败。
-2. **在自动化检测中设置哈希断言**：关键流水线如果必须确认暂存成功，单看命令返回值不够充分。通过 `git diff --cached --quiet` 校验暂存区非空，或通过 `git ls-files --stage` 比对对象哈希，才是因果闭环的做法。
-3. **认识管道工具的杀伤力**：当常规命令陷入诡异的死锁或状态错乱时，不要反复重试无效的选项组合。调出 `update-index`、`hash-object` 与 `cat-file` 等管道工具，直接对着 Git 的对象数据库和索引树做手术，往往是剥离玄学问题的最快途径。
+1. **退出码 0 不等于真正产生了预期改动**：`git add` 的职责是“把改动加入暂存区”。当它的内部判断认为“没有改动”时，目标自然算作完成，返回 0 属于逻辑自洽，但对上层调用方来说就是隐蔽的静默失败。
+2. **自动化脚本不要只看命令返回值**：对于必须确保暂存成功的流程，检查退出码是不够的。通过 `git diff --cached --quiet` 确认暂存区非空，或者用 `git ls-files --stage` 直接核验哈希，才算真正闭环。
+3. **遇到诡异状态时多看底层命令**：常规高阶命令（Porcelain）为了体验做了很多隐式缓存与优化。当遇到状态错乱、常规命令不讲道理时，直接用底层命令（Plumbing，如 `update-index`、`hash-object`、`cat-file`）去查对象库和索引，往往是排查问题最快的捷径。
 

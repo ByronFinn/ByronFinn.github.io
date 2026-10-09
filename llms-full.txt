@@ -157,7 +157,7 @@ AI大模型完全指南：从零基础到Token与向量的深度解析。系统�
 Date: 2026-10-09
 Tags: Git, 系统底层, 文件系统, 排障记录
 
-工作区修改确凿，git add 退出码为 0 却未更新任何索引条目。深入 Git 源码 read-cache.c 剖析 stat-cache 优化短路与 Racy Git 竞态，演示底层管道命令 update-index 如何穿透瓷器层缓存伪象。
+工作区修改确凿，git add 退出码为 0 却未更新任何索引条目。深入 Git 源码 read-cache.c 剖析 stat-cache 优化短路与 Racy Git 竞态，演示底层 update-index 命令如何绕过常规命令的缓存判定，强制刷新索引。
 
 ### [我是怎么判断一个 Agent Skill 值不值得留的](https://blog.baifan.site/evaluating-agent-skills-first-principles/)
 Date: 2026-10-08
