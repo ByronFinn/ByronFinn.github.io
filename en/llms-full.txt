@@ -501,6 +501,12 @@ Tags: AI Era, Team Management, Software Engineering, Org Structure, AI Coding, T
 AI makes writing code cheap, and the logic of team division changes with it. Five roles by software lifecycle stage: prototyper, builder, maintainer, scaler, finisher. Scarcity shifts from writing to judgment — AI will not replace these five roles, only amplify them.
 ## Technical Practice
 
+### [When git add Exits 0 but Stages Nothing: Diagnosing a Git Index Stat-Cache Phantom Failure](https://blog.baifan.site/en/git-add-silent-failure-stat-cache-plumbing/)
+Date: 2026-10-09
+Tags: Git, Systems, File Systems, Troubleshooting
+
+A modified file in the working tree, diffs clearly visible, yet git add exits 0 without updating any index entries. Digging into Git's read-cache.c stat-cache optimizations, Racy Git races, and how low-level update-index plumbing punctures porcelain illusions.
+
 ### [How I Actually Judge Whether an Agent Skill Is Worth Keeping](https://blog.baifan.site/en/evaluating-agent-skills-first-principles/)
 Date: 2026-10-08
 Tags: Agent Skill, Evaluation Benchmark, Causal Inference, AB Testing, dev-skills, Coding Agent, Prompt Engineering

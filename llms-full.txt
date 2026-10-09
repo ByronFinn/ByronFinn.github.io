@@ -153,6 +153,12 @@ Tags: 大模型, Token, 向量, Transformer
 AI大模型完全指南：从零基础到Token与向量的深度解析。系统学习AI核心技术原理，包括Token机制、向量表示、Transformer架构等关键概念。深入理解LLM工作机制，掌握人工智能基础理论，通过实例和图表详细阐述AI应用开发的核心要点，为深度学习和AI实践奠定扎实基础。
 ## 技术实践
 
+### [git add 返回 0 却拒绝暂存：一次 Git 索引 Stat Cache 幽灵故障排查](https://blog.baifan.site/git-add-silent-failure-stat-cache-plumbing/)
+Date: 2026-10-09
+Tags: Git, 系统底层, 文件系统, 排障记录
+
+工作区修改确凿，git add 退出码为 0 却未更新任何索引条目。深入 Git 源码 read-cache.c 剖析 stat-cache 优化短路与 Racy Git 竞态，演示底层管道命令 update-index 如何穿透瓷器层缓存伪象。
+
 ### [我是怎么判断一个 Agent Skill 值不值得留的](https://blog.baifan.site/evaluating-agent-skills-first-principles/)
 Date: 2026-10-08
 Tags: Agent Skill, 评测基准, 因果推断, A/B测试, dev-skills, Coding Agent, 提示词工程
