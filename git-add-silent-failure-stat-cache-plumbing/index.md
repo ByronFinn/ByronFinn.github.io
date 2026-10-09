@@ -14,7 +14,10 @@
 
 ## 故障现场：改动真实存在，但就是暂存不进去
 
-故障发生在提交《{{< ref "posts/2026-10-08-evaluating-agent-skills-first-principles" >}}》的配套配置修改时。我在工作区编辑了 `data/authors/ByF.toml`，修改了首行注释。
+故障复现环境如下：
+- **操作系统**：macOS Darwin 24.6.0 (arm64, APFS 文件系统)
+- **Git 版本**：git version 2.50.1 (Apple Git-155)
+- **触发场景**：提交《{{< ref "posts/2026-10-08-evaluating-agent-skills-first-principles" >}}》的配套配置修改，编辑了 `data/authors/ByF.toml` 的首行注释。
 
 工作区的状态非常直观：
 
@@ -158,6 +161,15 @@ Git 在检查文件有没有被修改时，第一步调用的不是哈希计算�
 ## 解决办法：用底层命令强制刷新与写入
 
 既然常规命令被表层的 Stat 缓存卡住了，解决思路就是跳过它的启发式判断，直接用底层命令强制检查并写入。
+
+### 排障与修复命令速查
+
+| 排查步骤 | 推荐底层命令 | 预期正常行为 | 异常/故障状态表现 |
+| :--- | :--- | :--- | :--- |
+| **1. 校验磁盘真实内容** | `git hash-object <file>` | 打印当前修改后的新哈希 | 若与预期不符说明未落盘 |
+| **2. 检查暂存区记录** | `git ls-files --stage <file>` | 应显示与磁盘一致的新哈希 | **旧哈希**（证明 `git add` 未更新索引） |
+| **3. 刺破 Stat 缓存** | `git update-index --really-refresh` | 保持静默退出（通过检查） | 打印 `<file>: needs update`（证实缓存脱节） |
+| **4. 强制直写索引库** | `git update-index --add <file>` | 退出码 0 并更新索引哈希 | 索引哈希瞬间变更为磁盘新值 |
 
 ### 第一步：强制跳过元数据比对
 

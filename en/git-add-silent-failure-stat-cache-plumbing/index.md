@@ -1,4 +1,4 @@
-# When git add Exits 0 but Stages Nothing: Diagnosing a Git Index Stat-Cache Phantom Failure
+# When git add Exits 0 but Stages Nothing: Debugging Git Stat-Cache
 
 - Date: 2026-10-09
 - Author: ByF
@@ -14,7 +14,10 @@ When writing automation scripts or working in the terminal, developers assume a 
 
 ## The Symptom: Real Changes on Disk, but Nothing Gets Staged
 
-The breakdown surfaced while committing configuration adjustments accompanying 《{{< ref "posts/2026-10-08-evaluating-agent-skills-first-principles" >}}》. I edited `data/authors/ByF.toml` in the working directory to update an inline comment.
+The reproduction environment:
+- **Operating System**: macOS Darwin 24.6.0 (arm64, APFS filesystem)
+- **Git Version**: git version 2.50.1 (Apple Git-155)
+- **Trigger**: Modifying the leading comment in `data/authors/ByF.toml` while committing updates alongside 《{{< ref "posts/2026-10-08-evaluating-agent-skills-first-principles" >}}》.
 
 The state was straightforward:
 
@@ -156,6 +159,15 @@ Because Git deemed that no changes existed to begin with, `git add` considered i
 ## Breaking Out: Low-Level Plumbing Overrides the Cache
 
 When high-level commands get stuck on the Stat Cache, the resolution is to bypass heuristic shortcuts and issue explicit plumbing instructions.
+
+### Diagnostic & Remediation Cheat Sheet
+
+| Step | Plumbing Command | Expected Normal State | Failure / Stale State Symptom |
+| :--- | :--- | :--- | :--- |
+| **1. Verify disk hash** | `git hash-object <file>` | Prints current updated blob SHA | Differs from expected if unwritten |
+| **2. Inspect index entry** | `git ls-files --stage <file>` | Should match disk blob SHA | **Old SHA** (proves `git add` skipped update) |
+| **3. Puncture Stat Cache** | `git update-index --really-refresh` | Silent exit (0) | Outputs `<file>: needs update` |
+| **4. Force index write** | `git update-index --add <file>` | Exits 0 and rewrites entry | Index SHA immediately matches disk |
 
 ### Step 1: Forcing a Raw-Byte Verification
 
