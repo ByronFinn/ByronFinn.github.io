@@ -50,6 +50,12 @@ Built with Hugo and the Blowfish theme, hosted on Cloudflare Pages. Author home:
 - [The Economist, November 2025: Global Trends and Geopolitics](https://blog.baifan.site/en/economist-202511-global-analysis/) (2025-09-09)
 ## AI Technology
 
+### [The Next Phase of AI Coding: Rebuilding the SDLC](https://blog.baifan.site/en/agent-native-sdlc/)
+Date: 2026-10-11
+Tags: Agent-Native SDLC, AI Code Generation, Code Review, Engineering Bottleneck, Human-Agent Collaboration, Software Engineering, Tech Outlook
+
+Two years of AI-assisted engineering taught us faster code didn't mean faster delivery. The bottleneck moved downstream to review and verification. The next phase: rebuild the SDLC itself.
+
 ### [How I Actually Judge Whether an Agent Skill Is Worth Keeping](https://blog.baifan.site/en/evaluating-agent-skills-first-principles/)
 Date: 2026-10-08
 Tags: Agent Skill, Evaluation Benchmark, Causal Inference, AB Testing, dev-skills, Coding Agent, Prompt Engineering
@@ -340,6 +346,13 @@ Date: 2025-10-28
 Tags: LLM, Artificial Intelligence, Reflections
 
 Two possible paths for AI: relentless breakthroughs that replace human jobs, or stagnation that bursts the bubble. Why ordinary people should choose carpe diem amid vast uncertainty about the future.
+## Engineering Management
+
+### [The Next Phase of AI Coding: Rebuilding the SDLC](https://blog.baifan.site/en/agent-native-sdlc/)
+Date: 2026-10-11
+Tags: Agent-Native SDLC, AI Code Generation, Code Review, Engineering Bottleneck, Human-Agent Collaboration, Software Engineering, Tech Outlook
+
+Two years of AI-assisted engineering taught us faster code didn't mean faster delivery. The bottleneck moved downstream to review and verification. The next phase: rebuild the SDLC itself.
 ## Engineering Practice
 
 ### [OpenAI Gave Me Six Months of ChatGPT Pro for Maintaining Open Source](https://blog.baifan.site/en/codex-for-open-source/)
