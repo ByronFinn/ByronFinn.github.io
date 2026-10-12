@@ -54,7 +54,7 @@ Built with Hugo and the Blowfish theme, hosted on Cloudflare Pages. Author home:
 Date: 2026-10-11
 Tags: Agent-Native SDLC, AI Code Generation, Code Review, Engineering Bottleneck, Human-Agent Collaboration, Software Engineering, Tech Outlook
 
-Two years of AI-assisted engineering taught us faster code didn't mean faster delivery. The bottleneck moved downstream to review and verification. The next phase: rebuild the SDLC itself.
+Faster coding hasn't led to faster delivery. Industry data shows delivery stability remains under pressure, shifting the bottleneck from typing code to review queues and automated testing. The next phase focuses on pipeline overhaul: test-first criteria, tiered review automation, guardrails for non-engineers, and engineers owning architectural decisions.
 
 ### [How I Actually Judge Whether an Agent Skill Is Worth Keeping](https://blog.baifan.site/en/evaluating-agent-skills-first-principles/)
 Date: 2026-10-08
@@ -352,7 +352,7 @@ Two possible paths for AI: relentless breakthroughs that replace human jobs, or 
 Date: 2026-10-11
 Tags: Agent-Native SDLC, AI Code Generation, Code Review, Engineering Bottleneck, Human-Agent Collaboration, Software Engineering, Tech Outlook
 
-Two years of AI-assisted engineering taught us faster code didn't mean faster delivery. The bottleneck moved downstream to review and verification. The next phase: rebuild the SDLC itself.
+Faster coding hasn't led to faster delivery. Industry data shows delivery stability remains under pressure, shifting the bottleneck from typing code to review queues and automated testing. The next phase focuses on pipeline overhaul: test-first criteria, tiered review automation, guardrails for non-engineers, and engineers owning architectural decisions.
 ## Engineering Practice
 
 ### [OpenAI Gave Me Six Months of ChatGPT Pro for Maintaining Open Source](https://blog.baifan.site/en/codex-for-open-source/)
