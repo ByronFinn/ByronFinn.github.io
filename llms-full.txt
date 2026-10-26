@@ -159,6 +159,12 @@ Tags: 大模型, Token, 向量, Transformer
 AI大模型完全指南：从零基础到Token与向量的深度解析。系统学习AI核心技术原理，包括Token机制、向量表示、Transformer架构等关键概念。深入理解LLM工作机制，掌握人工智能基础理论，通过实例和图表详细阐述AI应用开发的核心要点，为深度学习和AI实践奠定扎实基础。
 ## 技术实践
 
+### [一次「无法登录」事故复盘：df -h 看不出的磁盘满 —— 571 万无用文件击穿 Linux inode](https://blog.baifan.site/inode-exhaustion-docker-login-failure/)
+Date: 2026-10-26
+Tags: Linux, Docker, 故障复盘, 运维, PHP, 系统底层
+
+生产环境突发登录瘫痪，df -h 显示磁盘仅用40%，底层却到处抛出 no space left on device。深挖定位到无人维护的遗留容器持续堆积571万个PHP Session文件，将全盘635万个inode彻底耗尽。剖析Linux文件系统元数据机制、PHP垃圾回收失效诱因及容器健康检查误判本质。
+
 ### [git add 返回 0 却拒绝暂存：一次 Git 索引 Stat Cache 幽灵故障排查](https://blog.baifan.site/git-add-silent-failure-stat-cache-plumbing/)
 Date: 2026-10-09
 Tags: Git, 系统底层, 文件系统, 排障记录

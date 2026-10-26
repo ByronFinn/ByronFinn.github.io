@@ -514,6 +514,12 @@ Tags: AI Era, Team Management, Software Engineering, Org Structure, AI Coding, T
 AI makes writing code cheap, and the logic of team division changes with it. Five roles by software lifecycle stage: prototyper, builder, maintainer, scaler, finisher. Scarcity shifts from writing to judgment — AI will not replace these five roles, only amplify them.
 ## Technical Practice
 
+### [Postmortem: When df -h Lies — 5.71M Files Burned All Inodes](https://blog.baifan.site/en/inode-exhaustion-docker-login-failure/)
+Date: 2026-10-26
+Tags: Linux, Docker, Postmortem, SRE, PHP, Systems
+
+Production outage postmortem: df -h showed 40% disk usage while 5.71M dead PHP session files burned 100% inodes. Analyzing VFS metadata, GC failure, and Docker healthchecks.
+
 ### [When git add Exits 0 but Stages Nothing: Debugging Git Stat-Cache](https://blog.baifan.site/en/git-add-silent-failure-stat-cache-plumbing/)
 Date: 2026-10-09
 Tags: Git, Systems, File Systems, Troubleshooting
