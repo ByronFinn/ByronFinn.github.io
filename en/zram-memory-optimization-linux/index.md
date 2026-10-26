@@ -1,4 +1,4 @@
-# Linux Out of Memory? ZRAM Compression and Practical Config
+# Linux Memory Optimization: ZRAM Principles and Configuration
 
 - Date: 2026-01-31
 - Author: ByF
@@ -8,11 +8,9 @@
 ---
 
 
+On memory-constrained VPS instances or embedded Linux devices, relying on disk-backed SWAP triggers swap thrashing and system stalls. Using the Linux kernel's ZRAM to allocate a compressed in-memory block device trades microsecond-level CPU cycles for effectively doubled RAM headroom.
+
 <!-- more -->
-
-Running out of memory is the norm on Linux devices — especially small-memory VPSes, Raspberry Pis, and old laptops. The traditional fix is adding a SWAP partition, but many people find the box actually gets laggier after adding one.
-
-Starting from how things work under the hood, this post compares SWAP and ZRAM so you know exactly **which to use in which scenario, and how to configure them**.
 
 ## What SWAP Really Is: Faking Memory with Disk
 

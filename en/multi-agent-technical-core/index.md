@@ -94,7 +94,7 @@ So the selection criterion is clear: the more complex the task, the longer the c
 4. **No quantitative data**. Nothing above includes success rates, cost comparisons, or failure-recovery times. "Users will wait longer for verifiable results" is an assumption, not a measurement.
 5. **Diagnosis and prescription are asymmetric**. The opening blames single agents' "stopping mid-way" on execution structure, then advocates binding stop conditions to external systems — but if stop conditions can be externalized, a single agent's stopping mid-way is to a considerable degree a design choice, not model fate. There's a missing step between the diagnosis and the prescription.
 
-## Seven Engineering Takeaways
+## Engineering Constraints and Design Boundaries
 
 1. **Pass the five questions before selecting**: why split, how to accept, when to stop, how to recover from failure, how to manage memory. If any question has no answer, don't go multi-agent.
 2. **Adoption order**: protocol first (task structure, state machines), then isolation (context, files, permissions), adversarial verification last. Reverse the order and collaboration becomes a disaster.

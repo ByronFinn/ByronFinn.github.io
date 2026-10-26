@@ -1,4 +1,4 @@
-# 工具即能力：AI Agent 的工具系统设计哲学
+# 工具系统的契约设计：Coding Agent 的工具定义与沙箱隔离
 
 - Date: 2026-05-12
 - Author: ByF

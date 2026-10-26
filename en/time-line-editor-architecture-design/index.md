@@ -1,4 +1,4 @@
-# Timeline Recorder: Technical Architecture from MVP to Scale
+# Timeline Recorder: Layered Architecture and Data Flow Design
 
 - Date: 2025-07-14
 - Author: ByF

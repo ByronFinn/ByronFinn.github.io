@@ -156,11 +156,11 @@ Before any tool execution enters the dispatch phase, local shell hooks validate 
 
 By offloading perimeter defense to deterministic scripts, the development environment stops relying on model alignment or exhausted human eyes.
 
-## Conclusion: Balancing Safety Controls Against Adversarial Realities
+## The Physical Boundary: Workflow Guardrails, Not Security Isolation
 
-Recognizing the physical boundaries of software tools is the foundation of sound engineering. Claude Code's permission system is a well-designed **accident prevention mechanism**—it guards against accidental directory deletions caused by hallucinated arguments, warns against inadvertent file overwrites, and maintains deliberate workflow pacing.
+Claude Code's permission model is fundamentally a **developer accident prevention mechanism**: it catches directory wipeouts caused by model hallucinations, warns against unintended configuration overwrites, and injects deliberate pacing into the workflow.
 
-It fails to form a **security boundary** against hostile compromise. As long as an agent's runtime process executes under the developer's raw host credentials with uninhibited access to disk and network sockets, relying on prompt guardrails and manual confirmations remains fundamentally indefensible.
+It does not constitute a **security boundary** against hostile prompt injection or payload obfuscation. As long as the agent runtime executes under the developer's raw host credentials, relying on LLM self-policing or human confirmation dialogue remains fragile application-layer glue against shell ambiguities and unchecked system calls.
 
-Until kernel-enforced sandboxes become the transparent default across developer tooling, the only defensible operational posture remains unchanged: run autonomous coding agents inside disposable containers or isolated virtual machines with least-privilege credentials, and expose zero irreplaceable host secrets to the working directory.
+Until fine-grained kernel isolation (such as seccomp-bpf, eBPF LSM, or lightweight MicroVMs) becomes the default runtime harness, the only defensible engineering posture is physical containment: run autonomous coding agents inside ephemeral containers or isolated virtual machines with least-privilege read-only mounts, physically cutting off exfiltration and compromise paths from irreplaceable host assets.
 

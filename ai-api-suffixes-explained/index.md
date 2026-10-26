@@ -411,7 +411,7 @@ text = response.candidates[0].content.parts[0].text
 
 ---
 
-## 一个图总结
+## 架构全景与调用路径
 
 {{< image src="/pictures/posts/ai-api-suffixes-protocol-evolution.svg" alt="AI API 协议演进路径" caption="从 /v1/completions 到 /v1/responses，协议从文本续写演进到统一响应对象" >}}
 

@@ -1,9 +1,9 @@
-# AI 编程工具的未来：从 Copilot 到 Autonomous Agent
+# AI 编码工具形态演进：从单点补全到自主 Agent
 
 - Date: 2026-07-06
 - Author: ByF
 - URL: https://blog.baifan.site/ai-coding-tools-future-copilot-to-autonomous-agent/
-- Description: Claude Code 源码拆解系列收官之作：回顾 AI 编程工具从代码补全到自主代理的演进路径。探讨 CLAUDE.md “项目宪法" 带来的开发范式变革，以及 BYF 的 AGENTS.md 工程、ByfHarness SDK、vis 可视化调试对未来 Agent 开发的启示。
+- Description: Claude Code 源码拆解系列收官之作：回顾 AI 编程工具从代码补全到自主代理的演进路径。探讨 CLAUDE.md「项目宪法」带来的开发范式变革，以及 BYF 的 AGENTS.md 工程、ByfHarness SDK、vis 可视化调试对未来 Agent 开发的启示。
 
 ---
 
@@ -129,39 +129,4 @@ AI 编程工具的未来仍然有大量未解决的问题：
 **责任归属。** Agent 写的代码出了 bug，责任是谁的？是写代码的 AI？是启动任务的用戶？是定义项目规范的团队？当前的法律和职业框架没有为"AI 写的代码"准备责任模型。
 
 **经济模型。** Agent 的 token 消耗远高于 Copilot。一个复杂的任务可能消耗数美元甚至数十美元的 API 费用。AI 编程的经济模型（效率提升 vs. token 成本）仍在演化中。
-
-## 回顾与展望
-
-这个系列从 Think-Act-Observe 循环出发，拆解了 Claude Code 的 12 个核心架构思想：
-
-1. **Think-Act-Observe 循环**——AI Agent 的骨架
-2. **工具系统**——AI Agent 的肌肉
-3. **System Prompt 工程**——AI Agent 的大脑
-4. **权限与安全**——AI Agent 的刹车
-5. **上下文压缩**——AI Agent 的短期记忆
-6. **记忆系统**——AI Agent 的长期记忆
-7. **Skill 系统**——AI Agent 的专业知识
-8. **多代理架构**——AI Agent 的团队协作
-9. **MCP 协议**——AI Agent 的外部连接
-10. **Plan Mode**——AI Agent 的设计先行
-11. **工程化差距**——从概念到产品的深渊
-12. **未来展望**——从辅助到自主的演进
-
-每一个思想单独看都不复杂。组合在一起，它们构成了一个**能在真实代码库中自主工作的智能系统**。
-
-Claude Code 不是终点。BYF 也不是。它们都是 AI 编程工具演进路径上的探索者——Claude Code 证明了大规模商用 Agent 是可能的，BYF 证明了个人开发者也可以用这些思想构建自己的 Agent。系列中提到的每一篇文章、每一个 ADR、每一个设计决策，都是这条路上的铺路石。
-
-你在读这篇系列时，可能已经在脑子里拆解你正在用的 AI 工具了。那就对了——**拆解是理解的开始。**
-
-**AI 不会替代程序员。但会用 AI 的程序员会替代不会用 AI 的程序员。** 这不是一句口号，它正在发生。
-
----
-
-> 本系列基于 [Claude Code 官方源码](https://github.com/anthropics/claude-code)项目进行架构分析，聚焦设计思想而非代码实现。
->
-> 感谢阅读这个系列。如果这些文章对你有帮助，欢迎分享和讨论。
-
----
-
-*「Claude Code 源码拆解」系列完。*
 

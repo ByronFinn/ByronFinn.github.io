@@ -1,4 +1,4 @@
-# The Silent War in Central-Local Power: Who Serves as the System's Shock Absorber?
+# The Silent War in Central-Local Power: Institutional Shock Absorbers and Cost Shifting
 
 - Date: 2026-07-03
 - Author: ByF

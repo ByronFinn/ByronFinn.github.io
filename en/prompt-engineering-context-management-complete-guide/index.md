@@ -1,4 +1,4 @@
-# Prompt Engineering: From Prompts to Context Engineering
+# Prompt and Context Engineering: Structured Constraints and State Control
 
 - Date: 2025-08-13
 - Author: ByF

@@ -1,4 +1,4 @@
-# Multi-Agent Architecture: The Art of Fork-Join Collaboration
+# Multi-Agent Architecture: Task Decomposition and State Convergence in Fork-Join Patterns
 
 - Date: 2026-06-09
 - Author: ByF

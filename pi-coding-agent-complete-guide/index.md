@@ -1,4 +1,4 @@
-# Pi Coding Agent 完全指南：极简主义 Coding Agent 的终极玩法
+# Pi Coding Agent：极简终端 Coding Agent 的架构与实践
 
 - Date: 2026-01-13
 - Author: ByF
@@ -8,13 +8,9 @@
 ---
 
 
+Pi Coding Agent 采取极简主义与激进扩展性设计，放弃复杂的内置子代理与弹窗权限交互，将工作流决策权完全归还给终端原生工具链。
+
 <!-- more -->
-
-## 前言
-
-按照作者的话来说，Pi Coding Agent 是一个**有主见且极简**的 Coding Agent。上手了一段时间后，我认为它是目前最好用的 AI Agent CLI 之一。
-
-很多项目爆火后都会迎来各种低质量的 issues 和 AI 生成的 PR，而 **pi** 这个名字非常有意思——它会与数学常数产生关联，这正是作者有意为之，目的是降低知名度，保持社区质量。
 
 ## 设计理念
 

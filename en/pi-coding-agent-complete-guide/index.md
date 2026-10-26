@@ -1,4 +1,4 @@
-# Pi Coding Agent: The Complete Guide to Minimalist Coding
+# Pi Coding Agent: Architecture and Workflow for a Minimalist CLI Agent
 
 - Date: 2026-01-13
 - Author: ByF
@@ -8,13 +8,9 @@
 ---
 
 
+Pi Coding Agent is built around a philosophy of minimalism and radical extensibility, intentionally omitting built-in subagents and modal permission popups in favor of native CLI toolchains and extension hooks.
+
 <!-- more -->
-
-## Preface
-
-In the author's own words, Pi Coding Agent is an **opinionated, minimalist** coding agent. After using it for a while, I consider it one of the best AI agent CLIs available today.
-
-Projects that blow up tend to attract low-quality issues and AI-generated PRs, and the name **pi** is a clever touch — it gets associated with the mathematical constant, which is exactly what the author intended: keep the profile low and the community quality high.
 
 ## Design Philosophy
 

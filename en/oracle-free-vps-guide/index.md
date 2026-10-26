@@ -1,4 +1,4 @@
-# Oracle's Free 4-Core 24GB Server: From Signup to Running
+# Oracle Cloud Free-Tier ARM Instance: Setup and Known Issues
 
 - Date: 2026-04-07
 - Author: ByF

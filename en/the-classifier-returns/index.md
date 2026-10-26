@@ -101,7 +101,7 @@ Then the generative wave hit, and the industry had a mass amnesia. We threw away
 
 We spent five years grinding the wheel from a square into a polygon, then proudly announced that we had discovered the circle.
 
-## 4. The Takeaway: Evaluation's Center of Gravity Shifts Back
+## 4. Evaluation's Center of Gravity Shifts Back
 
 Maybe the most important thing about Jev is not that “it is new”, but that it restores evaluation cost to a scale where doing it everywhere is engineering-incentive-compatible:
 

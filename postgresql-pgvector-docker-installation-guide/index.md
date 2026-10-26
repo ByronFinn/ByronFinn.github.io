@@ -1,4 +1,4 @@
-# Docker安装PostgreSQL+pgvector完整教程：AI向量数据库快速部署指南
+# Docker 部署 PostgreSQL 与 pgvector 向量扩展
 
 - Date: 2025-09-02
 - Author: ByF
@@ -8,12 +8,9 @@
 ---
 
 
-# 🐘 在 Docker 中安装部署 PostgreSQL + pgvector
+在 Docker Compose 环境中运行带有 pgvector 扩展的 PostgreSQL，可以为本地或测试环境快速提供向量检索能力。
 
-本文介绍如何在 **Docker Compose** 环境中快速部署带有 **pgvector** 扩展的 PostgreSQL 数据库，
-以便在本地或开发环境中支持向量检索与 AI 应用（如 LangChain、RAG、语义搜索等）。
-
----
+<!-- more -->
 
 ## 📦 一、准备环境
 
@@ -154,21 +151,6 @@ EOF
 ```
 
 > 说明 pgvector 已启用，并可执行向量检索。
-
----
-
-## ✅ 八、总结
-
-| 项目           | 值                       |
-| -------------- | ------------------------ |
-| 镜像           | `pgvector/pgvector:pg16` |
-| 默认端口       | `5432`                   |
-| 数据持久化目录 | `./postgre`              |
-| 初始化脚本     | `init.sql`               |
-| 扩展           | `pgvector`               |
-
-通过以上步骤，你已经成功在 Docker 中部署了 **PostgreSQL + pgvector**。
-接下来可以直接将其接入 LangChain、LlamaIndex、或自定义 RAG 应用中。
 
 ---
 

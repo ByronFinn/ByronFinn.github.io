@@ -1,4 +1,4 @@
-# Dissecting a PPT Agent: From Research to SVG Output
+# Architecture of a Presentation Agent: From Requirement Extraction to SVG Rendering
 
 - Date: 2026-04-28
 - Author: ByF

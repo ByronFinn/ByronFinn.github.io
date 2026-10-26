@@ -1,4 +1,4 @@
-# RAG系统完全指南——从零搭建本地检索增强生成系统
+# 基于 Ollama 与 pgvector 的本地 RAG 系统搭建与检索实践
 
 - Date: 2025-08-27
 - Author: ByF
@@ -8,13 +8,9 @@
 ---
 
 
-# 用 LangChain + Ollama + pgvector 搭建本地 RAG：从 0 到 1 的完整实战（含 uv 依赖管理 & 面试指南）
+基于 Ollama、LangChain 与 PostgreSQL pgvector 构建本地检索增强生成（RAG）系统，能够在完全离线与私有化环境下实现文档切分、向量化存储与上下文生成。示例代码仓库位于 [rag-lab](https://github.com/ByronFinn/rag-lab.git)。
 
-> 本文是可直接落地的 **Markdown 文档**。按文档自上而下执行即可从零搭建出一个本地 RAG（检索增强生成）系统，并理解关键概念与代码。所有核心脚本都附带中文注释，便于学习与面试复盘。
->
-> **代码仓库**：[https://github.com/ByronFinn/rag-lab.git](https://github.com/ByronFinn/rag-lab.git) - 完整可运行的示例代码
-
----
+<!-- more -->
 
 ## 目标与成果
 

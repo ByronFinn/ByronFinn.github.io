@@ -116,9 +116,13 @@ Hugging Face's harness research tells us that orchestration-layer optimization c
 
 ---
 
-## Closing Thoughts
+## The Physical Boundaries: Side Effects and Cache Penalties
 
-This line of thinking is far from finished. But one thing is already clear: **runtime dynamic intervention for agents should not be a mere feature patch; it should be treated as a first-class citizen of agent architecture.** It shapes the fluency of human-AI collaboration and the real-world usability of agents. The harness engineering experiments have already shown us the orchestration layer's potential exceeds imagination — with the model held fixed, we still have enormous room for optimization. The next generation of great agent frameworks will compete on their command over the *process*, not just the dazzle of the *result*.
+Even with these five layers assembled, deployment immediately collides with two hard engineering constraints:
 
-The road is long, but the direction is lit. If you're thinking about the same questions, or already experimenting in your own projects, I'd genuinely love to compare notes. This exploration is simply not something one person can pull off behind closed doors.
+First is the **impasse of irreversible external side effects**. Text history and in-memory variables can be rewound, but external API mutations, database writes, and network requests spawned by child agents escape the harness's boundary the moment they execute. A "dynamic rollback" without a formal distributed compensation mechanism (Saga) degrades into dirty data the instant it touches destructive writes.
+
+Second is the **economic reality of KV-cache invalidation**. Whether hot-swapping prompt tokens mid-step or aborting inference to splice new constraints, any non-append-only modification completely shatters prefix caching at the inference engine. A casual shoulder-tap correction frequently incurs the latency penalty and token bill of a full prefill from scratch.
+
+Software engineering offers no free lunch. Granting humans and PRMs the power to steer execution on the fly transforms a straightforward linear inference loop into a distributed state machine burdened with concurrency conflicts and compensation logic.
 

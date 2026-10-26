@@ -1,4 +1,4 @@
-# A Guide to SSH Remote Development in the Codex App
+# Configuring SSH Remote Development in the Codex App
 
 - Date: 2026-02-10
 - Author: ByF
@@ -155,15 +155,4 @@ The local Codex client and remote server versions need to match. If you hit a ve
 | Extension support | Rich extension ecosystem | Features still being built |
 
 For now, treat Codex SSH Remote as a companion tool that works alongside your existing development workflow, not a full replacement.
-
-## Wrap-up
-
-Codex SSH Remote is still in alpha, but for workflows that lean heavily on AI-assisted development in remote environments, it already saves real time. The core configuration steps boil down to:
-
-1. Enable the feature flag in local `~/.codex/config.toml`
-2. Configure the SSH host in `~/.ssh/config`
-3. Install Codex on the remote machine and make sure it's on PATH
-4. Add the connection in the Codex App and pick the project directory
-
-If anything goes wrong during setup, work through the troubleshooting steps above one by one.
 

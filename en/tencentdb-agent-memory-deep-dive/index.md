@@ -159,7 +159,7 @@ Pi Agent stores conversations as JSONL files under `~/.pi/agent/sessions/`. In t
 - **Model compatibility needs verification.** The gateway's LLM Runner is used by default for memory extraction (the L1/L2/L3 pipeline), which places real demands on a model's instruction-following ability. How the models Pi currently uses (such as GLM-5.1) perform on memory-extraction tasks needs actual testing; the project docs only verify DeepSeek-V3.2 and the GPT series.
 - **Short-term memory compression adds limited value for a coding agent.** Symbolic short-term memory (the Mermaid canvas + context offloading) mainly tackles explosive tool-log growth in long-horizon tasks. The tool output Pi Agent produces when editing code usually fits within the context window (GLM-5.1 has a 200K-token window), so scenarios that truly need offloading are relatively rare.
 
-### One-Line Summary
+### Integration Trade-offs
 
 TencentDB Agent Memory's architecture leaves a clear channel for third-party agents (the Gateway HTTP API plus an extensible HostAdapter interface), but today you still have to write the glue code yourself. For a CLI tool like Pi Coding Agent, long-term memory (keeping user preferences and project context across sessions) is worth more than short-term memory compression. I'm looking forward to a cross-framework universal Adapter or SDK that lowers the barrier further.
 
@@ -204,15 +204,15 @@ As someone who follows AI agent infrastructure closely, here's why I think this 
 GitHub: [https://github.com/Tencent/TencentDB-Agent-Memory](https://github.com/Tencent/TencentDB-Agent-Memory)
 
 License: MIT | Language: TypeScript | Stars: 2400+
-
-If you find it useful, don't forget to give the project a Star.
 {{< /admonition >}}
 
-## Final Thoughts
+## Architectural Trade-offs and Residual Friction
 
-The memory problem for AI agents is far from solved. Mainstream approaches either depend on external vector databases or crudely stuff historical summaries into the prompt — the former adds deployment complexity, the latter loses critical details.
+While layered storage and symbolic representation sidestep the operational weight of standalone external vector databases, deploying this in production-grade, long-horizon agents exposes real engineering friction:
 
-TencentDB Agent Memory offers a third path worth taking seriously: through layered storage and symbolic representation, it strikes a genuinely good balance between token efficiency, information completeness, and debuggability.
+First is the **risk of cascading corruption in offline extraction pipelines**. L1 and L2 distillation relies entirely on the instruction-following fidelity of the secondary LLM Runner. If a lightweight model hallucinates during periodic memory extraction, distorted facts become permanently committed as Markdown entities, subsequently poisoning the main agent's context as presumed ground truth.
 
-If you're building long-horizon agent applications, this project is worth your time to study and try.
+Second is the **tight coupling to the embedding vector space**. Dense vectors inside `sqlite-vec` are rigidly bound to the specific embedding model deployed. Migrating or upgrading embedding models requires an offline bulk re-indexing across all historical sessions, imposing significant reprocessing latency once corpora grow past tens of thousands of turns.
+
+Between local white-box transparency and retrieval latency, the architecture trades disk I/O and secondary extraction passes for operational determinism. It is not an absolute silver bullet, but it delineates a dependable boundary free from external distributed infrastructure.
 

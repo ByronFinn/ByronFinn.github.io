@@ -1,4 +1,4 @@
-# AI Agent 的 Skill 和 MCP，哪些值得装
+# AI Agent 的 Skill 与 MCP 工具选型：实用场景与维护成本评估
 
 - Date: 2026-07-20
 - Author: ByF

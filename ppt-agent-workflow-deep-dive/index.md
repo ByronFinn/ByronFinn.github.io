@@ -1,4 +1,4 @@
-# 一个 PPT Agent 的完整拆解：从需求调研到 SVG 出图
+# PPT 生成 Agent 架构：从需求提炼到 SVG 矢量排版渲染
 
 - Date: 2026-04-28
 - Author: ByF

@@ -1,4 +1,4 @@
-# Self-Hosted AI API Pipeline: From Domain Email to Sub2API
+# Self-Hosted AI API Proxy: Cloudflare and Sub2API Setup
 
 - Date: 2026-01-06
 - Author: ByF

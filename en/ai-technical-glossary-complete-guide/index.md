@@ -1,4 +1,4 @@
-# AI Technical Glossary: A Complete Guide to 270+ Terms
+# AI Technical Glossary: Core Concepts and Architecture Terms
 
 - Date: 2025-07-30
 - Author: ByF
@@ -8,11 +8,9 @@
 ---
 
 
-# AI Technical Glossary
+A reference table of core technical terminology across large language models, deep learning architectures, mathematical formulations, and engineering practices.
 
-This reference gathers the core terminology of the LLM field, from basic concepts to advanced technical architecture, to help you build a systematic understanding of the AI technology landscape.
-
----
+<!-- more -->
 
 ## 📚 Fundamentals
 

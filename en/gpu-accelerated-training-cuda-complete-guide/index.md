@@ -8,11 +8,9 @@
 ---
 
 
-# AI Tutorial: CPU/GPU and Large Model Training
+Large model training and inference workloads are dominated by dense General Matrix Multiplications (GEMM), where massive concurrency and high memory bandwidth make SIMT GPU architectures the standard execution environment.
 
-> This is a highly condensed reference: clearly structured, right to the point — covering CPU/GPU fundamentals, tensors and numerical precision, CUDA and PyTorch in practice, hardware selection, common interview questions, and a debugging checklist.
-
----
+<!-- more -->
 
 ## 0. Quick Overview (30 Seconds)
 
@@ -263,19 +261,6 @@ for step, (x, y) in enumerate(loader):
 
 - For **demos**, `nn.DataParallel(model)` works;
 - For **production**, prefer `torch.distributed` + `DistributedDataParallel`; make sure the launch script and environment variables (`MASTER_ADDR/PORT`, `WORLD_SIZE`, etc.) are correct.
-
----
-
-## 10. One-Page Summary (Slogan-Style Memory Hooks)
-
-- **CPUs are sequential and general-purpose; GPUs are parallel matrix machines.**
-- **Move both model and data `.to("cuda")`.**
-- **Lower precision = faster and cheaper, but rougher** (FP16/FP8/INT8/INT4).
-- **Quantization and distillation are not the same thing**: bit-width compression vs teacher-trains-student.
-- **Estimate VRAM starting from the weights, then think about KV/concurrency/length.**
-- **Production prefers full-strength models (cloud)**; local quantization is for learning/prototyping.
-- **Evaluate on the test set, not the training set.**
-- **Prefer DDP for multi-GPU**, and mind communication and initialization.
 
 ---
 

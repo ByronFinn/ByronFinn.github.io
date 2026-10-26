@@ -1,4 +1,4 @@
-# Reverse Engineering Claude Science: From 54 Tables to Modern TCM
+# Reverse-Engineering Claude Science: 54-Table Data Contracts and Knowledge Graphs
 
 - Date: 2026-02-20
 - Author: ByF

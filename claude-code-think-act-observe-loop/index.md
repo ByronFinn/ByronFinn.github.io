@@ -1,4 +1,4 @@
-# AI 编程助手的灵魂：Think-Act-Observe 循环
+# Coding Agent 的运行时中枢：Think-Act-Observe 执行循环
 
 - Date: 2026-05-07
 - Author: ByF

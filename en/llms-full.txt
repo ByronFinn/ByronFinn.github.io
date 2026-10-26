@@ -23,31 +23,31 @@ Built with Hugo and the Blowfish theme, hosted on Cloudflare Pages. Author home:
 ### AI Development Tools
 - [What Trellis Does, and Whether It Fixes AI Coding Standards](https://blog.baifan.site/en/trellis-ai-coding-framework-guide/) (2026-04-30)
 ### AI LLM Systematic Tutorials
-- [RAG Complete Guide: Build a Local RAG System from Scratch](https://blog.baifan.site/en/rag-system-complete-guide-langchain-ollama-pgvector/) (2025-08-27)
+- [Local RAG with Ollama and pgvector: Architecture and Retrieval](https://blog.baifan.site/en/rag-system-complete-guide-langchain-ollama-pgvector/) (2025-08-27)
 - [CPU, GPU, and Training Large Language Models](https://blog.baifan.site/en/gpu-accelerated-training-cuda-complete-guide/) (2025-08-20)
-- [Prompt Engineering: From Prompts to Context Engineering](https://blog.baifan.site/en/prompt-engineering-context-management-complete-guide/) (2025-08-13)
+- [Prompt and Context Engineering: Structured Constraints and State Control](https://blog.baifan.site/en/prompt-engineering-context-management-complete-guide/) (2025-08-13)
 - [Transformer Architecture Deconstructed: Attention, Geometric Scaling, and Memory IO](https://blog.baifan.site/en/transformer-attention-mechanism-deep-dive/) (2025-08-05)
-- [AI Technical Glossary: A Complete Guide to 270+ Terms](https://blog.baifan.site/en/ai-technical-glossary-complete-guide/) (2025-07-30)
-- [A Complete Guide to LLMs: Tokens and Vectors in Depth](https://blog.baifan.site/en/ai-llm-tutorial-token-vector-basics/) (2025-07-22)
+- [AI Technical Glossary: Core Concepts and Architecture Terms](https://blog.baifan.site/en/ai-technical-glossary-complete-guide/) (2025-07-30)
+- [LLM Fundamentals: Tokenization and Vector Representations](https://blog.baifan.site/en/ai-llm-tutorial-token-vector-basics/) (2025-07-22)
 ### Claude Code Source Code Deconstruction
-- [The Future of AI Coding Tools: From Copilot to Autonomous Agent](https://blog.baifan.site/en/ai-coding-tools-future-copilot-to-autonomous-agent/) (2026-07-06)
-- [3,000 vs 500K Lines: The Architectural Abyss From Toy to Product](https://blog.baifan.site/en/claude-code-3000-vs-500k-lines/) (2026-07-02)
+- [Evolution of AI Coding Tools: From Inline Completion to Autonomous Agents](https://blog.baifan.site/en/ai-coding-tools-future-copilot-to-autonomous-agent/) (2026-07-06)
+- [3,000-Line Prototype vs 500K-Line Product: The Complexity Gap in Coding Agents](https://blog.baifan.site/en/claude-code-3000-vs-500k-lines/) (2026-07-02)
 - [The Discrete State Machine of Plan Mode: Decision Tree Pruning, Backtracking Costs, and Diminishing Returns](https://blog.baifan.site/en/claude-code-plan-mode/) (2026-06-16)
 - [The MCP Protocol: USB-C for AI Tool Interconnection](https://blog.baifan.site/en/claude-code-mcp-protocol/) (2026-06-12)
-- [Multi-Agent Architecture: The Art of Fork-Join Collaboration](https://blog.baifan.site/en/claude-code-multi-agent-architecture/) (2026-06-09)
+- [Multi-Agent Architecture: Task Decomposition and State Convergence in Fork-Join Patterns](https://blog.baifan.site/en/claude-code-multi-agent-architecture/) (2026-06-09)
 - [The Nature of Skills: Reusable Encapsulated Expertise](https://blog.baifan.site/en/claude-code-skills-system/) (2026-06-05)
 - [AI Memory Systems: Four Memory Types and Semantic Recall](https://blog.baifan.site/en/claude-code-memory-system/) (2026-06-02)
 - [The Physical Cost of Context Compression: KV Cache Pressure, Attention Decay, and Lossy Summarization](https://blog.baifan.site/en/claude-code-context-compression/) (2026-05-23)
 - [Permissions and Real Security Boundaries: Sandboxes, System Calls, and Approval Escape](https://blog.baifan.site/en/claude-code-permissions-security/) (2026-05-20)
 - [System Prompt Engineering: Decisions Behind 800 Lines](https://blog.baifan.site/en/claude-code-system-prompt-engineering/) (2026-05-16)
-- [Tools Are Capability: AI Agent Tool System Design Philosophy](https://blog.baifan.site/en/claude-code-tool-system-design/) (2026-05-12)
-- [The Soul of an AI Coding Assistant: The Think-Act-Observe Loop](https://blog.baifan.site/en/claude-code-think-act-observe-loop/) (2026-05-07)
+- [Tool System Contract Design: Tool Definitions and Sandboxing for Coding Agents](https://blog.baifan.site/en/claude-code-tool-system-design/) (2026-05-12)
+- [The Runtime Core of Coding Agents: The Think-Act-Observe Execution Loop](https://blog.baifan.site/en/claude-code-think-act-observe-loop/) (2026-05-07)
 ### Project Design Documents
-- [Timeline Recorder: Technical Architecture from MVP to Scale](https://blog.baifan.site/en/time-line-editor-architecture-design/) (2025-07-14)
+- [Timeline Recorder: Layered Architecture and Data Flow Design](https://blog.baifan.site/en/time-line-editor-architecture-design/) (2025-07-14)
 ### The Economist Notes
 - [The Economist, November 15, 2025](https://blog.baifan.site/en/economist-20251115-taiwan-boom/) (2025-12-22)
 - [When the World Reshuffles: The Economist, Nov 8, 2025](https://blog.baifan.site/en/economist-2025-11-world-rebalancing/) (2025-10-21)
-- [The Economist, November 2025: Global Trends and Geopolitics](https://blog.baifan.site/en/economist-202511-global-analysis/) (2025-09-09)
+- [Global Trends and Geopolitics: Reading The Economist, November 2025](https://blog.baifan.site/en/economist-202511-global-analysis/) (2025-09-09)
 ## AI Technology
 
 ### [The Next Phase of AI Coding: Rebuilding the SDLC](https://blog.baifan.site/en/agent-native-sdlc/)
@@ -86,7 +86,7 @@ Tags: AI Agent, Dynamic Intervention, ReAct, OpenClaw, LangGraph, SWE-PRM, Harne
 
 Once an AI agent starts running you cannot intervene mid-flight — a fatal blind spot in current architectures. Five approaches analyzed (LangGraph interrupt(), OpenClaw /steer, SWE-PRM) and a five-layer intervention architecture proposed: async queues, layered rollback, PRM auto-correction.
 
-### [AI Agent Skills and MCP: Which Ones Are Worth Installing](https://blog.baifan.site/en/ai-agent-skills-mcp-review/)
+### [AI Agent Skills and MCP Tool Selection: Use Cases and Maintenance Costs](https://blog.baifan.site/en/ai-agent-skills-mcp-review/)
 Date: 2026-07-20
 Tags: AI Agent, MCP, Skill, Tool Recommendations, Developer Productivity
 
@@ -98,7 +98,7 @@ Tags: Agent, Interview, System Design, Engineering Practice, AI Systems, Hiring
 
 After a dozen-plus agent-track interviews, one feeling keeps growing: five questions whose answers reveal who has actually done the work. Multi-agent architecture, communication, failure handling, state management, and tool calling each carry clear signals.
 
-### [Reverse Engineering Claude Science: From 54 Tables to Modern TCM](https://blog.baifan.site/en/ai-agent-platform-to-tcm-future/)
+### [Reverse-Engineering Claude Science: 54-Table Data Contracts and Knowledge Graphs](https://blog.baifan.site/en/ai-agent-platform-to-tcm-future/)
 Date: 2026-02-20
 Tags: Claude Science, Reverse Engineering, TCMSP, AI Agent, Agent Runtime
 
@@ -110,19 +110,19 @@ Tags: AI Agent, Long-term Memory, RAG, TencentDB
 
 TencentDB Agent Memory is Tencent's open-source agent memory framework: an L0-L3 semantic pyramid plus a symbolic Mermaid canvas, delivering up to 61.38% token savings and 51.52% higher success rates.
 
-### [Prompt Optimizer: An Open-Source Tool for Better Prompts](https://blog.baifan.site/en/prompt-optimizer-tool-guide/)
+### [Prompt Optimizer: Automated Evaluation and Mutation for LLM Prompts](https://blog.baifan.site/en/prompt-optimizer-tool-guide/)
 Date: 2026-01-20
 Tags: Prompt, AI Tools, Open Source, Prompt Engineering, Productivity Tools
 
 Prompt Optimizer is an open-source prompt optimization tool with one-click optimization, iterative refinement, comparative evaluation, and multi-model support for systematically better prompts.
 
-### [PDF2Markdown: Complete Guide to Smart PDF Article Extraction](https://blog.baifan.site/en/pdf2markdown-intelligent-pdf-extraction-tool/)
+### [PDF2Markdown: Layout Analysis and Structured Extraction for Large PDFs](https://blog.baifan.site/en/pdf2markdown-intelligent-pdf-extraction-tool/)
 Date: 2025-11-25
 Tags: OCR, PaddleOCR, Ollama, Document Processing
 
 A deep dive into PDF2Markdown: intelligent processing of large scanned PDFs with PaddleOCR, Tesseract, and Ollama LLMs for precise article extraction — installation, tuning, architecture, and practice.
 
-### [RAG Complete Guide: Build a Local RAG System from Scratch](https://blog.baifan.site/en/rag-system-complete-guide-langchain-ollama-pgvector/)
+### [Local RAG with Ollama and pgvector: Architecture and Retrieval](https://blog.baifan.site/en/rag-system-complete-guide-langchain-ollama-pgvector/)
 Date: 2025-08-27
 Tags: RAG, LangChain, Ollama, Vector Database
 
@@ -134,7 +134,7 @@ Tags: GPU, CUDA, PyTorch, Model Training
 
 A hands-on guide to GPU-accelerated deep learning: CPU vs GPU, tensors and quantization, CUDA with PyTorch, hardware selection and VRAM optimization, plus interview Q&A and a debugging checklist.
 
-### [Prompt Engineering: From Prompts to Context Engineering](https://blog.baifan.site/en/prompt-engineering-context-management-complete-guide/)
+### [Prompt and Context Engineering: Structured Constraints and State Control](https://blog.baifan.site/en/prompt-engineering-context-management-complete-guide/)
 Date: 2025-08-13
 Tags: Prompt Engineering, RAG, LLM, AI Applications
 
@@ -146,13 +146,13 @@ Tags: Transformer, Attention Mechanism, LLM, Neural Networks
 
 A first-principles deconstruction of Transformer self-attention: Q/K/V inner-product geometry, Softmax scaling, multi-head subspace dynamics, and FlashAttention tiling against the O(N^2) memory wall.
 
-### [AI Technical Glossary: A Complete Guide to 270+ Terms](https://blog.baifan.site/en/ai-technical-glossary-complete-guide/)
+### [AI Technical Glossary: Core Concepts and Architecture Terms](https://blog.baifan.site/en/ai-technical-glossary-complete-guide/)
 Date: 2025-07-30
 Tags: LLM, Machine Learning, Deep Learning, Glossary
 
 The most complete AI glossary: 270+ terms from Token and Transformer to RAG and prompt engineering, with 12 categories and an A-Z quick reference — an essential dictionary for AI learners.
 
-### [A Complete Guide to LLMs: Tokens and Vectors in Depth](https://blog.baifan.site/en/ai-llm-tutorial-token-vector-basics/)
+### [LLM Fundamentals: Tokenization and Vector Representations](https://blog.baifan.site/en/ai-llm-tutorial-token-vector-basics/)
 Date: 2025-07-22
 Tags: LLM, Token, Vector, Transformer
 
@@ -207,7 +207,7 @@ Tags: US politics, geopolitics, New York
 
 President Trump vs New York City mayor-elect Zohran Mamdani: public attacks, private respect, and a fight over federal funds and city autonomy that became a national weathervane for American politics.
 
-### [The Rare-Earth War: China's Confidence and Resource Sovereignty](https://blog.baifan.site/en/rare-earth-war-china-strategic-confidence/)
+### [Rare-Earth Supply Chains: Refining Bottlenecks and Geopolitical Leverage](https://blog.baifan.site/en/rare-earth-war-china-strategic-confidence/)
 Date: 2025-10-07
 Tags: geopolitics, international relations, strategic resources
 
@@ -219,13 +219,13 @@ Tags: geopolitics, social media, US-China relations, tech industry
 
 Stripping away sanctimony to expose K-Street lobbying, Silicon Valley ambushes, and populist deals: an autopsy of TikTok's survival under raw power.
 
-### [WSJ Deep Dive: Nvidia Chip Ban, Holiday Travel, Economic Signals](https://blog.baifan.site/en/wsj-nvidia-chip-ban-economic-analysis/)
+### [Reading The Wall Street Journal: Nvidia Chip Bans and Economic Signals](https://blog.baifan.site/en/wsj-nvidia-chip-ban-economic-analysis/)
 Date: 2025-09-16
 Tags: Wall Street Journal, Nvidia, US-China tech rivalry, economic analysis
 
 A close read of the WSJ front page, Nov 4, 2025: the Nvidia chip ban, a holiday travel crunch and surging power bills — what US-China tech rivalry, budget trouble and trade protectionism actually deliver.
 
-### [The Economist, November 2025: Global Trends and Geopolitics](https://blog.baifan.site/en/economist-202511-global-analysis/)
+### [Global Trends and Geopolitics: Reading The Economist, November 2025](https://blog.baifan.site/en/economist-202511-global-analysis/)
 Date: 2025-09-09
 Tags: The Economist, geopolitics, economic analysis, international relations
 
@@ -245,13 +245,13 @@ Tags: AI Era, Team Management, Software Engineering, Org Structure, AI Coding, T
 
 AI makes writing code cheap, and the logic of team division changes with it. Five roles by software lifecycle stage: prototyper, builder, maintainer, scaler, finisher. Scarcity shifts from writing to judgment — AI will not replace these five roles, only amplify them.
 
-### [The Future of AI Coding Tools: From Copilot to Autonomous Agent](https://blog.baifan.site/en/ai-coding-tools-future-copilot-to-autonomous-agent/)
+### [Evolution of AI Coding Tools: From Inline Completion to Autonomous Agents](https://blog.baifan.site/en/ai-coding-tools-future-copilot-to-autonomous-agent/)
 Date: 2026-07-06
 Tags: Claude Code, BYF, AI Agent, Software Engineering, Development Paradigm, Open Source, Industry Trends
 
 The finale of the Claude Code source deconstruction series: how AI coding tools evolved from code completion to autonomous agents, the paradigm shift of CLAUDE.md as a project constitution, and what BYF's AGENTS.md engineering, ByfHarness SDK, and vis visual debugging suggest for future agent development.
 
-### [3,000 vs 500K Lines: The Architectural Abyss From Toy to Product](https://blog.baifan.site/en/claude-code-3000-vs-500k-lines/)
+### [3,000-Line Prototype vs 500K-Line Product: The Complexity Gap in Coding Agents](https://blog.baifan.site/en/claude-code-3000-vs-500k-lines/)
 Date: 2026-07-02
 Tags: Claude Code, BYF, AI Agent, software engineering, architecture design, open source, source code analysis
 
@@ -269,7 +269,7 @@ Tags: Claude Code, BYF, MCP, AI Agent, protocol design, open source, source code
 
 Deconstructing Claude Code's MCP integration: why the Model Context Protocol is called the USB-C of AI tool interconnection, the trade-offs of JSON-RPC over stdio, and how BYF's McpConnectionManager and conversational /mcp-config make MCP easier to adopt.
 
-### [Multi-Agent Architecture: The Art of Fork-Join Collaboration](https://blog.baifan.site/en/claude-code-multi-agent-architecture/)
+### [Multi-Agent Architecture: Task Decomposition and State Convergence in Fork-Join Patterns](https://blog.baifan.site/en/claude-code-multi-agent-architecture/)
 Date: 2026-06-09
 Tags: Claude Code, BYF, AI Agent, multi-agent, architecture design, open source, source code analysis
 
@@ -305,13 +305,13 @@ Tags: Claude Code, BYF, AI Agent, Prompt Engineering, system prompt, open source
 
 Deconstructing Claude Code's system prompt engineering: a production agent's prompt is a thousand-line precision architecture, not a couple of sentences. Covers layered architecture, placeholder injection, behavioral constraints, and dynamic context design, plus BYF's PromptPlan and ephemeral injection practices.
 
-### [Tools Are Capability: AI Agent Tool System Design Philosophy](https://blog.baifan.site/en/claude-code-tool-system-design/)
+### [Tool System Contract Design: Tool Definitions and Sandboxing for Coding Agents](https://blog.baifan.site/en/claude-code-tool-system-design/)
 Date: 2026-05-12
 Tags: Claude Code, BYF, AI Agent, architecture design, tool system, open source, source code analysis
 
 The design philosophy behind Claude Code's tool system: how 30+ tools are organized, described, and dispatched. Why tool-description quality directly determines what AI can and cannot do, and how progressive disclosure prevents context explosion. With BYF (Be Your Friend)'s Kaos execution-environment abstraction and TaskEntry design-debt cleanup as real-world examples.
 
-### [The Soul of an AI Coding Assistant: The Think-Act-Observe Loop](https://blog.baifan.site/en/claude-code-think-act-observe-loop/)
+### [The Runtime Core of Coding Agents: The Think-Act-Observe Execution Loop](https://blog.baifan.site/en/claude-code-think-act-observe-loop/)
 Date: 2026-05-07
 Tags: Claude Code, BYF, AI Agent, architecture design, Agent Loop, open source, source code analysis
 
@@ -323,7 +323,7 @@ Tags: AI, Software Engineering, System Design, Infrastructure, Technical Debt, v
 
 From the old MTBF vs MTTR debate in infrastructure to an ignored problem in today's AI coding frenzy: while every local metric is green, global system risk may be accumulating unnoticed.
 
-### [A New Playbook for AI Programming: UI First, Then the PRD](https://blog.baifan.site/en/ui-first-ai-programming-prd/)
+### [Deriving PRDs from UI: Prototype-Driven AI Development](https://blog.baifan.site/en/ui-first-ai-programming-prd/)
 Date: 2026-02-17
 Tags: AI Programming, PRD, Vibe Coding, UI Design
 
@@ -367,7 +367,7 @@ Tags: Cursor, Cursor Local, Private Inference, Local Inference, Downloads
 
 Direct links to the latest Cursor Local (Private Inference) builds for every platform: Windows, macOS, and Linux across architectures. Links always point to the newest local build.
 
-### [Give AI a Rulebook: From Wishing Upon It to Making It Behave](https://blog.baifan.site/en/give-ai-a-rulebook/)
+### [Rulebooks for AI Coding: Constraint-Driven Context Engineering](https://blog.baifan.site/en/give-ai-a-rulebook/)
 Date: 2026-08-05
 Tags: dev-skills, AI Workflow, Claude Skills, AI Agent, Subagent, PRD, Test-Driven Development
 
@@ -385,7 +385,7 @@ Tags: AI, Trellis, Claude Code, Cursor, coding standards, development tools, spe
 
 Hands-on with the Trellis AI coding framework: spec-driven development plus cross-session memory plus automated workflows, so AI writes code to your project standards instead of improvising every time.
 
-### [Dissecting a PPT Agent: From Research to SVG Output](https://blog.baifan.site/en/ppt-agent-workflow-deep-dive/)
+### [Architecture of a Presentation Agent: From Requirement Extraction to SVG Rendering](https://blog.baifan.site/en/ppt-agent-workflow-deep-dive/)
 Date: 2026-04-28
 Tags: AI, PPT, Agent, SVG, Gemini, Bento Grid, prompt engineering
 
@@ -403,19 +403,19 @@ Tags: AI, API, OpenAI, Claude, Gemini, Protocol Design, REST API
 
 From /v1/completions to /v1/responses, AI API suffixes define the request and response data structures. This article walks through the whole chain.
 
-### [Oracle's Free 4-Core 24GB Server: From Signup to Running](https://blog.baifan.site/en/oracle-free-vps-guide/)
+### [Oracle Cloud Free-Tier ARM Instance: Setup and Known Issues](https://blog.baifan.site/en/oracle-free-vps-guide/)
 Date: 2026-04-07
 Tags: VPS, Oracle Cloud, Linux, Servers, Self-Hosting
 
 The Oracle Always Free plan gives you a 4-core 24GB ARM server, indefinitely, at no cost. One post covers signup pitfalls, region choice, creating the ARM instance, and keep-alive strategy.
 
-### [Codex Keeps Reconnecting? Four Fixes](https://blog.baifan.site/en/codex-websocket-reconnect-fix/)
+### [Codex WebSocket Reconnecting: Four Root Causes and Fixes](https://blog.baifan.site/en/codex-websocket-reconnect-fix/)
 Date: 2026-03-31
 Tags: Codex, WebSocket, ChatGPT, Proxy, AI Coding, Network Configuration
 
 Why the Codex App keeps showing Reconnecting 1/5, and four fixes: disabling WebSocket, a custom provider, TUN mode, or an env proxy.
 
-### [Third-Party Telegram Clients: What to Use and What to Avoid](https://blog.baifan.site/en/third-party-telegram-clients/)
+### [Third-Party Telegram Clients: Feature Comparison and Security Audit](https://blog.baifan.site/en/third-party-telegram-clients/)
 Date: 2026-03-24
 Tags: Telegram, third-party clients, Android, iOS, open source, privacy and security
 
@@ -433,49 +433,49 @@ Tags: AI, Agent, distributed systems, system architecture, Claude Code, concurre
 
 Deconstructing multi-agent systems from classical distributed systems theory: non-deterministic state machines, split-brain hazards, CAS merges, and fault domain isolation.
 
-### [Reverse Engineering Claude Science: From 54 Tables to Modern TCM](https://blog.baifan.site/en/ai-agent-platform-to-tcm-future/)
+### [Reverse-Engineering Claude Science: 54-Table Data Contracts and Knowledge Graphs](https://blog.baifan.site/en/ai-agent-platform-to-tcm-future/)
 Date: 2026-02-20
 Tags: Claude Science, Reverse Engineering, TCMSP, AI Agent, Agent Runtime
 
 Reverse engineering the architecture of Claude Science, and reflecting on where these design ideas intersect with TCMSP, an AI-native Traditional Chinese Medicine platform.
 
-### [A Guide to SSH Remote Development in the Codex App](https://blog.baifan.site/en/codex-ssh-remote-development-guide/)
+### [Configuring SSH Remote Development in the Codex App](https://blog.baifan.site/en/codex-ssh-remote-development-guide/)
 Date: 2026-02-10
 Tags: Codex, SSH, Remote Development, AI Coding
 
 A detailed walkthrough of connecting to remote servers over SSH for development with the Codex App, covering configuration steps, SSH host setup, remote environment preparation, and troubleshooting.
 
-### [Linux Out of Memory? ZRAM Compression and Practical Config](https://blog.baifan.site/en/zram-memory-optimization-linux/)
+### [Linux Memory Optimization: ZRAM Principles and Configuration](https://blog.baifan.site/en/zram-memory-optimization-linux/)
 Date: 2026-01-31
 Tags: Linux, ZRAM, Memory Optimization, VPS
 
 How SWAP and ZRAM differ under the hood, where ZRAM fits on low-memory Linux devices, how to configure it, and hybrid strategies — so you can pick the best memory expansion approach.
 
-### [VPS Scene 101: The Complete Dictionary of Hosting Slang](https://blog.baifan.site/en/vps-glossary-jargon-guide/)
+### [VPS and Network Infrastructure Jargon Reference](https://blog.baifan.site/en/vps-glossary-jargon-guide/)
 Date: 2026-01-27
 Tags: VPS, Linux, Servers
 
 A comprehensive glossary of VPS and cloud hosting jargon — from MJJ and little chickens to routes and provider nicknames — your entry encyclopedia to the hosting scene.
 
-### [Pi Coding Agent: The Complete Guide to Minimalist Coding](https://blog.baifan.site/en/pi-coding-agent-complete-guide/)
+### [Pi Coding Agent: Architecture and Workflow for a Minimalist CLI Agent](https://blog.baifan.site/en/pi-coding-agent-complete-guide/)
 Date: 2026-01-13
 Tags: Pi Coding Agent, AI Coding, CLI Tools, LLMs
 
 Pi Coding Agent is a minimalist, highly extensible terminal coding agent. This guide covers everything from installation to advanced customization with extensions, skills, and packages.
 
-### [Self-Hosted AI API Pipeline: From Domain Email to Sub2API](https://blog.baifan.site/en/self-hosted-ai-api-pipeline/)
+### [Self-Hosted AI API Proxy: Cloudflare and Sub2API Setup](https://blog.baifan.site/en/self-hosted-ai-api-pipeline/)
 Date: 2026-01-06
 Tags: Cloudflare, Sub2API, Self-Hosting, AI API
 
 Build a self-hosted AI API pipeline from scratch — a complete deployment tutorial covering domain email, Cloudflare Workers, SMS-code platforms, registration bots, and Sub2API.
 
-### [Claude Skills Progressive Disclosure via MCP: Skill in Anywhere](https://blog.baifan.site/en/mcp-claude-skills-progressive-disclosure/)
+### [Progressive Disclosure for Claude Skills via MCP](https://blog.baifan.site/en/mcp-claude-skills-progressive-disclosure/)
 Date: 2025-12-26
 Tags: MCP, large language models, AI Agent, context management
 
 A detailed guide to implementing a Claude Skills-style dynamic capability-loading mechanism on top of the MCP protocol: technical architecture, engineering verification, and a complete implementation. Covers progressive disclosure, context optimization, and cross-agent compatibility.
 
-### [PDF2Markdown: Complete Guide to Smart PDF Article Extraction](https://blog.baifan.site/en/pdf2markdown-intelligent-pdf-extraction-tool/)
+### [PDF2Markdown: Layout Analysis and Structured Extraction for Large PDFs](https://blog.baifan.site/en/pdf2markdown-intelligent-pdf-extraction-tool/)
 Date: 2025-11-25
 Tags: OCR, PaddleOCR, Ollama, Document Processing
 
@@ -487,20 +487,20 @@ Tags: Distributed Systems, Heartbeat Mechanism, Kubernetes, Microservices
 
 A deep dive into distributed heartbeat failures: GC pauses, TCP half-open sockets, split-brain risks, Phi Accrual failure detectors, lease mechanisms under clock drift, and Raft livelock prevention.
 
-### [PostgreSQL + pgvector in Docker: A Complete Setup Guide](https://blog.baifan.site/en/postgresql-pgvector-docker-installation-guide/)
+### [Deploying PostgreSQL and pgvector with Docker Compose](https://blog.baifan.site/en/postgresql-pgvector-docker-installation-guide/)
 Date: 2025-09-02
 Tags: PostgreSQL, Docker, Vector Database
 
 Deploy PostgreSQL with pgvector in Docker: environment setup, compose configuration, initialization scripts, and verification tests — vector storage ready for AI apps and RAG systems.
 
-### [Timeline Recorder: Technical Architecture from MVP to Scale](https://blog.baifan.site/en/time-line-editor-architecture-design/)
+### [Timeline Recorder: Layered Architecture and Data Flow Design](https://blog.baifan.site/en/time-line-editor-architecture-design/)
 Date: 2025-07-14
 Tags: Go, System Architecture, SQLite, Design, API Design, Technical Docs, SvelteKit
 
 Detailed PRD and technical architecture design for a timeline recorder app: user stories, domain model, API design, stack selection (Go, SvelteKit, SQLite), and deployment strategy — a local-first, data-sovereign personal journaling tool, from MVP to scalable.
 ## Politics
 
-### [The Silent War in Central-Local Power: Who Serves as the System's Shock Absorber?](https://blog.baifan.site/en/petition-new-rules-central-local-cost-shift/)
+### [The Silent War in Central-Local Power: Institutional Shock Absorbers and Cost Shifting](https://blog.baifan.site/en/petition-new-rules-central-local-cost-shift/)
 Date: 2026-07-03
 Tags: Petition System, Central-Local Relations, Grassroots Governance, Local Debt, Stability Maintenance
 

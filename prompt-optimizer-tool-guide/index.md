@@ -1,4 +1,4 @@
-# Prompt Optimizer：一个让你写出更好 Prompt 的开源利器
+# Prompt Optimizer：自动化 Prompt 评测与变异调优工具
 
 - Date: 2026-01-20
 - Author: ByF

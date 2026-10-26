@@ -1,4 +1,4 @@
-# PDF2Markdown: Complete Guide to Smart PDF Article Extraction
+# PDF2Markdown: Layout Analysis and Structured Extraction for Large PDFs
 
 - Date: 2025-11-25
 - Author: ByF

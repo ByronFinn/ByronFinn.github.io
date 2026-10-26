@@ -1,4 +1,4 @@
-# Tools Are Capability: AI Agent Tool System Design Philosophy
+# Tool System Contract Design: Tool Definitions and Sandboxing for Coding Agents
 
 - Date: 2026-05-12
 - Author: ByF

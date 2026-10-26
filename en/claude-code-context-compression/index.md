@@ -139,11 +139,9 @@ To ensure steady prefix cache hits against Anthropic endpoints, BYF enforces a "
 
 Throughout a session's lifecycle, the orchestrator refuses to mutate historical assistant turns once emitted. All observation masking operations are applied lazily to historical observations without altering established assistant prefixes, keeping remote cache stakes alive across long command sequences.
 
-## Conclusion: Curing the Illusion of Infinite Memory
+## Architectural Limits: Version Control over Degraded Compaction
 
-Industry evangelism around million-token context windows and lifelong agent memories is largely marketing rhetoric that obscures underlying architectural friction.
+Transformer attention is fundamentally an expensive, volatile, distance-sensitive physical cache. Relying on recursive lossy summaries to maintain long-running sessions inevitably degrades into hallucination and cyclic reasoning under the weight of semantic entropy.
 
-A disciplined systems engineer recognizes that a Transformer's attention layer is an expensive, volatile, distance-sensitive physical cache. Relying on recursive lossy summaries to maintain the facade of unbounded context inevitably degrades under the weight of semantic entropy.
-
-In real-world software engineering, when a session exceeds 30 iterative turns and undergoes multiple compactions, the professional move is to commit verified changes via `git commit`, wipe the runtime state, and issue `/clear`. Starting a clean session with unambiguous architectural boundaries is far more dependable than wading through the cognitive sludge of a degraded cache.
+In practical development, context compression functions as a temporary relief valve for sudden token spikes, not a durable solution for persistent state management. Once an interaction exceeds roughly 30 turns and undergoes repeated compactions, the marginal return of algorithmic pruning falls below its maintenance overhead. The deterministic move remains executing `git commit` the moment code passes test suites, persisting verified state to version control, and issuing `/clear`. Launching a clean session with explicit contracts and empty cache prefix yields far higher predictability than wrestling with a degraded conversational trace.
 

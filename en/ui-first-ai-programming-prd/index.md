@@ -1,4 +1,4 @@
-# A New Playbook for AI Programming: UI First, Then the PRD
+# Deriving PRDs from UI: Prototype-Driven AI Development
 
 - Date: 2026-02-17
 - Author: ByF
@@ -117,12 +117,4 @@ This method is no silver bullet:
 - **Team collaboration** needs additional tooling to manage visual artifacts and annotations
 
 But for most user-facing web apps, tool products, and content platforms, a UI-first workflow noticeably improves both the efficiency and the delivery quality of AI-assisted development.
-
-## 6. Summary
-
-The core tension of the AI programming era isn't whether AI can write code — it's whether we can express requirements clearly. Traditional text PRDs already cause endless trouble in human-to-human communication; handing them to AI for execution only amplifies the drift.
-
-Deriving the PRD backward from the UI essentially replaces the medium humans are worst at (long text descriptions) with the one we're best at (visuals), building a more accurate channel for passing requirements between humans and AI.
-
-This idea is still evolving. If you're doing Vibe Coding too, give it a try: on your next project, have AI draw the pages first and write the docs after. You may find the whole development process feels completely different.
 

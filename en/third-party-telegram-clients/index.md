@@ -1,4 +1,4 @@
-# Third-Party Telegram Clients: What to Use and What to Avoid
+# Third-Party Telegram Clients: Feature Comparison and Security Audit
 
 - Date: 2026-03-24
 - Author: ByF

@@ -1,4 +1,4 @@
-# The Rare-Earth War: China's Confidence and Resource Sovereignty
+# Rare-Earth Supply Chains: Refining Bottlenecks and Geopolitical Leverage
 
 - Date: 2025-10-07
 - Author: ByF
@@ -10,15 +10,9 @@
 
 {{< image src="/pictures/note/20251107-xituzhanzheng.png" caption="The Rare-Earth War" src_s="/pictures/note/20251107-xituzhanzheng.png" src_l="/pictures/note/20251107-xituzhanzheng.png" >}}
 
-# The Rare-Earth War
+Global defense and clean-energy supply chains rely on rare-earth elements not merely through raw deposit extraction, but through high-purity chemical separation, patent infrastructure, and chemical engineering scale.
 
-**—— China's strategic confidence and resource sovereignty amid the reshaping of global geopolitics**
-
-## Preface
-
-I studied geology at China University of Geosciences. As an undergraduate, as part of an academic activity organized by the university, I wrote a short paper titled "The Rare-Earth War." Back then, the "war" was mostly a metaphor in the academic sense, an exploration of the relationship between resource competition and technological rivalry. Many years on, the world has shifted beyond recognition, and the scenarios once argued on paper are now playing out in reality. Taking up the pen again to rewrite "The Rare-Earth War" fills me with emotion.
-
----
+<!-- more -->
 
 ## China: The Global Manufacturing Power Holding the Rare Earths Initiative
 
@@ -53,14 +47,4 @@ At the same time, China has always remained open, willing to hold dialogue with 
 For all that America and Europe proclaim "de-risking," no country in the world can build a rare earths supply chain to rival China's in the short term. The US invests heavily in rare earths companies, yet its ore still has to be shipped to China for refining. Europe, even with enormous sums committed, runs headlong into the realities of technology barriers and high costs.
 
 The contest over rare earths looks on the surface like a supply problem; in substance it is a competition over industry, technology and strategic autonomy. By commanding the key mineral resources, China has secured its national safety and technological independence, and has acted as a stabilizer of the global supply chain. Conversely, the West's institutional prejudice against China and its containment designs will only deepen its own industrial anxiety.
-
----
-
-## Conclusion: Resource Sovereignty and Shared Gains
-
-As a European scholar has put it: "Defense autonomy begins with materials autonomy." But true autonomy is not closed-off self-protection; it is built on long-term accumulation, rational development and open cooperation.
-
-China is not the starter of the rare-earths war, but a defender of resource sovereignty and an advocate of global cooperation. In an era of constantly reshaping international relations, China's rare earths policy reflects the strategic composure of a responsible major power — safeguarding its own core interests while advancing the security and sustainable development of global supply chains.
-
-The rare-earths war is, in the final analysis, a contest of technology and strategic will. And in this contest over the shape of the future order, China already stands on the high ground of initiative, confidence and reason.
 

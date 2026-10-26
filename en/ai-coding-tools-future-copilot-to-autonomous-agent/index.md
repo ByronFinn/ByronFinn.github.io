@@ -1,4 +1,4 @@
-# The Future of AI Coding Tools: From Copilot to Autonomous Agent
+# Evolution of AI Coding Tools: From Inline Completion to Autonomous Agents
 
 - Date: 2026-07-06
 - Author: ByF
@@ -129,39 +129,4 @@ The future of AI coding tools still has plenty of open questions:
 **Accountability.** When code written by an agent has a bug, who is responsible? The AI that wrote it? The user who launched the task? The team that defined the project's conventions? Current legal and professional frameworks have no liability model ready for "code written by AI".
 
 **The economic model.** Agents consume far more tokens than Copilot. One complex task can burn dollars, even tens of dollars, of API fees. The economics of AI coding (efficiency gains vs. token costs) are still evolving.
-
-## Retrospect and Outlook
-
-This series started from the Think-Act-Observe loop and deconstructed 12 core architectural ideas of Claude Code:
-
-1. **The Think-Act-Observe loop** — the AI agent's skeleton
-2. **The tool system** — the AI agent's muscles
-3. **System Prompt engineering** — the AI agent's brain
-4. **Permissions and security** — the AI agent's brakes
-5. **Context compaction** — the AI agent's short-term memory
-6. **The memory system** — the AI agent's long-term memory
-7. **The Skill system** — the AI agent's expertise
-8. **The multi-agent architecture** — the AI agent's teamwork
-9. **The MCP protocol** — the AI agent's external connections
-10. **Plan Mode** — the AI agent's design-first discipline
-11. **The engineering gap** — the abyss between concept and product
-12. **The future outlook** — the evolution from assist to autonomous
-
-None of these ideas is complicated on its own. Combined, they form an **intelligent system that can work autonomously in a real codebase**.
-
-Claude Code is not the endpoint. Neither is BYF. Both are explorers on the evolutionary path of AI coding tools — Claude Code proved that large-scale commercial agents are possible; BYF proved that an individual developer can build their own agent with these same ideas. Every article, every ADR, every design decision mentioned in this series is a paving stone on that road.
-
-As you read this series, you may already be deconstructing the AI tools you use daily in your head. That's exactly right — **deconstruction is where understanding begins.**
-
-**AI won't replace programmers. But programmers who use AI will replace programmers who don't.** That's not a slogan; it's happening right now.
-
----
-
-> This series is based on architectural analysis of the [official Claude Code source](https://github.com/anthropics/claude-code), focusing on design ideas rather than code implementation.
->
-> Thanks for reading this series. If these articles helped you, feel free to share and discuss.
-
----
-
-*End of the "Claude Code Source Code Deconstruction" series.*
 

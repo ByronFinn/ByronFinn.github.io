@@ -1,4 +1,4 @@
-# A Complete Guide to LLMs: Tokens and Vectors in Depth
+# LLM Fundamentals: Tokenization and Vector Representations
 
 - Date: 2025-07-22
 - Author: ByF
@@ -8,11 +8,9 @@
 ---
 
 
-# AI Tutorial: A Guide to AI LLMs, from Basics to Depth
+The core mechanism of large language models lies in predicting the next token from preceding context, projecting discrete symbols into continuous semantic vector space. Input processing, context window overhead, and inference latency are all bound to this tokenization and representation pipeline.
 
-This article takes you deep into the core concepts of large language models — from basic principles to vector representation — building a complete knowledge system step by step.
-
----
+<!-- more -->
 
 ## 1. Foundations of AI Application Development
 
@@ -302,34 +300,6 @@ Here is the main pipeline of a conversational Q&A application (with each step's 
 4. **Cap retrieved passage length**: set a maximum token count per passage and trim within sentences (keep only a few words around each hit)
 5. **Metrics loop**: log `input_tokens/output_tokens/latency/success_rate` and A/B test prompts and retrieval strategies
 6. **Multilingual scenarios**: token efficiency differs across languages; when necessary, do **language detection + translation into a single language** before the model sees the input
-
----
-
-## 6. 🧠 Key Takeaways
-
-### 6.1 Concepts at a Glance
-
-| Concept        | In one sentence                                          |
-| -------------- | -------------------------------------------------------- |
-| **Token**      | The particles of AI language — all length, speed, and cost revolve around them |
-| **Vector**     | Meaning in numeric form, letting machines grasp semantic relations |
-| **Transformer**| The core architecture of modern AI, processing information through attention |
-
-### 6.2 Recap
-
-1. **Basic principle**: predict the next word, generate token by token
-2. **Core architecture**: Transformer + attention mechanism
-3. **Key concept**: vector representation lets machines understand semantics
-4. **Real-world use**: the complete chain from model to product
-5. **Token management**: the key to controlling length, cost, and quality
-
-### 6.3 💡 Study Advice
-
-- **Understand the token concept**: a crucial step into AI — tokens underpin how modern models process language
-- **Practice token optimization**: in product development, good token management markedly improves results and lowers cost
-- **Master vector representation**: understand how human language becomes math a machine can digest
-
-> 🚀 **Next step**: if you'd like, I can draw you a diagram of the LLM workflow and its token interaction points, or write a small script that **counts tokens for a given text across different models** and estimates cost and latency.
 
 ---
 

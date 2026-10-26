@@ -1,4 +1,4 @@
-# Codex Keeps Reconnecting? Four Fixes
+# Codex WebSocket Reconnecting: Four Root Causes and Fixes
 
 - Date: 2026-03-31
 - Author: ByF

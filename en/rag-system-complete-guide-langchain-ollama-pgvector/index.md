@@ -1,4 +1,4 @@
-# RAG Complete Guide: Build a Local RAG System from Scratch
+# Local RAG with Ollama and pgvector: Architecture and Retrieval
 
 - Date: 2025-08-27
 - Author: ByF
@@ -8,13 +8,9 @@
 ---
 
 
-# Building a Local RAG with LangChain + Ollama + pgvector: A Complete Hands-On Walkthrough from 0 to 1 (with uv Dependency Management and an Interview Guide)
+Building a local Retrieval-Augmented Generation (RAG) system with Ollama, LangChain, and PostgreSQL pgvector enables offline document chunking, vector storage, and grounded generation. The sample code repository is available at [rag-lab](https://github.com/ByronFinn/rag-lab.git).
 
-> This post is a directly actionable document. Follow it top to bottom and you will build a local RAG (retrieval-augmented generation) system from scratch and understand the key concepts and code. All core scripts come with comments to make learning and interview review easier.
->
-> **Code repository**: [https://github.com/ByronFinn/rag-lab.git](https://github.com/ByronFinn/rag-lab.git) — complete runnable example code
-
----
+<!-- more -->
 
 ## Goals and Outcomes
 

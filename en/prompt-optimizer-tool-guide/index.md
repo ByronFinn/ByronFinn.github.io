@@ -1,4 +1,4 @@
-# Prompt Optimizer: An Open-Source Tool for Better Prompts
+# Prompt Optimizer: Automated Evaluation and Mutation for LLM Prompts
 
 - Date: 2026-01-20
 - Author: ByF

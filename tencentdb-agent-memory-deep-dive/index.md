@@ -159,7 +159,7 @@ Pi Agent 的对话以 JSONL 文件存储在 `~/.pi/agent/sessions/` 下，理论
 - **模型兼容性需要验证。** Gateway 的 LLM Runner 默认用于记忆提取（L1/L2/L3 pipeline），这些任务对模型的指令遵循能力有一定要求。Pi 当前使用的模型（如 GLM-5.1）在记忆提取任务上的表现需要实际测试，项目文档中只验证了 DeepSeek-V3.2 和 GPT 系列。
 - **短期记忆压缩对 Coding Agent 价值有限。** 符号化短期记忆（Mermaid 画布 + 上下文卸载）主要解决的是长程任务中工具日志暴增的问题。Pi Agent 在执行代码修改时产生的工具输出通常在上下文窗口承受范围内（GLM-5.1 的上下文窗口为 200K Token），真正需要 offload 的场景相对较少。
 
-### 一句话总结
+### 适配收益与工程权衡
 
 TencentDB Agent Memory 的架构设计为第三方 Agent 接入留出了清晰的通道（Gateway HTTP API + 可扩展的 HostAdapter 接口），但目前仍需自行编写胶水代码完成对接。对于 Pi Coding Agent 这类 CLI 工具而言，长期记忆（用户偏好、项目上下文跨会话保留）的接入价值高于短期记忆压缩。期待项目后续推出跨框架的通用 Adapter 或 SDK，进一步降低接入门槛。
 
@@ -204,15 +204,15 @@ TencentDB Agent Memory 的架构设计为第三方 Agent 接入留出了清晰�
 GitHub: [https://github.com/Tencent/TencentDB-Agent-Memory](https://github.com/Tencent/TencentDB-Agent-Memory)
 
 License: MIT | Language: TypeScript | Stars: 2400+
-
-如果觉得有用，别忘了给项目点个 Star。
 {{< /admonition >}}
 
-## 写在最后
+## 架构落地权衡与残存痛点
 
-AI Agent 的记忆问题远未被彻底解决。当前主流方案要么依赖外部向量数据库，要么粗暴地将历史摘要塞入 prompt——前者增加部署复杂度，后者丢失关键细节。
+尽管分层存储与符号化表达规避了外部独立向量库的部署复杂度，但在生产级长程 Agent 中落地仍需直面几个工程硬伤：
 
-TencentDB Agent Memory 提供了一个值得认真对待的第三条路：通过分层存储和符号化表达，在 Token 效率、信息完整性和可调试性之间找到了一个相当好的平衡点。
+一是**离线提取管线的级联污染**。L1 与 L2 记忆的沉淀严重依赖次级 LLM Runner 的结构化提取质量。一旦用于提取的轻量模型发生指令遵循漂移，错误的业务事实或幻觉就会被持久化为 Markdown 实体，并在后续检索中被作为“先验真理”反向污染主模型上下文。
 
-对于正在构建长程 Agent 应用的开发者，这个项目值得花时间研究和试用。
+二是**向量空间绑定的迁移代价**。`sqlite-vec` 存储的 Dense 向量与特定的嵌入模型（Embedding Model）强绑定。一旦生产环境升级或替换嵌入模型，所有的历史 L1 记忆必须全量重新计算向量，这在离线历史库达到数万条时会带来沉重的重放开销。
+
+在本地白盒与检索精度之间，这套架构选择用磁盘 I/O 和两段式提取换取可控性。它不是终极答案，但确实划出了一条脱离外部重型基础设施的实用工程路径。
 

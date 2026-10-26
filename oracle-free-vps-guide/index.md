@@ -1,4 +1,4 @@
-# Oracle 白送 4 核 24G 服务器，注册到跑起来一次讲清
+# Oracle Cloud 永久免费 ARM 实例配置与已知问题
 
 - Date: 2026-04-07
 - Author: ByF

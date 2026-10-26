@@ -1,4 +1,4 @@
-# Claude Science 逆向：从 54 张表到中药现代化
+# Claude Science 架构逆向：54 张表的数据契约与知识图谱建模
 
 - Date: 2026-02-20
 - Author: ByF

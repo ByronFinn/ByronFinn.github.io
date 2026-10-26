@@ -1,4 +1,4 @@
-# AI Agent Skills and MCP: Which Ones Are Worth Installing
+# AI Agent Skills and MCP Tool Selection: Use Cases and Maintenance Costs
 
 - Date: 2026-07-20
 - Author: ByF

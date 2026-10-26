@@ -1,4 +1,4 @@
-# 3,000 vs 500K Lines: The Architectural Abyss From Toy to Product
+# 3,000-Line Prototype vs 500K-Line Product: The Complexity Gap in Coding Agents
 
 - Date: 2026-07-02
 - Author: ByF
@@ -120,8 +120,6 @@ There's no shortcut across. You can't "design it right from day one" — you don
 from-scratch's value is standing you at the abyss's edge, showing what's on the other side. Claude Code's source shows what things look like after crossing.
 
 The road between them has no code to show. It's made of thousands upon thousands of engineering decisions, each one a judgment of "what's the better way to handle this". Some right, some wrong, some compromises. Stack them up and you have a product.
-
-## Takeaways
 
 This comparison isn't a value judgment of "from-scratch too simple" or "Claude Code too complex". Each is valuable on its own axis:
 

@@ -1,4 +1,4 @@
-# Codex App SSH 远程开发配置指南
+# Codex App 的 SSH 远程开发环境配置
 
 - Date: 2026-02-10
 - Author: ByF
@@ -155,15 +155,4 @@ Codex 的本地客户端和远程 server 端版本需要匹配。如果遇到版
 | 扩展支持 | 丰富的扩展生态 | 功能还在建设中 |
 
 目前建议将 Codex SSH Remote 作为辅助工具使用，与现有开发流程配合，而非完全替代。
-
-## 小结
-
-Codex SSH Remote 功能虽然还在 alpha 阶段，但对于需要频繁在远程环境中使用 AI 辅助开发的场景来说，已经可以提升不少效率。核心配置步骤可以概括为：
-
-1. 本地 `~/.codex/config.toml` 开启 feature flag
-2. `~/.ssh/config` 配置好 SSH Host
-3. 远程机器安装 Codex 并确保 PATH 可用
-4. 在 Codex App 中添加连接并选择项目目录
-
-配置过程中如果遇到问题，可以参考上方排查步骤逐一确认。
 

@@ -1,4 +1,4 @@
-# Claude Skills Progressive Disclosure via MCP: Skill in Anywhere
+# Progressive Disclosure for Claude Skills via MCP
 
 - Date: 2025-12-26
 - Author: ByF
@@ -10,24 +10,9 @@
 
 {{< figure src="/pictures/note/claudecodeskills.png" alt="Claude Code Skill in Anywhere" caption="Claude Code Skill in Anywhere" >}}
 
-# Implementing Claude Skills' Progressive Disclosure via MCP: Reusing Claude Code Skills Anywhere
+Encapsulating domain knowledge and procedural workflows into modular skill packages that load on demand is a proven way to minimize initial context consumption while maintaining agent stability across long tasks. Implementing this capability over the standard MCP protocol brings progressive disclosure to any compatible client without native skill engine support.
 
-### — A feasible approach to capability encapsulation and dynamic context extension (technical proposal and verification)
-
-## Preface
-
-Claude Skills introduced a remarkably advanced concept:
-**encapsulating professional knowledge, process standards, and task methods into "skill packages" that load dynamically, only when a task actually needs them.**
-
-This "progressive disclosure" mechanism is essentially a **dynamic context extension protocol** — it effectively reduces the model's context burden and markedly improves the quality of complex task handling.
-
-However, Skills currently exist only within the official Claude ecosystem and can't be used directly in common MCP-compatible agents (IDE coding plugins, multi-model agent frameworks, and the like).
-
-Hence a technical proposal:
-
-> **Can we use MCP's native capabilities to emulate Claude Skills' dynamic loading, giving any MCP-compatible agent on-demand access to professional capabilities?**
-
----
+<!-- more -->
 
 # 1. Theoretical Foundation: How MCP and Skills Complement Each Other
 
@@ -398,27 +383,7 @@ Therefore:
 
 ---
 
-# 8. Conclusion: A Reusable Cross-Agent "Dynamic Capability Loading Layer"
+## Boundaries and Trade-Offs of the Dynamic Capability Loading Layer
 
-From the design and verification above, one clear conclusion:
-
-> Claude Skills' core capabilities (on-demand knowledge loading, structured context management)
-> are not exclusive to Claude — they form an abstractable, generalizable "capability encapsulation protocol".
-
-On top of MCP's foundations, we can build:
-
-- A "skill scheduler tool"
-- A lightweight skill catalog
-- An on-demand context injection mechanism
-
-Giving any MCP agent:
-
-- Modular professional capabilities
-- Dynamic context extension
-- Extremely low initial context overhead
-- High stability on complex tasks
-
-This will be one of the key trends for future AI agents:
-
-> **An agent shouldn't load all its capabilities up front — it should grow its skill tree dynamically, as the task demands.**
+Decoupling skill scheduling and context injection into a standalone MCP tool trades a single tool invocation round-trip (RTT) for minimal baseline context consumption. For simple queries under five turns, this introduces unnecessary latency; for multi-step engineering pipelines across disparate domains, however, dynamic loading prevents attention degradation.
 

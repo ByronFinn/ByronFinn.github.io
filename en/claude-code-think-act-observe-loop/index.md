@@ -1,4 +1,4 @@
-# The Soul of an AI Coding Assistant: The Think-Act-Observe Loop
+# The Runtime Core of Coding Agents: The Think-Act-Observe Execution Loop
 
 - Date: 2026-05-07
 - Author: ByF

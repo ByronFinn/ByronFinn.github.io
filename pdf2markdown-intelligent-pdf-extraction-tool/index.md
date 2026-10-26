@@ -1,4 +1,4 @@
-# PDF2Markdown - 大型PDF文档智能文章提取工具完全指南
+# PDF2Markdown：大型 PDF 文档的版面分析与结构化提取
 
 - Date: 2025-11-25
 - Author: ByF

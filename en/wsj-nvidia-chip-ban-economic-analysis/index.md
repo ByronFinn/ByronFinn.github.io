@@ -1,4 +1,4 @@
-# WSJ Deep Dive: Nvidia Chip Ban, Holiday Travel, Economic Signals
+# Reading The Wall Street Journal: Nvidia Chip Bans and Economic Signals
 
 - Date: 2025-09-16
 - Author: ByF
@@ -8,11 +8,11 @@
 ---
 
 
-## 📰 WSJ20251104
+On the eve of high-level US-China talks, the abrupt tightening of export reviews for China-specific AI chips signals that geopolitical containment has systematically overridden commercial calculation. Concurrently, budget gridlock in air traffic, consumer goods acquisitions in pharmaceuticals, and the realities of trade protectionism reveal shifting macroeconomic dynamics.
 
-> **Before we begin**: If today's news had a soundtrack, it would be the tense, quiet hum of a machine spinning up. From Washington's conference rooms to Wall Street's trading floors to every one of our own bills, a set of critical switches is being flipped. Today we do more than read the news — we try to hear, behind these events, the sound of an era shifting gears.
+<!-- more -->
 
-### **Today's Highlights | Money, Power, and Our Future**
+## Macroeconomic Signals and Market Dynamics
 
 #### **1. One Ban, and Nvidia's China-Chip Story Hits Pause**
 

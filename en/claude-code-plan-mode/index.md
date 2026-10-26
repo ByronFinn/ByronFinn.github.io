@@ -135,11 +135,11 @@ Critiquing dogma does not mean rejecting planning. In production engineering, ap
 | **Cross-Module Refactoring**<br>(State management migration, ORM refactor) | Hard Barrier Planning (Plan Mode) | Restrict write tools; mandate boundary blueprint | Maximizes tree pruning; prevents dirty state spread |
 | **Unfamiliar Codebase Discovery**<br>(Investigating foreign repos, auditing dependencies) | Exploratory Read-Only | Mount read-only toolset exclusively | Prevents accidental modification during reconnaissance |
 
-## Conclusion: Mechanical Splints on Stochastic Engines
+## FSM Boundaries: The Friction Between Static Plans and Compiler Feedback
 
-Plan Mode is a **mechanical splint** bolted onto a stochastic system to curb its volatility.
+Plan Mode functions as an external finite state machine that restricts operational degrees of freedom. By enforcing read-only tool constraints and human synchronization barriers, it constructs a firewall against action myopia and unpruned workspace mutations.
 
-By constricting degrees of freedom, it suppresses impulsive mutations driven by action myopia. Through an external FSM and human barrier synchronization, it truncates disastrous decision branches at trivial textual costs.
+Yet this mechanism harbors an irreducible structural limitation: **static reasoning cannot predict dynamic runtime failures**. Without direct feedback from compiler diagnostics, runtime traces, and test assertions, deeply nested speculative plans accumulate severe semantic drift. When isolated from rapid execution loops, extended read-only deliberation quickly degenerates into coherent hallucination.
 
-Yet sound engineering demands seeing the boundary: a splint immobilizes a fracture, but it cannot impart strength to the underlying bone. The moment a static plan loses contact with dynamic compiler diagnostics, it encounters the hard ceiling of diminishing returns. Knowing where to impose hard friction and where to enable fluid verification remains the true dividing line in building dependable AI developer tooling.
+The practical boundary does not lie in expanding planning depth, but in provisioning explicit escape hatches within the state machine: the moment read-only exploration secures necessary interface contracts and type signatures, the runtime must transition immediately into fine-grained execution and high-frequency compilation checks.
 

@@ -1,4 +1,4 @@
-# Give AI a Rulebook: From Wishing Upon It to Making It Behave
+# Rulebooks for AI Coding: Constraint-Driven Context Engineering
 
 - Date: 2026-08-05
 - Author: ByF
@@ -112,12 +112,4 @@ Is there a silver bullet? No.
 {{< admonition type=quote title="No Silver Bullet" >}}
 Skills just make the fact that there is no silver bullet a little less painful. They can't think for you — but they can make sure that what you have thought through gets a chance to become code, instead of being overwritten by a default answer that looks smart but is really just lazy.
 {{< /admonition >}}
-
-## Closing: Point at a File and Say, Look There
-
-While building dev-skills, one image kept running through my head:
-
-Some late night, you ship a feature. The next morning a new colleague takes it over. They don't need to ask you "why is the design this way" or "how was that edge case considered back then" — they open the PRD, read the ADRs, browse the research records. It's all there.
-
-At the end of the day, this is what I want: the next time someone asks "why was it done this way", you can point at a file and say, look there.
 

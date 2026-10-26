@@ -1,4 +1,4 @@
-# The Economist, November 2025: Global Trends and Geopolitics
+# Global Trends and Geopolitics: Reading The Economist, November 2025
 
 - Date: 2025-09-09
 - Author: ByF
@@ -50,9 +50,9 @@ The November 2025 issue of *The Economist* sketches a fractured global architect
 - Middle Eastern turbulence keeps risk premiums volatile in energy markets.
 - Southeast Asian trade hubs benefit as primary transshipment intermediaries, though dual geopolitical pressure continues to mount.
 
-## Outlook and Takeaway
+## Geopolitical Trajectory
 
-While official forecasts designate 2026 as the hinge year for demand revival, geopolitical friction and liquidity contractions operate on stubborn physical laws. The prudent path for institutions and individuals alike is simple: deleverage, cut superfluous overhead, and prepare for extended cycles.
+Global liquidity contractions and geopolitical fragmentation exhibit multi-year persistence. As supply-chain reorientation and technology decoupling enter structural phases, defensive balance-sheet strategies will continue to dictate capital flows and cross-border industrial allocation.
 
 ## Publication Download
 

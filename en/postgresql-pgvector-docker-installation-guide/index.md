@@ -1,4 +1,4 @@
-# PostgreSQL + pgvector in Docker: A Complete Setup Guide
+# Deploying PostgreSQL and pgvector with Docker Compose
 
 - Date: 2025-09-02
 - Author: ByF
@@ -8,11 +8,9 @@
 ---
 
 
-# 🐘 Installing and Deploying PostgreSQL + pgvector in Docker
+Running PostgreSQL with the pgvector extension under Docker Compose provides local vector storage and similarity search for AI workflows.
 
-This article shows how to quickly deploy a PostgreSQL database with the **pgvector** extension in a **Docker Compose** environment, so your local or development setup can support vector retrieval and AI applications (LangChain, RAG, semantic search, and the like).
-
----
+<!-- more -->
 
 ## 📦 1. Prepare the Environment
 
@@ -153,21 +151,6 @@ Example output:
 ```
 
 > This confirms pgvector is enabled and can execute vector searches.
-
----
-
-## ✅ 8. Summary
-
-| Item | Value |
-| -------------- | ------------------------ |
-| Image | `pgvector/pgvector:pg16` |
-| Default port | `5432` |
-| Data persistence directory | `./postgre` |
-| Initialization script | `init.sql` |
-| Extension | `pgvector` |
-
-With these steps you have successfully deployed **PostgreSQL + pgvector** in Docker.
-From here you can plug it straight into LangChain, LlamaIndex, or your own RAG application.
 
 ---
 

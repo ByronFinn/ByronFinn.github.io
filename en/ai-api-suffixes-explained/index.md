@@ -411,7 +411,7 @@ Streaming output formats differ too. OpenAI uses `data: {"choices":[{"delta":{"c
 
 ---
 
-## One Diagram to Sum It Up
+## Architecture Overview and Invocation Paths
 
 {{< image src="/pictures/posts/ai-api-suffixes-protocol-evolution.svg" alt="Evolution path of AI API protocols" caption="From /v1/completions to /v1/responses: protocols evolved from text continuation to a unified response object" >}}
 
